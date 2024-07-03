@@ -6,6 +6,9 @@
 
 ## 团队宣言： 我们是一个积极上进，锐意进取的团队。
 
+## 团队logo:
+![logo](https://github.com/whuyu/exam-system/blob/main/README.assets/logo.jpg "logo")
+
 ## 成员组成和说明
 
 袁振宇	        Master	   	较冷静，规划能力较强
@@ -43,6 +46,8 @@
 - 数据结构与算法
 - 数据库管理
 - GUI界面设计
+
+![待办](https://github.com/whuyu/exam-system/blob/main/README.assets/task.png "待办")
 
 
 
