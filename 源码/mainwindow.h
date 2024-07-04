@@ -16,6 +16,7 @@ class MainWindow;
 }
 QT_END_NAMESPACE
 
+//登录页面
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
