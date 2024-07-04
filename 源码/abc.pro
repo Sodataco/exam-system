@@ -14,14 +14,16 @@ SOURCES += \
     mainwindow.cpp \
     student.cpp \
     studentwindow.cpp \
-    teacherwindow.cpp
+    teacherwindow.cpp \
+    user_db.cpp
 
 HEADERS += \
     administer.h \
     mainwindow.h \
     student.h \
     studentwindow.h \
-    teacherwindow.h
+    teacherwindow.h \
+    user_db.h
 
 FORMS += \
     administer.ui \
