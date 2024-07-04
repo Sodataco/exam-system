@@ -47,7 +47,18 @@ void studentwindow::paintEvent(QPaintEvent *){
     paint->drawLine(320,110,320,440);
     paint->drawLine(320,110,600,110);
     paint->drawLine(320,440,600,440);
-    paint->drawLine(600,110,600,440);
+    paint->drawLine(600,110,600,440);//矩形绘制
+
+    QFont font;
+    font.setPointSize(16);
+
+    paint->setFont(font);
+    paint->drawText(350,150,"个人信息：");
+    font.setPointSize(13);
+
+    paint->drawText(350,180,"姓名:");
+    paint->drawText(350,205,"学号:");
+    paint->drawText(350,230,"平均成绩:");
 
     paint->end();
 }

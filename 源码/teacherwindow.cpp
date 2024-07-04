@@ -59,7 +59,7 @@ teacherwindow::teacherwindow(QWidget *parent)
             "    border: 2px solid #8f8f91;"  // 设置边框
             "    background-color: #2a82da;"  // 设置背景颜色
             "    color: white;"  // 设置文字颜色
-            "    padding: 10px;"  // 设置内边距
+
             "}"
             "QPushButton:hover {"
             "    background-color: #1e6bb8;"  // 悬停时的背景颜色

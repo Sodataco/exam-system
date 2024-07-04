@@ -9,7 +9,6 @@ public:
     QString name;
 
     student();
-
 };
 
 #endif // STUDENT_H

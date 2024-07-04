@@ -15,6 +15,10 @@ public:
     explicit Administer(QWidget *parent = nullptr);
     ~Administer();
 
+private slots:
+    void receivelogin();
+
+
 private:
     Ui::Administer *ui;
 };

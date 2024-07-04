@@ -8,8 +8,15 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-
+    ui->EditAccount->setStyleSheet("QLineEdit { font-size: 16px; } QLineEdit::placeholder { color: gray; font-size: 8px; }");
+    ui->EditPassword->setStyleSheet("QLineEdit { font-size: 16px; } QLineEdit::placeholder { color: gray; font-size: 8px; }");
     ui->EditAccount->setPlaceholderText("学号/工号");
+
+    ui->EditPassword->setEchoMode(QLineEdit::Password);
+    //ui->EditPassword->setEchoChar('*'); // 设置掩码字符为 *
+
+
+
     ui->EditPassword->setPlaceholderText("密码");
 
     ui->loginButton->setStyleSheet(
@@ -37,8 +44,9 @@ MainWindow::~MainWindow()
 void MainWindow::on_loginButton_clicked()
 {
     this->hide();
-    if(openstudent)emit showstu();
-    else emit showteacher();
+    if(openteacher)emit showteacher();
+    else if(openadminister)emit showadminister();
+    else emit showstu();
 
 }
 
@@ -49,13 +57,23 @@ void MainWindow::receiveloginagain(){
 void MainWindow::on_student_clicked()
 {
     openstudent=1;
-    if(openteacher==1)openteacher=0;
+    openteacher=0;
+    openadminister=0;
 }
 
 
 void MainWindow::on_teacher_clicked()
 {
     openteacher=1;
-    if(openstudent==1)openstudent=0;
+    openstudent=0;
+    openadminister=0;
+}
+
+
+void MainWindow::on_Administrators_clicked()
+{
+    openadminister=1;
+    openstudent=0;
+    openteacher=0;
 }
 

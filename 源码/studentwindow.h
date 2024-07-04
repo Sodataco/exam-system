@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include <QPainter>
+#include<QFont>
 
 namespace Ui {
 class studentwindow;

@@ -14,16 +14,14 @@ SOURCES += \
     mainwindow.cpp \
     student.cpp \
     studentwindow.cpp \
-    teacherwindow.cpp \
-    user_db.cpp
+    teacherwindow.cpp
 
 HEADERS += \
     administer.h \
     mainwindow.h \
     student.h \
     studentwindow.h \
-    teacherwindow.h \
-    user_db.h
+    teacherwindow.h
 
 FORMS += \
     administer.ui \
@@ -35,3 +33,6 @@ FORMS += \
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+RESOURCES += \
+    res.qrc

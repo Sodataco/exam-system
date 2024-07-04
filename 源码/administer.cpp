@@ -12,3 +12,7 @@ Administer::~Administer()
 {
     delete ui;
 }
+
+void Administer::receivelogin(){
+    this->show();
+}
