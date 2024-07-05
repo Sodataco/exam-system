@@ -19,10 +19,11 @@ int main(int argc, char *argv[])
     teacherwindow tea1;
     Administer ad1;
 
+
+    //connect，实现槽机制的关键
     QObject::connect(&w,SIGNAL(showadminister()),&ad1,SLOT(receivelogin()));
     QObject::connect(&w,SIGNAL(showteacher()),&tea1,SLOT(receivelogin()));
     QObject::connect(&w,SIGNAL(showstu()),&sw1,SLOT(receivelogin()));
-
 
     QObject::connect(&sw1,SIGNAL(showmain()),&w,SLOT(receiveloginagain()));
 

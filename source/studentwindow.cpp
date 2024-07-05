@@ -32,13 +32,15 @@ void studentwindow::receivelogin(){
     this->show();
 }
 
-
+//退出登录
 void studentwindow::on_loginagain_clicked()
 {
     this->hide();
     emit showmain();
 }
 
+
+//ui界面调整
 void studentwindow::paintEvent(QPaintEvent *){
     paint=new QPainter;
     paint->begin(this);
@@ -53,16 +55,15 @@ void studentwindow::paintEvent(QPaintEvent *){
     font.setPointSize(16);
 
     paint->setFont(font);
-    paint->drawText(350,150,"个人信息：");
+    paint->drawText(425,150,"个人信息");
     font.setPointSize(13);
 
     paint->drawText(350,180,"姓名:");
     paint->drawText(350,205,"学号:");
-    paint->drawText(350,230,"平均成绩:");
+    paint->drawText(350,230,"平均成绩:");//文字绘制
 
     paint->end();
 }
-
 
 
 

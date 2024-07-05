@@ -18,11 +18,11 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QPushButton" name="pushButton">
+  <widget class="QPushButton" name="chagegrade">
    <property name="geometry">
     <rect>
      <x>30</x>
-     <y>70</y>
+     <y>50</y>
      <width>151</width>
      <height>91</height>
     </rect>
@@ -31,17 +31,30 @@
     <string>修改成绩</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_2">
+  <widget class="QPushButton" name="manage">
    <property name="geometry">
     <rect>
      <x>210</x>
-     <y>70</y>
+     <y>50</y>
      <width>161</width>
      <height>91</height>
     </rect>
    </property>
    <property name="text">
     <string>学生管理</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>160</y>
+     <width>151</width>
+     <height>81</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>导入账号</string>
    </property>
   </widget>
  </widget>

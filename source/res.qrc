@@ -1,5 +1,7 @@
 <RCC>
     <qresource prefix="/">
         <file>image/ren.png</file>
+        <file>image/closeeye.png</file>
+        <file>image/openeye.png</file>
     </qresource>
 </RCC>
