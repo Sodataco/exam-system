@@ -12,7 +12,6 @@ SOURCES += \
     administer.cpp \
     main.cpp \
     mainwindow.cpp \
-    signin.cpp \
     student.cpp \
     studentwindow.cpp \
     teacherwindow.cpp \
@@ -21,7 +20,6 @@ SOURCES += \
 HEADERS += \
     administer.h \
     mainwindow.h \
-    signin.h \
     student.h \
     studentwindow.h \
     teacherwindow.h \
