@@ -15,7 +15,8 @@ SOURCES += \
     signin.cpp \
     student.cpp \
     studentwindow.cpp \
-    teacherwindow.cpp
+    teacherwindow.cpp \
+    user.cpp
 
 HEADERS += \
     administer.h \
@@ -23,7 +24,8 @@ HEADERS += \
     signin.h \
     student.h \
     studentwindow.h \
-    teacherwindow.h
+    teacherwindow.h \
+    user.h
 
 FORMS += \
     administer.ui \
