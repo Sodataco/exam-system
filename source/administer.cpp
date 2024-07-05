@@ -39,6 +39,7 @@ bool Administer::derive_data_to_sql(QSqlDatabase& db){
     QString s4="111";
     qDebug()<<"111";
     query.exec(QString("insert into user(zhanghao,mima,phone) values('%1','%2','%3')").arg(s1).arg(s2).arg(s4));
+    query.exec(QString("insert into user(zhanghao,mima,phone) values('%1','%2','%3')").arg("11").arg("11").arg("11"));
     qDebug()<<"111";
     qDebug()<<"插入完成";
     query.finish();
