@@ -1,0 +1,12 @@
+release/administer.o
+release/main.o
+release/mainwindow.o
+release/signin.o
+release/student.o
+release/studentwindow.o
+release/teacherwindow.o
+release/qrc_res.o
+release/moc_administer.o
+release/moc_mainwindow.o
+release/moc_studentwindow.o
+release/moc_teacherwindow.o
