@@ -6,13 +6,13 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>758</width>
+    <height>435</height>
    </rect>
   </property>
   <property name="font">
    <font>
-    <pointsize>20</pointsize>
+    <pointsize>12</pointsize>
    </font>
   </property>
   <property name="windowTitle">
@@ -21,40 +21,58 @@
   <widget class="QPushButton" name="chagegrade">
    <property name="geometry">
     <rect>
-     <x>30</x>
-     <y>50</y>
-     <width>151</width>
-     <height>91</height>
+     <x>20</x>
+     <y>110</y>
+     <width>181</width>
+     <height>31</height>
     </rect>
    </property>
    <property name="text">
-    <string>修改成绩</string>
+    <string>修改成绩                 --&gt;</string>
    </property>
   </widget>
   <widget class="QPushButton" name="manage">
    <property name="geometry">
     <rect>
-     <x>210</x>
-     <y>50</y>
-     <width>161</width>
-     <height>91</height>
+     <x>20</x>
+     <y>140</y>
+     <width>181</width>
+     <height>31</height>
     </rect>
    </property>
    <property name="text">
-    <string>学生管理</string>
+    <string>学生管理                 --&gt;</string>
    </property>
   </widget>
   <widget class="QPushButton" name="pushButton">
    <property name="geometry">
     <rect>
-     <x>30</x>
-     <y>160</y>
-     <width>151</width>
-     <height>81</height>
+     <x>20</x>
+     <y>170</y>
+     <width>181</width>
+     <height>31</height>
     </rect>
    </property>
    <property name="text">
-    <string>导入账号</string>
+    <string>导入账号                 --&gt;</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>10</y>
+     <width>191</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>20</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>考试信息管理</string>
    </property>
   </widget>
  </widget>

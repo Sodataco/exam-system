@@ -8,7 +8,7 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
     MainWindow w;
 
-    w.setFixedSize(560,400);
+    w.setFixedSize(560,300);
     w.show();
 
     w.setWindowTitle("登录");

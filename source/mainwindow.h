@@ -6,6 +6,8 @@
 #include<studentwindow.h>
 #include<teacherwindow.h>
 #include<administer.h>
+#include <QRegularExpression>
+#include <QRegularExpressionValidator>
 
 
 

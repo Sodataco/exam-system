@@ -16,6 +16,14 @@ MainWindow::MainWindow(QWidget *parent)
     ui->EditAccount->setPlaceholderText("学号/工号");
     ui->EditPassword->setPlaceholderText("密码");
 
+    QRegularExpression regExp("[^\\s]*");  // 允许除空格外的所有字符
+
+    QRegularExpressionValidator *validator = new QRegularExpressionValidator(regExp, ui->EditAccount);
+    ui->EditAccount->setValidator(validator);
+    QRegularExpressionValidator *validator2 = new QRegularExpressionValidator(regExp, ui->EditPassword);
+    ui->EditPassword->setValidator(validator);
+
+
     connect(this, &MainWindow::showeye, this, &MainWindow::changeeye);
     connect(ui->eye, &QPushButton::clicked, this, &MainWindow::on_eye_clicked);//两个connect实现小眼睛的点击信号和改变功能的
 
@@ -44,11 +52,27 @@ MainWindow::MainWindow(QWidget *parent)
         "    background-color: #144a82;"  // 按下时的背景颜色
         "}"
         );
+
+    ui->eye->setStyleSheet(
+        "QPushButton {"
+        "    border-radius: 15px;"  // 设置圆角半径
+        "    background-color: #white;"  // 设置背景颜色
+        "    color: white;"  // 设置文字颜色
+        "}"
+        "QPushButton:hover {"
+        "    background-color: #bbffee;"  // 悬停时的背景颜色
+        "}"
+        "QPushButton:pressed {"
+        "    background-color: #00dddd;"  // 按下时的背景颜色
+        "}"
+        );
+
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
+
 }
 
 void MainWindow::on_loginButton_clicked()
