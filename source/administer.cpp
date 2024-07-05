@@ -31,3 +31,17 @@ void Administer::openSql(QSqlDatabase& db,const QString connectionName,const QSt
         return;
     }
 }
+
+bool Administer::derive_data_to_sql(QSqlDatabase& db){
+    QSqlQuery query(db);
+    QString s1="111";
+    QString s2="111";
+    QString s4="111";
+    qDebug()<<"111";
+    query.exec(QString("insert into user(zhanghao,mima,phone) values('%1','%2','%3')").arg(s1).arg(s2).arg(s4));
+    qDebug()<<"111";
+    qDebug()<<"插入完成";
+    query.finish();
+    return true;
+}
+

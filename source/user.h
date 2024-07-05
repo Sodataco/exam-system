@@ -1,5 +1,5 @@
-#ifndef ADMINISTER_H
-#define ADMINISTER_H
+#ifndef USER_H
+#define USER_H
 
 #include <QWidget>
 
@@ -30,30 +30,15 @@
 #include <QSqlDatabase>
 #include <QSqlQuery>
 #include <QSqlError>
-namespace Ui {
-class Administer;
-}
 
-class Administer : public QWidget
-{
-    Q_OBJECT
 
+//实例化测试
+static QSqlDatabase user_db;
+
+class user{
 public:
-
-
-
-   void openSql(QSqlDatabase& db,const QString connectionName,const QString SQLName);
-   bool derive_data_to_sql(QSqlDatabase& db);
-
-    explicit Administer(QWidget *parent = nullptr);
-    ~Administer();
-
-private slots:
-    void receivelogin();
-
-
-private:
-    Ui::Administer *ui;
+    user();
+    void build();
 };
 
-#endif // ADMINISTER_H
+#endif // USER_H

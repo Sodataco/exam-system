@@ -1,10 +1,13 @@
 #include "mainwindow.h"
 #include"studentwindow.h"
+#include"user.h"
 
 #include <QApplication>
 
 int main(int argc, char *argv[])
 {
+
+
     QApplication a(argc, argv);
     MainWindow w;
 
@@ -18,7 +21,7 @@ int main(int argc, char *argv[])
     studentwindow sw1;
     teacherwindow tea1;
     Administer ad1;
-
+    user u1;
 
     //connect，实现槽机制的关键
     QObject::connect(&w,SIGNAL(showadminister()),&ad1,SLOT(receivelogin()));
@@ -26,6 +29,11 @@ int main(int argc, char *argv[])
     QObject::connect(&w,SIGNAL(showstu()),&sw1,SLOT(receivelogin()));
 
     QObject::connect(&sw1,SIGNAL(showmain()),&w,SLOT(receiveloginagain()));
+
+
+    ad1.derive_data_to_sql(user_db);
+
+
 
     return a.exec();
 }
