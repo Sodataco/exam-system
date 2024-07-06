@@ -66,7 +66,6 @@ private slots:
     void receivelogin();
 
 
-    void on_pushButton_clicked();
 
     void on_importExcel_clicked();
 

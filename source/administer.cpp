@@ -8,12 +8,12 @@ Administer::Administer(QWidget *parent)
 {
     ui->setupUi(this);
     im.load(":/image/logo.jpg");
-    // ui->importAccount->hide();
+
+    // ui->importExcel->hide();
 
     // connect(ui->importAccount, &QPushButton::clicked, [=]() {
-    //     ui->importAccount->show();
+    //     ui->importExcel->show();
     // });
-
 
 }
 
