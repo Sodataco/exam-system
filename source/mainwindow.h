@@ -6,8 +6,11 @@
 #include<studentwindow.h>
 #include<teacherwindow.h>
 #include<administer.h>
+
 #include <QRegularExpression>
 #include <QRegularExpressionValidator>
+#include <QMessageBox>
+
 
 
 
@@ -15,10 +18,6 @@ static bool openstudent=0;
 static bool openteacher=0;
 static bool openadminister=0;
 static bool eye=0;
-
-
-// static QString s11="123";
-// static QString s22="123456";
 
 
 QT_BEGIN_NAMESPACE
@@ -32,6 +31,7 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
+
     //void paintEvent(QPaintEvent*);
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();

@@ -23,17 +23,12 @@ MainWindow::MainWindow(QWidget *parent)
     QRegularExpressionValidator *validator2 = new QRegularExpressionValidator(regExp, ui->EditPassword);
     ui->EditPassword->setValidator(validator);
 
-
-    connect(this, &MainWindow::showeye, this, &MainWindow::changeeye);
-    connect(ui->eye, &QPushButton::clicked, this, &MainWindow::on_eye_clicked);//两个connect实现小眼睛的点击信号和改变功能的
-
-
-
-
-
     //默认为"*"
     ui->EditPassword->setEchoMode(QLineEdit::Password);
     ui->eye->setIcon(QIcon(":/image/closeeye.png"));
+
+    connect(this, &MainWindow::showeye, this, &MainWindow::changeeye);
+    connect(ui->eye, &QPushButton::clicked, this, &MainWindow::on_eye_clicked);//两个connect实现小眼睛的点击信号和改变功能的
 
 
 
@@ -82,6 +77,7 @@ void MainWindow::on_loginButton_clicked()
         QString s1=ui->EditAccount->text(),s2=ui->EditPassword->text();
 
         if(s1==nullptr || s2==nullptr){
+            QMessageBox::warning(this, "Input Error", "The input field cannot be empty.");
             return;
         }
         QSqlQuery query(user_db);

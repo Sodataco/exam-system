@@ -7,6 +7,14 @@ Administer::Administer(QWidget *parent)
     , ui(new Ui::Administer)
 {
     ui->setupUi(this);
+    im.load(":/image/logo.jpg");
+    // ui->importAccount->hide();
+
+    // connect(ui->importAccount, &QPushButton::clicked, [=]() {
+    //     ui->importAccount->show();
+    // });
+
+
 }
 
 Administer::~Administer()
@@ -37,7 +45,19 @@ void Administer::openSql(QSqlDatabase& db,const QString connectionName,const QSt
 
 
 
+
 //一个测试函数
+void Administer::paintEvent(QPaintEvent *){
+    p=new QPainter;
+    p->begin(this);
+    p->setPen(QPen(Qt::black,3,Qt::SolidLine));//设置画笔形式
+    p->setBrush(QBrush(Qt::white,Qt::SolidPattern));//设置画刷形式
+    p->drawLine(220,0,220,450);
+
+    p->end();
+}
+
+
 bool Administer::derive_data_to_sql(QSqlDatabase& db){
     QSqlQuery query(db);
     QString s1="111";
@@ -51,6 +71,7 @@ bool Administer::derive_data_to_sql(QSqlDatabase& db){
     query.finish();
     return true;
 }
+
 
 
 
@@ -105,6 +126,19 @@ void Administer::readAndStoreExcelData(const QString &filePath, QSqlDatabase &db
     excel.dynamicCall("Quit()");
     delete workbook;
     delete workbooks;
+
+}
+
+
+
+void Administer::on_pushButton_clicked()
+{
+    //实现获取文件路径的功能
+    QString filePath = QFileDialog::getOpenFileName(nullptr, "选择文件", QDir::homePath(), "Excel 文件 (*.xlsx *.xls)");
+
+    this->readAndStoreExcelData(filePath,user_db);
+    qDebug()<<"实现";
+    //ad1.readAndStoreExcelData("D:/pict/exam-system/source/image/工作簿1.xlsx",user_db);
 
 }
 

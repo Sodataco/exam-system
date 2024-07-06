@@ -3,6 +3,7 @@
 
 #include <QWidget>
 
+#include <QPainter>
 #include <QAction>
 #include <QApplication>
 #include <QComboBox>
@@ -30,6 +31,7 @@
 #include <QFileDialog>
 
 #include <QAxObject> // 用于操作Excel的头文件
+#include <user.h>
 
 //数据库
 #include <QSqlDatabase>
@@ -45,11 +47,17 @@ class Administer : public QWidget
 
 public:
 
+    void paintEvent(QPaintEvent*);
+    QPainter *p;
+    QImage im;
+
 
 
    void openSql(QSqlDatabase& db,const QString connectionName,const QString SQLName);
    bool derive_data_to_sql(QSqlDatabase& db);
    void readAndStoreExcelData(const QString &filePath, QSqlDatabase &db);
+
+
 
     explicit Administer(QWidget *parent = nullptr);
     ~Administer();
@@ -57,6 +65,8 @@ public:
 private slots:
     void receivelogin();
 
+
+    void on_pushButton_clicked();
 
 private:
     Ui::Administer *ui;

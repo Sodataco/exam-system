@@ -21,7 +21,7 @@
   <widget class="QPushButton" name="chagegrade">
    <property name="geometry">
     <rect>
-     <x>20</x>
+     <x>10</x>
      <y>110</y>
      <width>181</width>
      <height>31</height>
@@ -34,7 +34,7 @@
   <widget class="QPushButton" name="manage">
    <property name="geometry">
     <rect>
-     <x>20</x>
+     <x>10</x>
      <y>140</y>
      <width>181</width>
      <height>31</height>
@@ -44,10 +44,10 @@
     <string>学生管理                 --&gt;</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton">
+  <widget class="QPushButton" name="importAccount">
    <property name="geometry">
     <rect>
-     <x>20</x>
+     <x>10</x>
      <y>170</y>
      <width>181</width>
      <height>31</height>
@@ -73,6 +73,19 @@
    </property>
    <property name="text">
     <string>考试信息管理</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="importExcel">
+   <property name="geometry">
+    <rect>
+     <x>650</x>
+     <y>310</y>
+     <width>81</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>导入excel</string>
    </property>
   </widget>
  </widget>
