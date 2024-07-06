@@ -47,8 +47,6 @@
 - 数据库管理
 - GUI界面设计
 
-![待办](https://github.com/whuyu/exam-system/blob/main/README.assets/task.png "待办")
-
 
 
 
