@@ -13,6 +13,7 @@ SOURCES += \
     administer.cpp \
     main.cpp \
     mainwindow.cpp \
+    paper.cpp \
     student.cpp \
     studentwindow.cpp \
     teacherwindow.cpp \
@@ -21,6 +22,7 @@ SOURCES += \
 HEADERS += \
     administer.h \
     mainwindow.h \
+    paper.h \
     student.h \
     studentwindow.h \
     teacherwindow.h \

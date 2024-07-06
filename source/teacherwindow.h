@@ -2,6 +2,7 @@
 #define TEACHERWINDOW_H
 
 #include <QWidget>
+#include"paper.h"
 
 namespace Ui {
 class teacherwindow;
@@ -13,6 +14,12 @@ class teacherwindow : public QWidget
 
 public:
     explicit teacherwindow(QWidget *parent = nullptr);
+
+    bool derive_data_to_sql(QSqlDatabase& db);
+
+
+
+
     ~teacherwindow();
 
 

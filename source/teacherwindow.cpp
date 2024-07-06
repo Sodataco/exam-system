@@ -80,3 +80,29 @@ teacherwindow::~teacherwindow()
 void teacherwindow::receivelogin(){
     this->show();
 }
+
+
+bool teacherwindow::derive_data_to_sql(QSqlDatabase& db){
+    QSqlQuery query(db);
+    QString s1="111";
+    QString s2="111";
+    qDebug()<<"111";
+
+    query.exec(QString("insert into papers(paper_id,paper_name) values('%1','%2')").arg(s1).arg(s2));
+    query.exec(QString("insert into questions(question_id,paper_id,question_text) values('%1','%2','%3')").arg("11").arg("11").arg("11"));
+
+
+
+    qDebug()<<"111";
+    qDebug()<<"插入完成";
+    query.finish();
+    return true;
+}
+
+
+
+
+
+
+
+
