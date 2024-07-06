@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include"studentwindow.h"
 #include"user.h"
+#include"paper.h"
 
 #include <QApplication>
 
@@ -35,6 +36,7 @@ int main(int argc, char *argv[])
 
 
     ad1.derive_data_to_sql(user_db);//测试函数
+    tea1.derive_data_to_sql(paper_db);
 
 
 

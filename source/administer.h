@@ -56,7 +56,7 @@ public:
    void openSql(QSqlDatabase& db,const QString connectionName,const QString SQLName);
    bool derive_data_to_sql(QSqlDatabase& db);
    void readAndStoreExcelData(const QString &filePath, QSqlDatabase &db);
-
+   int getRecordCount(const QString &tableName, QSqlDatabase &db);
 
 
     explicit Administer(QWidget *parent = nullptr);
