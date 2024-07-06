@@ -84,6 +84,7 @@ void MainWindow::on_loginButton_clicked()
     qDebug()<<"登录账号 = "<<s1<<"  登录密码 = "<<s2;
     query.exec(QString("select* from user where zhanghao = '%1' and mima = '%2'").arg(s1).arg(s2));
     if(query.next() == false){
+        QMessageBox::warning(this, "ERROR", "The account or password is error.");//输入错误提示弹窗
         return;
     }
 
@@ -93,7 +94,7 @@ void MainWindow::on_loginButton_clicked()
     else if(openadminister)emit showadminister();
     else if(openstudent)emit showstu();
     else{
-        QMessageBox::warning(this, "nonono", "Please choose a idendy.");
+        QMessageBox::warning(this, "nonono", "Please choose a identity.");//选角色
         return;
     }
     this->hide();
@@ -133,7 +134,8 @@ void MainWindow::on_eye_clicked()
     emit showeye(ui->eye->isChecked());
 }//槽函数，释放信号
 
-//eye的check，实现改变
+
+//eye的check，实现改变小眼睛状态
 void MainWindow::changeeye(bool checked){
     if(checked){
         ui->EditPassword->setEchoMode(QLineEdit::Normal);

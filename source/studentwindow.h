@@ -22,6 +22,7 @@ public:
 signals:
     void showmain();
     void showscore();
+    void showchangePassword();
 
 
 private slots:
@@ -31,6 +32,8 @@ private slots:
     void on_loginagain_clicked();
 
     void on_findBtn_clicked();
+
+    void on_changePassword_clicked();
 
 private:
     Ui::studentwindow *ui;

@@ -4,6 +4,7 @@
 #include"paper.h"
 #include"studentchafen.h"
 #include"studentchafen.h"
+#include"changepassword.h"
 
 #include <QApplication>
 
@@ -17,6 +18,7 @@ int main(int argc, char *argv[])
     teacherwindow tea1;
     Administer ad1;
     studentchafen cha1;
+    changePassword cP1;
     user u1;
 
     w.setFixedSize(560,300);
@@ -28,6 +30,8 @@ int main(int argc, char *argv[])
     sw1.setWindowTitle("爱考试");
     sw1.setWindowIcon(QIcon(":/image/pencil"));
 
+    cP1.setWindowTitle("修改密码");
+
     ad1.setFixedSize(900,450);
 
     //connect，实现槽机制的关键
@@ -36,6 +40,8 @@ int main(int argc, char *argv[])
     QObject::connect(&w,SIGNAL(showstu()),&sw1,SLOT(receivelogin()));
     QObject::connect(&sw1,SIGNAL(showscore()),&cha1,SLOT(receivelogin()));
     QObject::connect(&cha1,SIGNAL(showstudent()),&sw1,SLOT(receiveReturn()));
+    QObject::connect(&sw1,SIGNAL(showchangePassword()),&cP1,SLOT(receivelogin()));
+    QObject::connect(&cP1,SIGNAL(showstu()),&sw1,SLOT(receiveReturn()));
 
     QObject::connect(&sw1,SIGNAL(showmain()),&w,SLOT(receiveloginagain()));
 

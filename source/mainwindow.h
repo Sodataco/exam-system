@@ -49,8 +49,6 @@ signals:
 private slots:
     void receiveloginagain();
 
-    void changeeye(bool checked);
-
     void on_loginButton_clicked();
 
     void on_student_clicked();
@@ -60,6 +58,9 @@ private slots:
     void on_Administrators_clicked();
 
     void on_eye_clicked();
+
+    void changeeye(bool checked);
+
 
 private:
     Ui::MainWindow *ui;

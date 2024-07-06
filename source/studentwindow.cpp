@@ -96,3 +96,10 @@ void studentwindow::on_findBtn_clicked()
     emit showscore();
 }
 
+
+void studentwindow::on_changePassword_clicked()
+{
+    this->hide();
+    emit showchangePassword();
+}
+

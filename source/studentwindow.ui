@@ -85,7 +85,7 @@
     <string>查分</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton">
+  <widget class="QPushButton" name="changePassword">
    <property name="geometry">
     <rect>
      <x>520</x>
