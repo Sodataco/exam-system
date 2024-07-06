@@ -15,7 +15,7 @@ void user::build(){
     }
 
 
-    //创建数据库
+    //创建数据表
     QSqlQuery query(user_db);
 
     query.exec("create table user(zhanghao text,mima text)");

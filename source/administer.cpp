@@ -121,7 +121,7 @@ void Administer::readAndStoreExcelData(const QString &filePath, QSqlDatabase &db
         delete cell;
     }
 
-    // 关闭Excel和数据库连接
+    // 关闭Excel
     workbook->dynamicCall("Close()");
     excel.dynamicCall("Quit()");
     delete workbook;
@@ -142,4 +142,30 @@ void Administer::on_importExcel_clicked()
     QMessageBox::about(this, "棒", "Successfully import Excel.");
 
 }
+
+
+int Administer::getRecordCount(const QString &tableName, QSqlDatabase &db) {
+    QSqlQuery query(db);
+    QString sqlQuery = QString("SELECT COUNT(*) FROM %1;").arg(tableName);
+
+    if (query.exec(sqlQuery)) {
+        if (query.next()) {
+            return query.value(0).toInt();
+        } else {
+            qDebug() << "No records found in table" << tableName;
+            return 0; // 返回记录数为 0
+        }
+    } else {
+        qDebug() << "Query execution error:" << query.lastError().text();
+        return -1; // 返回 -1 表示查询出错
+    }
+}
+
+
+
+
+
+
+
+
 
