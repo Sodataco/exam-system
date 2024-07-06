@@ -2,6 +2,7 @@ QT       += core gui
 QT       += sql
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
+QT += axcontainer
 CONFIG += c++17
 
 # You can make your code fail to compile if it uses deprecated APIs.

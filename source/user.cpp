@@ -18,7 +18,7 @@ void user::build(){
     //创建数据库
     QSqlQuery query(user_db);
 
-    query.exec("create table user(zhanghao text,mima text,phone text)");
+    query.exec("create table user(zhanghao text,mima text)");
 
     qDebug()<<"user_db数据库表已创建";
 

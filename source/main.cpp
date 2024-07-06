@@ -31,7 +31,8 @@ int main(int argc, char *argv[])
     QObject::connect(&sw1,SIGNAL(showmain()),&w,SLOT(receiveloginagain()));
 
 
-    ad1.derive_data_to_sql(user_db);
+    //ad1.derive_data_to_sql(user_db);
+    ad1.readAndStoreExcelData("D:/pict/exam-system/source/image/工作簿1.xlsx",user_db);
 
 
 
