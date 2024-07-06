@@ -21,12 +21,16 @@ public:
 
 signals:
     void showmain();
+    void showscore();
 
 
 private slots:
     void receivelogin();
+    void receiveReturn();
 
     void on_loginagain_clicked();
+
+    void on_findBtn_clicked();
 
 private:
     Ui::studentwindow *ui;

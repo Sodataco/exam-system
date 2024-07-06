@@ -12,3 +12,14 @@ studentchafen::~studentchafen()
 {
     delete ui;
 }
+
+void studentchafen::receivelogin(){
+    this->show();
+}
+
+void studentchafen::on_Return_clicked()
+{
+    this->hide();
+    emit showstudent();
+}
+

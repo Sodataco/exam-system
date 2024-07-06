@@ -15,6 +15,14 @@ public:
     explicit studentchafen(QWidget *parent = 0);
     ~studentchafen();
 
+signals:
+    void showstudent();
+
+private slots:
+    void receivelogin();
+
+    void on_Return_clicked();
+
 private:
     Ui::studentchafen *ui;
 };

@@ -38,6 +38,7 @@ studentwindow::studentwindow(QWidget *parent)
         "}"
         );
 
+
 }
 
 studentwindow::~studentwindow()
@@ -54,6 +55,10 @@ void studentwindow::on_loginagain_clicked()
 {
     this->hide();
     emit showmain();
+}
+
+void studentwindow::receiveReturn(){
+    this->show();
 }
 
 
@@ -85,5 +90,9 @@ void studentwindow::paintEvent(QPaintEvent *){
 
 
 
-
+void studentwindow::on_findBtn_clicked()
+{
+    this->hide();
+    emit showscore();
+}
 
