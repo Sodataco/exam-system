@@ -137,5 +137,7 @@ void Administer::on_importExcel_clicked()
 
     this->readAndStoreExcelData(filePath,user_db);
 
+    QMessageBox::about(this, "棒", "Successfully import Excel.");
+
 }
 

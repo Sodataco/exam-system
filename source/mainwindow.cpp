@@ -30,7 +30,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(this, &MainWindow::showeye, this, &MainWindow::changeeye);
     connect(ui->eye, &QPushButton::clicked, this, &MainWindow::on_eye_clicked);//两个connect实现小眼睛的点击信号和改变功能的
 
-
+    connect(ui->loginButton, &QPushButton::clicked, this, &MainWindow::on_loginButton_clicked);
 
     ui->loginButton->setStyleSheet(
         "QPushButton {"
@@ -73,27 +73,27 @@ MainWindow::~MainWindow()
 void MainWindow::on_loginButton_clicked()
 {
 
-    connect(ui->loginButton,&QPushButton::clicked,[=]()->void{
-        QString s1=ui->EditAccount->text(),s2=ui->EditPassword->text();
 
-        if(s1==nullptr || s2==nullptr){
-            QMessageBox::warning(this, "Input Error", "The input field cannot be empty.");
-            return;
-        }
-        QSqlQuery query(user_db);
-        qDebug()<<"登录账号 = "<<s1<<"  登录密码 = "<<s2;
-        query.exec(QString("select* from user where zhanghao = '%1' and mima = '%2'").arg(s1).arg(s2));
-        if(query.next() == false){
-            return;
-        }
-        query.finish();
+    QString s1=ui->EditAccount->text(),s2=ui->EditPassword->text();
+
+    if(s1==nullptr || s2==nullptr){
+        QMessageBox::warning(this, "Input Error", "The input field cannot be empty.");
+        return;
+    }
+    QSqlQuery query(user_db);
+    qDebug()<<"登录账号 = "<<s1<<"  登录密码 = "<<s2;
+    query.exec(QString("select* from user where zhanghao = '%1' and mima = '%2'").arg(s1).arg(s2));
+    if(query.next() == false){
+        return;
+    }
+    query.finish();
 
 
-        this->hide();
-        if(openteacher)emit showteacher();
-        else if(openadminister)emit showadminister();
-        else emit showstu();
-    });
+    this->hide();
+    if(openteacher)emit showteacher();
+    else if(openadminister)emit showadminister();
+    else emit showstu();
+
 
 }//实现登录的页面跳转，释放下一个页面展示的信号
 

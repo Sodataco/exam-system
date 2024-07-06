@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>758</width>
-    <height>435</height>
+    <width>763</width>
+    <height>429</height>
    </rect>
   </property>
   <property name="font">
@@ -78,8 +78,8 @@
   <widget class="QPushButton" name="importExcel">
    <property name="geometry">
     <rect>
-     <x>600</x>
-     <y>320</y>
+     <x>670</x>
+     <y>390</y>
      <width>80</width>
      <height>31</height>
     </rect>
