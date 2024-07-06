@@ -68,6 +68,8 @@ private slots:
 
     void on_pushButton_clicked();
 
+    void on_importExcel_clicked();
+
 private:
     Ui::Administer *ui;
 };

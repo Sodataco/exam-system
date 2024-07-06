@@ -78,14 +78,14 @@
   <widget class="QPushButton" name="importExcel">
    <property name="geometry">
     <rect>
-     <x>650</x>
-     <y>310</y>
-     <width>81</width>
+     <x>600</x>
+     <y>320</y>
+     <width>80</width>
      <height>31</height>
     </rect>
    </property>
    <property name="text">
-    <string>导入excel</string>
+    <string>导入Excel</string>
    </property>
   </widget>
  </widget>

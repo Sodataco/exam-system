@@ -130,16 +130,12 @@ void Administer::readAndStoreExcelData(const QString &filePath, QSqlDatabase &db
 }
 
 
-
-void Administer::on_pushButton_clicked()
+void Administer::on_importExcel_clicked()
 {
     //实现获取文件路径的功能
     QString filePath = QFileDialog::getOpenFileName(nullptr, "选择文件", QDir::homePath(), "Excel 文件 (*.xlsx *.xls)");
 
     this->readAndStoreExcelData(filePath,user_db);
-    qDebug()<<"实现";
-    //ad1.readAndStoreExcelData("D:/pict/exam-system/source/image/工作簿1.xlsx",user_db);
 
 }
-
 
