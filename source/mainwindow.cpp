@@ -89,11 +89,15 @@ void MainWindow::on_loginButton_clicked()
     query.finish();
 
 
-    this->hide();
+
     if(openteacher)emit showteacher();
     else if(openadminister)emit showadminister();
-    else emit showstu();
-
+    else if(openstudent)emit showstu();
+    else{
+        QMessageBox::warning(this, "nonono", "Please choose a idendy.");
+        return;
+    }
+    this->hide();
 
 }//实现登录的页面跳转，释放下一个页面展示的信号
 
