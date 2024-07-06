@@ -11,24 +11,30 @@ CONFIG += c++17
 
 SOURCES += \
     administer.cpp \
+    changepassword.cpp \
     main.cpp \
     mainwindow.cpp \
     student.cpp \
+    studentchafen.cpp \
     studentwindow.cpp \
     teacherwindow.cpp \
     user.cpp
 
 HEADERS += \
     administer.h \
+    changepassword.h \
     mainwindow.h \
     student.h \
+    studentchafen.h \
     studentwindow.h \
     teacherwindow.h \
     user.h
 
 FORMS += \
     administer.ui \
+    changepassword.ui \
     mainwindow.ui \
+    studentchafen.ui \
     studentwindow.ui \
     teacherwindow.ui
 
@@ -39,3 +45,5 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 RESOURCES += \
     res.qrc
+
+DISTFILES +=

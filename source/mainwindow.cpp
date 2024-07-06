@@ -30,7 +30,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(this, &MainWindow::showeye, this, &MainWindow::changeeye);
     connect(ui->eye, &QPushButton::clicked, this, &MainWindow::on_eye_clicked);//两个connect实现小眼睛的点击信号和改变功能的
 
-    connect(ui->loginButton, &QPushButton::clicked, this, &MainWindow::on_loginButton_clicked);
+    connect(ui->loginButton, &QPushButton::clicked, this, &MainWindow::on_loginButton_clicked);//登录按钮，放到了main函数
 
     ui->loginButton->setStyleSheet(
         "QPushButton {"
@@ -73,22 +73,21 @@ MainWindow::~MainWindow()
 void MainWindow::on_loginButton_clicked()
 {
 
-
     QString s1=ui->EditAccount->text(),s2=ui->EditPassword->text();
 
     if(s1==nullptr || s2==nullptr){
         QMessageBox::warning(this, "Input Error", "The input field cannot be empty.");
         return;
     }
+
     QSqlQuery query(user_db);
     qDebug()<<"登录账号 = "<<s1<<"  登录密码 = "<<s2;
     query.exec(QString("select* from user where zhanghao = '%1' and mima = '%2'").arg(s1).arg(s2));
     if(query.next() == false){
         return;
     }
+
     query.finish();
-
-
 
     if(openteacher)emit showteacher();
     else if(openadminister)emit showadminister();
@@ -134,7 +133,7 @@ void MainWindow::on_eye_clicked()
     emit showeye(ui->eye->isChecked());
 }//槽函数，释放信号
 
-
+//eye的check，实现改变
 void MainWindow::changeeye(bool checked){
     if(checked){
         ui->EditPassword->setEchoMode(QLineEdit::Normal);
@@ -144,4 +143,13 @@ void MainWindow::changeeye(bool checked){
         ui->EditPassword->setEchoMode(QLineEdit::Password);
         ui->eye->setIcon(QIcon(":/image/closeeye.png"));
     }
-}//eye的check，实现改变
+}
+
+//实现点enter触发loginButton
+void MainWindow::keyPressEvent(QKeyEvent *event) {
+    if (event->key() == Qt::Key_Return || event->key() == Qt::Key_Enter) {
+        on_loginButton_clicked();
+    } else {
+        QMainWindow::keyPressEvent(event);
+    }
+}

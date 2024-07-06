@@ -10,6 +10,10 @@ int main(int argc, char *argv[])
 
     QApplication a(argc, argv);
     MainWindow w;
+    studentwindow sw1;
+    teacherwindow tea1;
+    Administer ad1;
+    user u1;
 
     w.setFixedSize(560,300);
     w.show();
@@ -17,11 +21,8 @@ int main(int argc, char *argv[])
     w.setWindowTitle("登录");
     w.setWindowIcon(QIcon(":/image/ren.png"));
 
-
-    studentwindow sw1;
-    teacherwindow tea1;
-    Administer ad1;
-    user u1;
+    sw1.setWindowTitle("爱考试");
+    sw1.setWindowIcon(QIcon(":/image/pencil"));
 
     ad1.setFixedSize(900,450);
 

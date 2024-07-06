@@ -10,6 +10,7 @@
 #include <QRegularExpression>
 #include <QRegularExpressionValidator>
 #include <QMessageBox>
+#include <QKeyEvent>
 
 
 
@@ -31,7 +32,7 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-
+    void keyPressEvent(QKeyEvent *event);
     //void paintEvent(QPaintEvent*);
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();

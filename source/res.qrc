@@ -3,5 +3,6 @@
         <file>image/ren.png</file>
         <file>image/closeeye.png</file>
         <file>image/openeye.png</file>
+        <file>image/pencil.png</file>
     </qresource>
 </RCC>

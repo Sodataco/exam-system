@@ -11,7 +11,7 @@ studentwindow::studentwindow(QWidget *parent)
         "    border-radius: 15px;"  // 设置圆角半径
         "    border: 2px solid #8f8f91;"  // 设置边框
         "    background-color: #2a82da;"  // 设置背景颜色
-        "    color: white;"  // 设置文字颜色
+        "    color: ffffff;"  // 设置文字颜色
         "    padding: 10px;"  // 设置内边距
         "}"
         "QPushButton:hover {"
@@ -21,6 +21,23 @@ studentwindow::studentwindow(QWidget *parent)
         "    background-color: #144a82;"  // 按下时的背景颜色
         "}"
         );
+
+    ui->examBtn->setStyleSheet(
+        "QPushButton {"
+        "    border-radius: 15px;"  // 设置圆角半径
+        "    border: 2px solid #8f8f91;"  // 设置边框
+        "    background-color: #ffffbb;"  // 设置背景颜色
+        "    color: 000000;"  // 设置文字颜色
+        "    padding: 10px;"  // 设置内边距
+        "}"
+        "QPushButton:hover {"
+        "    background-color: #ffff77;"  // 悬停时的背景颜色
+        "}"
+        "QPushButton:pressed {"
+        "    background-color: #eeee00;"  // 按下时的背景颜色
+        "}"
+        );
+
 }
 
 studentwindow::~studentwindow()
