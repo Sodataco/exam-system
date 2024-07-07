@@ -78,34 +78,30 @@ bool Administer::derive_data_to_sql(QSqlDatabase& db){
 
 void Administer::readAndStoreExcelData(const QString &filePath, QSqlDatabase &db) {
     QXlsx::Document xlsx(filePath);
-    if (!xlsx.load()) {
-        qDebug() << "Failed to load the Excel file.";
-        return;
-    }
+    if (xlsx.isLoadPackage()) {
+        QXlsx::Worksheet *sheet = dynamic_cast<QXlsx::Worksheet*>(xlsx.sheet(0));
+        if (!sheet) {
+            qDebug() << "Failed to get the first sheet.";
+            return;
+        }
 
-    QXlsx::Worksheet *sheet = dynamic_cast<QXlsx::Worksheet*>(xlsx.sheet(0));
-    if (!sheet) {
-        qDebug() << "Failed to get the first sheet.";
-        return;
-    }
+        int rowCount = sheet->dimension().rowCount();
+        QSqlQuery query(db);
 
-    int rowCount = sheet->dimension().rowCount();
+        for (int row = 1; row <= rowCount; ++row) {
+            QXlsx::Cell *cell = sheet->cellAt(row, 1);
+            if (cell) {
+                QString username = cell->value().toString();
+                QString password = "12345";
 
-    QSqlQuery query(db);
-
-    // 读取单列数据并存入数据库
-    for (int row = 1; row <= rowCount; ++row) {
-        QXlsx::Cell *cell = sheet->cellAt(row, 1); // 从第一列读取数据
-        if (cell) {
-            QString username = cell->value().toString();
-            QString password = "12345"; // 统一设置密码为 "12345"
-
-            // 插入数据到数据库
-            query.exec(QString("insert into user(zhanghao,mima) values('%1','%2')").arg(username).arg(password));
-            if (!query.exec()) {
-                qDebug() << "Error inserting into database:" << query.lastError().text();
+                query.exec(QString("insert into user(zhanghao,mima) values('%1','%2')").arg(username).arg(password));
+                if (!query.exec()) {
+                    qDebug() << "Error inserting into database:" << query.lastError().text();
+                }
             }
         }
+    } else {
+        qDebug() << "Failed to load the Excel file.";
     }
 }
 
