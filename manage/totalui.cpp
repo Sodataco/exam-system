@@ -1,4 +1,5 @@
 #include "totalui.h"
+#include <QDebug>
 
 #include "signinui.h"
 

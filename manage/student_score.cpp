@@ -1,4 +1,5 @@
 #include "student_score.h"
+#include <QDebug>
 
 
 int student_score::SQLCount()

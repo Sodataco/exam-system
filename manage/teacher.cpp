@@ -1,4 +1,6 @@
 #include "teacher.h"
+#include <QDebug>
+
 
 void teacher::iniStandardView(const QStringList &HFieldName, const QStringList &VFieldName)
 {

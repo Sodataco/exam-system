@@ -1,4 +1,5 @@
 #include "student_message.h"
+#include <QDebug>
 
 
 int student_message::SQLCount()

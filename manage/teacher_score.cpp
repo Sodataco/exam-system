@@ -1,4 +1,5 @@
 #include "teacher_score.h"
+#include <QDebug>
 
 
 void teacher_score::createTable()

@@ -1,4 +1,6 @@
 #include "student.h"
+#include <QDebug>
+
 
 QString student::getStudentID(const QString fileAddr)
 {

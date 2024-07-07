@@ -1,4 +1,6 @@
 #include "teacher_message.h"
+#include <QDebug>
+
 
 void teacher_message::createTable()
 {
