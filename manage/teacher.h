@@ -3,7 +3,6 @@
 
 #include <QWidget>
 #include <QMessageBox>
-#include <synchapi.h>   //延时
 #include <QList>
 #include <QMenu>
 #include <QAction>
