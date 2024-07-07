@@ -1,4 +1,5 @@
 #include "student_coursetable.h"
+#include <QDebug>
 
 
 int student_courseTable::SQLCount()

@@ -1,4 +1,6 @@
 #include "coursetable.h"
+#include <QDebug>
+
 
 void courseTable::iniStandardView(const QStringList &HFieldName, const QStringList &VFieldName)
 {

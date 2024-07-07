@@ -1,5 +1,7 @@
 #include "findui.h"
 #include "signinui.h"
+#include <QDebug>
+
 
 void findUi::openSql(QSqlDatabase& db,const QString connectionName,const QString SQLName)
 {

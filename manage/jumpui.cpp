@@ -1,5 +1,6 @@
 #include "jumpui.h"
 #include "signinui.h"
+#include <QDebug>
 
 
 

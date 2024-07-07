@@ -1,5 +1,6 @@
 #include "signupui.h"
 #include "signinui.h"
+#include <QDebug>
 
 void signupUi::openSql(QSqlDatabase& db,const QString connectionName,const QString SQLName)
 {

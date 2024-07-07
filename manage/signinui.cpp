@@ -1,6 +1,7 @@
 #include "signinui.h"
 #include "signupui.h"
 #include "findui.h"
+#include <QDebug>
 
 
 void signinUi::open_and_create_Sql(QSqlDatabase& db,const QString connectionName,const QString SQLName)
