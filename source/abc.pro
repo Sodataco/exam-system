@@ -19,7 +19,12 @@ SOURCES += \
     studentchafen.cpp \
     studentwindow.cpp \
     teacherwindow.cpp \
-    user.cpp
+    user.cpp \
+    teacherquestion.cpp \
+    studentexam.cpp \
+    teacherquestion2.cpp \
+    teacherpaper.cpp \
+    teacherscore.cpp
 
 HEADERS += \
     administer.h \
@@ -30,7 +35,12 @@ HEADERS += \
     studentchafen.h \
     studentwindow.h \
     teacherwindow.h \
-    user.h
+    user.h \
+    teacherquestion.h \
+    studentexam.h \
+    teacherquestion2.h \
+    teacherpaper.h \
+    teacherscore.h
 
 FORMS += \
     administer.ui \
@@ -38,7 +48,12 @@ FORMS += \
     mainwindow.ui \
     studentchafen.ui \
     studentwindow.ui \
-    teacherwindow.ui
+    teacherwindow.ui \
+    teacherquestion.ui \
+    studentexam.ui \
+    teacherquestion2.ui \
+    teacherpaper.ui \
+    teacherscore.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

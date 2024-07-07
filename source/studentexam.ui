@@ -431,18 +431,6 @@ p, li { white-space: pre-wrap; }
     <string>交卷</string>
    </property>
   </widget>
-  <zorder>progressBar</zorder>
-  <zorder>verticalLayoutWidget</zorder>
-  <zorder>gridLayoutWidget</zorder>
-  <zorder>graphicsView</zorder>
-  <zorder>label_2</zorder>
-  <zorder>label</zorder>
-  <zorder>listWidget</zorder>
-  <zorder>verticalLayoutWidget_2</zorder>
-  <zorder>commandLinkButton_4</zorder>
-  <zorder>pushButton</zorder>
-  <zorder>pushButton_2</zorder>
-  <zorder>pushButton_3</zorder>
  </widget>
  <resources/>
  <connections/>
