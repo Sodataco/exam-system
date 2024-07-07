@@ -22,7 +22,6 @@
 #include <QScreen>
 #include <QSystemTrayIcon>
 #include <QToolButton>
-#include <synchapi.h>
 #include <QTime>
 
 //数据库
