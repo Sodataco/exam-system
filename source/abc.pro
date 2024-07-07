@@ -17,11 +17,11 @@ SOURCES += \
     paper.cpp \
     student.cpp \
     studentchafen.cpp \
+    studentexam.cpp \
     studentwindow.cpp \
     teacherwindow.cpp \
     user.cpp \
     teacherquestion.cpp \
-    studentexam.cpp \
     teacherquestion2.cpp \
     teacherpaper.cpp \
     teacherscore.cpp
@@ -33,11 +33,11 @@ HEADERS += \
     paper.h \
     student.h \
     studentchafen.h \
+    studentexam.h \
     studentwindow.h \
     teacherwindow.h \
     user.h \
     teacherquestion.h \
-    studentexam.h \
     teacherquestion2.h \
     teacherpaper.h \
     teacherscore.h
@@ -47,10 +47,10 @@ FORMS += \
     changepassword.ui \
     mainwindow.ui \
     studentchafen.ui \
+    studentexam.ui \
     studentwindow.ui \
     teacherwindow.ui \
     teacherquestion.ui \
-    studentexam.ui \
     teacherquestion2.ui \
     teacherpaper.ui \
     teacherscore.ui

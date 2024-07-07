@@ -12,7 +12,7 @@ class studentexam : public QWidget
     Q_OBJECT
 
 public:
-    explicit studentexam(QWidget *parent = 0);
+    explicit studentexam(QWidget *parent = nullptr);
     ~studentexam();
 
 private:
