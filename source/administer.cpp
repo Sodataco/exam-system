@@ -78,8 +78,8 @@ bool Administer::derive_data_to_sql(QSqlDatabase& db){
 
 void Administer::readAndStoreExcelData(const QString &filePath, QSqlDatabase &db) {
     QXlsx::Document xlsx(filePath);
-    if (!xlsx.isNull()) {
-        QXlsx::Worksheet *sheet = dynamic_cast<QXlsx::Worksheet*>(xlsx.sheet(0));
+    if (xlsx.workbook()->sheetCount() > 0) {
+        QXlsx::Worksheet *sheet = dynamic_cast<QXlsx::Worksheet*>(xlsx.workbook()->sheet(0));
         if (!sheet) {
             qDebug() << "Failed to get the first sheet.";
             return;
