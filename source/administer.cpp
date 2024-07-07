@@ -77,57 +77,38 @@ bool Administer::derive_data_to_sql(QSqlDatabase& db){
 
 
 void Administer::readAndStoreExcelData(const QString &filePath, QSqlDatabase &db) {
-    // 打开Excel应用程序
-    QAxObject excel("Excel.Application");
-    excel.setProperty("Visible", false);
+    QXlsx::Document xlsx(filePath);
+    if (!xlsx.load()) {
+        qDebug() << "Failed to load the Excel file.";
+        return;
+    }
 
-    qDebug() << "Error calling Open: ";
+    QXlsx::Worksheet *sheet = dynamic_cast<QXlsx::Worksheet*>(xlsx.sheet(0));
+    if (!sheet) {
+        qDebug() << "Failed to get the first sheet.";
+        return;
+    }
 
-    // 打开工作簿
-    QAxObject *workbooks = excel.querySubObject("Workbooks");
-    QAxObject *workbook = workbooks->querySubObject("Open(const QString&)", filePath);
-
-
-
-    // 获取工作表
-    QAxObject *sheets = workbook->querySubObject("Sheets");
-    QAxObject *sheet = sheets->querySubObject("Item(int)", 1);
-
-
-
-    // 获取单列数据的行数
-    QAxObject *usedRange = sheet->querySubObject("UsedRange");
-    QAxObject *rows = usedRange->querySubObject("Rows");
-    int rowCount = rows->property("Count").toInt();
-
-
-
+    int rowCount = sheet->dimension().rowCount();
 
     QSqlQuery query(db);
 
     // 读取单列数据并存入数据库
     for (int row = 1; row <= rowCount; ++row) {
-        QAxObject *cell = sheet->querySubObject("Cells(int,int)", row, 1); // 从第一列读取数据
-        QVariant cellValue = cell->dynamicCall("Value()");
-        QString username = cellValue.toString();
-        QString password = "12345"; // 统一设置密码为 "12345"
+        QXlsx::Cell *cell = sheet->cellAt(row, 1); // 从第一列读取数据
+        if (cell) {
+            QString username = cell->value().toString();
+            QString password = "12345"; // 统一设置密码为 "12345"
 
-        // 插入数据到数据库
-        query.exec(QString("insert into user(zhanghao,mima) values('%1','%2')").arg(username).arg(password));
-        if (!query.exec()) {
-            qDebug() << "Error inserting into database:" << query.lastError().text();
+            // 插入数据到数据库
+            query.exec(QString("insert into user(zhanghao,mima) values('%1','%2')").arg(username).arg(password));
+            if (!query.exec()) {
+                qDebug() << "Error inserting into database:" << query.lastError().text();
+            }
         }
-
-        delete cell;
     }
-
-    // 关闭Excel
-    workbook->dynamicCall("Close()");
-    excel.dynamicCall("Quit()");
-    delete workbook;
-    delete workbooks;
-
 }
+
 
 
 void Administer::on_importExcel_clicked()

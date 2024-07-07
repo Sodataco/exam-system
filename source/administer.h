@@ -2,6 +2,7 @@
 #define ADMINISTER_H
 
 #include <QWidget>
+#include <QtXlsx>
 
 #include <QPainter>
 #include <QAction>
@@ -29,7 +30,6 @@
 #include <QFile>
 #include <QFileDialog>
 
-#include <QAxObject> // 用于操作Excel的头文件
 #include <user.h>
 
 //数据库
