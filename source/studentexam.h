@@ -37,6 +37,7 @@ private:
     int currentQuestion;  // Declare currentQuestion as a member variable
     int totalQuestions;
     QList<bool> questionCompleted;
+    QList<QRadioButton *> radioButtons;  // 存储所有单选按钮的列表
 };
 
 #endif // STUDENTEXAM_H

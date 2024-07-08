@@ -21,10 +21,12 @@ studentexam::studentexam(QWidget *parent)
 
         // 初始化题目完成状态和信号连接
         for (int i = 0; i < totalQuestions; ++i) {
-            QRadioButton *radioButton = new QRadioButton(QString("题目 %1").arg(i + 1));
-            ui->verticalLayout_2->addWidget(radioButton);
-            connect(radioButton, &QRadioButton::clicked, this, &studentexam::onRadioButtonClicked);
-            questionCompleted.append(false);  // 所有题目初始状态为未完成
+            QRadioButton *radioButton = findChild<QRadioButton *>(QString("radioButton_%1").arg(i + 1));
+                   if (radioButton) {
+                       connect(radioButton, &QRadioButton::clicked, this, &studentexam::onRadioButtonClicked);
+                       radioButtons.append(radioButton);  // 将单选按钮添加到列表中
+                       questionCompleted.append(false);  // 所有题目初始状态为未完成
+                   }
         }
 
         // 设置进度条的最大值和初始值
@@ -64,18 +66,36 @@ void studentexam::onRadioButtonClicked()
 
 void studentexam::onPreviousClicked()
 {
-    if (currentQuestion > 0) {
-        currentQuestion--;
-        ui->textBrowser_2->setText(QString("这里显示第 %1 题内容").arg(currentQuestion + 1));
-    }
+    // 恢复当前题目的单选按钮为原色
+       if (currentQuestion >= 0 && currentQuestion < totalQuestions) {
+           radioButtons[currentQuestion]->setStyleSheet("");  // 恢复原色
+       }
+
+       // 切换到上一题
+       if (currentQuestion > 0) {
+           currentQuestion--;  // 更新当前题目编号为上一题
+           ui->textBrowser_2->setText(QString("这里显示第 %1 题内容").arg(currentQuestion + 1));  // 在文本浏览器中显示上一题的内容
+
+           // 更新对应的单选按钮为选中状态
+           radioButtons[currentQuestion]->setStyleSheet("background-color: yellow;");  // 设置选中的单选按钮背景色为黄色（示例）
+       }
 }
 
 void studentexam::onNextClicked()
 {
-    if (currentQuestion < totalQuestions - 1) {
-        currentQuestion++;
-        ui->textBrowser_2->setText(QString("这里显示第 %1 题内容").arg(currentQuestion + 1));
-    }
+    // 恢复当前题目的单选按钮为原色
+        if (currentQuestion >= 0 && currentQuestion < totalQuestions) {
+            radioButtons[currentQuestion]->setStyleSheet("");  // 恢复原色
+        }
+
+        // 切换到下一题
+        if (currentQuestion < totalQuestions - 1) {
+            currentQuestion++;  // 更新当前题目编号为下一题
+            ui->textBrowser_2->setText(QString("这里显示第 %1 题内容").arg(currentQuestion + 1));  // 在文本浏览器中显示下一题的内容
+
+            // 更新对应的单选按钮为选中状态
+            radioButtons[currentQuestion]->setStyleSheet("background-color: yellow;");  // 设置选中的单选按钮背景色为黄色（示例）
+        }
 }
 
 void studentexam::onExitClicked()
