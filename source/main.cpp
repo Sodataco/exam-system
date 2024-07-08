@@ -48,9 +48,13 @@ int main(int argc, char *argv[])
     QObject::connect(&cP1,SIGNAL(showstu()),&sw1,SLOT(receiveReturn()));
     QObject::connect(&sw1,SIGNAL(showeaxm()),&spe1,SLOT(receivelogin()));
     QObject::connect(&spe1,SIGNAL(showstu()),&sw1,SLOT(receiveReturn()));
+<<<<<<< Updated upstream
     QObject::connect(&spe1,SIGNAL(showexam()),&se1,SLOT(receivelogin()));
     QObject::connect(&se1,SIGNAL(showpreexam()),&spe1,SLOT(receiveReturn()));
 
+=======
+    QObject::connect(&ad1,SIGNAL(showmain()),&w,SLOT(receiveloginagain()));
+>>>>>>> Stashed changes
     QObject::connect(&sw1,SIGNAL(showmain()),&w,SLOT(receiveloginagain()));
 
 

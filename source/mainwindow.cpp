@@ -51,7 +51,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->eye->setStyleSheet(
         "QPushButton {"
         "    border-radius: 15px;"  // 设置圆角半径
-        "    background-color: #white;"  // 设置背景颜色
+        //"    background-color: white;"  // 设置背景颜色
         "    color: white;"  // 设置文字颜色
         "}"
         "QPushButton:hover {"

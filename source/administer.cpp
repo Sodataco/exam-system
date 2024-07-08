@@ -9,11 +9,25 @@ Administer::Administer(QWidget *parent)
     ui->setupUi(this);
     im.load(":/image/logo.jpg");
 
-    // ui->importExcel->hide();
+    ui->EditName->setPlaceholderText("姓名");
+    ui->EditAccount->setPlaceholderText("学号/工号");
+    ui->EditPassword->setPlaceholderText("密码");
 
-    // connect(ui->importAccount, &QPushButton::clicked, [=]() {
-    //     ui->importExcel->show();
-    // });
+    ui->find->setIcon(QIcon(":/image/find.png"));
+
+    // ui->find->setStyleSheet(
+    //     "QPushButton {"
+    //     "    border-radius: 15px;"  // 设置圆角半径
+    //     //"    background-color: white;"  // 设置背景颜色
+    //     "    color: white;"  // 设置文字颜色
+    //     "}"
+    //     "QPushButton:hover {"
+    //     "    background-color: #bbffee;"  // 悬停时的背景颜色
+    //     "}"
+    //     "QPushButton:pressed {"
+    //     "    background-color: #00dddd;"  // 按下时的背景颜色
+    //     "}"
+    //     );
 
 }
 
@@ -76,6 +90,7 @@ bool Administer::derive_data_to_sql(QSqlDatabase& db){
 
 
 
+<<<<<<< Updated upstream
 void Administer::readAndStoreExcelData(const QString &filePath, QSqlDatabase &db) {
     /*QXlsx::Document xlsx(filePath);
     if (xlsx.workbook()->sheetCount() > 0) {
@@ -84,16 +99,27 @@ void Administer::readAndStoreExcelData(const QString &filePath, QSqlDatabase &db
             qDebug() << "Failed to get the first sheet.";
             return;
         }
+=======
+// void Administer::readAndStoreExcelData(const QString &filePath, QSqlDatabase &db) {
+//     QXlsx::Document xlsx(filePath);
+//     if (xlsx.workbook()->sheetCount() > 0) {
+//         QXlsx::Worksheet *sheet = dynamic_cast<QXlsx::Worksheet*>(xlsx.workbook()->sheet(0));
+//         if (!sheet) {
+//             qDebug() << "Failed to get the first sheet.";
+//             return;
+//         }
+>>>>>>> Stashed changes
 
-        int rowCount = sheet->dimension().rowCount();
-        QSqlQuery query(db);
+//         int rowCount = sheet->dimension().rowCount();
+//         QSqlQuery query(db);
 
-        for (int row = 1; row <= rowCount; ++row) {
-            QXlsx::Cell *cell = sheet->cellAt(row, 1);
-            if (cell) {
-                QString username = cell->value().toString();
-                QString password = "12345";
+//         for (int row = 1; row <= rowCount; ++row) {
+//             QXlsx::Cell *cell = sheet->cellAt(row, 1);
+//             if (cell) {
+//                 QString username = cell->value().toString();
+//                 QString password = "12345";
 
+<<<<<<< Updated upstream
                 query.exec(QString("insert into user(zhanghao,mima) values('%1','%2')").arg(username).arg(password));
                 if (!query.exec()) {
                     qDebug() << "Error inserting into database:" << query.lastError().text();
@@ -104,19 +130,31 @@ void Administer::readAndStoreExcelData(const QString &filePath, QSqlDatabase &db
         qDebug() << "Failed to load the Excel file.";
     }*/
 }
+=======
+//                 query.exec(QString("insert into user(zhanghao,mima) values('%1','%2')").arg(username).arg(password));
+//                 if (!query.exec()) {
+//                     qDebug() << "Error inserting into database:" << query.lastError().text();
+//                 }
+//             }
+//         }
+//     } else {
+//         qDebug() << "Failed to load the Excel file.";
+//     }
+// }
+>>>>>>> Stashed changes
 
 
 
 void Administer::on_importExcel_clicked()
 {
-    //实现获取文件路径的功能
-    QString filePath = QFileDialog::getOpenFileName(nullptr, "选择文件", QDir::homePath(), "Excel 文件 (*.xlsx *.xls)");
+    // //实现获取文件路径的功能
+    // QString filePath = QFileDialog::getOpenFileName(nullptr, "选择文件", QDir::homePath(), "Excel 文件 (*.xlsx *.xls)");
 
-    if(!filePath.isEmpty()){
-        this->readAndStoreExcelData(filePath,user_db);
-    }
+    // if(!filePath.isEmpty()){
+    //     this->readAndStoreExcelData(filePath,user_db);
+    // }
 
-    QMessageBox::about(this, "棒", "Successfully import Excel.");
+    // QMessageBox::about(this, "棒", "Successfully import Excel.");
 
 }
 
@@ -142,7 +180,27 @@ int Administer::getRecordCount(const QString &tableName, QSqlDatabase &db) {
 
 
 
+void Administer::on_importAccount_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(0);
+}
 
 
+void Administer::on_changegrade_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(1);
+}
 
+
+void Administer::on_manage_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(2);
+}
+
+
+void Administer::on_Return_clicked()
+{
+    this->hide();
+    emit showmain();
+}
 

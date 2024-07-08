@@ -29,7 +29,7 @@
 
 #include <QFile>
 #include <QFileDialog>
-
+#include <QAxObject>
 #include <user.h>
 
 //数据库
@@ -61,12 +61,23 @@ public:
     explicit Administer(QWidget *parent = nullptr);
     ~Administer();
 
+signals:
+    void showmain();
+
 private slots:
     void receivelogin();
 
 
 
     void on_importExcel_clicked();
+
+    void on_importAccount_clicked();
+
+    void on_changegrade_clicked();
+
+    void on_manage_clicked();
+
+    void on_Return_clicked();
 
 private:
     Ui::Administer *ui;
