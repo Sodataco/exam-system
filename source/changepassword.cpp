@@ -28,12 +28,30 @@ void changePassword::receivelogin(){
 
 void changePassword::on_Return_clicked()
 {
-    // QString s1=ui->newPassword2->text();   QString s2=ui->newPassword2->text();
-    // if(s1!=s2){
-    //     QMessageBox::warning(this, "no！", "Please keep the old and new passwords consistent.");
-    //     return;
-    // }这些应该写在完成按钮里
+
     this->hide();
     emit showstu();
+}
+
+
+void changePassword::on_finish_clicked()
+{
+    QString s1=ui->account->text();
+    QString s2=ui->oldPasserword->text();
+    QString s3=ui->newPassword->text();
+    QString s4=ui->newPassword2->text();
+    if(s3!=s4){
+        QMessageBox::warning(this, "no！", "Please keep the old and new passwords consistent.");
+        return;
+    }
+    //接下来弄数据库啥啥的
+    if(1){//数据库的判断巴拉巴拉)
+        this->hide();
+        emit showstu();
+
+    }
+
+
+
 }
 

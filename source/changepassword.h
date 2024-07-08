@@ -25,6 +25,8 @@ private slots:
 
     void on_Return_clicked();
 
+    void on_finish_clicked();
+
 private:
     Ui::changePassword *ui;
 };
