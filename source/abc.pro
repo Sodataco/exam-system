@@ -23,7 +23,6 @@ SOURCES += \
     teacherwindow.cpp \
     user.cpp \
     teacherquestion.cpp \
-    teacherquestion2.cpp \
     teacherpaper.cpp \
     teacherscore.cpp
 
@@ -40,7 +39,6 @@ HEADERS += \
     teacherwindow.h \
     user.h \
     teacherquestion.h \
-    teacherquestion2.h \
     teacherpaper.h \
     teacherscore.h
 
@@ -54,7 +52,6 @@ FORMS += \
     studentwindow.ui \
     teacherwindow.ui \
     teacherquestion.ui \
-    teacherquestion2.ui \
     teacherpaper.ui \
     teacherscore.ui
 
