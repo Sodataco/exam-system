@@ -18,12 +18,15 @@ public:
 
 signals:
     showstu();
+    showexam();
 
 
 private slots:
     void receivelogin();
-
+    void receiveReturn();
     void on_Return_clicked();
+
+    void on_exam_clicked();
 
 private:
     Ui::studentpreexam *ui;

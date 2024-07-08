@@ -23,3 +23,13 @@ void studentpreexam::on_Return_clicked()
     emit showstu();
 }
 
+
+void studentpreexam::on_exam_clicked()
+{
+    this->hide();
+    emit showexam();
+}
+
+void studentpreexam::receiveReturn(){
+    this->show();
+}

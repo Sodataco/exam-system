@@ -2,7 +2,7 @@
 #define ADMINISTER_H
 
 #include <QWidget>
-#include <QtXlsx>
+//#include <QtXlsx>
 
 #include <QPainter>
 #include <QAction>

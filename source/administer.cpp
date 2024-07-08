@@ -77,7 +77,7 @@ bool Administer::derive_data_to_sql(QSqlDatabase& db){
 
 
 void Administer::readAndStoreExcelData(const QString &filePath, QSqlDatabase &db) {
-    QXlsx::Document xlsx(filePath);
+    /*QXlsx::Document xlsx(filePath);
     if (xlsx.workbook()->sheetCount() > 0) {
         QXlsx::Worksheet *sheet = dynamic_cast<QXlsx::Worksheet*>(xlsx.workbook()->sheet(0));
         if (!sheet) {
@@ -102,7 +102,7 @@ void Administer::readAndStoreExcelData(const QString &filePath, QSqlDatabase &db
         }
     } else {
         qDebug() << "Failed to load the Excel file.";
-    }
+    }*/
 }
 
 
