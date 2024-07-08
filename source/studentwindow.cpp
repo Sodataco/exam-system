@@ -103,3 +103,10 @@ void studentwindow::on_changePassword_clicked()
     emit showchangePassword();
 }
 
+
+void studentwindow::on_examBtn_clicked()
+{
+    this->hide();
+    emit showeaxm();
+}
+

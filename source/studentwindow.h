@@ -23,6 +23,7 @@ signals:
     void showmain();
     void showscore();
     void showchangePassword();
+    void showeaxm();
 
 
 private slots:
@@ -34,6 +35,8 @@ private slots:
     void on_findBtn_clicked();
 
     void on_changePassword_clicked();
+
+    void on_examBtn_clicked();
 
 private:
     Ui::studentwindow *ui;

@@ -18,6 +18,7 @@ SOURCES += \
     student.cpp \
     studentchafen.cpp \
     studentexam.cpp \
+    studentpreexam.cpp \
     studentwindow.cpp \
     teacherwindow.cpp \
     user.cpp \
@@ -34,6 +35,7 @@ HEADERS += \
     student.h \
     studentchafen.h \
     studentexam.h \
+    studentpreexam.h \
     studentwindow.h \
     teacherwindow.h \
     user.h \
@@ -48,6 +50,7 @@ FORMS += \
     mainwindow.ui \
     studentchafen.ui \
     studentexam.ui \
+    studentpreexam.ui \
     studentwindow.ui \
     teacherwindow.ui \
     teacherquestion.ui \

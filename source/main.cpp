@@ -5,6 +5,7 @@
 #include"studentchafen.h"
 #include"studentchafen.h"
 #include"changepassword.h"
+#include"studentpreexam.h"
 
 #include <QApplication>
 
@@ -19,6 +20,7 @@ int main(int argc, char *argv[])
     Administer ad1;
     studentchafen cha1;
     changePassword cP1;
+    studentpreexam spe1;
     user u1;
 
     w.setFixedSize(560,300);
@@ -42,6 +44,8 @@ int main(int argc, char *argv[])
     QObject::connect(&cha1,SIGNAL(showstudent()),&sw1,SLOT(receiveReturn()));
     QObject::connect(&sw1,SIGNAL(showchangePassword()),&cP1,SLOT(receivelogin()));
     QObject::connect(&cP1,SIGNAL(showstu()),&sw1,SLOT(receiveReturn()));
+    QObject::connect(&sw1,SIGNAL(showeaxm()),&spe1,SLOT(receivelogin()));
+    QObject::connect(&spe1,SIGNAL(showstu()),&sw1,SLOT(receiveReturn()));
 
     QObject::connect(&sw1,SIGNAL(showmain()),&w,SLOT(receiveloginagain()));
 
