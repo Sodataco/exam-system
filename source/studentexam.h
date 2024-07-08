@@ -20,6 +20,7 @@ public:
 
 signals:
     showpreexam();
+
 private slots:
     void onOptionClicked();
     void onRadioButtonClicked();
@@ -27,6 +28,7 @@ private slots:
     void onNextClicked();
     void onExitClicked();
     void updateProgressBar();
+
     void receivelogin();
 
 

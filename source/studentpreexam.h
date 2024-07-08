@@ -17,13 +17,14 @@ public:
 
 
 signals:
-    showstu();
-    showexam();
+    void showstu();
+    void showexam();
 
 
 private slots:
     void receivelogin();
     void receiveReturn();
+
     void on_Return_clicked();
 
     void on_exam_clicked();

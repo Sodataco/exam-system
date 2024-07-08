@@ -21,10 +21,18 @@ public:
 
 
     ~teacherwindow();
-
+signals:
+    void showcreatequestion();
+    void showmain();
 
 private slots:
     void receivelogin();
+
+    void on_createquestion_clicked();
+
+    void on_Return_clicked();
+
+    void on_judge_clicked();
 
 private:
     Ui::teacherwindow *ui;

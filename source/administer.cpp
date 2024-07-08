@@ -90,7 +90,7 @@ bool Administer::derive_data_to_sql(QSqlDatabase& db){
 
 
 
-<<<<<<< Updated upstream
+
 void Administer::readAndStoreExcelData(const QString &filePath, QSqlDatabase &db) {
     /*QXlsx::Document xlsx(filePath);
     if (xlsx.workbook()->sheetCount() > 0) {
@@ -130,7 +130,7 @@ void Administer::readAndStoreExcelData(const QString &filePath, QSqlDatabase &db
         qDebug() << "Failed to load the Excel file.";
     }*/
 }
-=======
+
 //                 query.exec(QString("insert into user(zhanghao,mima) values('%1','%2')").arg(username).arg(password));
 //                 if (!query.exec()) {
 //                     qDebug() << "Error inserting into database:" << query.lastError().text();
@@ -141,7 +141,7 @@ void Administer::readAndStoreExcelData(const QString &filePath, QSqlDatabase &db
 //         qDebug() << "Failed to load the Excel file.";
 //     }
 // }
->>>>>>> Stashed changes
+
 
 
 

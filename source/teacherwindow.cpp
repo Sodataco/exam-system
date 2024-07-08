@@ -8,7 +8,7 @@ teacherwindow::teacherwindow(QWidget *parent)
     ui->setupUi(this);
     {
         ui->setupUi(this);
-        ui->pushButton->setStyleSheet(
+        ui->createquestion->setStyleSheet(
             "QPushButton {"
             "    border-radius: 15px;"  // 设置圆角半径
             "    border: 2px solid #8f8f91;"  // 设置边框
@@ -38,7 +38,7 @@ teacherwindow::teacherwindow(QWidget *parent)
             "    background-color: #144a82;"  // 按下时的背景颜色
             "}"
             );
-        ui->pushButton_3->setStyleSheet(
+        ui->judge->setStyleSheet(
             "QPushButton {"
             "    border-radius: 15px;"  // 设置圆角半径
             "    border: 2px solid #8f8f91;"  // 设置边框
@@ -103,6 +103,23 @@ bool teacherwindow::derive_data_to_sql(QSqlDatabase& db){
 
 
 
+//进入创建题库页面
+void teacherwindow::on_createquestion_clicked()
+{
+    this->hide();
+    emit showcreatequestion();
+}
+
+//退出登录
+void teacherwindow::on_Return_clicked()
+{
+    this->hide();
+    emit showmain();
+}
 
 
+void teacherwindow::on_judge_clicked()
+{
+    qDebug()<<"12312";
+}
 

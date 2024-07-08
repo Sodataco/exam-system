@@ -15,6 +15,17 @@ public:
     explicit teacherquestion(QWidget *parent = 0);
     ~teacherquestion();
 
+private slots:
+    void receivelogin();
+
+    void on_questionSelect_clicked();
+
+    void on_questionBlank_clicked();
+
+    void on_questionAnswer_clicked();
+
+    void on_importquestion_clicked();
+
 private:
     Ui::teacherquestion *ui;
 };

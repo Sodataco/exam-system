@@ -31,7 +31,7 @@
     <string>在线考试平台（教师端）</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton">
+  <widget class="QPushButton" name="createquestion">
    <property name="geometry">
     <rect>
      <x>30</x>
@@ -67,7 +67,7 @@
     <string>组卷</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_3">
+  <widget class="QPushButton" name="judge">
    <property name="geometry">
     <rect>
      <x>30</x>
@@ -101,6 +101,24 @@
    </property>
    <property name="text">
     <string>成绩管理</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="Return">
+   <property name="geometry">
+    <rect>
+     <x>520</x>
+     <y>440</y>
+     <width>80</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>退出登录</string>
    </property>
   </widget>
  </widget>

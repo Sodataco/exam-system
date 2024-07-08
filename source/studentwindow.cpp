@@ -99,6 +99,7 @@ void studentwindow::on_findBtn_clicked()
 
 void studentwindow::on_changePassword_clicked()
 {
+    qDebug()<<"进入成功";
     this->hide();
     emit showchangePassword();
 }
