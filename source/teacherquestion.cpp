@@ -37,8 +37,6 @@ void teacherquestion::on_questionAnswer_clicked()
 }
 
 
-
-
 void teacherquestion::on_Return_clicked()
 {
     this->close();
@@ -94,5 +92,35 @@ void teacherquestion::on_importSelectquestion_clicked()
     ui->selectC->setChecked(false);
     ui->selectD->setChecked(false);
 
+}
+
+
+
+
+void teacherquestion::on_importBlankquestion_clicked()
+{
+    QString sQ=ui->inputbQ->toPlainText();//题目内容
+    QString answer=ui->blankAnswer->toPlainText();
+
+    //导入试题
+
+
+    //
+    ui->inputbQ->clear();
+    ui->blankAnswer->clear();
+}
+
+
+void teacherquestion::on_importAnswerquestion_clicked()
+{
+    QString sQ=ui->inputaQ->toPlainText();
+    QString answer=ui->answerAnswer->toPlainText();
+
+    //导入试题
+
+
+    //
+    ui->inputaQ->clear();
+    ui->answerAnswer->clear();
 }
 

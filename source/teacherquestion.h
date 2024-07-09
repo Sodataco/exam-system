@@ -32,6 +32,10 @@ private slots:
 
     void on_importSelectquestion_clicked();
 
+    void on_importBlankquestion_clicked();
+
+    void on_importAnswerquestion_clicked();
+
 private:
     Ui::teacherquestion *ui;
 };

@@ -46,11 +46,19 @@ void changePassword::on_finish_clicked()
     QString s2=ui->oldPasserword->text();
     QString s3=ui->newPassword->text();
     QString s4=ui->newPassword2->text();
+
+    QMessageBox::StandardButton reply;
+    reply = QMessageBox::question(this, "Confirmation", "确定要修改密码吗?",QMessageBox::Yes | QMessageBox::No);
+
+    if (reply == QMessageBox::No) {
+        qDebug() << "User chose to cancel.";
+        return;
+    }
+
     if(s3!=s4){
         QMessageBox::warning(this, "no！", "Please keep the old and new passwords consistent.");
         return;
     }
-
     //接下来弄数据库啥啥的
     if(ispass(s1,s2,user_db)){
         changePw(s1,s3,user_db);

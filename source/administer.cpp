@@ -146,12 +146,16 @@ void Administer::readAndStoreExcelData(const QString &filePath, QSqlDatabase &db
 void Administer::on_importExcel_clicked()
 {
     //实现获取文件路径的功能
-     QString filePath = QFileDialog::getOpenFileName(nullptr, "选择文件", QDir::homePath(), "Excel 文件 (*.xlsx *.xls)");
+    QString filePath = QFileDialog::getOpenFileName(nullptr, "选择文件", QDir::homePath(), "Excel 文件 (*.xlsx *.xls)");
 
-     if(!filePath.isEmpty())
-         this->readAndStoreExcelData(filePath,user_db);
+    if(!filePath.isEmpty()){
+        this->readAndStoreExcelData(filePath,user_db);
 
-    QMessageBox::about(this, "棒", "Successfully import Excel.");
+        QMessageBox::about(this, "棒", "Successfully import Excel.");
+    }
+    else{
+        QMessageBox::critical(this, "Damn", "Failed to import Excel.");
+    }
 
 }
 
