@@ -31,7 +31,7 @@
     <string>批改</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_2">
+  <widget class="QPushButton" name="paper">
    <property name="enabled">
     <bool>true</bool>
    </property>
@@ -115,7 +115,7 @@
     <string>题库</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_4">
+  <widget class="QPushButton" name="manage">
    <property name="geometry">
     <rect>
      <x>190</x>

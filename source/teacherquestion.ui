@@ -57,13 +57,25 @@
   <widget class="QWidget" name="verticalLayoutWidget">
    <property name="geometry">
     <rect>
-     <x>60</x>
-     <y>110</y>
+     <x>30</x>
+     <y>100</y>
      <width>111</width>
-     <height>291</height>
+     <height>151</height>
     </rect>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QLabel" name="label_28">
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>你想导入的题型？</string>
+      </property>
+     </widget>
+    </item>
     <item>
      <widget class="QPushButton" name="questionSelect">
       <property name="text">
@@ -824,9 +836,9 @@
     <widget class="QPushButton" name="importAnswerquestion">
      <property name="geometry">
       <rect>
-       <x>360</x>
+       <x>350</x>
        <y>440</y>
-       <width>91</width>
+       <width>101</width>
        <height>31</height>
       </rect>
      </property>

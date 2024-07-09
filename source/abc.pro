@@ -12,6 +12,7 @@ CONFIG += c++17
 SOURCES += \
     administer.cpp \
     changepassword.cpp \
+    combinepaper.cpp \
     main.cpp \
     mainwindow.cpp \
     student.cpp \
@@ -23,11 +24,13 @@ SOURCES += \
     user.cpp \
     teacherquestion.cpp \
     teacherpaper.cpp \
-    teacherscore.cpp
+    teacherscore.cpp \
+    teachermanage.cpp
 
 HEADERS += \
     administer.h \
     changepassword.h \
+    combinepaper.h \
     mainwindow.h \
     student.h \
     studentchafen.h \
@@ -38,11 +41,13 @@ HEADERS += \
     user.h \
     teacherquestion.h \
     teacherpaper.h \
-    teacherscore.h
+    teacherscore.h \
+    teachermanage.h
 
 FORMS += \
     administer.ui \
     changepassword.ui \
+    combinepaper.ui \
     mainwindow.ui \
     studentchafen.ui \
     studentexam.ui \
@@ -51,7 +56,8 @@ FORMS += \
     teacherquestion.ui \
     teacherpaper.ui \
     teacherscore.ui \
-    teacherwindow.ui
+    teacherwindow.ui \
+    teachermanage.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

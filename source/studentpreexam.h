@@ -2,6 +2,7 @@
 #define STUDENTPREEXAM_H
 
 #include <QWidget>
+#include <QListWidget>
 
 namespace Ui {
 class studentpreexam;
@@ -29,6 +30,9 @@ private slots:
 
     void on_exam_clicked();
 
+    void on_refresh_clicked();
+
+    void on_examList_itemClicked(QListWidgetItem *item);
 
 private:
     Ui::studentpreexam *ui;
