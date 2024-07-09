@@ -5,11 +5,9 @@ paper::paper() {
      build();
 }
 void paper::build(){
-    //打开数据库
-    if(QSqlDatabase::contains("qt_sql_default_connection"))
-        paper_db = QSqlDatabase::database("qt_sql_default_connection");
-    else
-        paper_db = QSqlDatabase::addDatabase("QSQLITE");
+
+    paper_db = QSqlDatabase::addDatabase("QSQLITE","paper_db_connection");
+
     paper_db.setDatabaseName("paper_db");
     if(paper_db.open()){
         qDebug()<<"paper_db数据库已打开";
@@ -22,9 +20,8 @@ void paper::build(){
     QSqlQuery query(paper_db);
 
 
-    query.exec("CREATE TABLE IF NOT EXISTS papers ("
-               "paper_id INTEGER PRIMARY KEY AUTOINCREMENT,"
-               "paper_name TEXT NOT NULL);");
+    query.exec("CREATE TABLE papers(paper_id INTEGER PRIMARY KEY AUTOINCREMENT,paper_name TEXT NOT NULL)");
+
 
     query.exec("CREATE TABLE IF NOT EXISTS questions ("
                 "question_id INTEGER PRIMARY KEY AUTOINCREMENT,"

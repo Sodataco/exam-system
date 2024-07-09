@@ -4,6 +4,11 @@
 #include <QWidget>
 #include <QMessageBox>
 
+//数据库
+#include <QSqlDatabase>
+#include <QSqlQuery>
+#include <QSqlError>
+
 namespace Ui {
 class changePassword;
 }
@@ -14,6 +19,10 @@ class changePassword : public QWidget
 
 public:
     explicit changePassword(QWidget *parent = nullptr);
+
+    bool changePw(const QString &username, const QString &newPassword,QSqlDatabase &db);
+    bool ispass(const QString &username, const QString &newPassword,QSqlDatabase &db);
+
     ~changePassword();
 
 

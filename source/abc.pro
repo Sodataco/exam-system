@@ -14,7 +14,6 @@ SOURCES += \
     changepassword.cpp \
     main.cpp \
     mainwindow.cpp \
-    paper.cpp \
     student.cpp \
     studentchafen.cpp \
     studentexam.cpp \
@@ -30,7 +29,6 @@ HEADERS += \
     administer.h \
     changepassword.h \
     mainwindow.h \
-    paper.h \
     student.h \
     studentchafen.h \
     studentexam.h \

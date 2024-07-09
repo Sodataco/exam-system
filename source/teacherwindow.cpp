@@ -83,20 +83,46 @@ void teacherwindow::receivelogin(){
 
 
 bool teacherwindow::derive_data_to_sql(QSqlDatabase& db){
+
     QSqlQuery query(db);
-    QString s1="111";
+    int s1=1;
     QString s2="111";
-    qDebug()<<"111";
 
     query.exec(QString("insert into papers(paper_id,paper_name) values('%1','%2')").arg(s1).arg(s2));
-    query.exec(QString("insert into questions(question_id,paper_id,question_text) values('%1','%2','%3')").arg("11").arg("11").arg("11"));
+    query.exec(QString("insert into questions(question_id,paper_id,question_text) values('%1','%2','%3')").arg(1).arg(1).arg("11"));
 
-
-
-    qDebug()<<"111";
+    qDebug()<<"121";
     qDebug()<<"插入完成";
     query.finish();
     return true;
+}
+
+// 根据paper_id查询paper_name函数
+QString teacherwindow::getPaperName(int paperId,QSqlDatabase& db) {
+
+    // 创建SQL查询对象
+     QSqlQuery query(db);
+
+    // 准备查询语句，使用参数化查询以防止SQL注入攻击
+    query.prepare("SELECT paper_name FROM papers WHERE paper_id = :paperId");
+    query.bindValue(":paperId", paperId);
+
+    // 执行SQL查询
+    if (!query.exec()) {
+        qDebug() << "Failed to execute query:" << query.lastError();
+        return "";
+    }
+
+    // 检查是否有结果
+    if (query.next()) {
+        // 从查询结果中获取paper_name列的值
+        QString paperName = query.value(0).toString();
+        return paperName;
+    } else {
+        qDebug() << "No paper found with paper_id =" << paperId;
+        return "";
+    }
+
 }
 
 
@@ -117,9 +143,12 @@ void teacherwindow::on_Return_clicked()
     emit showmain();
 }
 
+<<<<<<< Updated upstream
 
 void teacherwindow::on_judge_clicked()
 {
     qDebug()<<"12312";
 }
 
+=======
+>>>>>>> Stashed changes

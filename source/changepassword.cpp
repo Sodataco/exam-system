@@ -33,6 +33,7 @@ void changePassword::on_Return_clicked()
     emit showstu();
 }
 
+<<<<<<< Updated upstream
 
 void changePassword::on_finish_clicked()
 {
@@ -53,5 +54,42 @@ void changePassword::on_finish_clicked()
 
 
 
+=======
+bool changePassword::ispass(const QString &username, const QString &Password,QSqlDatabase &db){
+    QString s1=username;
+    QString s2=Password;
+    if(s1==nullptr || s2==nullptr){
+        QMessageBox::warning(this, "Input Error", "The input field cannot be empty.");
+        return false;
+    }
+
+    QSqlQuery query(db);
+    qDebug()<<"登录账号 = "<<s1<<"  登录密码 = "<<s2;
+    query.exec(QString("select* from user where zhanghao = '%1' and mima = '%2'").arg(s1).arg(s2));
+    if(query.next() == false){
+        QMessageBox::warning(this, "ERROR", "The account or password is error.");//输入错误提示弹窗
+        return false;
+    }
+
+    query.finish();
+
+    return true;
+}
+
+
+
+
+
+bool changePassword::changePw(const QString &username, const QString &newPassword,QSqlDatabase &db) {
+
+    // 创建SQL查询对象
+    QSqlQuery query(db);
+
+    query.exec(QString("update user set mima = '%1' where zhanghao = '%2'").arg(newPassword).arg(username));
+
+    query.finish();
+    qDebug() << "update password:";
+    return true;
+>>>>>>> Stashed changes
 }
 
