@@ -87,7 +87,7 @@
     </item>
    </layout>
   </widget>
-  <widget class="QPushButton" name="pushButton_4">
+  <widget class="QPushButton" name="Return">
    <property name="geometry">
     <rect>
      <x>70</x>
@@ -115,7 +115,7 @@
     </font>
    </property>
    <property name="currentIndex">
-    <number>0</number>
+    <number>2</number>
    </property>
    <widget class="QWidget" name="page_3">
     <widget class="QTextEdit" name="inputsQ">
@@ -387,7 +387,7 @@
       <string>题目</string>
      </property>
     </widget>
-    <widget class="QTextEdit" name="textEdit_9">
+    <widget class="QTextEdit" name="inputbQ">
      <property name="geometry">
       <rect>
        <x>70</x>
@@ -415,7 +415,7 @@
       <string>参考答案</string>
      </property>
     </widget>
-    <widget class="QTextEdit" name="textEdit_10">
+    <widget class="QTextEdit" name="blankAnswer">
      <property name="geometry">
       <rect>
        <x>70</x>
@@ -765,7 +765,7 @@
     </widget>
    </widget>
    <widget class="QWidget" name="page_4">
-    <widget class="QTextEdit" name="textEdit_7">
+    <widget class="QTextEdit" name="inputaQ">
      <property name="geometry">
       <rect>
        <x>70</x>
@@ -793,7 +793,7 @@
       <string>题目</string>
      </property>
     </widget>
-    <widget class="QTextEdit" name="textEdit_8">
+    <widget class="QTextEdit" name="answerAnswer">
      <property name="geometry">
       <rect>
        <x>70</x>
