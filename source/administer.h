@@ -2,7 +2,6 @@
 #define ADMINISTER_H
 
 #include <QWidget>
-//#include <QtXlsx>
 
 #include <QPainter>
 #include <QAction>
@@ -30,7 +29,9 @@
 #include <QFile>
 #include <QFileDialog>
 #include <QAxObject>
+
 #include <user.h>
+
 
 //数据库
 #include <QSqlDatabase>

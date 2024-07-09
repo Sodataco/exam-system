@@ -1,7 +1,6 @@
 #include "mainwindow.h"
 #include"studentwindow.h"
 #include"user.h"
-#include"paper.h"
 #include"studentchafen.h"
 #include"studentchafen.h"
 #include"changepassword.h"
@@ -23,10 +22,13 @@ int main(int argc, char *argv[])
     Administer ad1;
     studentchafen cha1;
     changePassword cP1;
+
     studentpreexam spe1;
     studentexam se1;
     teacherquestion tq;
-    user u1;
+
+    users u1;
+
 
     w.setFixedSize(560,300);
     w.show();
@@ -66,8 +68,14 @@ int main(int argc, char *argv[])
 
 
     ad1.derive_data_to_sql(user_db);//测试函数
-    tea1.derive_data_to_sql(paper_db);
 
+    cP1.changePw("111","11",user_db);//测试函数
+
+
+
+    tea1.derive_data_to_sql(user_db);
+    QString s=tea1.getPaperName(1,user_db);
+    qDebug()<<s;
 
 
 

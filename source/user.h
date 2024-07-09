@@ -34,9 +34,9 @@
 //实例化测试
 static QSqlDatabase user_db;
 
-class user{
+class users{
 public:
-    user();
+    users();
     void build();
 };
 
