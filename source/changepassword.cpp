@@ -14,6 +14,10 @@ changePassword::changePassword(QWidget *parent)
     ui->newPassword->setPlaceholderText("新密码");
     ui->newPassword2->setPlaceholderText("再次确认");
 
+    ui->oldPasserword->setEchoMode(QLineEdit::Password);
+    ui->newPassword->setEchoMode(QLineEdit::Password);
+    ui->newPassword2->setEchoMode(QLineEdit::Password);
+
 }
 
 changePassword::~changePassword()
@@ -44,14 +48,11 @@ void changePassword::on_finish_clicked()
         QMessageBox::warning(this, "no！", "Please keep the old and new passwords consistent.");
         return;
     }
-    //接下来弄数据库啥啥的
-    if(1){//数据库的判断巴拉巴拉)
+
+    if(1){
         this->hide();
         emit showstu();
-
     }
-
-
 
 }
 

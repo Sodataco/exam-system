@@ -53,6 +53,7 @@ void studentwindow::receivelogin(){
 //退出登录
 void studentwindow::on_loginagain_clicked()
 {
+    qDebug()<<"退出登录";
     this->hide();
     emit showmain();
 }
@@ -110,4 +111,7 @@ void studentwindow::on_examBtn_clicked()
     this->hide();
     emit showeaxm();
 }
+
+
+
 

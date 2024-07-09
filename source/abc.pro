@@ -50,10 +50,10 @@ FORMS += \
     studentexam.ui \
     studentpreexam.ui \
     studentwindow.ui \
-    teacherwindow.ui \
     teacherquestion.ui \
     teacherpaper.ui \
-    teacherscore.ui
+    teacherscore.ui \
+    teacherwindow.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

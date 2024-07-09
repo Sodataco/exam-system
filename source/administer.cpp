@@ -99,7 +99,7 @@ void Administer::readAndStoreExcelData(const QString &filePath, QSqlDatabase &db
             qDebug() << "Failed to get the first sheet.";
             return;
         }
-=======
+
 // void Administer::readAndStoreExcelData(const QString &filePath, QSqlDatabase &db) {
 //     QXlsx::Document xlsx(filePath);
 //     if (xlsx.workbook()->sheetCount() > 0) {
@@ -108,7 +108,7 @@ void Administer::readAndStoreExcelData(const QString &filePath, QSqlDatabase &db
 //             qDebug() << "Failed to get the first sheet.";
 //             return;
 //         }
->>>>>>> Stashed changes
+
 
 //         int rowCount = sheet->dimension().rowCount();
 //         QSqlQuery query(db);
@@ -119,7 +119,6 @@ void Administer::readAndStoreExcelData(const QString &filePath, QSqlDatabase &db
 //                 QString username = cell->value().toString();
 //                 QString password = "12345";
 
-<<<<<<< Updated upstream
                 query.exec(QString("insert into user(zhanghao,mima) values('%1','%2')").arg(username).arg(password));
                 if (!query.exec()) {
                     qDebug() << "Error inserting into database:" << query.lastError().text();
@@ -202,5 +201,29 @@ void Administer::on_Return_clicked()
 {
     this->hide();
     emit showmain();
+}
+
+
+
+void Administer::on_resetPassword_clicked()
+{
+
+}
+
+
+void Administer::on_finishimport_clicked()
+{
+    QString s1=ui->EditName->text();
+    QString s2=ui->EditAccount->text();
+    QString s3=ui->EditPassword->text();
+/*
+    实
+    现
+    导
+    入
+
+  */
+
+    QMessageBox::about(this, "棒", "Successfully import account.");
 }
 

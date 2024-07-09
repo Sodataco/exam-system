@@ -9,6 +9,7 @@
 #include"studentexam.h"
 #include"teacherquestion.h"
 
+
 #include <QApplication>
 
 int main(int argc, char *argv[])
@@ -29,6 +30,7 @@ int main(int argc, char *argv[])
 
     w.setFixedSize(560,300);
     w.show();
+    //tea1.show();
 
     w.setWindowTitle("登录");
     w.setWindowIcon(QIcon(":/image/ren.png"));
@@ -51,15 +53,16 @@ int main(int argc, char *argv[])
     QObject::connect(&tea1,SIGNAL(showcreatequestion()),&tq,SLOT(receivelogin()));
 
 
-    QObject::connect(&cP1,SIGNAL(showstu()),&sw1,SLOT(receiveReturn()));
+
     QObject::connect(&cha1,SIGNAL(showstudent()),&sw1,SLOT(receiveReturn()));
     QObject::connect(&spe1,SIGNAL(showstu()),&sw1,SLOT(receiveReturn()));
     QObject::connect(&cP1,SIGNAL(showstu()),&sw1,SLOT(receiveReturn()));
     QObject::connect(&se1,SIGNAL(showpreexam()),&spe1,SLOT(receiveReturn()));
     QObject::connect(&ad1,SIGNAL(showmain()),&w,SLOT(receiveloginagain()));
     QObject::connect(&sw1,SIGNAL(showmain()),&w,SLOT(receiveloginagain()));
+    QObject::connect(&tq,SIGNAL(showteacher()),&tea1,SLOT(receivelogin()));
 
-    QObject::connect(&tea1,SIGNAL(showmain()),&w,SLOT(receiveloginagain));
+    QObject::connect(&tea1,SIGNAL(showmain()),&w,SLOT(receiveloginagain()));
 
 
     ad1.derive_data_to_sql(user_db);//测试函数

@@ -19,7 +19,7 @@ public:
     ~studentexam();
 
 signals:
-    showpreexam();
+    void showpreexam();
 
 private slots:
     void onOptionClicked();

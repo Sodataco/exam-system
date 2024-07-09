@@ -100,7 +100,7 @@ void studentexam::onNextClicked()
 
 void studentexam::onExitClicked()
 {
-    this->close();  // 关闭考试界面
+    this->hide();  // 关闭考试界面
     emit showpreexam();
 }
 

@@ -79,7 +79,7 @@
       </rect>
      </property>
     </widget>
-    <widget class="QPushButton" name="pushButton">
+    <widget class="QPushButton" name="finishimport">
      <property name="geometry">
       <rect>
        <x>170</x>
@@ -151,7 +151,7 @@
       <string>修改成绩</string>
      </property>
     </widget>
-    <widget class="QTextEdit" name="textEdit">
+    <widget class="QTextEdit" name="search">
      <property name="geometry">
       <rect>
        <x>80</x>
@@ -164,27 +164,27 @@
     <widget class="QPushButton" name="find">
      <property name="geometry">
       <rect>
-       <x>190</x>
-       <y>100</y>
-       <width>16</width>
-       <height>16</height>
+       <x>260</x>
+       <y>40</y>
+       <width>31</width>
+       <height>31</height>
       </rect>
      </property>
      <property name="text">
       <string/>
      </property>
     </widget>
-    <widget class="QPushButton" name="pushButton_3">
+    <widget class="QLabel" name="label_6">
      <property name="geometry">
       <rect>
-       <x>260</x>
-       <y>180</y>
-       <width>16</width>
-       <height>16</height>
+       <x>0</x>
+       <y>0</y>
+       <width>121</width>
+       <height>31</height>
       </rect>
      </property>
      <property name="text">
-      <string/>
+      <string>请搜索姓名/学号</string>
      </property>
     </widget>
    </widget>
@@ -202,17 +202,66 @@
       <string/>
      </property>
     </widget>
-    <widget class="QPushButton" name="pushButton_2">
+    <widget class="QPushButton" name="resetPassword">
      <property name="geometry">
       <rect>
-       <x>50</x>
-       <y>40</y>
-       <width>101</width>
+       <x>290</x>
+       <y>90</y>
+       <width>91</width>
        <height>31</height>
       </rect>
      </property>
      <property name="text">
-      <string>PushButton</string>
+      <string>重置密码</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_7">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>121</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>请搜索姓名/学号</string>
+     </property>
+    </widget>
+    <widget class="QTextEdit" name="search2">
+     <property name="geometry">
+      <rect>
+       <x>80</x>
+       <y>40</y>
+       <width>211</width>
+       <height>31</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="find_2">
+     <property name="geometry">
+      <rect>
+       <x>260</x>
+       <y>40</y>
+       <width>31</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="grade">
+     <property name="geometry">
+      <rect>
+       <x>190</x>
+       <y>90</y>
+       <width>91</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>查看成绩</string>
      </property>
     </widget>
    </widget>

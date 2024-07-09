@@ -61,6 +61,7 @@ private slots:
 
     void changeeye(bool checked);
 
+    void on_commandLinkButton_clicked();
 
 private:
     Ui::MainWindow *ui;

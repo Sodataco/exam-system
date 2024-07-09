@@ -13,9 +13,11 @@ teacherquestion::~teacherquestion()
     delete ui;
 }
 
+
 void teacherquestion::receivelogin(){
     this->show();
 }
+
 
 void teacherquestion::on_questionSelect_clicked()
 {
@@ -37,6 +39,34 @@ void teacherquestion::on_questionAnswer_clicked()
 
 void teacherquestion::on_importquestion_clicked()
 {
+
+}
+
+
+
+void teacherquestion::on_Return_clicked()
+{
+    this->close();
+    emit showteacher();
+}
+
+
+void teacherquestion::on_importSelectquestion_clicked()
+{
+
+    //导入题目到数据库功能(待办）
+
+
+    //清空输入框的内容方便继续导入题目
+    ui->selectQ->clear();
+    ui->inputA->clear();
+    ui->inputB->clear();
+    ui->inputC->clear();
+    ui->inputD->clear();
+    ui->selectA->setChecked(false);
+    ui->selectB->setChecked(false);
+    ui->selectC->setChecked(false);
+    ui->selectD->setChecked(false);
 
 }
 

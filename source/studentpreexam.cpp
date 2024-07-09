@@ -33,3 +33,6 @@ void studentpreexam::on_exam_clicked()
 void studentpreexam::receiveReturn(){
     this->show();
 }
+
+
+

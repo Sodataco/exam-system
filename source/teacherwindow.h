@@ -2,7 +2,7 @@
 #define TEACHERWINDOW_H
 
 #include <QWidget>
-#include"paper.h"
+#include "paper.h"
 
 namespace Ui {
 class teacherwindow;
@@ -15,12 +15,10 @@ class teacherwindow : public QWidget
 public:
     explicit teacherwindow(QWidget *parent = nullptr);
 
-    bool derive_data_to_sql(QSqlDatabase& db);
-
-
-
+    bool derive_data_to_sql(QSqlDatabase &db);
 
     ~teacherwindow();
+
 signals:
     void showcreatequestion();
     void showmain();
@@ -30,9 +28,9 @@ private slots:
 
     void on_createquestion_clicked();
 
-    void on_Return_clicked();
-
     void on_judge_clicked();
+
+    void on_Return1_clicked();
 
 private:
     Ui::teacherwindow *ui;
