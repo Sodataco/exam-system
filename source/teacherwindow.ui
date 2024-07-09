@@ -115,7 +115,7 @@
     <string>题库</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_4">
+  <widget class="QPushButton" name="manage">
    <property name="geometry">
     <rect>
      <x>190</x>

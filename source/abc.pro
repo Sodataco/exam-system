@@ -23,7 +23,8 @@ SOURCES += \
     user.cpp \
     teacherquestion.cpp \
     teacherpaper.cpp \
-    teacherscore.cpp
+    teacherscore.cpp \
+    teachermanage.cpp
 
 HEADERS += \
     administer.h \
@@ -38,7 +39,8 @@ HEADERS += \
     user.h \
     teacherquestion.h \
     teacherpaper.h \
-    teacherscore.h
+    teacherscore.h \
+    teachermanage.h
 
 FORMS += \
     administer.ui \
@@ -51,7 +53,8 @@ FORMS += \
     teacherquestion.ui \
     teacherpaper.ui \
     teacherscore.ui \
-    teacherwindow.ui
+    teacherwindow.ui \
+    teachermanage.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
