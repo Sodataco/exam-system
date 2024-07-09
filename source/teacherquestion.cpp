@@ -45,7 +45,7 @@ void teacherquestion::on_Return_clicked()
     emit showteacher();
 }
 
-
+//导入选择题
 void teacherquestion::on_importSelectquestion_clicked()
 {
 

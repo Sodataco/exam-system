@@ -85,8 +85,6 @@ bool changePassword::ispass(const QString &username, const QString &Password,QSq
 
 
 
-
-
 bool changePassword::changePw(const QString &username, const QString &newPassword,QSqlDatabase &db) {
 
     // 创建SQL查询对象
