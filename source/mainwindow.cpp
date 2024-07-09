@@ -30,7 +30,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(this, &MainWindow::showeye, this, &MainWindow::changeeye);
     connect(ui->eye, &QPushButton::clicked, this, &MainWindow::on_eye_clicked);//两个connect实现小眼睛的点击信号和改变功能的
 
-    connect(ui->loginButton, &QPushButton::clicked, this, &MainWindow::on_loginButton_clicked);//登录按钮，放到了main函数
+    //connect(ui->loginButton, &QPushButton::clicked, this, &MainWindow::on_loginButton_clicked);//登录按钮，放到了main函数
 
     ui->loginButton->setStyleSheet(
         "QPushButton {"
@@ -85,6 +85,8 @@ void MainWindow::on_loginButton_clicked()
     query.exec(QString("select* from user where zhanghao = '%1' and mima = '%2'").arg(s1).arg(s2));
     if(query.next() == false){
         QMessageBox::warning(this, "ERROR", "The account or password is error.");//输入错误提示弹窗
+        ui->EditAccount->clear();
+        ui->EditPassword->clear();
         return;
     }
 

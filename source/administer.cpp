@@ -15,6 +15,8 @@ Administer::Administer(QWidget *parent)
 
     ui->find->setIcon(QIcon(":/image/find.png"));
 
+    //connect(ui->finishimport,&QPushButton::clicked,this,&Administer::on_finishimport_clicked);
+
     // ui->find->setStyleSheet(
     //     "QPushButton {"
     //     "    border-radius: 15px;"  // 设置圆角半径
@@ -211,17 +213,25 @@ void Administer::on_resetPassword_clicked()
 
 void Administer::on_finishimport_clicked()
 {
+    QSqlQuery query(user_db);
     QString s1=ui->EditName->text();
     QString s2=ui->EditAccount->text();
     QString s3=ui->EditPassword->text();
-/*
-    实
-    现
-    导
-    入
+    qDebug()<<"插入完成2333";
 
-  */
-
-    QMessageBox::about(this, "棒", "Successfully import account.");
+    query.exec(QString("select* from user where zhanghao = '%1'").arg(s2));
+    if(query.next() == false){
+        query.exec(QString("insert into user(zhanghao,mima) values('%1','%2')").arg(s2).arg(s3));
+        qDebug()<<"插入完成2333";
+        query.finish();
+        QMessageBox::about(this, "棒", "Successfully import account.");
+        ui->EditName->clear();
+        ui->EditAccount->clear();
+        ui->EditPassword->clear();
+        return ;
+    }
+    qDebug()<<"插入失败2333";
+    query.finish();
+    QMessageBox::about(this, "棒", "not Successfully import account.");
 }
 
