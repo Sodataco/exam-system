@@ -31,7 +31,11 @@ public:
 signals:
     void showcreatequestion();
     void showmain();
+
     void showpaper();
+
+
+    void showmanage();
 
 private slots:
     void receivelogin();
@@ -42,7 +46,11 @@ private slots:
 
     void on_Return1_clicked();
 
+
     void on_paper_clicked();
+
+    void on_manage_clicked();
+
 
 private:
     Ui::teacherwindow *ui;

@@ -16,6 +16,10 @@ teacherwindow::teacherwindow(QWidget *parent)
         connect(ui->judge,&QPushButton::clicked,this,&teacherwindow::on_judge_clicked);
 
 
+        connect(ui->manage,&QPushButton::clicked,this,&teacherwindow::on_manage_clicked);
+
+
+
         ui->createquestion->setStyleSheet("QPushButton {"
                                           "    border-radius: 15px;"       // 设置圆角半径
                                           "    border: 2px solid #8f8f91;" // 设置边框
@@ -55,7 +59,7 @@ teacherwindow::teacherwindow(QWidget *parent)
                                  "QPushButton:pressed {"
                                  "    background-color: #144a82;" // 按下时的背景颜色
                                  "}");
-        ui->pushButton_4->setStyleSheet("QPushButton {"
+        ui->manage->setStyleSheet("QPushButton {"
                                         "    border-radius: 15px;"       // 设置圆角半径
                                         "    border: 2px solid #8f8f91;" // 设置边框
                                         "    background-color: #2a82da;" // 设置背景颜色
@@ -137,6 +141,11 @@ void teacherwindow::on_createquestion_clicked()
     emit showcreatequestion();
 }
 
+void teacherwindow::on_manage_clicked()
+{
+    this->hide();
+    emit showmanage();
+}
 void teacherwindow::on_judge_clicked()
 {
     qDebug() << "12312";
