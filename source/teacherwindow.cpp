@@ -12,9 +12,8 @@ teacherwindow::teacherwindow(QWidget *parent)
         //页面控件和函数的连接
         connect(ui->Return1,&QPushButton::clicked,this,&teacherwindow::on_Return1_clicked);
         connect(ui->createquestion,&QPushButton::clicked,this,&teacherwindow::on_createquestion_clicked);
-        //connect(ui->Return1,&QPushButton::clicked,this,&teacherwindow::on_Return1_clicked);
+        connect(ui->paper,&QPushButton::clicked,this,&teacherwindow::on_paper_clicked);
         connect(ui->judge,&QPushButton::clicked,this,&teacherwindow::on_judge_clicked);
-        //connect(ui->Return1,&QPushButton::clicked,this,&teacherwindow::on_Return1_clicked);
 
 
         ui->createquestion->setStyleSheet("QPushButton {"
@@ -30,7 +29,7 @@ teacherwindow::teacherwindow(QWidget *parent)
                                           "QPushButton:pressed {"
                                           "    background-color: #144a82;" // 按下时的背景颜色
                                           "}");
-        ui->pushButton_2->setStyleSheet("QPushButton {"
+        ui->paper->setStyleSheet("QPushButton {"
                                         "    border-radius: 15px;"       // 设置圆角半径
                                         "    border: 2px solid #8f8f91;" // 设置边框
                                         "    background-color: #2a82da;" // 设置背景颜色
@@ -155,4 +154,11 @@ void teacherwindow::on_Return1_clicked()
 
 
 
+
+
+void teacherwindow::on_paper_clicked()
+{
+    this->hide();
+    emit showpaper();
+}
 

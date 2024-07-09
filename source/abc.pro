@@ -12,6 +12,7 @@ CONFIG += c++17
 SOURCES += \
     administer.cpp \
     changepassword.cpp \
+    combinepaper.cpp \
     main.cpp \
     mainwindow.cpp \
     student.cpp \
@@ -28,6 +29,7 @@ SOURCES += \
 HEADERS += \
     administer.h \
     changepassword.h \
+    combinepaper.h \
     mainwindow.h \
     student.h \
     studentchafen.h \
@@ -43,6 +45,7 @@ HEADERS += \
 FORMS += \
     administer.ui \
     changepassword.ui \
+    combinepaper.ui \
     mainwindow.ui \
     studentchafen.ui \
     studentexam.ui \

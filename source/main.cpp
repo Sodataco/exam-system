@@ -7,7 +7,7 @@
 #include"studentpreexam.h"
 #include"studentexam.h"
 #include"teacherquestion.h"
-
+#include"combinepaper.h"
 
 #include <QApplication>
 
@@ -26,6 +26,7 @@ int main(int argc, char *argv[])
     studentpreexam spe1;
     studentexam se1;
     teacherquestion tq;
+    combinePaper cbp;
 
     users u1;
 
@@ -53,7 +54,7 @@ int main(int argc, char *argv[])
     QObject::connect(&sw1,SIGNAL(showeaxm()),&spe1,SLOT(receivelogin()));
     QObject::connect(&spe1,SIGNAL(showexam()),&se1,SLOT(receivelogin()));
     QObject::connect(&tea1,SIGNAL(showcreatequestion()),&tq,SLOT(receivelogin()));
-
+    QObject::connect(&tea1,SIGNAL(showpaper()),&cbp,SLOT(receivelogin()));
 
 
     QObject::connect(&cha1,SIGNAL(showstudent()),&sw1,SLOT(receiveReturn()));
