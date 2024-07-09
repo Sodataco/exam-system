@@ -41,21 +41,6 @@ void Administer::receivelogin(){
 }
 
 
-//未使用
-void Administer::openSql(QSqlDatabase& db,const QString connectionName,const QString SQLName)
-{
-    if(QSqlDatabase::contains("qt_sql_default_connection"))
-        db = QSqlDatabase::database("qt_sql_default_connection");
-    else
-        db = QSqlDatabase::addDatabase("QSQLITE",connectionName);
-    db.setDatabaseName(SQLName+".db");
-    if(db.open()){
-        qDebug()<<SQLName+"_db数据库已打开";
-    }else{
-        QMessageBox::information(this,"警告",db.lastError().text(),QMessageBox::Yes | QMessageBox::No,QMessageBox::Yes);
-        return;
-    }
-}
 
 
 
@@ -133,11 +118,10 @@ void Administer::readAndStoreExcelData(const QString &filePath, QSqlDatabase &db
         QString username = cellValue.toString();
         QString password = "12345"; // 统一设置密码为 "12345"
 
-        // 插入数据到数据库
-        query.exec(QString("insert into user(zhanghao,mima) values('%1','%2')").arg(username).arg(password));
-        if (!query.exec()) {
-            qDebug() << "Error inserting into database:" << query.lastError().text();
-
+        query.exec(QString("select* from user where zhanghao = '%1'").arg(username));
+        if(query.next() == false){
+            query.exec(QString("insert into user(zhanghao,mima) values('%1','%2')").arg(username).arg(password));
+            //qDebug()<<"插入完成Administer";
         }
     }
 
