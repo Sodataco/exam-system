@@ -15,6 +15,10 @@ changePassword::changePassword(QWidget *parent)
     ui->newPassword->setPlaceholderText("新密码");
     ui->newPassword2->setPlaceholderText("再次确认");
 
+    ui->oldPasserword->setEchoMode(QLineEdit::Password);
+    ui->newPassword->setEchoMode(QLineEdit::Password);
+    ui->newPassword2->setEchoMode(QLineEdit::Password);
+
 }
 
 changePassword::~changePassword()
@@ -46,6 +50,7 @@ void changePassword::on_finish_clicked()
         QMessageBox::warning(this, "no！", "Please keep the old and new passwords consistent.");
         return;
     }
+
     //接下来弄数据库啥啥的
     if(ispass(s1,s2,user_db)){
         changePw(s1,s3,user_db);
@@ -92,6 +97,7 @@ bool changePassword::changePw(const QString &username, const QString &newPasswor
     query.finish();
     qDebug() << "update password:";
     return true;
+
 
 }
 

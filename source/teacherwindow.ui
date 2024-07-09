@@ -7,16 +7,82 @@
     <x>0</x>
     <y>0</y>
     <width>605</width>
-    <height>482</height>
+    <height>439</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
+  <widget class="QPushButton" name="judge">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>260</y>
+     <width>111</width>
+     <height>111</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>20</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>批改</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_2">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>190</x>
+     <y>100</y>
+     <width>111</width>
+     <height>111</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>20</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>组卷</string>
+   </property>
+   <property name="checkable">
+    <bool>false</bool>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="Return1">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>520</x>
+     <y>400</y>
+     <width>80</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>14</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>退出登录</string>
+   </property>
+   <property name="checkable">
+    <bool>false</bool>
+   </property>
+  </widget>
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>20</x>
+     <x>30</x>
      <y>10</y>
      <width>291</width>
      <height>61</height>
@@ -34,7 +100,7 @@
   <widget class="QPushButton" name="createquestion">
    <property name="geometry">
     <rect>
-     <x>30</x>
+     <x>40</x>
      <y>100</y>
      <width>111</width>
      <height>111</height>
@@ -49,46 +115,10 @@
     <string>题库</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_2">
-   <property name="geometry">
-    <rect>
-     <x>180</x>
-     <y>100</y>
-     <width>111</width>
-     <height>111</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>20</pointsize>
-    </font>
-   </property>
-   <property name="text">
-    <string>组卷</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="judge">
-   <property name="geometry">
-    <rect>
-     <x>30</x>
-     <y>260</y>
-     <width>111</width>
-     <height>111</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>20</pointsize>
-    </font>
-   </property>
-   <property name="text">
-    <string>批改</string>
-   </property>
-  </widget>
   <widget class="QPushButton" name="pushButton_4">
    <property name="geometry">
     <rect>
-     <x>180</x>
+     <x>190</x>
      <y>260</y>
      <width>111</width>
      <height>111</height>
@@ -102,23 +132,8 @@
    <property name="text">
     <string>成绩管理</string>
    </property>
-  </widget>
-  <widget class="QPushButton" name="Return">
-   <property name="geometry">
-    <rect>
-     <x>520</x>
-     <y>440</y>
-     <width>80</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>12</pointsize>
-    </font>
-   </property>
-   <property name="text">
-    <string>退出登录</string>
+   <property name="checkable">
+    <bool>false</bool>
    </property>
   </widget>
  </widget>

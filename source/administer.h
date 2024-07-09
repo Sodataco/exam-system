@@ -80,6 +80,10 @@ private slots:
 
     void on_Return_clicked();
 
+    void on_resetPassword_clicked();
+
+    void on_finishimport_clicked();
+
 private:
     Ui::Administer *ui;
 };

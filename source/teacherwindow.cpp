@@ -8,67 +8,67 @@ teacherwindow::teacherwindow(QWidget *parent)
     ui->setupUi(this);
     {
         ui->setupUi(this);
-        ui->createquestion->setStyleSheet(
-            "QPushButton {"
-            "    border-radius: 15px;"  // 设置圆角半径
-            "    border: 2px solid #8f8f91;"  // 设置边框
-            "    background-color: #2a82da;"  // 设置背景颜色
-            "    color: white;"  // 设置文字颜色
-            "    padding: 10px;"  // 设置内边距
-            "}"
-            "QPushButton:hover {"
-            "    background-color: #1e6bb8;"  // 悬停时的背景颜色
-            "}"
-            "QPushButton:pressed {"
-            "    background-color: #144a82;"  // 按下时的背景颜色
-            "}"
-            );
-        ui->pushButton_2->setStyleSheet(
-            "QPushButton {"
-            "    border-radius: 15px;"  // 设置圆角半径
-            "    border: 2px solid #8f8f91;"  // 设置边框
-            "    background-color: #2a82da;"  // 设置背景颜色
-            "    color: white;"  // 设置文字颜色
-            "    padding: 10px;"  // 设置内边距
-            "}"
-            "QPushButton:hover {"
-            "    background-color: #1e6bb8;"  // 悬停时的背景颜色
-            "}"
-            "QPushButton:pressed {"
-            "    background-color: #144a82;"  // 按下时的背景颜色
-            "}"
-            );
-        ui->judge->setStyleSheet(
-            "QPushButton {"
-            "    border-radius: 15px;"  // 设置圆角半径
-            "    border: 2px solid #8f8f91;"  // 设置边框
-            "    background-color: #2a82da;"  // 设置背景颜色
-            "    color: white;"  // 设置文字颜色
-            "    padding: 10px;"  // 设置内边距
-            "}"
-            "QPushButton:hover {"
-            "    background-color: #1e6bb8;"  // 悬停时的背景颜色
-            "}"
-            "QPushButton:pressed {"
-            "    background-color: #144a82;"  // 按下时的背景颜色
-            "}"
-            );
-        ui->pushButton_4->setStyleSheet(
-            "QPushButton {"
-            "    border-radius: 15px;"  // 设置圆角半径
-            "    border: 2px solid #8f8f91;"  // 设置边框
-            "    background-color: #2a82da;"  // 设置背景颜色
-            "    color: white;"  // 设置文字颜色
 
-            "}"
-            "QPushButton:hover {"
-            "    background-color: #1e6bb8;"  // 悬停时的背景颜色
-            "}"
-            "QPushButton:pressed {"
-            "    background-color: #144a82;"  // 按下时的背景颜色
-            "}"
-            );
+        //页面控件和函数的连接
+        connect(ui->Return1,&QPushButton::clicked,this,&teacherwindow::on_Return1_clicked);
+        connect(ui->createquestion,&QPushButton::clicked,this,&teacherwindow::on_createquestion_clicked);
+        //connect(ui->Return1,&QPushButton::clicked,this,&teacherwindow::on_Return1_clicked);
+        connect(ui->judge,&QPushButton::clicked,this,&teacherwindow::on_judge_clicked);
+        //connect(ui->Return1,&QPushButton::clicked,this,&teacherwindow::on_Return1_clicked);
 
+
+        ui->createquestion->setStyleSheet("QPushButton {"
+                                          "    border-radius: 15px;"       // 设置圆角半径
+                                          "    border: 2px solid #8f8f91;" // 设置边框
+                                          "    background-color: #2a82da;" // 设置背景颜色
+                                          "    color: white;"              // 设置文字颜色
+                                          "    padding: 10px;"             // 设置内边距
+                                          "}"
+                                          "QPushButton:hover {"
+                                          "    background-color: #1e6bb8;" // 悬停时的背景颜色
+                                          "}"
+                                          "QPushButton:pressed {"
+                                          "    background-color: #144a82;" // 按下时的背景颜色
+                                          "}");
+        ui->pushButton_2->setStyleSheet("QPushButton {"
+                                        "    border-radius: 15px;"       // 设置圆角半径
+                                        "    border: 2px solid #8f8f91;" // 设置边框
+                                        "    background-color: #2a82da;" // 设置背景颜色
+                                        "    color: white;"              // 设置文字颜色
+                                        "    padding: 10px;"             // 设置内边距
+                                        "}"
+                                        "QPushButton:hover {"
+                                        "    background-color: #1e6bb8;" // 悬停时的背景颜色
+                                        "}"
+                                        "QPushButton:pressed {"
+                                        "    background-color: #144a82;" // 按下时的背景颜色
+                                        "}");
+        ui->judge->setStyleSheet("QPushButton {"
+                                 "    border-radius: 15px;"       // 设置圆角半径
+                                 "    border: 2px solid #8f8f91;" // 设置边框
+                                 "    background-color: #2a82da;" // 设置背景颜色
+                                 "    color: white;"              // 设置文字颜色
+                                 "    padding: 10px;"             // 设置内边距
+                                 "}"
+                                 "QPushButton:hover {"
+                                 "    background-color: #1e6bb8;" // 悬停时的背景颜色
+                                 "}"
+                                 "QPushButton:pressed {"
+                                 "    background-color: #144a82;" // 按下时的背景颜色
+                                 "}");
+        ui->pushButton_4->setStyleSheet("QPushButton {"
+                                        "    border-radius: 15px;"       // 设置圆角半径
+                                        "    border: 2px solid #8f8f91;" // 设置边框
+                                        "    background-color: #2a82da;" // 设置背景颜色
+                                        "    color: white;"              // 设置文字颜色
+
+                                        "}"
+                                        "QPushButton:hover {"
+                                        "    background-color: #1e6bb8;" // 悬停时的背景颜色
+                                        "}"
+                                        "QPushButton:pressed {"
+                                        "    background-color: #144a82;" // 按下时的背景颜色
+                                        "}");
     }
 }
 
@@ -77,9 +77,11 @@ teacherwindow::~teacherwindow()
     delete ui;
 }
 
-void teacherwindow::receivelogin(){
+void teacherwindow::receivelogin()
+{
     this->show();
 }
+
 
 
 bool teacherwindow::derive_data_to_sql(QSqlDatabase& db){
@@ -96,6 +98,8 @@ bool teacherwindow::derive_data_to_sql(QSqlDatabase& db){
     query.finish();
     return true;
 }
+
+
 
 // 根据paper_id查询paper_name函数
 QString teacherwindow::getPaperName(int paperId,QSqlDatabase& db) {
@@ -127,8 +131,6 @@ QString teacherwindow::getPaperName(int paperId,QSqlDatabase& db) {
 
 
 
-
-
 //进入创建题库页面
 void teacherwindow::on_createquestion_clicked()
 {
@@ -136,16 +138,21 @@ void teacherwindow::on_createquestion_clicked()
     emit showcreatequestion();
 }
 
-//退出登录
-void teacherwindow::on_Return_clicked()
+void teacherwindow::on_judge_clicked()
 {
+    qDebug() << "12312";
+}
+
+void teacherwindow::on_Return1_clicked()
+{
+    qDebug()<<"123";
     this->hide();
     emit showmain();
 }
 
 
-void teacherwindow::on_judge_clicked()
-{
-    qDebug()<<"12312";
-}
+
+
+
+
 

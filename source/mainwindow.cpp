@@ -151,7 +151,17 @@ void MainWindow::changeeye(bool checked){
 void MainWindow::keyPressEvent(QKeyEvent *event) {
     if (event->key() == Qt::Key_Return || event->key() == Qt::Key_Enter) {
         on_loginButton_clicked();
-    } else {
+    }
+    else {
         QMainWindow::keyPressEvent(event);
     }
 }
+
+
+
+
+void MainWindow::on_commandLinkButton_clicked()
+{
+    QMessageBox::information(this, "忘记密码", "请联系管理员重置密码.");
+}
+

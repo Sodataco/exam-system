@@ -29,6 +29,7 @@ private slots:
 
     void on_exam_clicked();
 
+
 private:
     Ui::studentpreexam *ui;
 };
