@@ -2,7 +2,7 @@
 #define TEACHERWINDOW_H
 
 #include <QWidget>
-#include"paper.h"
+#include"user.h"
 
 namespace Ui {
 class teacherwindow;
@@ -16,6 +16,7 @@ public:
     explicit teacherwindow(QWidget *parent = nullptr);
 
     bool derive_data_to_sql(QSqlDatabase& db);
+    QString getPaperName(int paperId,QSqlDatabase& db);
 
 
 
