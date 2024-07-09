@@ -28,8 +28,11 @@
 
 #include <QFile>
 #include <QFileDialog>
+<<<<<<< Updated upstream
 #include <QAxObject>
 
+=======
+>>>>>>> Stashed changes
 #include <user.h>
 
 

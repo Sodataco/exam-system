@@ -78,6 +78,7 @@ bool Administer::derive_data_to_sql(QSqlDatabase& db){
     return false;
 }
 
+<<<<<<< Updated upstream
 
 
 
@@ -160,6 +161,8 @@ void Administer::on_importExcel_clicked()
 }
 
 
+=======
+>>>>>>> Stashed changes
 int Administer::getRecordCount(const QString &tableName, QSqlDatabase &db) {
     QSqlQuery query(db);
     QString sqlQuery = QString("SELECT COUNT(*) FROM %1;").arg(tableName);
@@ -178,7 +181,6 @@ int Administer::getRecordCount(const QString &tableName, QSqlDatabase &db) {
         return -1; // 返回 -1 表示查询出错
     }
 }
-
 
 
 

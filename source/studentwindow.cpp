@@ -1,5 +1,6 @@
 #include "studentwindow.h"
 #include "ui_studentwindow.h"
+#include <QDebug>
 
 studentwindow::studentwindow(QWidget *parent)
     : QWidget(parent)
