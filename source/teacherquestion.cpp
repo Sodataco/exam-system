@@ -60,11 +60,31 @@ void teacherquestion::on_importSelectquestion_clicked()
     bool bC=ui->selectC->isChecked();
     bool bD=ui->selectD->isChecked();
 
-    //导入题目到数据库功能(待办）
+    //导入题目到数据库功能
+
+    QSqlQuery query(user_db);
+    // 使用 INSERT INTO 语句插入选择题数据
+    query.prepare("INSERT INTO choice_questions (paper_id, question_text, option_a, option_b, option_c, option_d, answer) "
+                  "VALUES (:paper_id, :question_text, :option_a, :option_b, :option_c, :option_d, :answer)");
+    query.bindValue(":paper_id", 1);
+    query.bindValue(":question_text", sQ);
+    query.bindValue(":option_a", sA);
+    query.bindValue(":option_b", sB);
+    query.bindValue(":option_c", sC);
+    query.bindValue(":option_d", sD);
+    query.bindValue(":answer", bA*1+bB*2+bC*4+bD*8);
+
+    if (!query.exec()) {
+        qDebug() << "Error inserting choice question:" << query.lastError().text();
+    } else {
+        qDebug() << "Choice question inserted successfully.";
+    }
+
+
 
 
     //清空输入框的内容方便继续导入题目
-    ui->inputQ->clear();
+    ui->inputsQ->clear();
     ui->inputA->clear();
     ui->inputB->clear();
     ui->inputC->clear();

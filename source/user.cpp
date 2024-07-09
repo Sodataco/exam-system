@@ -25,6 +25,19 @@ void users::build(){
                "question_id INTEGER PRIMARY KEY AUTOINCREMENT,"
                "paper_id INTEGER NOT NULL,"
                "question_text TEXT NOT NULL,"
+               "answer_text TEXT NOT NULL,"
+               "FOREIGN KEY (paper_id) REFERENCES papers(paper_id));");
+
+
+    query.exec("CREATE TABLE IF NOT EXISTS choice_questions ("
+               "question_id INTEGER PRIMARY KEY AUTOINCREMENT,"
+               "paper_id INTEGER NOT NULL,"
+               "question_text TEXT NOT NULL,"
+               "option_a TEXT,"
+               "option_b TEXT,"
+               "option_c TEXT,"
+               "option_d TEXT,"
+               "answer INTEGER NOT NULL,"
                "FOREIGN KEY (paper_id) REFERENCES papers(paper_id));");
 
 

@@ -2,6 +2,7 @@
 #define TEACHERQUESTION_H
 
 #include <QWidget>
+#include "user.h"
 
 namespace Ui {
 class teacherquestion;
