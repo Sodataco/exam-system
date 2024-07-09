@@ -82,6 +82,10 @@ void MainWindow::on_loginButton_clicked()
 
     QSqlQuery query(user_db);
     qDebug()<<"登录账号 = "<<s1<<"  登录密码 = "<<s2;
+
+    user1_name=s1;
+    qDebug()<<user1_name;
+
     query.exec(QString("select* from user where zhanghao = '%1' and mima = '%2'").arg(s1).arg(s2));
     if(query.next() == false){
         QMessageBox::warning(this, "ERROR", "The account or password is error.");//输入错误提示弹窗

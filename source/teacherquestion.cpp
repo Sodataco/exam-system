@@ -102,7 +102,21 @@ void teacherquestion::on_importBlankquestion_clicked()
     QString sQ=ui->inputbQ->toPlainText();//题目内容
     QString answer=ui->blankAnswer->toPlainText();
 
-    //导入试题
+    QSqlQuery query(user_db);
+
+    // 使用 INSERT INTO 语句插入填空题数据
+    query.prepare("INSERT INTO tk_questions (paper_id, question_text, answer_text) "
+                  "VALUES (:paper_id, :question_text, :answer_text)");
+    query.bindValue(":paper_id", 1);
+    query.bindValue(":question_text", sQ);
+    query.bindValue(":answer_text", answer);
+
+    if (!query.exec()) {
+        qDebug() << "Error inserting fill-in-the-blank question:" << query.lastError().text();
+    } else {
+        qDebug() << "Fill-in-the-blank question inserted successfully.";
+    }
+
 
 
     //
@@ -117,6 +131,20 @@ void teacherquestion::on_importAnswerquestion_clicked()
     QString answer=ui->answerAnswer->toPlainText();
 
     //导入试题
+    QSqlQuery query(user_db);
+
+    // 使用 INSERT INTO 语句插入数据到 questions 表
+    query.prepare("INSERT INTO questions (paper_id, question_text, answer_text) "
+                  "VALUES (:paper_id, :question_text, :answer_text)");
+    query.bindValue(":paper_id", 1);
+    query.bindValue(":question_text", sQ);
+    query.bindValue(":answer_text", answer);
+
+    if (!query.exec()) {
+        qDebug() << "Error inserting question:" << query.lastError().text();
+    } else {
+        qDebug() << "Question inserted successfully.";
+    }
 
 
     //

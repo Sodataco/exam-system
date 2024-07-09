@@ -4,6 +4,7 @@
 #include <QWidget>
 #include <QPainter>
 #include <QFont>
+#include "user.h"
 
 namespace Ui {
 class studentwindow;
@@ -37,6 +38,8 @@ private slots:
     void on_changePassword_clicked();
 
     void on_examBtn_clicked();
+    QString getUsername( QString username);
+
 
 private:
     Ui::studentwindow *ui;

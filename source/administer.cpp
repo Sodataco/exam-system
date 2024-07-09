@@ -63,14 +63,14 @@ bool Administer::derive_data_to_sql(QSqlDatabase& db){
     QSqlQuery query(db);
     QString s1="121";
     QString s2="233";
-    QString s4="111";
+    QString s3="无名";
 
 
    // query.exec(QString("insert into user(zhanghao,mima) values('%1','%2')").arg(s1).arg(s2));
 
     query.exec(QString("select* from user where zhanghao = '%1'").arg(s1));
     if(query.next() == false){
-        query.exec(QString("insert into user(zhanghao,mima) values('%1','%2')").arg(s1).arg(s2));
+        query.exec(QString("insert into user(zhanghao,mima,name) values('%1','%2','%3')").arg(s1).arg(s2).arg(s3));
          qDebug()<<"插入完成Administer";
         return true;
     }

@@ -82,7 +82,12 @@ void studentwindow::paintEvent(QPaintEvent *){
     font.setPointSize(13);
 
     paint->drawText(350,180,"姓名:");
+    //测试
+    qDebug()<<user1_name<<"11111";
+    paint->drawText(400,180,getUsername(user1_name));
+
     paint->drawText(350,205,"学号:");
+
     paint->drawText(350,230,"平均成绩:");//文字绘制
 
     paint->end();
@@ -112,6 +117,25 @@ void studentwindow::on_examBtn_clicked()
     emit showeaxm();
 }
 
+QString studentwindow::getUsername( QString username) {
+    QSqlQuery query(user_db);
 
+    // 使用 SELECT 语句根据账号查询密码
+    query.prepare("SELECT name FROM user WHERE zhanghao = :zhanghao");
+    query.bindValue(":zhanghao", username);
+
+    if (!query.exec()) {
+        qDebug() << "Error querying password:" << query.lastError().text();
+        return QString();
+    }
+
+    if (query.next()) {
+        return query.value(0).toString();
+    } else {
+        qDebug() << "No password found for username:" << username;
+        return QString();
+    }
+
+}
 
 
