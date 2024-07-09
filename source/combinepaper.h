@@ -15,9 +15,15 @@ public:
     explicit combinePaper(QWidget *parent = nullptr);
     ~combinePaper();
 
+
+signals:
+    void showteacher();
+
 private slots:
     void receivelogin();
 
+
+    void on_finish_clicked();
 
 private:
     Ui::combinePaper *ui;

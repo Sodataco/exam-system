@@ -17,3 +17,10 @@ combinePaper::~combinePaper()
 void combinePaper::receivelogin(){
     this->show();
 }
+
+void combinePaper::on_finish_clicked()
+{
+    this->hide();
+    emit showteacher();
+}
+

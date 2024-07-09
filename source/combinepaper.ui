@@ -70,7 +70,7 @@
   <widget class="QDateTimeEdit" name="dateTimeEdit">
    <property name="geometry">
     <rect>
-     <x>210</x>
+     <x>240</x>
      <y>270</y>
      <width>194</width>
      <height>22</height>
@@ -95,12 +95,12 @@
     <rect>
      <x>80</x>
      <y>300</y>
-     <width>81</width>
+     <width>131</width>
      <height>21</height>
     </rect>
    </property>
    <property name="text">
-    <string>考试时长</string>
+    <string>考试时长(时:分)</string>
    </property>
   </widget>
   <widget class="QLabel" name="label_6">
@@ -108,7 +108,7 @@
     <rect>
      <x>80</x>
      <y>330</y>
-     <width>121</width>
+     <width>151</width>
      <height>21</height>
     </rect>
    </property>
@@ -119,7 +119,7 @@
   <widget class="QTimeEdit" name="timeEdit">
    <property name="geometry">
     <rect>
-     <x>210</x>
+     <x>240</x>
      <y>300</y>
      <width>111</width>
      <height>21</height>
@@ -129,9 +129,9 @@
   <widget class="QCheckBox" name="checkBox">
    <property name="geometry">
     <rect>
-     <x>210</x>
+     <x>240</x>
      <y>330</y>
-     <width>141</width>
+     <width>151</width>
      <height>20</height>
     </rect>
    </property>
@@ -155,9 +155,9 @@
   <widget class="QCheckBox" name="checkBox_2">
    <property name="geometry">
     <rect>
-     <x>210</x>
+     <x>240</x>
      <y>360</y>
-     <width>141</width>
+     <width>151</width>
      <height>20</height>
     </rect>
    </property>
@@ -181,9 +181,9 @@
   <widget class="QCheckBox" name="checkBox_3">
    <property name="geometry">
     <rect>
-     <x>210</x>
+     <x>240</x>
      <y>390</y>
-     <width>141</width>
+     <width>151</width>
      <height>20</height>
     </rect>
    </property>
