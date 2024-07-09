@@ -21,15 +21,13 @@ int main(int argc, char *argv[])
     Administer ad1;
     studentchafen cha1;
     changePassword cP1;
-<<<<<<< Updated upstream
+
     studentpreexam spe1;
     studentexam se1;
     teacherquestion tq;
-    user u1;
-=======
+
     users u1;
 
->>>>>>> Stashed changes
 
     w.setFixedSize(560,300);
     w.show();
@@ -63,7 +61,7 @@ int main(int argc, char *argv[])
     QObject::connect(&ad1,SIGNAL(showmain()),&w,SLOT(receiveloginagain()));
     QObject::connect(&sw1,SIGNAL(showmain()),&w,SLOT(receiveloginagain()));
 
-    QObject::connect(&tea1,SIGNAL(showmain()),&w,SLOT(receiveloginagain));
+    QObject::connect(&tea1,SIGNAL(showmain()),&w,SLOT(receiveloginagain()));
 
 
     ad1.derive_data_to_sql(user_db);//测试函数

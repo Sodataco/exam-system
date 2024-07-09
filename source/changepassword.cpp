@@ -1,6 +1,7 @@
 #include "changepassword.h"
 #include "ui_changepassword.h"
 
+
 changePassword::changePassword(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::changePassword)
@@ -33,7 +34,7 @@ void changePassword::on_Return_clicked()
     emit showstu();
 }
 
-<<<<<<< Updated upstream
+
 
 void changePassword::on_finish_clicked()
 {
@@ -46,15 +47,16 @@ void changePassword::on_finish_clicked()
         return;
     }
     //接下来弄数据库啥啥的
-    if(1){//数据库的判断巴拉巴拉)
+    if(ispass(s1,s2,user_db)){
+        changePw(s1,s3,user_db);
         this->hide();
         emit showstu();
-
     }
 
+}
 
 
-=======
+
 bool changePassword::ispass(const QString &username, const QString &Password,QSqlDatabase &db){
     QString s1=username;
     QString s2=Password;
@@ -90,6 +92,6 @@ bool changePassword::changePw(const QString &username, const QString &newPasswor
     query.finish();
     qDebug() << "update password:";
     return true;
->>>>>>> Stashed changes
+
 }
 

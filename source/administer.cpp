@@ -74,32 +74,29 @@ void Administer::paintEvent(QPaintEvent *){
 
 bool Administer::derive_data_to_sql(QSqlDatabase& db){
     QSqlQuery query(db);
-    QString s1="111";
-    QString s2="111";
+    QString s1="121";
+    QString s2="233";
     QString s4="111";
 
-    query.exec(QString("insert into user(zhanghao,mima) values('%1','%2')").arg(s1).arg(s2));
-    query.exec(QString("insert into user(zhanghao,mima) values('%1','%2')").arg("11").arg("11"));
 
-    qDebug()<<"插入完成Administer";
-    query.finish();
-    return true;
+   // query.exec(QString("insert into user(zhanghao,mima) values('%1','%2')").arg(s1).arg(s2));
+
+    query.exec(QString("select* from user where zhanghao = '%1'").arg(s1));
+    if(query.next() == false){
+        query.exec(QString("insert into user(zhanghao,mima) values('%1','%2')").arg(s1).arg(s2));
+         qDebug()<<"插入完成Administer";
+        return true;
+    }
+
+    return false;
 }
 
 
 
-<<<<<<< Updated upstream
 
 
 
-void Administer::readAndStoreExcelData(const QString &filePath, QSqlDatabase &db) {
-    /*QXlsx::Document xlsx(filePath);
-    if (xlsx.workbook()->sheetCount() > 0) {
-        QXlsx::Worksheet *sheet = dynamic_cast<QXlsx::Worksheet*>(xlsx.workbook()->sheet(0));
-        if (!sheet) {
-            qDebug() << "Failed to get the first sheet.";
-            return;
-=======
+
 void Administer::readAndStoreExcelData(const QString &filePath, QSqlDatabase &db) {
     // 打开Excel应用程序
     QAxObject excel("Excel.Application");
@@ -140,42 +137,10 @@ void Administer::readAndStoreExcelData(const QString &filePath, QSqlDatabase &db
         query.exec(QString("insert into user(zhanghao,mima) values('%1','%2')").arg(username).arg(password));
         if (!query.exec()) {
             qDebug() << "Error inserting into database:" << query.lastError().text();
->>>>>>> Stashed changes
+
         }
-=======
-// void Administer::readAndStoreExcelData(const QString &filePath, QSqlDatabase &db) {
-//     QXlsx::Document xlsx(filePath);
-//     if (xlsx.workbook()->sheetCount() > 0) {
-//         QXlsx::Worksheet *sheet = dynamic_cast<QXlsx::Worksheet*>(xlsx.workbook()->sheet(0));
-//         if (!sheet) {
-//             qDebug() << "Failed to get the first sheet.";
-//             return;
-//         }
->>>>>>> Stashed changes
-
-<<<<<<< Updated upstream
-//         int rowCount = sheet->dimension().rowCount();
-//         QSqlQuery query(db);
-
-//         for (int row = 1; row <= rowCount; ++row) {
-//             QXlsx::Cell *cell = sheet->cellAt(row, 1);
-//             if (cell) {
-//                 QString username = cell->value().toString();
-//                 QString password = "12345";
-
-<<<<<<< Updated upstream
-                query.exec(QString("insert into user(zhanghao,mima) values('%1','%2')").arg(username).arg(password));
-                if (!query.exec()) {
-                    qDebug() << "Error inserting into database:" << query.lastError().text();
-                }
-            }
-        }
-    } else {
-        qDebug() << "Failed to load the Excel file.";
-    }*/
-=======
-        delete cell;
     }
+
 
     // 关闭Excel
     workbook->dynamicCall("Close()");
@@ -183,33 +148,21 @@ void Administer::readAndStoreExcelData(const QString &filePath, QSqlDatabase &db
     delete workbook;
     delete workbooks;
 
->>>>>>> Stashed changes
 }
 
-//                 query.exec(QString("insert into user(zhanghao,mima) values('%1','%2')").arg(username).arg(password));
-//                 if (!query.exec()) {
-//                     qDebug() << "Error inserting into database:" << query.lastError().text();
-//                 }
-//             }
-//         }
-//     } else {
-//         qDebug() << "Failed to load the Excel file.";
-//     }
-// }
 
 
 
 
 void Administer::on_importExcel_clicked()
 {
-    // //实现获取文件路径的功能
-    // QString filePath = QFileDialog::getOpenFileName(nullptr, "选择文件", QDir::homePath(), "Excel 文件 (*.xlsx *.xls)");
+    //实现获取文件路径的功能
+     QString filePath = QFileDialog::getOpenFileName(nullptr, "选择文件", QDir::homePath(), "Excel 文件 (*.xlsx *.xls)");
 
-    // if(!filePath.isEmpty()){
-    //     this->readAndStoreExcelData(filePath,user_db);
-    // }
+     if(!filePath.isEmpty())
+         this->readAndStoreExcelData(filePath,user_db);
 
-    // QMessageBox::about(this, "棒", "Successfully import Excel.");
+    QMessageBox::about(this, "棒", "Successfully import Excel.");
 
 }
 
@@ -221,11 +174,13 @@ int Administer::getRecordCount(const QString &tableName, QSqlDatabase &db) {
     if (query.exec(sqlQuery)) {
         if (query.next()) {
             return query.value(0).toInt();
-        } else {
+        }
+        else {
             qDebug() << "No records found in table" << tableName;
             return 0; // 返回记录数为 0
         }
-    } else {
+    }
+    else {
         qDebug() << "Query execution error:" << query.lastError().text();
         return -1; // 返回 -1 表示查询出错
     }

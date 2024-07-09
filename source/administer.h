@@ -2,10 +2,6 @@
 #define ADMINISTER_H
 
 #include <QWidget>
-<<<<<<< Updated upstream
-//#include <QtXlsx>
-=======
->>>>>>> Stashed changes
 
 #include <QPainter>
 #include <QAction>
@@ -33,10 +29,7 @@
 #include <QFile>
 #include <QFileDialog>
 #include <QAxObject>
-<<<<<<< Updated upstream
-=======
 
->>>>>>> Stashed changes
 #include <user.h>
 
 

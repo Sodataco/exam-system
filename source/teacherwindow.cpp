@@ -143,12 +143,9 @@ void teacherwindow::on_Return_clicked()
     emit showmain();
 }
 
-<<<<<<< Updated upstream
 
 void teacherwindow::on_judge_clicked()
 {
     qDebug()<<"12312";
 }
 
-=======
->>>>>>> Stashed changes

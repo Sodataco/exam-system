@@ -16,7 +16,7 @@ void users::build(){
     //创建数据表
     QSqlQuery query(user_db);
 
-    query.exec("create table user(zhanghao text,mima text)");
+    query.exec("create table user(zhanghao text UNIQUE,mima text)");
 
     query.exec("CREATE TABLE papers(paper_id INTEGER PRIMARY KEY AUTOINCREMENT,paper_name TEXT NOT NULL)");
 

@@ -8,6 +8,7 @@
 #include <QSqlDatabase>
 #include <QSqlQuery>
 #include <QSqlError>
+#include "user.h"
 
 namespace Ui {
 class changePassword;
