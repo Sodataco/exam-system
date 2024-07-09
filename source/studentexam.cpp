@@ -56,46 +56,205 @@ void studentexam::onOptionClicked()
 
 void studentexam::onRadioButtonClicked()
 {
-    QRadioButton *radioButton = qobject_cast<QRadioButton*>(sender());
-    if (radioButton) {
-        int index = ui->verticalLayout_2->indexOf(radioButton);
-        currentQuestion = index;  // 切换到选中的题目
-        ui->textBrowser_2->setText(QString("这里显示第 %1 题内容").arg(index + 1));
+    for (int i = 1; i <= 25; ++i) {
+        QString buttonName = QString("radioButton_%1").arg(i);
+        QRadioButton *radioButton = findChild<QRadioButton *>(buttonName);
+
+        if (radioButton && radioButton->isChecked()) {
+            int index = i - 1;  // 题目索引从0开始，所以需要减1
+            currentQuestion = index;  // 更新当前选中的题目索引
+            ui->textBrowser_2->setText(QString("这里显示第 %1 题内容").arg(index + 1));
+            break;  // 如果找到被选中的单选按钮，跳出循环
+        }
     }
 }
 
+
 void studentexam::onPreviousClicked()
 {
-    // 恢复当前题目的单选按钮为原色
-       if (currentQuestion >= 0 && currentQuestion < totalQuestions) {
-           radioButtons[currentQuestion]->setStyleSheet("");  // 恢复原色
+    if (currentQuestion > 0 && currentQuestion < totalQuestions) {
+    currentQuestion=currentQuestion-1;
+    ui->textBrowser_2->setText(QString("这里显示第 %1 题内容").arg(currentQuestion + 1));  // 在文本浏览器中显示上一题的内容
+    QRadioButton *buttonToClick = nullptr;
+    switch (currentQuestion) {
+        case 0:
+            buttonToClick = ui->radioButton_1;
+            break;
+        case 1:
+            buttonToClick = ui->radioButton_2;
+            break;
+        case 2:
+            buttonToClick = ui->radioButton_3;
+            break;
+        case 3:
+            buttonToClick = ui->radioButton_4;
+            break;
+        case 4:
+            buttonToClick = ui->radioButton_5;
+            break;
+        case 5:
+            buttonToClick = ui->radioButton_6;
+            break;
+        case 6:
+            buttonToClick = ui->radioButton_7;
+            break;
+        case 7:
+            buttonToClick = ui->radioButton_8;
+            break;
+        case 8:
+            buttonToClick = ui->radioButton_9;
+            break;
+        case 9:
+            buttonToClick = ui->radioButton_10;
+            break;
+        case 10:
+            buttonToClick = ui->radioButton_11;
+            break;
+        case 11:
+            buttonToClick = ui->radioButton_12;
+            break;
+        case 12:
+            buttonToClick = ui->radioButton_13;
+            break;
+        case 13:
+            buttonToClick = ui->radioButton_14;
+            break;
+        case 14:
+            buttonToClick = ui->radioButton_15;
+            break;
+        case 15:
+            buttonToClick = ui->radioButton_16;
+            break;
+        case 16:
+            buttonToClick = ui->radioButton_17;
+            break;
+        case 17:
+            buttonToClick = ui->radioButton_18;
+            break;
+        case 18:
+            buttonToClick = ui->radioButton_19;
+            break;
+        case 19:
+            buttonToClick = ui->radioButton_20;
+            break;
+        case 20:
+            buttonToClick = ui->radioButton_21;
+            break;
+        case 21:
+            buttonToClick = ui->radioButton_22;
+            break;
+        case 22:
+            buttonToClick = ui->radioButton_23;
+            break;
+        case 23:
+            buttonToClick = ui->radioButton_24;
+            break;
+        case 24:
+            buttonToClick = ui->radioButton_25;
+            break;
+           default:
+               // 处理超出范围的情况，这里可以选择不做任何操作或者抛出异常
+               break;
        }
 
-       // 切换到上一题
-       if (currentQuestion > 0) {
-           currentQuestion--;  // 更新当前题目编号为上一题
-           ui->textBrowser_2->setText(QString("这里显示第 %1 题内容").arg(currentQuestion + 1));  // 在文本浏览器中显示上一题的内容
-
-           // 更新对应的单选按钮为选中状态
-           radioButtons[currentQuestion]->setStyleSheet("background-color: yellow;");  // 设置选中的单选按钮背景色为黄色（示例）
+       if (buttonToClick) {
+           buttonToClick->setChecked(true);  // 设置按钮为选中状态，模拟点击操作
        }
+    }
 }
+
 
 void studentexam::onNextClicked()
 {
-    // 恢复当前题目的单选按钮为原色
-        if (currentQuestion >= 0 && currentQuestion < totalQuestions) {
-            radioButtons[currentQuestion]->setStyleSheet("");  // 恢复原色
-        }
+    if (currentQuestion > 0 && currentQuestion < totalQuestions) {
+    currentQuestion=currentQuestion+1;
+    ui->textBrowser_2->setText(QString("这里显示第 %1 题内容").arg(currentQuestion + 1));  // 在文本浏览器中显示下一题的内容
+    QRadioButton *buttonToClick = nullptr;
+    switch (currentQuestion) {
+        case 0:
+            buttonToClick = ui->radioButton_1;
+            break;
+        case 1:
+            buttonToClick = ui->radioButton_2;
+            break;
+        case 2:
+            buttonToClick = ui->radioButton_3;
+            break;
+        case 3:
+            buttonToClick = ui->radioButton_4;
+            break;
+        case 4:
+            buttonToClick = ui->radioButton_5;
+            break;
+        case 5:
+            buttonToClick = ui->radioButton_6;
+            break;
+        case 6:
+            buttonToClick = ui->radioButton_7;
+            break;
+        case 7:
+            buttonToClick = ui->radioButton_8;
+            break;
+        case 8:
+            buttonToClick = ui->radioButton_9;
+            break;
+        case 9:
+            buttonToClick = ui->radioButton_10;
+            break;
+        case 10:
+            buttonToClick = ui->radioButton_11;
+            break;
+        case 11:
+            buttonToClick = ui->radioButton_12;
+            break;
+        case 12:
+            buttonToClick = ui->radioButton_13;
+            break;
+        case 13:
+            buttonToClick = ui->radioButton_14;
+            break;
+        case 14:
+            buttonToClick = ui->radioButton_15;
+            break;
+        case 15:
+            buttonToClick = ui->radioButton_16;
+            break;
+        case 16:
+            buttonToClick = ui->radioButton_17;
+            break;
+        case 17:
+            buttonToClick = ui->radioButton_18;
+            break;
+        case 18:
+            buttonToClick = ui->radioButton_19;
+            break;
+        case 19:
+            buttonToClick = ui->radioButton_20;
+            break;
+        case 20:
+            buttonToClick = ui->radioButton_21;
+            break;
+        case 21:
+            buttonToClick = ui->radioButton_22;
+            break;
+        case 22:
+            buttonToClick = ui->radioButton_23;
+            break;
+        case 23:
+            buttonToClick = ui->radioButton_24;
+            break;
+        case 24:
+            buttonToClick = ui->radioButton_25;
+            break;
+           default:
+               // 处理超出范围的情况，这里可以选择不做任何操作或者抛出异常
+               break;
+       }
 
-        // 切换到下一题
-        if (currentQuestion < totalQuestions - 1) {
-            currentQuestion++;  // 更新当前题目编号为下一题
-            ui->textBrowser_2->setText(QString("这里显示第 %1 题内容").arg(currentQuestion + 1));  // 在文本浏览器中显示下一题的内容
-
-            // 更新对应的单选按钮为选中状态
-            radioButtons[currentQuestion]->setStyleSheet("background-color: yellow;");  // 设置选中的单选按钮背景色为黄色（示例）
-        }
+       if (buttonToClick) {
+           buttonToClick->setChecked(true);  // 设置按钮为选中状态，模拟点击操作
+       }
+    }
 }
 
 void studentexam::onExitClicked()
