@@ -37,11 +37,6 @@ void teacherquestion::on_questionAnswer_clicked()
 }
 
 
-void teacherquestion::on_importquestion_clicked()
-{
-
-}
-
 
 
 void teacherquestion::on_Return_clicked()

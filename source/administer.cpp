@@ -213,7 +213,7 @@ void Administer::on_resetPassword_clicked()
 
 void Administer::on_finishimport_clicked()
 {
-     QSqlQuery query(user_db);
+    QSqlQuery query(user_db);
     QString s1=ui->EditName->text();
     QString s2=ui->EditAccount->text();
     QString s3=ui->EditPassword->text();
@@ -224,7 +224,10 @@ void Administer::on_finishimport_clicked()
         query.exec(QString("insert into user(zhanghao,mima) values('%1','%2')").arg(s2).arg(s3));
         qDebug()<<"插入完成2333";
         query.finish();
-          QMessageBox::about(this, "棒", "Successfully import account.");
+        QMessageBox::about(this, "棒", "Successfully import account.");
+        ui->EditName->clear();
+        ui->EditAccount->clear();
+        ui->EditPassword->clear();
         return ;
     }
     qDebug()<<"插入失败2333";
