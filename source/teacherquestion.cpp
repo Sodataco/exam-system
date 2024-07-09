@@ -48,12 +48,23 @@ void teacherquestion::on_Return_clicked()
 //导入选择题
 void teacherquestion::on_importSelectquestion_clicked()
 {
+    QString sQ=ui->inputsQ->toPlainText();//题目内容
+
+    QString sA=ui->inputA->toPlainText();
+    QString sB=ui->inputB->toPlainText();
+    QString sC=ui->inputC->toPlainText();
+    QString sD=ui->inputD->toPlainText();
+
+    bool bA=ui->selectA->isChecked();
+    bool bB=ui->selectB->isChecked();
+    bool bC=ui->selectC->isChecked();
+    bool bD=ui->selectD->isChecked();
 
     //导入题目到数据库功能(待办）
 
 
     //清空输入框的内容方便继续导入题目
-    ui->selectQ->clear();
+    ui->inputQ->clear();
     ui->inputA->clear();
     ui->inputB->clear();
     ui->inputC->clear();
