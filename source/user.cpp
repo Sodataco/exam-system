@@ -48,6 +48,10 @@ void users::build(){
                "FOREIGN KEY (paper_id) REFERENCES papers(paper_id));");
 
 
+
+
+
+
     qDebug()<<"user_db数据库表已创建";
 
     query.finish();

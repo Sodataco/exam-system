@@ -38,7 +38,7 @@ private slots:
     void on_changePassword_clicked();
 
     void on_examBtn_clicked();
-    QString getUsername( QString username);
+    QString getUsername(const QString &username);
 
 
 private:
