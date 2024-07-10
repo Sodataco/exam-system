@@ -63,6 +63,10 @@ private slots:
 
     void on_commandLinkButton_clicked();
 
+    void on_zuixiaohua_clicked();
+
+    void on_tuichu_clicked();
+
 private:
     Ui::MainWindow *ui;
 };

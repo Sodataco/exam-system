@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include"user.h"
+#include<QMovie>
 
 
 MainWindow::MainWindow(QWidget *parent)
@@ -8,6 +9,18 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
+    //背景动画
+    QMovie * movie = new QMovie(this);
+    movie->setFileName(":/image/background.gif");
+    movie->start();
+    ui->top->setMovie(movie);
+
+    //去掉边框
+    setWindowFlags(Qt::WindowType::FramelessWindowHint);
+    //背景透明
+    setAttribute(Qt::WA_TranslucentBackground);
+
 
     //ui界面的各种调整
     ui->EditAccount->setStyleSheet("QLineEdit { font-size: 16px; } QLineEdit::placeholder { color: gray; font-size: 8px; }");
@@ -168,3 +181,13 @@ void MainWindow::on_commandLinkButton_clicked()
     QMessageBox::information(this, "忘记密码", "请联系管理员重置密码.");
 }
 
+
+void MainWindow::on_zuixiaohua_clicked()
+{
+    this->showMinimized();//最小化
+}
+
+void MainWindow::on_tuichu_clicked()
+{
+    this->close();//退出
+}
