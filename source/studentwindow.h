@@ -18,12 +18,14 @@ public:
     void paintEvent(QPaintEvent*);
     QPainter *paint;
     explicit studentwindow(QWidget *parent = nullptr);
+    QString getUsername(const  QString &username);
     ~studentwindow();
 
 signals:
     void showmain();
     void showscore();
     void showchangePassword();
+
     void showeaxm();
 
 

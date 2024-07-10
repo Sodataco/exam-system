@@ -89,34 +89,51 @@ void combinePaper::on_Refresh_clicked()
     // 清空当前列表
     ui->questionList->clear();
 
-    for(int i = 0; i < 10; i++)
-    {
-        QListWidgetItem *item = new QListWidgetItem();
-        QCheckBox *checkBox= new QCheckBox ();
-        checkBox->setText("一加一等于几");
-        ui->questionList->addItem(item);//在ListWidget中添加一个条目
-        ui->questionList->setItemWidget(item, checkBox);//在这个条目中放置CheckBox
-        //icheckBox->setText(QString("checkBox_%1").arg(i));
-
-        //把所有checkBox的信号都引向同一个槽
-        connect(checkBox, SIGNAL(stateChanged(int)), this, SLOT(anyStateChanged()));
-    }
-
-
-
     // 执行数据库查询
-    /*
-    QSqlQuery query;
-    if (query.exec("select exam FROM exams")) {
+
+    QSqlQuery   query(user_db);
+    //选择
+    if (query.exec("select question_text FROM choice_questions")) {
         while (query.next()) {
             QString examName = query.value(0).toString();
-            // 将考试场次添加到QListWidget中
-            examList->addItem(examName);
+            QListWidgetItem *item = new QListWidgetItem();
+            QCheckBox *checkBox= new QCheckBox ();
+            checkBox->setText(examName);
+            ui->questionList->addItem(item);//在ListWidget中添加一个条目
+            ui->questionList->setItemWidget(item, checkBox);//在这个条目中放置CheckBox
+
+
         }
     } else {
         qDebug() << "Query failed:" << query.lastError();
     }
-                                                balabala...        */
+    //
+    if (query.exec("select question_text FROM questions")) {
+        while (query.next()) {
+            QString examName = query.value(0).toString();
+            QListWidgetItem *item = new QListWidgetItem();
+            QCheckBox *checkBox= new QCheckBox ();
+            checkBox->setText(examName);
+            ui->questionList->addItem(item);//在ListWidget中添加一个条目
+            ui->questionList->setItemWidget(item, checkBox);//在这个条目中放置CheckBox
+        }
+    } else {
+        qDebug() << "Query failed:" << query.lastError();
+    }
+
+    if (query.exec("select question_text FROM tk_questions")) {
+        while (query.next()) {
+            QString examName = query.value(0).toString();
+            QListWidgetItem *item = new QListWidgetItem();
+            QCheckBox *checkBox= new QCheckBox ();
+            checkBox->setText(examName);
+            ui->questionList->addItem(item);//在ListWidget中添加一个条目
+            ui->questionList->setItemWidget(item, checkBox);//在这个条目中放置CheckBox
+        }
+    } else {
+        qDebug() << "Query failed:" << query.lastError();
+    }
+
     ui->questionList->addItem("111");
     ui->questionList->addItem("112");
     ui->questionList->addItem("113");

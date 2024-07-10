@@ -66,6 +66,7 @@ void studentwindow::receiveReturn(){
 
 //ui界面调整
 void studentwindow::paintEvent(QPaintEvent *){
+    QString s1=account;
     paint=new QPainter;
     paint->begin(this);
     paint->setPen(QPen(Qt::darkBlue,3,Qt::DashLine));//设置画笔形式
@@ -79,11 +80,17 @@ void studentwindow::paintEvent(QPaintEvent *){
     font.setPointSize(16);
 
     paint->setFont(font);
+
     paint->drawText(425,150,"个人信息");
     font.setPointSize(13);
 
     paint->drawText(350,180,"姓名:");
+    //测试
+    //paint->drawText(400,180,getUsername(s1));
+
     paint->drawText(350,205,"学号:");
+    //测试
+    paint->drawText(400,205,s1);
 
     paint->drawText(350,230,"平均成绩:");//文字绘制
 
@@ -114,3 +121,23 @@ void studentwindow::on_examBtn_clicked()
     emit showeaxm();
 }
 
+QString studentwindow::getUsername(const  QString &username) {
+    QSqlQuery query(user_db);
+
+    // 使用 SELECT 语句根据账号查询密码
+    query.prepare("SELECT name FROM user WHERE zhanghao = :zhanghao");
+    query.bindValue(":zhanghao",username);
+
+    if (!query.exec()) {
+        qDebug() << "Error querying password:" << query.lastError().text();
+        return QString();
+    }
+
+    if (query.next()) {
+        return query.value(0).toString();
+    } else {
+        qDebug() << "No password found for username:" << username;
+        return QString();
+    }
+
+}

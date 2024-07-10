@@ -9,6 +9,8 @@
 #include <QListWidgetItem>
 #include <QVBoxLayout>
 
+#include "user.h"
+
 namespace Ui {
 class combinePaper;
 }
