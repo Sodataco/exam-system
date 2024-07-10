@@ -94,6 +94,7 @@ void studentpreexam::on_refresh_clicked()
 void studentpreexam::on_examList_itemClicked(QListWidgetItem *item)
 {
 
+
     qDebug()<<"居然能点";
 
 }
