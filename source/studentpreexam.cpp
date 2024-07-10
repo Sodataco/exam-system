@@ -24,12 +24,6 @@ void studentpreexam::on_Return_clicked()
 }
 
 
-void studentpreexam::on_exam_clicked()
-{
-    this->hide();
-    emit showexam();
-}
-
 void studentpreexam::receiveReturn(){
     this->show();
 }
@@ -65,6 +59,9 @@ void studentpreexam::on_refresh_clicked()
 //进入试卷界面的逻辑[cry][cry]
 void studentpreexam::on_examList_itemClicked(QListWidgetItem *item)
 {
+
+    studentexam *s1=new studentexam();
+    s1->show();
 
 
     qDebug()<<"居然能点";

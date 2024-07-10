@@ -89,6 +89,7 @@ void combinePaper::on_Refresh_clicked()
     // 清空当前列表
     ui->questionList->clear();
 
+
     // 执行数据库查询
 
     QSqlQuery   query(user_db);
@@ -134,12 +135,6 @@ void combinePaper::on_Refresh_clicked()
         qDebug() << "Query failed:" << query.lastError();
     }
 
-    ui->questionList->addItem("111");
-    ui->questionList->addItem("112");
-    ui->questionList->addItem("113");
-    ui->questionList->addItem("12EWQ31");
-    ui->questionList->addItem("12Q23");
-    ui->questionList->addItem("123243");
-    ui->questionList->addItem("123");
+
 }
 

@@ -4,6 +4,7 @@
 #include <QWidget>
 #include <QListWidget>
 #include "user.h"
+#include "studentexam.h"
 
 namespace Ui {
 class studentpreexam;
@@ -28,8 +29,6 @@ private slots:
     void receiveReturn();
 
     void on_Return_clicked();
-
-    void on_exam_clicked();
 
     void on_refresh_clicked();
 
