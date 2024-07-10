@@ -70,7 +70,6 @@ private slots:
 
 
 
-    void on_importExcel_clicked();
 
     void on_importAccount_clicked();
 
