@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>386</width>
-    <height>427</height>
+    <width>380</width>
+    <height>431</height>
    </rect>
   </property>
   <property name="font">
@@ -99,7 +99,7 @@ color:white;
 QPushButton#loginButton:hover
 {
 background-color:rgb(255, 255, 255);
-color:rgb(51, 102, 153)
+color:rgb(51, 102, 153);
 }</string>
     </property>
     <property name="text">
@@ -170,7 +170,7 @@ color:rgb(0, 0, 0);
     </property>
     <property name="icon">
      <iconset resource="res.qrc">
-      <normaloff>:/image/forget password.png</normaloff>:/image/forget password.png</iconset>
+      <normaloff>:/image/forgetpassword.png</normaloff>:/image/forgetpassword.png</iconset>
     </property>
    </widget>
    <widget class="QPushButton" name="eye">
@@ -192,19 +192,20 @@ color:rgb(0, 0, 0);
    <widget class="QPushButton" name="zuixiaohua">
     <property name="geometry">
      <rect>
-      <x>340</x>
+      <x>320</x>
       <y>0</y>
-      <width>21</width>
-      <height>21</height>
+      <width>31</width>
+      <height>31</height>
      </rect>
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton#zuixiaohua
 {
 border:one;
-}QPushButton#zuixiaohua
+}
+QPushButton#zuixiaohua
 {
-image:url(:/image/zuixiaohua.png);
+image:url(:/image/zuixioahua.png);
 }
 QPushButton#zuixiaohua:hover
 {
@@ -214,7 +215,6 @@ QPushButton#zuixiaohua
 {
 background-color:transparent;
 }
-
 
 </string>
     </property>
@@ -238,14 +238,13 @@ background-color:transparent;
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">QPushButton
-{
+     <string notr="true">QPushButton{
 border:none;
 }
 QPushButton:hover
 {
 background-color:rgb(51, 102, 153);
-color:rgb(255, 255, 255)
+color:rgb(255, 255, 255);
 }</string>
     </property>
     <property name="text">
@@ -274,14 +273,13 @@ color:rgb(255, 255, 255)
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">QPushButton
-{
+     <string notr="true">QPushButton{
 border:none;
 }
 QPushButton:hover
 {
 background-color:rgb(51, 102, 153);
-color:rgb(255, 255, 255)
+color:rgb(255, 255, 255);
 }</string>
     </property>
     <property name="text">
@@ -310,14 +308,13 @@ color:rgb(255, 255, 255)
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">QPushButton
-{
+     <string notr="true">QPushButton{
 border:none;
 }
 QPushButton:hover
 {
 background-color:rgb(51, 102, 153);
-color:rgb(255, 255, 255)
+color:rgb(255, 255, 255);
 }</string>
     </property>
     <property name="text">
@@ -330,7 +327,7 @@ color:rgb(255, 255, 255)
      <bool>true</bool>
     </property>
    </widget>
-   <widget class="QLabel" name="head">
+   <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
       <x>150</x>
@@ -338,12 +335,6 @@ color:rgb(255, 255, 255)
       <width>81</width>
       <height>81</height>
      </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QLable#head
-{
-background-color:transparent;
-}</string>
     </property>
     <property name="text">
      <string/>
@@ -358,10 +349,10 @@ background-color:transparent;
    <widget class="QLabel" name="top">
     <property name="geometry">
      <rect>
-      <x>0</x>
-      <y>0</y>
+      <x>-10</x>
+      <y>-10</y>
       <width>391</width>
-      <height>201</height>
+      <height>181</height>
      </rect>
     </property>
     <property name="text">
@@ -374,10 +365,10 @@ background-color:transparent;
    <widget class="QPushButton" name="tuichu">
     <property name="geometry">
      <rect>
-      <x>360</x>
+      <x>350</x>
       <y>0</y>
       <width>31</width>
-      <height>21</height>
+      <height>31</height>
      </rect>
     </property>
     <property name="toolTip">
@@ -390,7 +381,7 @@ border:one;
 }
 QPushButton#tuichu
 {
-image:url(:/image/guanbi.png);
+image:url(:/image/tuichu.png);
 }
 QPushButton#tuichu:hover
 {
@@ -406,6 +397,7 @@ background-color:transparent;
     </property>
    </widget>
    <zorder>top</zorder>
+   <zorder>tuichu</zorder>
    <zorder>zuixiaohua</zorder>
    <zorder>checkBox</zorder>
    <zorder>checkBox_2</zorder>
@@ -416,9 +408,8 @@ background-color:transparent;
    <zorder>eye</zorder>
    <zorder>student</zorder>
    <zorder>EditAccount</zorder>
-   <zorder>head</zorder>
+   <zorder>label</zorder>
    <zorder>teacher</zorder>
-   <zorder>zuixiaohua</zorder>
    <zorder>tuichu</zorder>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>

@@ -4,5 +4,10 @@
         <file>image/closeeye.png</file>
         <file>image/openeye.png</file>
         <file>image/pencil.png</file>
+        <file>image/tuichu.png</file>
+        <file>image/zuixioahua.png</file>
+        <file>image/background.gif</file>
+        <file>image/photo.png</file>
+        <file>image/forgetpassword.png</file>
     </qresource>
 </RCC>
