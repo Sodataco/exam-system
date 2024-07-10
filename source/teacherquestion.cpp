@@ -79,8 +79,6 @@ void teacherquestion::on_importSelectquestion_clicked()
     }
 
 
-
-
     //清空输入框的内容方便继续导入题目
     ui->inputsQ->clear();
     ui->inputA->clear();
@@ -119,7 +117,7 @@ void teacherquestion::on_importBlankquestion_clicked()
 
 
 
-    //
+
     ui->inputbQ->clear();
     ui->blankAnswer->clear();
 }
@@ -147,7 +145,6 @@ void teacherquestion::on_importAnswerquestion_clicked()
     }
 
 
-    //
     ui->inputaQ->clear();
     ui->answerAnswer->clear();
 }

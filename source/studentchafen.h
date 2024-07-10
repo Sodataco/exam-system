@@ -23,6 +23,8 @@ private slots:
 
     void on_Return_clicked();
 
+    void on_refresh_clicked();
+
 private:
     Ui::studentchafen *ui;
 };

@@ -81,9 +81,6 @@ bool Administer::derive_data_to_sql(QSqlDatabase& db){
 
 
 
-
-
-
 void Administer::readAndStoreExcelData(const QString &filePath, QSqlDatabase &db) {
     // 打开Excel应用程序
     QAxObject excel("Excel.Application");
@@ -158,7 +155,6 @@ void Administer::on_importExcel_clicked()
     }
 
 }
-
 
 
 

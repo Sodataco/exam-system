@@ -60,7 +60,7 @@ int main(int argc, char *argv[])
     QObject::connect(&tea1,SIGNAL(showpaper()),&cbp,SLOT(receivelogin()));
     QObject::connect(&tea1,SIGNAL(showmanage()),&tm,SLOT(receivelogin()));
 
-
+    QObject::connect(&cbp,SIGNAL(showteacher()),&tea1,SLOT(receivelogin()));
     QObject::connect(&cbp,SIGNAL(showteacher()),&tea1,SLOT(receivelogin()));
     QObject::connect(&tm,SIGNAL(showteacher()),&tea1,SLOT(receivelogin()));
     QObject::connect(&cha1,SIGNAL(showstudent()),&sw1,SLOT(receiveReturn()));
