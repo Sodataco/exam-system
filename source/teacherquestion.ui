@@ -12,7 +12,7 @@
   </property>
   <property name="font">
    <font>
-    <pointsize>20</pointsize>
+    <pointsize>14</pointsize>
    </font>
   </property>
   <property name="windowTitle">
@@ -59,7 +59,7 @@
     <rect>
      <x>30</x>
      <y>100</y>
-     <width>111</width>
+     <width>130</width>
      <height>151</height>
     </rect>
    </property>
@@ -68,7 +68,7 @@
      <widget class="QLabel" name="label_28">
       <property name="font">
        <font>
-        <pointsize>12</pointsize>
+        <pointsize>16</pointsize>
        </font>
       </property>
       <property name="text">
@@ -78,6 +78,11 @@
     </item>
     <item>
      <widget class="QPushButton" name="questionSelect">
+      <property name="font">
+       <font>
+        <pointsize>18</pointsize>
+       </font>
+      </property>
       <property name="text">
        <string>选择题</string>
       </property>
@@ -85,6 +90,11 @@
     </item>
     <item>
      <widget class="QPushButton" name="questionBlank">
+      <property name="font">
+       <font>
+        <pointsize>18</pointsize>
+       </font>
+      </property>
       <property name="text">
        <string>填空题</string>
       </property>
@@ -92,6 +102,11 @@
     </item>
     <item>
      <widget class="QPushButton" name="questionAnswer">
+      <property name="font">
+       <font>
+        <pointsize>18</pointsize>
+       </font>
+      </property>
       <property name="text">
        <string>简答题</string>
       </property>
@@ -123,11 +138,11 @@
    </property>
    <property name="font">
     <font>
-     <pointsize>18</pointsize>
+     <pointsize>14</pointsize>
     </font>
    </property>
    <property name="currentIndex">
-    <number>2</number>
+    <number>1</number>
    </property>
    <widget class="QWidget" name="page_3">
     <widget class="QTextEdit" name="inputsQ">
@@ -139,6 +154,11 @@
        <height>151</height>
       </rect>
      </property>
+     <property name="font">
+      <font>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
     </widget>
     <widget class="QTextEdit" name="inputA">
      <property name="geometry">
@@ -148,6 +168,11 @@
        <width>391</width>
        <height>51</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>14</pointsize>
+      </font>
      </property>
     </widget>
     <widget class="QTextEdit" name="inputB">
@@ -159,6 +184,11 @@
        <height>51</height>
       </rect>
      </property>
+     <property name="font">
+      <font>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
     </widget>
     <widget class="QTextEdit" name="inputC">
      <property name="geometry">
@@ -169,6 +199,11 @@
        <height>51</height>
       </rect>
      </property>
+     <property name="font">
+      <font>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
     </widget>
     <widget class="QTextEdit" name="inputD">
      <property name="geometry">
@@ -178,6 +213,11 @@
        <width>391</width>
        <height>51</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>14</pointsize>
+      </font>
      </property>
     </widget>
     <widget class="QLabel" name="label_3">
@@ -786,6 +826,11 @@
        <height>241</height>
       </rect>
      </property>
+     <property name="font">
+      <font>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
     </widget>
     <widget class="QLabel" name="label_11">
      <property name="geometry">
@@ -813,6 +858,11 @@
        <width>371</width>
        <height>161</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>14</pointsize>
+      </font>
      </property>
     </widget>
     <widget class="QLabel" name="label_12">

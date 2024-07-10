@@ -7,6 +7,8 @@ combinePaper::combinePaper(QWidget *parent)
 {
     ui->setupUi(this);
 
+    ui->title->setPlaceholderText("本卷名称");
+
     // 创建一个当前时刻的QDateTime对象
     QDateTime now = QDateTime::currentDateTime();
 
@@ -38,6 +40,7 @@ void combinePaper::on_finish_clicked()
    }
 
 
+
     QDateTime Time=ui->dateTimeEdit->dateTime();// 日期时间
     QTime timelong=ui->timeEdit->time();//考试时长
 
@@ -67,6 +70,7 @@ void combinePaper::on_Return_clicked()
         ui->updateimage->setChecked(false);
         ui->dateTimeEdit->clear();
         ui->timeEdit->clear();
+        ui->title->clear();
 
         this->hide();
         emit showteacher();
@@ -76,5 +80,49 @@ void combinePaper::on_Return_clicked()
 
     this->hide();
     emit showteacher();
+}
+
+
+
+void combinePaper::on_Refresh_clicked()
+{
+    // 清空当前列表
+    ui->questionList->clear();
+
+    for(int i = 0; i < 10; i++)
+    {
+        QListWidgetItem *item = new QListWidgetItem();
+        QCheckBox *checkBox= new QCheckBox ();
+        checkBox->setText("一加一等于几");
+        ui->questionList->addItem(item);//在ListWidget中添加一个条目
+        ui->questionList->setItemWidget(item, checkBox);//在这个条目中放置CheckBox
+        //icheckBox->setText(QString("checkBox_%1").arg(i));
+
+        //把所有checkBox的信号都引向同一个槽
+        connect(checkBox, SIGNAL(stateChanged(int)), this, SLOT(anyStateChanged()));
+    }
+
+
+
+    // 执行数据库查询
+    /*
+    QSqlQuery query;
+    if (query.exec("select exam FROM exams")) {
+        while (query.next()) {
+            QString examName = query.value(0).toString();
+            // 将考试场次添加到QListWidget中
+            examList->addItem(examName);
+        }
+    } else {
+        qDebug() << "Query failed:" << query.lastError();
+    }
+                                                balabala...        */
+    ui->questionList->addItem("111");
+    ui->questionList->addItem("112");
+    ui->questionList->addItem("113");
+    ui->questionList->addItem("12EWQ31");
+    ui->questionList->addItem("12Q23");
+    ui->questionList->addItem("123243");
+    ui->questionList->addItem("123");
 }
 

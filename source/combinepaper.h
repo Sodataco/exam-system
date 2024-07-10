@@ -5,6 +5,9 @@
 #include <QMessageBox>
 #include <QTime>
 #include <QDateTime>
+#include <QListWidget>
+#include <QListWidgetItem>
+#include <QVBoxLayout>
 
 namespace Ui {
 class combinePaper;
@@ -29,6 +32,9 @@ private slots:
     void on_finish_clicked();
 
     void on_Return_clicked();
+
+    void on_Refresh_clicked();
+
 
 private:
     Ui::combinePaper *ui;
