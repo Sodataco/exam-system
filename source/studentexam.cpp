@@ -10,8 +10,9 @@ studentexam::studentexam(QWidget *parent)
         currentQuestion = 0;  // 当前题目编号从0开始
         totalQuestions = 25;  // 总题目数量为25
 
+        ui->radioButton_1->setChecked(true);
         // 设置题目文本初始内容
-        ui->textBrowser_2->setText("这里显示题目内容");
+        ui->textBrowser_2->setText("这里显示第一题内容");
 
         // 设置选项按钮初始状态和信号连接
         connect(ui->commandLinkButton, &QCommandLinkButton::clicked, this, &studentexam::onOptionClicked);
@@ -166,7 +167,7 @@ void studentexam::onPreviousClicked()
 
 void studentexam::onNextClicked()
 {
-    if (currentQuestion > 0 && currentQuestion < totalQuestions) {
+    if (currentQuestion >= 0 && currentQuestion < totalQuestions-1) {
     currentQuestion=currentQuestion+1;
     ui->textBrowser_2->setText(QString("这里显示第 %1 题内容").arg(currentQuestion + 1));  // 在文本浏览器中显示下一题的内容
     QRadioButton *buttonToClick = nullptr;
