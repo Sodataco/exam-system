@@ -59,6 +59,7 @@ void Administer::paintEvent(QPaintEvent *){
 }
 
 
+//自动导入一个账号
 bool Administer::derive_data_to_sql(QSqlDatabase& db){
     QSqlQuery query(db);
     QString s1="121";
@@ -80,7 +81,7 @@ bool Administer::derive_data_to_sql(QSqlDatabase& db){
 
 
 
-
+//Excel导入
 void Administer::readAndStoreExcelData(const QString &filePath, QSqlDatabase &db) {
     // 打开Excel应用程序
     QAxObject excel("Excel.Application");
@@ -112,14 +113,30 @@ void Administer::readAndStoreExcelData(const QString &filePath, QSqlDatabase &db
 
     // 读取单列数据并存入数据库
     for (int row = 1; row <= rowCount; ++row) {
-        QAxObject *cell = sheet->querySubObject("Cells(int,int)", row, 1); // 从第一列读取数据
-        QVariant cellValue = cell->dynamicCall("Value()");
-        QString username = cellValue.toString();
+        QString username, user_id, class_num;
+
+        QAxObject *cell1 = sheet->querySubObject("Cells(int,int)", row, 1); // 第一列
+        QVariant cellValue1 = cell1->dynamicCall("Value()");
+        username = cellValue1.toString();
+
+        QAxObject *cell2 = sheet->querySubObject("Cells(int,int)", row, 2); // 第二列
+        QVariant cellValue2 = cell2->dynamicCall("Value()");
+        user_id = cellValue2.toString();
+
+        QAxObject *cell3 = sheet->querySubObject("Cells(int,int)", row, 3); // 第三列
+        QVariant cellValue3 = cell3->dynamicCall("Value()");
+        class_num = cellValue3.toString();
+
         QString password = "12345"; // 统一设置密码为 "12345"
 
-        query.exec(QString("select* from user where zhanghao = '%1'").arg(username));
+        query.exec(QString("select* from user where zhanghao = '%1'").arg(user_id));
         if(query.next() == false){
-            query.exec(QString("insert into user(zhanghao,mima) values('%1','%2')").arg(username).arg(password));
+            query.exec(QString("insert into user(zhanghao,mima,name) values('%1','%2','%3')").arg(user_id).arg(password).arg(username));
+
+
+            //待修改，一个学生，不同班级
+            query.exec(QString("insert into class(class_id,user_id) values('%1','%2')").arg(class_num).arg(user_id));
+
             //qDebug()<<"插入完成Administer";
         }
 

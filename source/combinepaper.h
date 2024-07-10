@@ -5,6 +5,12 @@
 #include <QMessageBox>
 #include <QTime>
 #include <QDateTime>
+#include <QListWidget>
+#include <QListWidgetItem>
+#include <QVBoxLayout>
+#include <QVector>
+
+#include "user.h"
 
 namespace Ui {
 class combinePaper;
@@ -30,7 +36,13 @@ private slots:
 
     void on_Return_clicked();
 
+    void on_Refresh_clicked();
+
+
 private:
+
+    QVector<QCheckBox*> checkBoxes;
+
     Ui::combinePaper *ui;
 };
 

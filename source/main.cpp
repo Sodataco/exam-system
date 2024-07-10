@@ -33,7 +33,7 @@ int main(int argc, char *argv[])
     teachermanage tm;
     users u1;
 
-
+    qDebug()<<account<<"1145";
     w.setFixedSize(560,300);
     w.show();
     //tea1.show();
@@ -73,12 +73,13 @@ int main(int argc, char *argv[])
 
     QObject::connect(&tea1,SIGNAL(showmain()),&w,SLOT(receiveloginagain()));
 
+    qDebug()<<account<<"11452";
 
     ad1.derive_data_to_sql(user_db);//测试函数
 
     cP1.changePw("111","11",user_db);//测试函数
 
-
+    qDebug()<<account<<"11451";
 
     tea1.derive_data_to_sql(user_db);
     //QString s=tea1.getPaperName(1,user_db);

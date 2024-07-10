@@ -83,6 +83,7 @@ MainWindow::~MainWindow()
 
 }
 
+
 void MainWindow::on_loginButton_clicked()
 {
 
@@ -95,6 +96,8 @@ void MainWindow::on_loginButton_clicked()
 
     QSqlQuery query(user_db);
     qDebug()<<"登录账号 = "<<s1<<"  登录密码 = "<<s2;
+    account=s1;
+    qDebug()<<account<<"1145";
 
     query.exec(QString("select* from user where zhanghao = '%1' and mima = '%2'").arg(s1).arg(s2));
     if(query.next() == false){
@@ -163,6 +166,7 @@ void MainWindow::changeeye(bool checked){
     }
 }
 
+
 //实现点enter触发loginButton
 void MainWindow::keyPressEvent(QKeyEvent *event) {
     if (event->key() == Qt::Key_Return || event->key() == Qt::Key_Enter) {
@@ -172,7 +176,6 @@ void MainWindow::keyPressEvent(QKeyEvent *event) {
         QMainWindow::keyPressEvent(event);
     }
 }
-
 
 
 

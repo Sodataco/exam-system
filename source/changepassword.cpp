@@ -19,6 +19,11 @@ changePassword::changePassword(QWidget *parent)
     ui->newPassword->setEchoMode(QLineEdit::Password);
     ui->newPassword2->setEchoMode(QLineEdit::Password);
 
+    QRegularExpression regExp("[^\\s]*");  // 允许除空格外的所有字符
+
+    // QRegularExpressionValidator *validator = new QRegularExpressionValidator(regExp, ui->EditAccount);
+    // ui->account->setValidator(validator);
+
 }
 
 changePassword::~changePassword()

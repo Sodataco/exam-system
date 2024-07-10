@@ -18,14 +18,18 @@ void users::build(){
 
     query.exec("create table user(zhanghao text UNIQUE,mima text,name text，num INTEGER)");
 
+    query.exec("create table class(class_id INTEGER NOT NULL,user_id text NOT NULL)");
+
     query.exec("CREATE TABLE papers(paper_id INTEGER PRIMARY KEY AUTOINCREMENT,paper_name TEXT NOT NULL)");
 
+    query.exec("CREATE TABLE result(paper_id INTEGER NOT NULL,user_id text NOT NULL,question_type INTEGER)");
 
     query.exec("CREATE TABLE IF NOT EXISTS questions ("
                "question_id INTEGER PRIMARY KEY AUTOINCREMENT,"
                "paper_id INTEGER NOT NULL,"
                "question_text TEXT NOT NULL,"
                "answer_text TEXT NOT NULL,"
+               "user_id text,"
                "FOREIGN KEY (paper_id) REFERENCES papers(paper_id));");
 
     query.exec("CREATE TABLE IF NOT EXISTS tk_questions ("
@@ -33,6 +37,7 @@ void users::build(){
                "paper_id INTEGER NOT NULL,"
                "question_text TEXT NOT NULL,"
                "answer_text TEXT NOT NULL,"
+               "user_id text,"
                "FOREIGN KEY (paper_id) REFERENCES papers(paper_id));");
 
 
@@ -45,19 +50,19 @@ void users::build(){
                "option_c TEXT,"
                "option_d TEXT,"
                "answer INTEGER NOT NULL,"
+               "user_id text,"
                "FOREIGN KEY (paper_id) REFERENCES papers(paper_id));");
 
 
     query.exec("CREATE TABLE IF NOT EXISTS kaoshi ("
                "paper_id INTEGER NOT NULL,"
-               "user_id INTEGER NOT NULL,"
-               "question_text TEXT NOT NULL,"
+               "user_id text NOT NULL,"
+               "question_type INTEGER,"
+               "choice_answer INTEGER,"
+               "score INTEGER,"
+               "question_num INTEGER,"
+               "question_text TEXT,"
                "FOREIGN KEY (paper_id) REFERENCES papers(paper_id));");
-
-
-
-
-
 
 
 

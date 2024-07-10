@@ -7,6 +7,8 @@ combinePaper::combinePaper(QWidget *parent)
 {
     ui->setupUi(this);
 
+    ui->title->setPlaceholderText("本卷名称");
+
     // 创建一个当前时刻的QDateTime对象
     QDateTime now = QDateTime::currentDateTime();
 
@@ -26,20 +28,32 @@ void combinePaper::receivelogin(){
     this->show();
 }
 
+//函数声明
+QString getNextPaperId(QSqlDatabase &db);
+void insertPaperToDatabase(const QString &paperName, QSqlDatabase &db);
+
+
 //导入并上传
 void combinePaper::on_finish_clicked()
 {
+    QString paperName=ui->title->toPlainText();
+
     QMessageBox::StandardButton reply;
     reply = QMessageBox::question(this, "Confirmation", "确定要上传本卷吗?",QMessageBox::Yes | QMessageBox::No);
-
-   if (reply == QMessageBox::No) {
+    if (reply == QMessageBox::No) {
        qDebug() << "User chose to cancel.";
        return;
-   }
+    }
 
+    if(paperName==nullptr){
+        QMessageBox::warning(this, "Input Error", "=请输入试卷名称");
+        return;
+    }
 
-    QDateTime Time=ui->dateTimeEdit->dateTime();// 日期时间
-    QTime timelong=ui->timeEdit->time();//考试时长
+   insertPaperToDatabase(paperName,user_db);//导入试卷编号
+
+   QDateTime Time=ui->dateTimeEdit->dateTime();// 日期时间
+   QTime timelong=ui->timeEdit->time();//考试时长
 
 
     this->hide();
@@ -67,6 +81,7 @@ void combinePaper::on_Return_clicked()
         ui->updateimage->setChecked(false);
         ui->dateTimeEdit->clear();
         ui->timeEdit->clear();
+        ui->title->clear();
 
         this->hide();
         emit showteacher();
@@ -76,5 +91,106 @@ void combinePaper::on_Return_clicked()
 
     this->hide();
     emit showteacher();
+}
+
+
+
+void combinePaper::on_Refresh_clicked()
+{
+    // 清空当前列表
+    ui->questionList->clear();
+
+    checkBoxes.clear();
+
+    QSqlQuery   query(user_db);
+    //选择
+    if (query.exec("select question_text FROM choice_questions")) {
+        while (query.next()) {
+            QString examName = query.value(0).toString();
+            QListWidgetItem *item = new QListWidgetItem();
+            QCheckBox *checkBox= new QCheckBox ();
+            checkBox->setText(examName);
+            ui->questionList->addItem(item);//在ListWidget中添加一个条目
+            ui->questionList->setItemWidget(item, checkBox);//在这个条目中放置CheckBox
+
+            checkBoxes.append(checkBox);
+
+        }
+    } else {
+        qDebug() << "Query failed:" << query.lastError();
+    }
+    //
+    if (query.exec("select question_text FROM questions")) {
+        while (query.next()) {
+            QString examName = query.value(0).toString();
+            QListWidgetItem *item = new QListWidgetItem();
+            QCheckBox *checkBox= new QCheckBox ();
+            checkBox->setText(examName);
+            ui->questionList->addItem(item);//在ListWidget中添加一个条目
+            ui->questionList->setItemWidget(item, checkBox);//在这个条目中放置CheckBox
+
+            checkBoxes.append(checkBox);
+        }
+    } else {
+        qDebug() << "Query failed:" << query.lastError();
+    }
+
+    if (query.exec("select question_text FROM tk_questions")) {
+        while (query.next()) {
+            QString examName = query.value(0).toString();
+            QListWidgetItem *item = new QListWidgetItem();
+            QCheckBox *checkBox= new QCheckBox ();
+            checkBox->setText(examName);
+            ui->questionList->addItem(item);//在ListWidget中添加一个条目
+            ui->questionList->setItemWidget(item, checkBox);//在这个条目中放置CheckBox
+
+            checkBoxes.append(checkBox);
+        }
+    } else {
+        qDebug() << "Query failed:" << query.lastError();
+    }
+
+}
+
+//按顺序获得试卷编号
+QString getNextPaperId(QSqlDatabase &db) {
+    QSqlQuery query(db);
+
+    // 查询当前最大的试卷编号
+    query.exec("SELECT MAX(paper_id) FROM paper");
+    query.next();
+
+    QString lastPaperId = query.value(0).toString();
+
+    // 如果没有试卷编号，则从 1 开始
+    if (lastPaperId.isEmpty()) {
+        return "10000";
+    }
+
+    // 提取编号部分并加一
+    int lastNumber = lastPaperId.toInt();
+    int nextNumber = lastNumber + 1;
+
+    return QString::number(nextNumber);
+}
+
+
+void insertPaperToDatabase(const QString &paperName, QSqlDatabase &db) {
+    // 获取下一个试卷编号
+    QString paperId = getNextPaperId(db);
+
+    QSqlQuery query(db);
+
+    // 插入试卷数据到 paper 表
+    query.prepare("INSERT INTO paper (paper_id, paper_name) VALUES (:paperId, :paperName)");
+    query.bindValue(":paperId", paperId);
+    query.bindValue(":paperName", paperName);
+    if (!query.exec()) {
+        qDebug() << "Error inserting paper:" << query.lastError().text();
+        // 在这里处理插入失败的情况
+    } else {
+        qDebug() << "Inserted paper:" << paperId << paperName;
+        // 在这里处理插入成功的情况
+    }
 }
 
