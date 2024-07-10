@@ -80,7 +80,7 @@ int main(int argc, char *argv[])
 
 
 
-    //tea1.derive_data_to_sql(user_db);
+    tea1.derive_data_to_sql(user_db);
     //QString s=tea1.getPaperName(1,user_db);
     //qDebug()<<s;
     //qDebug()<<user_name;

@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include <QListWidget>
+#include "user.h"
 
 namespace Ui {
 class studentpreexam;

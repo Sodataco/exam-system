@@ -91,9 +91,14 @@ bool teacherwindow::derive_data_to_sql(QSqlDatabase& db){
 
     QSqlQuery query(db);
     int s1=1;
-    QString s2="111";
+    QString s2="实训";
+    query.exec(QString("select* from papers where paper_id = '%1'").arg(s1));
+    if(query.next() == false){
+        query.exec(QString("insert into papers(paper_id,paper_name) values('%1','%2')").arg(s1).arg(s2));
+        return true;
+    }
 
-    query.exec(QString("insert into papers(paper_id,paper_name) values('%1','%2')").arg(s1).arg(s2));
+
     query.exec(QString("insert into questions(question_id,paper_id,question_text) values('%1','%2','%3')").arg(1).arg(1).arg("11"));
 
     qDebug()<<"121";

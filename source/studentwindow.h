@@ -38,8 +38,6 @@ private slots:
     void on_changePassword_clicked();
 
     void on_examBtn_clicked();
-    QString getUsername(const QString &username);
-
 
 private:
     Ui::studentwindow *ui;

@@ -16,7 +16,7 @@ void users::build(){
     //创建数据表
     QSqlQuery query(user_db);
 
-    query.exec("create table user(zhanghao text UNIQUE,mima text,name text)");
+    query.exec("create table user(zhanghao text UNIQUE,mima text,name text，num INTEGER)");
 
     query.exec("CREATE TABLE papers(paper_id INTEGER PRIMARY KEY AUTOINCREMENT,paper_name TEXT NOT NULL)");
 
@@ -46,6 +46,17 @@ void users::build(){
                "option_d TEXT,"
                "answer INTEGER NOT NULL,"
                "FOREIGN KEY (paper_id) REFERENCES papers(paper_id));");
+
+
+    query.exec("CREATE TABLE IF NOT EXISTS kaoshi ("
+               "paper_id INTEGER NOT NULL,"
+               "user_id INTEGER NOT NULL,"
+               "question_text TEXT NOT NULL,"
+               "FOREIGN KEY (paper_id) REFERENCES papers(paper_id));");
+
+
+
+
 
 
 

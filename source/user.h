@@ -34,7 +34,7 @@
 //实例化测试
 static QSqlDatabase user_db;
 
-static QString user1_name;
+
 
 class users{
 public:
