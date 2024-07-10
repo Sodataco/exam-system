@@ -8,6 +8,7 @@
 #include <QListWidget>
 #include <QListWidgetItem>
 #include <QVBoxLayout>
+#include <QVector>
 
 #include "user.h"
 
@@ -39,6 +40,9 @@ private slots:
 
 
 private:
+
+    QVector<QCheckBox*> checkBoxes;
+
     Ui::combinePaper *ui;
 };
 
