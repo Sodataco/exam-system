@@ -99,7 +99,7 @@ void combinePaper::on_Refresh_clicked()
         //icheckBox->setText(QString("checkBox_%1").arg(i));
 
         //把所有checkBox的信号都引向同一个槽
-        connect(checkBox, SIGNAL(stateChanged(int)), this, SLOT(anyStateChanged()));
+        //connect(checkBox, SIGNAL(stateChanged(int)), this, SLOT(anyStateChanged()));
     }
 
 

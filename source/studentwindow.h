@@ -6,6 +6,7 @@
 #include <QFont>
 #include "user.h"
 
+
 namespace Ui {
 class studentwindow;
 }

@@ -70,6 +70,7 @@ MainWindow::~MainWindow()
 
 }
 
+
 void MainWindow::on_loginButton_clicked()
 {
 
@@ -150,6 +151,7 @@ void MainWindow::changeeye(bool checked){
     }
 }
 
+
 //实现点enter触发loginButton
 void MainWindow::keyPressEvent(QKeyEvent *event) {
     if (event->key() == Qt::Key_Return || event->key() == Qt::Key_Enter) {
@@ -159,7 +161,6 @@ void MainWindow::keyPressEvent(QKeyEvent *event) {
         QMainWindow::keyPressEvent(event);
     }
 }
-
 
 
 

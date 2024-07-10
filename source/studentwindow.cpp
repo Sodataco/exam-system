@@ -2,6 +2,7 @@
 #include "ui_studentwindow.h"
 #include <QDebug>
 
+
 studentwindow::studentwindow(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::studentwindow)
@@ -84,6 +85,7 @@ void studentwindow::paintEvent(QPaintEvent *){
 
     paint->drawText(350,180,"姓名:");
     paint->drawText(350,205,"学号:");
+
 
     paint->drawText(350,230,"平均成绩:");//文字绘制
 
