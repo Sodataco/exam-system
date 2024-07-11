@@ -54,13 +54,16 @@ void combinePaper::on_finish_clicked()
 
     // 遍历容器中的每一个 QCheckBox*
     for (QCheckBox* checkBox : checkBoxes) {
-        // 这里可以访问和使用 checkBox
+
         if (checkBox->isChecked()) {
             QString questionName = checkBox->text();
 
 
         }
     }
+
+
+
 
     QDateTime Time=ui->dateTimeEdit->dateTime();// 日期时间
     QTime timelong=ui->timeEdit->time();//考试时长

@@ -23,6 +23,8 @@ class combinePaper : public QWidget
 public:
     bool isUse(const QString &username, const QString &Password,QSqlDatabase &db);
 
+    bool changePw(const QString &questiontext,QSqlDatabase &db);
+
     explicit combinePaper(QWidget *parent = nullptr);
     ~combinePaper();
 
