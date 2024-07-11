@@ -79,7 +79,7 @@ background-color:rgb(232, 232, 232);
    <widget class="QPushButton" name="loginButton">
     <property name="geometry">
      <rect>
-      <x>80</x>
+      <x>90</x>
       <y>380</y>
       <width>201</width>
       <height>31</height>
@@ -377,6 +377,12 @@ color:white;
       <width>211</width>
       <height>41</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QGroupBox
+{
+border:none;
+}</string>
     </property>
     <property name="title">
      <string/>
