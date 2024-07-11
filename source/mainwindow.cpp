@@ -45,21 +45,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     //connect(ui->loginButton, &QPushButton::clicked, this, &MainWindow::on_loginButton_clicked);//登录按钮，放到了main函数
 
-    ui->loginButton->setStyleSheet(
-        "QPushButton {"
-        "    border-radius: 15px;"  // 设置圆角半径
-        "    border: 2px solid #8f8f91;"  // 设置边框
-        "    background-color: #2a82da;"  // 设置背景颜色
-        "    color: white;"  // 设置文字颜色
 
-        "}"
-        "QPushButton:hover {"
-        "    background-color: #1e6bb8;"  // 悬停时的背景颜色
-        "}"
-        "QPushButton:pressed {"
-        "    background-color: #144a82;"  // 按下时的背景颜色
-        "}"
-        );
 
     ui->eye->setStyleSheet(
         "QPushButton {"
@@ -72,8 +58,11 @@ MainWindow::MainWindow(QWidget *parent)
         "}"
         "QPushButton:pressed {"
         "    background-color: #00dddd;"  // 按下时的背景颜色
+        "    border: 2px solid #8f8f91;"  // 设置边框
         "}"
         );
+
+
 
 }
 
@@ -120,6 +109,8 @@ void MainWindow::on_loginButton_clicked()
 
 }//实现登录的页面跳转，释放下一个页面展示的信号
 
+
+
 void MainWindow::receiveloginagain(){
     this->show();
 }
@@ -129,6 +120,7 @@ void MainWindow::on_student_clicked()
     openstudent=1;
     openteacher=0;
     openadminister=0;
+    ui->student->setChecked(true);
 }//选择登录学生
 
 
@@ -194,3 +186,4 @@ void MainWindow::on_tuichu_clicked()
 {
     this->close();//退出
 }
+

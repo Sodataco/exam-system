@@ -53,7 +53,7 @@ void combinePaper::on_finish_clicked()
 
     // 遍历容器中的每一个 QCheckBox*
     for (QCheckBox* checkBox : checkBoxes) {
-        // 这里可以访问和使用 checkBox
+
         if (checkBox->isChecked()) {
             QString questionName = checkBox->text();
             // 创建SQL查询对象

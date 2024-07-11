@@ -23,11 +23,15 @@ class combinePaper : public QWidget
 public:
     int question_type();
 
+
     void getclass(int num,const int &paper_id);
 
     void readandDerivequestion(const QString &user_id,const int &paper_id);
     void insertPaperToDatabase(const QString &paperName, QSqlDatabase &db);
     int getNextPaperId(QSqlDatabase &db);
+
+    bool changePw(const QString &questiontext,QSqlDatabase &db);
+
     explicit combinePaper(QWidget *parent = nullptr);
 
     ~combinePaper();
