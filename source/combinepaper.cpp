@@ -57,6 +57,14 @@ void combinePaper::on_finish_clicked()
         // 这里可以访问和使用 checkBox
         if (checkBox->isChecked()) {
             QString questionName = checkBox->text();
+            // 创建SQL查询对象
+            QSqlQuery query(user_db);
+
+            query.exec(QString("update questions set is_use = '%1' where question_text = '%2'").arg(1).arg(questionName));
+            query.exec(QString("update tk_questions set is_use = '%1' where question_text = '%2'").arg(1).arg(questionName));
+            query.exec(QString("update choice_questions set is_use = '%1' where question_text = '%2'").arg(1).arg(questionName));
+            query.finish();
+
 
 
         }
