@@ -21,6 +21,8 @@ class combinePaper : public QWidget
     Q_OBJECT
 
 public:
+    bool isUse(const QString &username, const QString &Password,QSqlDatabase &db);
+
     explicit combinePaper(QWidget *parent = nullptr);
     ~combinePaper();
 

@@ -52,8 +52,18 @@ void combinePaper::on_finish_clicked()
 
    insertPaperToDatabase(paperName,user_db);//导入试卷编号
 
-   QDateTime Time=ui->dateTimeEdit->dateTime();// 日期时间
-   QTime timelong=ui->timeEdit->time();//考试时长
+    // 遍历容器中的每一个 QCheckBox*
+    for (QCheckBox* checkBox : checkBoxes) {
+        // 这里可以访问和使用 checkBox
+        if (checkBox->isChecked()) {
+            QString questionName = checkBox->text();
+
+
+        }
+    }
+
+    QDateTime Time=ui->dateTimeEdit->dateTime();// 日期时间
+    QTime timelong=ui->timeEdit->time();//考试时长
 
 
     this->hide();
@@ -174,7 +184,7 @@ QString getNextPaperId(QSqlDatabase &db) {
     return QString::number(nextNumber);
 }
 
-
+//插入试卷编号
 void insertPaperToDatabase(const QString &paperName, QSqlDatabase &db) {
     // 获取下一个试卷编号
     QString paperId = getNextPaperId(db);
@@ -194,3 +204,44 @@ void insertPaperToDatabase(const QString &paperName, QSqlDatabase &db) {
     }
 }
 
+// //插入试卷编号
+// void insertQusetionToPaper(QCheckBox* checkBox, QSqlDatabase &db) {
+//     // 获取下一个试卷编号
+//     QString paperId = getNextPaperId(db);
+
+//     QSqlQuery query(db);
+
+//     // 插入试卷数据到 paper 表
+//     query.prepare("INSERT INTO paper (paper_id, paper_name) VALUES (:paperId, :paperName)");
+//     query.bindValue(":paperId", paperId);
+//     query.bindValue(":paperName", paperName);
+//     if (!query.exec()) {
+//         qDebug() << "Error inserting paper:" << query.lastError().text();
+//         // 在这里处理插入失败的情况
+//     } else {
+//         qDebug() << "Inserted paper:" << paperId << paperName;
+//         // 在这里处理插入成功的情况
+//     }
+// }
+
+
+bool combinePaper::isUse(const QString &username, const QString &Password,QSqlDatabase &db){
+    QString s1=username;
+    QString s2=Password;
+    if(s1==nullptr || s2==nullptr){
+        QMessageBox::warning(this, "Input Error", "The input field cannot be empty.");
+        return false;
+    }
+
+    QSqlQuery query(db);
+    qDebug()<<"登录账号 = "<<s1<<"  登录密码 = "<<s2;
+    query.exec(QString("select* from user where zhanghao = '%1' and mima = '%2'").arg(s1).arg(s2));
+    if(query.next() == false){
+        QMessageBox::warning(this, "ERROR", "The account or password is error.");//输入错误提示弹窗
+        return false;
+    }
+
+    query.finish();
+
+    return true;
+}
