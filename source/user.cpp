@@ -20,7 +20,7 @@ void users::build(){
 
     query.exec("create table class(class_id INTEGER NOT NULL,user_id text NOT NULL)");
 
-    query.exec("CREATE TABLE papers(paper_id INTEGER PRIMARY KEY AUTOINCREMENT,paper_name TEXT NOT NULL)");
+    query.exec("CREATE TABLE papers(paper_id INTEGER,paper_name TEXT NOT NULL)");
 
     query.exec("CREATE TABLE result(paper_id INTEGER NOT NULL,user_id text NOT NULL,question_type INTEGER)");
 
@@ -41,6 +41,7 @@ void users::build(){
                "user_id text,"
                "is_use bool,"
                "FOREIGN KEY (paper_id) REFERENCES papers(paper_id));");
+
 
 
     query.exec("CREATE TABLE IF NOT EXISTS choice_questions ("
