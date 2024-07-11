@@ -30,6 +30,7 @@ void users::build(){
                "question_text TEXT NOT NULL,"
                "answer_text TEXT NOT NULL,"
                "user_id text,"
+               "is_use bool,"
                "FOREIGN KEY (paper_id) REFERENCES papers(paper_id));");
 
     query.exec("CREATE TABLE IF NOT EXISTS tk_questions ("
@@ -38,6 +39,7 @@ void users::build(){
                "question_text TEXT NOT NULL,"
                "answer_text TEXT NOT NULL,"
                "user_id text,"
+               "is_use bool,"
                "FOREIGN KEY (paper_id) REFERENCES papers(paper_id));");
 
 
@@ -51,6 +53,7 @@ void users::build(){
                "option_d TEXT,"
                "answer INTEGER NOT NULL,"
                "user_id text,"
+               "is_use bool,"
                "FOREIGN KEY (paper_id) REFERENCES papers(paper_id));");
 
 
@@ -59,6 +62,7 @@ void users::build(){
                "user_id text NOT NULL,"
                "question_type INTEGER,"
                "choice_answer INTEGER,"
+               "question_id INTEGER,"
                "score INTEGER,"
                "question_num INTEGER,"
                "question_text TEXT,"

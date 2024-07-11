@@ -12,6 +12,8 @@ Administer::Administer(QWidget *parent)
     ui->EditName->setPlaceholderText("姓名");
     ui->EditAccount->setPlaceholderText("学号/工号");
     ui->EditPassword->setPlaceholderText("密码");
+    ui->EditClass->setPlaceholderText("密码");
+
 
     ui->find->setIcon(QIcon(":/image/find.png"));
 
@@ -147,6 +149,8 @@ void Administer::on_finishimport_clicked()
     QString s1=ui->EditName->text();
     QString s2=ui->EditAccount->text();
     QString s3=ui->EditPassword->text();
+    QString s4=ui->EditClass->toPlainText();
+
     qDebug()<<"插入完成2333";
 
     query.exec(QString("select* from user where zhanghao = '%1'").arg(s2));
