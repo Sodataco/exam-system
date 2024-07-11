@@ -11,6 +11,7 @@
 #include"teachermanage.h"
 
 
+
 #include <QApplication>
 
 int main(int argc, char *argv[])
@@ -32,6 +33,7 @@ int main(int argc, char *argv[])
     combinePaper cbp;
     teachermanage tm;
     users u1;
+
 
     qDebug()<<account<<"1145";
     //w.setFixedSize(560,300);

@@ -278,7 +278,9 @@ void combinePaper::readandDerivequestion(const QString &user_id,const int &paper
         query.bindValue(":type", 1);
         query.bindValue(":userId", user_id);
 
-
+        if (!query.exec()) {
+            qDebug() << "Failed to insert kaoshi:" << query.lastError();
+        }
     }
 
 

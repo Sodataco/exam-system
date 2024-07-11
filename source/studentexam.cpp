@@ -12,7 +12,7 @@ studentexam::studentexam(QWidget *parent)
 
         ui->radioButton_1->setChecked(true);
         // 设置题目文本初始内容
-        ui->textBrowser_2->setText("这里显示第一题内容");
+        ui->selectquestion->setText("这里显示第一题内容");
 
         // 设置选项按钮初始状态和信号连接
         connect(ui->commandLinkButton, &QCommandLinkButton::clicked, this, &studentexam::onOptionClicked);
@@ -64,7 +64,7 @@ void studentexam::onRadioButtonClicked()
         if (radioButton && radioButton->isChecked()) {
             int index = i - 1;  // 题目索引从0开始，所以需要减1
             currentQuestion = index;  // 更新当前选中的题目索引
-            ui->textBrowser_2->setText(QString("这里显示第 %1 题内容").arg(index + 1));
+            ui->selectquestion->setText(QString("这里显示第 %1 题内容").arg(index + 1));
             break;  // 如果找到被选中的单选按钮，跳出循环
         }
     }
@@ -75,7 +75,7 @@ void studentexam::onPreviousClicked()
 {
     if (currentQuestion > 0 && currentQuestion < totalQuestions) {
     currentQuestion=currentQuestion-1;
-    ui->textBrowser_2->setText(QString("这里显示第 %1 题内容").arg(currentQuestion + 1));  // 在文本浏览器中显示上一题的内容
+    ui->selectquestion->setText(QString("这里显示第 %1 题内容").arg(currentQuestion + 1));  // 在文本浏览器中显示上一题的内容
     QRadioButton *buttonToClick = nullptr;
     switch (currentQuestion) {
         case 0:
@@ -169,7 +169,7 @@ void studentexam::onNextClicked()
 {
     if (currentQuestion >= 0 && currentQuestion < totalQuestions-1) {
     currentQuestion=currentQuestion+1;
-    ui->textBrowser_2->setText(QString("这里显示第 %1 题内容").arg(currentQuestion + 1));  // 在文本浏览器中显示下一题的内容
+    ui->selectquestion->setText(QString("这里显示第 %1 题内容").arg(currentQuestion + 1));  // 在文本浏览器中显示下一题的内容
     QRadioButton *buttonToClick = nullptr;
     switch (currentQuestion) {
         case 0:
@@ -264,6 +264,7 @@ void studentexam::onExitClicked()
     emit showpreexam();
 }
 
+
 void studentexam::updateProgressBar()
 {
     int completedCount = 0;
@@ -277,4 +278,30 @@ void studentexam::updateProgressBar()
 
 void studentexam::receivelogin(){
     this->show();
+}
+
+
+//根据题目的paper_id来选取对应的题目并呈现
+void studentexam::displayQuestions(const int paperid,QSqlDatabase &db) {
+    QSqlQuery query(db);
+    query.prepare("SELECT question_text FROM choice_questions WHERE paper_id = :paper_id");
+    query.bindValue(":paper_id", paperid);
+
+    if (!query.exec()) {
+        qDebug() << "Failed to execute query:" << query.lastError();
+        return;
+    }
+
+    qDebug()<<"添加题目";
+    QString text;
+
+    while (query.next()) {
+        qDebug()<<"题目是"<<text;
+        QString questionText = query.value(0).toString();
+        text.append("Question: " + questionText + "\n");
+
+    }
+
+
+    ui->selectquestion->setPlainText(text);
 }
