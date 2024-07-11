@@ -373,7 +373,7 @@ color:white;
     <property name="geometry">
      <rect>
       <x>90</x>
-      <y>210</y>
+      <y>200</y>
       <width>211</width>
       <height>41</height>
      </rect>
