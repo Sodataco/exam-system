@@ -100,8 +100,8 @@ color:white;
 }
 QPushButton#loginButton:hover
 {
-background-color:rgb(255, 255, 255);
-color:rgb(51, 102, 153);
+background-color:rgb(177, 204, 228);
+color:rgb(0, 0, 0);
 }</string>
     </property>
     <property name="text">
@@ -348,7 +348,7 @@ color:rgb(25, 64, 56);
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>101</width>
+      <width>201</width>
       <height>21</height>
      </rect>
     </property>
@@ -403,16 +403,14 @@ color:white;
       <string notr="true">QPushButton
 {
 background-color:rgb(51, 102, 153);
+color:rgb(255, 255, 255);
 }
 QPushButton:hover
 {
-color:rgb(255, 255, 255);
+background-color:rgb(177, 204, 228);
+color:rgb(0, 0, 0);
 }
-QPushButton:pressed
-{
-background-color:rgb(51, 102, 153);
-color:rgb(255, 255, 255);
-}</string>
+</string>
      </property>
      <property name="text">
       <string>学生</string>
@@ -443,16 +441,14 @@ color:rgb(255, 255, 255);
       <string notr="true">QPushButton
 {
 background-color:rgb(51, 102, 153);
+color:rgb(255, 255, 255);
 }
 QPushButton:hover
 {
-color:rgb(255, 255, 255);
+background-color:rgb(177, 204, 228);
+color:rgb(0, 0, 0);
 }
-QPushButton:pressed
-{
-background-color:rgb(51, 102, 153);
-color:rgb(255, 255, 255);
-}</string>
+</string>
      </property>
      <property name="text">
       <string>教师</string>
@@ -483,16 +479,14 @@ color:rgb(255, 255, 255);
       <string notr="true">QPushButton
 {
 background-color:rgb(51, 102, 153);
+color:rgb(255, 255, 255);
 }
 QPushButton:hover
 {
-color:rgb(255, 255, 255);
+background-color:rgb(177, 204, 228);
+color:rgb(0, 0, 0);
 }
-QPushButton:pressed
-{
-background-color:rgb(51, 102, 153);
-color:rgb(255, 255, 255);
-}</string>
+</string>
      </property>
      <property name="text">
       <string>管理员</string>

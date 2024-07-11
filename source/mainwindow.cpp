@@ -45,22 +45,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     //connect(ui->loginButton, &QPushButton::clicked, this, &MainWindow::on_loginButton_clicked);//登录按钮，放到了main函数
 
-    ui->loginButton->setStyleSheet(
-        "QPushButton {"
-        "    border-radius: 5px;"  // 设置圆角半径
-        "background-color:rgb(51, 102, 153);"  // 设置背景颜色
-        "color:white;"  // 设置文字颜色
 
-        "}"
-        "QPushButton:hover {"
-        "background-color:rgb(255, 255, 255);"  // 悬停时的背景颜色
-        "color:rgb(51, 102, 153);"
-        "}"
-        "QPushButton:pressed {"
-        "background-color:rgb(255, 255, 255);"  // 悬停时的背景颜色
-        "color:rgb(51, 102, 153);"
-        "}"
-        );
 
     ui->eye->setStyleSheet(
         "QPushButton {"
