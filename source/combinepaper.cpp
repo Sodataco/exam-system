@@ -29,7 +29,7 @@ void combinePaper::receivelogin(){
 }
 
 //函数声明
-QString getNextPaperId(QSqlDatabase &db);
+int getNextPaperId(QSqlDatabase &db);
 void insertPaperToDatabase(const QString &paperName, QSqlDatabase &db);
 
 
@@ -50,7 +50,6 @@ void combinePaper::on_finish_clicked()
         return;
     }
 
-   insertPaperToDatabase(paperName,user_db);//导入试卷编号
 
     // 遍历容器中的每一个 QCheckBox*
     for (QCheckBox* checkBox : checkBoxes) {
@@ -66,9 +65,11 @@ void combinePaper::on_finish_clicked()
             query.finish();
 
 
-
         }
     }
+
+
+    insertPaperToDatabase(paperName,user_db);//导入试卷编号
 
     QDateTime Time=ui->dateTimeEdit->dateTime();// 日期时间
     QTime timelong=ui->timeEdit->time();//考试时长
@@ -80,6 +81,12 @@ void combinePaper::on_finish_clicked()
     qDebug()<<"你设置的考试时长是"<<timelong;
 
 }
+
+
+
+
+
+
 
 
 //取消并退出
@@ -171,36 +178,41 @@ void combinePaper::on_Refresh_clicked()
 }
 
 //按顺序获得试卷编号
-QString getNextPaperId(QSqlDatabase &db) {
+int combinePaper::getNextPaperId(QSqlDatabase &db) {
     QSqlQuery query(db);
 
     // 查询当前最大的试卷编号
-    query.exec("SELECT MAX(paper_id) FROM paper");
+    query.exec("SELECT MAX(paper_id) FROM papers");
     query.next();
 
     QString lastPaperId = query.value(0).toString();
 
-    // 如果没有试卷编号，则从 1 开始
+    // 如果没有试卷编号，则从 10000 开始
     if (lastPaperId.isEmpty()) {
-        return "10000";
+        return 10000;
     }
 
     // 提取编号部分并加一
     int lastNumber = lastPaperId.toInt();
     int nextNumber = lastNumber + 1;
+    query.finish();
 
-    return QString::number(nextNumber);
+    return nextNumber;
 }
 
+
 //插入试卷编号
-void insertPaperToDatabase(const QString &paperName, QSqlDatabase &db) {
+void combinePaper::insertPaperToDatabase(const QString &paperName, QSqlDatabase &db) {
     // 获取下一个试卷编号
-    QString paperId = getNextPaperId(db);
+    qDebug()<<"1111112";
+    int paperId = getNextPaperId(db);
+    qDebug()<<"1111131";
 
     QSqlQuery query(db);
 
     // 插入试卷数据到 paper 表
-    query.prepare("INSERT INTO paper (paper_id, paper_name) VALUES (:paperId, :paperName)");
+    qDebug()<<"111111";
+    query.prepare("INSERT INTO papers (paper_id, paper_name) VALUES (:paperId, :paperName)");
     query.bindValue(":paperId", paperId);
     query.bindValue(":paperName", paperName);
     if (!query.exec()) {
@@ -210,46 +222,70 @@ void insertPaperToDatabase(const QString &paperName, QSqlDatabase &db) {
         qDebug() << "Inserted paper:" << paperId << paperName;
         // 在这里处理插入成功的情况
     }
-}
 
-// //插入试卷编号
-// void insertQusetionToPaper(QCheckBox* checkBox, QSqlDatabase &db) {
-//     // 获取下一个试卷编号
-//     QString paperId = getNextPaperId(db);
+    getclass(1,paperId);
 
-//     QSqlQuery query(db);
-
-//     // 插入试卷数据到 paper 表
-//     query.prepare("INSERT INTO paper (paper_id, paper_name) VALUES (:paperId, :paperName)");
-//     query.bindValue(":paperId", paperId);
-//     query.bindValue(":paperName", paperName);
-//     if (!query.exec()) {
-//         qDebug() << "Error inserting paper:" << query.lastError().text();
-//         // 在这里处理插入失败的情况
-//     } else {
-//         qDebug() << "Inserted paper:" << paperId << paperName;
-//         // 在这里处理插入成功的情况
-//     }
-// }
-
-
-bool combinePaper::isUse(const QString &username, const QString &Password,QSqlDatabase &db){
-    QString s1=username;
-    QString s2=Password;
-    if(s1==nullptr || s2==nullptr){
-        QMessageBox::warning(this, "Input Error", "The input field cannot be empty.");
-        return false;
-    }
-
-    QSqlQuery query(db);
-    qDebug()<<"登录账号 = "<<s1<<"  登录密码 = "<<s2;
-    query.exec(QString("select* from user where zhanghao = '%1' and mima = '%2'").arg(s1).arg(s2));
-    if(query.next() == false){
-        QMessageBox::warning(this, "ERROR", "The account or password is error.");//输入错误提示弹窗
-        return false;
-    }
 
     query.finish();
 
-    return true;
+
 }
+
+void combinePaper::getclass(int num,const int &paper_id){
+
+    QSqlQuery query(user_db);
+
+    // 根据is_use字段遍历choice_questions表
+
+    query.prepare("SELECT * FROM class WHERE class_id = :id");
+    query.bindValue(":id", num);
+
+    if (!query.exec()) {
+        qDebug() << "Failed to fetch class:" << query.lastError();
+        return;
+    }
+
+    while (query.next()) {
+       QString userID = query.value("user_id").toString();
+        readandDerivequestion(userID,paper_id);
+    }
+
+    query.finish();
+}
+
+
+
+
+void combinePaper::readandDerivequestion(const QString &user_id,const int &paper_id){
+    QSqlQuery query(user_db);
+
+    // 根据is_use字段遍历choice_questions表
+    query.prepare("SELECT * FROM choice_questions WHERE is_use = :isUse");
+    query.bindValue(":isUse", true);
+
+    if (!query.exec()) {
+        qDebug() << "Failed to fetch choice_questions:" << query.lastError();
+        return;
+    }
+
+    while (query.next()) {
+        int questionId = query.value("question_id").toInt();
+
+        //向考试table中插入
+        query.prepare("INSERT INTO kaoshi (question_id,paper_id,question_type,user_id) VALUES (:question_Id, :paperId, :type, :userId)");
+        query.bindValue(":question_Id", questionId);
+        query.bindValue(":paperId", paper_id);
+        query.bindValue(":type", 1);
+        query.bindValue(":userId", user_id);
+
+
+    }
+
+
+    query.finish();
+
+}
+
+
+
+

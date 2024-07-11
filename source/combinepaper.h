@@ -21,9 +21,15 @@ class combinePaper : public QWidget
     Q_OBJECT
 
 public:
-    bool isUse(const QString &username, const QString &Password,QSqlDatabase &db);
+    int question_type();
 
+    void getclass(int num,const int &paper_id);
+
+    void readandDerivequestion(const QString &user_id,const int &paper_id);
+    void insertPaperToDatabase(const QString &paperName, QSqlDatabase &db);
+    int getNextPaperId(QSqlDatabase &db);
     explicit combinePaper(QWidget *parent = nullptr);
+
     ~combinePaper();
 
 
