@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>763</width>
-    <height>429</height>
+    <width>772</width>
+    <height>461</height>
    </rect>
   </property>
   <property name="font">
@@ -18,42 +18,30 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QLabel" name="label">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>20</y>
-     <width>191</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>20</pointsize>
-    </font>
-   </property>
-   <property name="text">
-    <string>考试信息管理</string>
-   </property>
-  </widget>
+  <property name="styleSheet">
+   <string notr="true">QWidget
+{
+background-color:white;
+}</string>
+  </property>
   <widget class="QStackedWidget" name="stackedWidget">
    <property name="geometry">
     <rect>
-     <x>260</x>
-     <y>20</y>
-     <width>431</width>
+     <x>180</x>
+     <y>0</y>
+     <width>391</width>
      <height>401</height>
     </rect>
    </property>
    <property name="currentIndex">
-    <number>0</number>
+    <number>2</number>
    </property>
    <widget class="QWidget" name="page">
     <widget class="QLineEdit" name="EditName">
      <property name="geometry">
       <rect>
-       <x>90</x>
-       <y>70</y>
+       <x>70</x>
+       <y>110</y>
        <width>241</width>
        <height>31</height>
       </rect>
@@ -62,8 +50,8 @@
     <widget class="QLineEdit" name="EditAccount">
      <property name="geometry">
       <rect>
-       <x>90</x>
-       <y>110</y>
+       <x>70</x>
+       <y>150</y>
        <width>241</width>
        <height>31</height>
       </rect>
@@ -72,8 +60,8 @@
     <widget class="QLineEdit" name="EditPassword">
      <property name="geometry">
       <rect>
-       <x>90</x>
-       <y>150</y>
+       <x>70</x>
+       <y>190</y>
        <width>241</width>
        <height>31</height>
       </rect>
@@ -82,11 +70,31 @@
     <widget class="QPushButton" name="finishimport">
      <property name="geometry">
       <rect>
-       <x>170</x>
-       <y>240</y>
-       <width>80</width>
+       <x>120</x>
+       <y>280</y>
+       <width>141</width>
        <height>31</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>华文中宋</family>
+       <pointsize>18</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton
+{
+background-color:rgb(76, 114, 148);
+color:white;
+border-radius:5px;
+}
+QPushButton:hover
+{
+background-color:rgb(53, 87, 122);
+
+}
+</string>
      </property>
      <property name="text">
       <string>完成</string>
@@ -95,67 +103,89 @@
     <widget class="QPushButton" name="importExcel">
      <property name="geometry">
       <rect>
-       <x>280</x>
-       <y>320</y>
-       <width>80</width>
-       <height>31</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>导入Excel</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_2">
-     <property name="geometry">
-      <rect>
-       <x>90</x>
-       <y>30</y>
-       <width>111</width>
-       <height>31</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>请导入新账号</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label_3">
-     <property name="geometry">
-      <rect>
-       <x>160</x>
-       <y>320</y>
-       <width>121</width>
-       <height>31</height>
+       <x>120</x>
+       <y>340</y>
+       <width>141</width>
+       <height>41</height>
       </rect>
      </property>
      <property name="font">
       <font>
-       <pointsize>14</pointsize>
+       <family>华文中宋</family>
+       <pointsize>18</pointsize>
       </font>
      </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton
+{
+background-color:rgb(76, 114, 148);
+color:white;
+border-radius:5px;
+}
+QPushButton:hover
+{
+background-color:rgb(53, 87, 122);
+
+}
+</string>
+     </property>
      <property name="text">
-      <string>批量导入？ -&gt;</string>
+      <string>批量导入</string>
      </property>
     </widget>
     <widget class="QTextEdit" name="EditClass">
      <property name="geometry">
       <rect>
-       <x>90</x>
-       <y>190</y>
+       <x>70</x>
+       <y>230</y>
        <width>241</width>
        <height>31</height>
       </rect>
      </property>
     </widget>
+    <widget class="QLabel" name="label">
+     <property name="geometry">
+      <rect>
+       <x>70</x>
+       <y>70</y>
+       <width>191</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>华文中宋</family>
+       <pointsize>20</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>导入单个账号</string>
+     </property>
+    </widget>
+    <zorder>EditName</zorder>
+    <zorder>EditAccount</zorder>
+    <zorder>EditPassword</zorder>
+    <zorder>finishimport</zorder>
+    <zorder>importExcel</zorder>
+    <zorder>EditClass</zorder>
+    <zorder>label</zorder>
+    <zorder>importAccount</zorder>
    </widget>
    <widget class="QWidget" name="page_2">
     <widget class="QLabel" name="label_4">
      <property name="geometry">
       <rect>
-       <x>120</x>
+       <x>70</x>
        <y>140</y>
        <width>81</width>
-       <height>81</height>
+       <height>41</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>华文中宋</family>
+       <pointsize>20</pointsize>
+      </font>
      </property>
      <property name="text">
       <string>修改成绩</string>
@@ -164,8 +194,8 @@
     <widget class="QTextEdit" name="search">
      <property name="geometry">
       <rect>
-       <x>80</x>
-       <y>40</y>
+       <x>70</x>
+       <y>190</y>
        <width>211</width>
        <height>31</height>
       </rect>
@@ -174,8 +204,8 @@
     <widget class="QPushButton" name="find">
      <property name="geometry">
       <rect>
-       <x>260</x>
-       <y>40</y>
+       <x>280</x>
+       <y>190</y>
        <width>31</width>
        <height>31</height>
       </rect>
@@ -184,26 +214,13 @@
       <string/>
      </property>
     </widget>
-    <widget class="QLabel" name="label_6">
-     <property name="geometry">
-      <rect>
-       <x>0</x>
-       <y>0</y>
-       <width>121</width>
-       <height>31</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>请搜索姓名/学号</string>
-     </property>
-    </widget>
    </widget>
    <widget class="QWidget" name="page_3">
     <widget class="QLabel" name="label_5">
      <property name="geometry">
       <rect>
-       <x>170</x>
-       <y>150</y>
+       <x>180</x>
+       <y>170</y>
        <width>71</width>
        <height>51</height>
       </rect>
@@ -215,11 +232,31 @@
     <widget class="QPushButton" name="resetPassword">
      <property name="geometry">
       <rect>
-       <x>290</x>
-       <y>90</y>
+       <x>130</x>
+       <y>300</y>
        <width>91</width>
        <height>31</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>华文中宋</family>
+       <pointsize>18</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton
+{
+background-color:rgb(76, 114, 148);
+color:white;
+border-radius:5px;
+}
+QPushButton:hover
+{
+background-color:rgb(53, 87, 122);
+
+}
+</string>
      </property>
      <property name="text">
       <string>重置密码</string>
@@ -228,21 +265,27 @@
     <widget class="QLabel" name="label_7">
      <property name="geometry">
       <rect>
-       <x>0</x>
-       <y>0</y>
+       <x>60</x>
+       <y>90</y>
        <width>121</width>
        <height>31</height>
       </rect>
      </property>
+     <property name="font">
+      <font>
+       <family>华文中宋</family>
+       <pointsize>20</pointsize>
+      </font>
+     </property>
      <property name="text">
-      <string>请搜索姓名/学号</string>
+      <string>学生成绩管理</string>
      </property>
     </widget>
     <widget class="QTextEdit" name="search2">
      <property name="geometry">
       <rect>
-       <x>80</x>
-       <y>40</y>
+       <x>60</x>
+       <y>140</y>
        <width>211</width>
        <height>31</height>
       </rect>
@@ -251,8 +294,8 @@
     <widget class="QPushButton" name="find_2">
      <property name="geometry">
       <rect>
-       <x>260</x>
-       <y>40</y>
+       <x>270</x>
+       <y>140</y>
        <width>31</width>
        <height>31</height>
       </rect>
@@ -264,29 +307,234 @@
     <widget class="QPushButton" name="grade">
      <property name="geometry">
       <rect>
-       <x>190</x>
-       <y>90</y>
+       <x>130</x>
+       <y>190</y>
        <width>91</width>
        <height>31</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>华文中宋</family>
+       <pointsize>18</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton
+{
+background-color:rgb(76, 114, 148);
+color:white;
+border-radius:5px;
+}
+QPushButton:hover
+{
+background-color:rgb(53, 87, 122);
+
+}
+</string>
      </property>
      <property name="text">
       <string>查看成绩</string>
      </property>
     </widget>
+    <widget class="QLabel" name="label_12">
+     <property name="geometry">
+      <rect>
+       <x>60</x>
+       <y>240</y>
+       <width>121</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>华文中宋</family>
+       <pointsize>20</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>学生密码管理</string>
+     </property>
+    </widget>
    </widget>
   </widget>
-  <widget class="QPushButton" name="changegrade">
+  <widget class="QLabel" name="label_9">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>110</y>
+     <x>0</x>
+     <y>0</y>
+     <width>171</width>
+     <height>461</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="res.qrc">:/image/background2.png</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_10">
+   <property name="geometry">
+    <rect>
+     <x>70</x>
+     <y>10</y>
+     <width>31</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel#label_10
+{
+background-color:transparent;
+}
+</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="res.qrc">:/image/logo.png</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_8">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>50</y>
      <width>181</width>
      <height>31</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <family>华文中宋</family>
+     <pointsize>17</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel#label_8
+{
+color:white;
+background-color:transparent;
+}</string>
+   </property>
    <property name="text">
-    <string>修改成绩                 --&gt;</string>
+    <string>线上考试系统管理员端</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="importAccount">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>90</y>
+     <width>171</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>华文中宋</family>
+     <pointsize>16</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton
+{
+background-color:rgb(76, 114, 148);
+color:white;
+border-radius:5px;
+}
+QPushButton:hover
+{
+background-color:rgb(53, 87, 122);
+
+}
+</string>
+   </property>
+   <property name="text">
+    <string> 导入账号               --&gt;</string>
+   </property>
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="autoExclusive">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_11">
+   <property name="geometry">
+    <rect>
+     <x>620</x>
+     <y>30</y>
+     <width>71</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="res.qrc">:/image/administerphoto.png</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QTextBrowser" name="textBrowser">
+   <property name="geometry">
+    <rect>
+     <x>570</x>
+     <y>110</y>
+     <width>191</width>
+     <height>192</height>
+    </rect>
+   </property>
+   <property name="html">
+    <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'SimSun'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:18pt;&quot;&gt;班级：&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="changegrade">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>140</y>
+     <width>171</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>华文中宋</family>
+     <pointsize>16</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton
+{
+background-color:rgb(76, 114, 148);
+color:white;
+border-radius:5px;
+}
+QPushButton:hover
+{
+background-color:rgb(53, 87, 122);
+
+}
+</string>
+   </property>
+   <property name="text">
+    <string> 修改成绩                --&gt;</string>
    </property>
    <property name="checkable">
     <bool>true</bool>
@@ -298,33 +546,34 @@
   <widget class="QPushButton" name="manage">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>140</y>
-     <width>181</width>
-     <height>31</height>
+     <x>0</x>
+     <y>190</y>
+     <width>171</width>
+     <height>51</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <family>华文中宋</family>
+     <pointsize>16</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton
+{
+background-color:rgb(76, 114, 148);
+color:white;
+border-radius:5px;
+}
+QPushButton:hover
+{
+background-color:rgb(53, 87, 122);
+
+}
+</string>
+   </property>
    <property name="text">
-    <string>学生管理                 --&gt;</string>
-   </property>
-   <property name="checkable">
-    <bool>true</bool>
-   </property>
-   <property name="autoExclusive">
-    <bool>true</bool>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="importAccount">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>80</y>
-     <width>181</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>导入账号                 --&gt;</string>
+    <string> 学生管理               --&gt;</string>
    </property>
    <property name="checkable">
     <bool>true</bool>
@@ -336,17 +585,49 @@
   <widget class="QPushButton" name="Return">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>370</y>
-     <width>80</width>
-     <height>31</height>
+     <x>0</x>
+     <y>240</y>
+     <width>171</width>
+     <height>51</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>华文中宋</family>
+     <pointsize>16</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton
+{
+background-color:rgb(76, 114, 148);
+color:white;
+border-radius:5px;
+}
+QPushButton:hover
+{
+background-color:rgb(53, 87, 122);
+
+}
+</string>
    </property>
    <property name="text">
     <string>退出登录</string>
    </property>
   </widget>
+  <zorder>label_9</zorder>
+  <zorder>label_10</zorder>
+  <zorder>stackedWidget</zorder>
+  <zorder>label_8</zorder>
+  <zorder>importAccount</zorder>
+  <zorder>label_11</zorder>
+  <zorder>textBrowser</zorder>
+  <zorder>changegrade</zorder>
+  <zorder>manage</zorder>
+  <zorder>Return</zorder>
  </widget>
- <resources/>
+ <resources>
+  <include location="res.qrc"/>
+ </resources>
  <connections/>
 </ui>

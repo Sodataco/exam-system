@@ -10,5 +10,9 @@
         <file>image/photo.png</file>
         <file>image/forgetpassword.png</file>
         <file>image/logo.png</file>
+        <file>image/background1.png</file>
+        <file>image/background2.png</file>
+        <file>image/teacherphoto.png</file>
+        <file>image/administerphoto.png</file>
     </qresource>
 </RCC>

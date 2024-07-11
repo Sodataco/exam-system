@@ -16,8 +16,7 @@ class studentwindow : public QWidget
     Q_OBJECT
 
 public:
-    void paintEvent(QPaintEvent*);
-    QPainter *paint;
+
     explicit studentwindow(QWidget *parent = nullptr);
     QString getUsername(const  QString &username);
     ~studentwindow();
