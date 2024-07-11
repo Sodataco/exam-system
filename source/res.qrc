@@ -9,5 +9,6 @@
         <file>image/background.gif</file>
         <file>image/photo.png</file>
         <file>image/forgetpassword.png</file>
+        <file>image/logo.png</file>
     </qresource>
 </RCC>
