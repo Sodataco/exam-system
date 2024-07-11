@@ -7,6 +7,8 @@
 #include <QCommandLinkButton>
 #include "user.h"
 
+class studentpreexam;
+
 namespace Ui {
 class studentexam;
 }
@@ -14,9 +16,11 @@ class studentexam;
 class studentexam : public QWidget
 {
     Q_OBJECT
-
+    friend class studentpreexam;
 public:
-    void displayQuestions(const int paperid, QSqlDatabase &db);
+    void displayQuestions(const int Type,const int questionid,QSqlDatabase &db);
+    int getquestiontype(const int paperid,QSqlDatabase &db);
+    int getquestionid(const int paperid,QSqlDatabase &db);
 
     explicit studentexam(QWidget *parent = nullptr);
     ~studentexam();

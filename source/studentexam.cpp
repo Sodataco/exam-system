@@ -280,28 +280,90 @@ void studentexam::receivelogin(){
     this->show();
 }
 
+int studentexam::getquestiontype(const int paperid,QSqlDatabase &db){
 
-//根据题目的paper_id来选取对应的题目并呈现
-void studentexam::displayQuestions(const int paperid,QSqlDatabase &db) {
     QSqlQuery query(db);
-    query.prepare("SELECT question_text FROM choice_questions WHERE paper_id = :paper_id");
+    query.prepare("SELECT question_type FROM kaoshi WHERE paper_id = :paper_id");
     query.bindValue(":paper_id", paperid);
+
 
     if (!query.exec()) {
         qDebug() << "Failed to execute query:" << query.lastError();
-        return;
+        return -1;
     }
 
-    qDebug()<<"添加题目";
-    QString text;
 
+    int type;
     while (query.next()) {
-        qDebug()<<"题目是"<<text;
-        QString questionText = query.value(0).toString();
-        text.append("Question: " + questionText + "\n");
+        type= query.value(0).toInt();
+    }
+    qDebug()<<"type是"<<type;
+    return type;
+}
 
+int studentexam::getquestionid(const int paperid,QSqlDatabase &db){
+    QSqlQuery query(db);
+    query.prepare("SELECT question_id FROM kaoshi WHERE paper_id = :paper_id");
+    query.bindValue(":paper_id", paperid);
+
+
+    if (!query.exec()) {
+        qDebug() << "Failed to execute query:" << query.lastError();
+        return -1;
     }
 
 
-    ui->selectquestion->setPlainText(text);
+    int questionid;
+    while (query.next()) {
+        questionid= query.value(0).toInt();
+    }
+    return questionid;
+}
+
+
+
+//根据题目的paper_id来选取对应的题目并呈现
+void studentexam::displayQuestions(const int Type,const int questionid,QSqlDatabase &db) {
+    qDebug()<<"999   "<<Type;
+    switch(Type){
+    case 1://选择题case
+        qDebug()<<"进入case";
+        ui->stackedWidget->setCurrentIndex(0);
+
+        QSqlQuery query(db);
+        query.prepare("SELECT question_text FROM kaoshi WHERE question_id = :question_id");
+        query.bindValue(":question_id", questionid);
+
+
+        if (!query.exec()) {
+            qDebug() << "Failed to execute query:" << query.lastError();
+            return;
+        }
+
+        qDebug()<<"添加题目";
+        QString text;
+        while (query.next()) {
+
+            QString questionText = query.value(0).toString();
+
+            //text.append("题目: " + "\n" + questionText);
+            text.append("题目: " + query.value(0).toString());
+            qDebug()<<"题目是"<<text;
+
+        }
+
+        ui->selectquestion->setText(text);
+
+
+        break;
+
+    // case 2://填空题case
+
+    //     break;
+    // case 3://问答题case
+
+    //     break;
+    }
+
+
 }
