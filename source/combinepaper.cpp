@@ -243,7 +243,12 @@ void combinePaper::getclass(int num,const int &paper_id){
     if (!query.exec()) {
         qDebug() << "Failed to fetch class:" << query.lastError();
         return;
+    }else {
+        qDebug() << "select class:";
+        // 在这里处理插入成功的情况
     }
+
+    qDebug() <<"getclass的位置";
 
     while (query.next()) {
        QString userID = query.value("user_id").toString();
@@ -251,12 +256,23 @@ void combinePaper::getclass(int num,const int &paper_id){
     }
 
     query.finish();
+
+    //去除is_use
+
+    clean_is_use(paper_id);
+
 }
 
 
 
 
 void combinePaper::readandDerivequestion(const QString &user_id,const int &paper_id){
+
+     qDebug() <<"read的位置";
+
+
+     //录入选择题
+
     QSqlQuery query(user_db);
 
     // 根据is_use字段遍历choice_questions表
@@ -269,6 +285,7 @@ void combinePaper::readandDerivequestion(const QString &user_id,const int &paper
     }
 
     while (query.next()) {
+        qDebug()<<"进入了";
         int questionId = query.value("question_id").toInt();
 
         //向考试table中插入
@@ -281,13 +298,87 @@ void combinePaper::readandDerivequestion(const QString &user_id,const int &paper
         if (!query.exec()) {
             qDebug() << "Failed to insert kaoshi:" << query.lastError();
         }
+
     }
 
 
+    //录入填空题
+
+    // 根据is_use字段遍历tk_questions表
+    query.prepare("SELECT * FROM tk_questions WHERE is_use = :isUse");
+    query.bindValue(":isUse", true);
+
+    if (!query.exec()) {
+        qDebug() << "Failed to fetch choice_questions:" << query.lastError();
+        return;
+    }
+
+    while (query.next()) {
+
+        int questionId = query.value("question_id").toInt();
+
+        //向考试table中插入
+        query.prepare("INSERT INTO kaoshi (question_id,paper_id,question_type,user_id) VALUES (:question_Id, :paperId, :type, :userId)");
+        query.bindValue(":question_Id", questionId);
+        query.bindValue(":paperId", paper_id);
+        query.bindValue(":type", 2);
+        query.bindValue(":userId", user_id);
+
+        if (!query.exec()) {
+            qDebug() << "Failed to insert kaoshi:" << query.lastError();
+        }
+
+    }
+
+
+
+    //录入大题
+
+    // 根据is_use字段遍历questions表
+    query.prepare("SELECT * FROM questions WHERE is_use = :isUse");
+    query.bindValue(":isUse", true);
+
+    if (!query.exec()) {
+        qDebug() << "Failed to fetch choice_questions:" << query.lastError();
+        return;
+    }
+
+    while (query.next()) {
+
+        int questionId = query.value("question_id").toInt();
+
+        //向考试table中插入
+        query.prepare("INSERT INTO kaoshi (question_id,paper_id,question_type,user_id) VALUES (:question_Id, :paperId, :type, :userId)");
+        query.bindValue(":question_Id", questionId);
+        query.bindValue(":paperId", paper_id);
+        query.bindValue(":type", 3);
+        query.bindValue(":userId", user_id);
+
+        if (!query.exec()) {
+            qDebug() << "Failed to insert kaoshi:" << query.lastError();
+        }
+
+    }
     query.finish();
+
 
 }
 
 
+void combinePaper::clean_is_use(const int &paper_id){
 
+    QSqlQuery query(user_db);
+
+    qDebug() <<"进来删了";
+
+    query.prepare("UPDATE choice_questions SET paper_id = :newPaperId, is_use = :newIsUse WHERE is_use = :use");
+    query.bindValue(":newPaperId", paper_id);
+    query.bindValue(":newIsUse", false);
+
+    query.bindValue(":use", true);
+
+    query.exec();
+
+     query.finish();
+}
 
