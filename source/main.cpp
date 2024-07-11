@@ -34,7 +34,7 @@ int main(int argc, char *argv[])
     users u1;
 
     qDebug()<<account<<"1145";
-    w.setFixedSize(560,300);
+    //w.setFixedSize(560,300);
     w.show();
     //tea1.show();
 
