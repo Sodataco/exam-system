@@ -53,6 +53,7 @@ void combinePaper::on_finish_clicked()
     }
 
 
+
     // 遍历容器中的每一个 QCheckBox*
     for (QCheckBox* checkBox : checkBoxes) {
 
