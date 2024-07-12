@@ -57,8 +57,8 @@
   <widget class="QWidget" name="verticalLayoutWidget">
    <property name="geometry">
     <rect>
-     <x>90</x>
-     <y>160</y>
+     <x>30</x>
+     <y>100</y>
      <width>130</width>
      <height>151</height>
     </rect>
@@ -142,7 +142,7 @@
     </font>
    </property>
    <property name="currentIndex">
-    <number>0</number>
+    <number>1</number>
    </property>
    <widget class="QWidget" name="page_3">
     <widget class="QTextEdit" name="inputsQ">

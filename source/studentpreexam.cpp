@@ -56,44 +56,15 @@ void studentpreexam::on_refresh_clicked()
 }
 
 
-
 //进入试卷界面的逻辑[cry][cry]
 void studentpreexam::on_examList_itemClicked(QListWidgetItem *item)
 {
 
-    QString paperName=item->text();
-
-    QSqlQuery query(user_db);
-    query.prepare("SELECT paper_id FROM papers WHERE paper_name = :paper_name");
-    query.bindValue(":paper_name", paperName);
-
-    if (!query.exec()) {
-        qDebug() << "Failed to execute query:" << query.lastError();
-        return;
-    }
-
-    if (!query.next()) {
-        qDebug() << "Paper not found:" << paperName;
-        return;
-    }
-
-    int paperId = query.value(0).toInt();
-
-    qDebug()<<"本张卷子的paperId是"<<paperId;
-    studentexam *tool=new studentexam();
-    int type=tool->getquestiontype(paperId,user_db);
-    int questionid=tool->getquestionid(paperId,user_db);
-
-    //每有一张卷子就new一张卷子
     studentexam *s1=new studentexam();
-
-    s1->displayQuestions(type,questionid,user_db);
-
     s1->show();
 
-    this->hide();
 
-
+    qDebug()<<"居然能点";
 
 }
 
