@@ -56,7 +56,6 @@ void studentpreexam::on_refresh_clicked()
 }
 
 
-
 //进入试卷界面的逻辑[cry][cry]
 void studentpreexam::on_examList_itemClicked(QListWidgetItem *item)
 {
@@ -87,12 +86,9 @@ void studentpreexam::on_examList_itemClicked(QListWidgetItem *item)
     //每有一张卷子就new一张卷子
     studentexam *s1=new studentexam();
 
-    s1->displayQuestions(type,questionid,user_db);
+    s1->displayQuestions(1,questionid,user_db);
 
     s1->show();
-
-    this->hide();
-
 
 
 }

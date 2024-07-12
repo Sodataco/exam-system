@@ -29,7 +29,7 @@
 #include <QFile>
 #include <QFileDialog>
 
-
+#include <QAxObject>
 
 #include <user.h>
 
@@ -57,6 +57,7 @@ public:
    void openSql(QSqlDatabase& db,const QString connectionName,const QString SQLName);
    bool derive_data_to_sql(QSqlDatabase& db);
    int getRecordCount(const QString &tableName, QSqlDatabase &db);
+   void readAndStoreExcelData(const QString &filePath, QSqlDatabase &db);
 
 
     explicit Administer(QWidget *parent = nullptr);
@@ -82,6 +83,10 @@ private slots:
     void on_resetPassword_clicked();
 
     void on_finishimport_clicked();
+
+
+    //excel的点击
+    void on_importExcel_clicked();
 
 private:
     Ui::Administer *ui;

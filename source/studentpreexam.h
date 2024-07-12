@@ -15,8 +15,6 @@ class studentpreexam : public QWidget
     Q_OBJECT
 
 public:
-
-
     explicit studentpreexam(QWidget *parent = nullptr);
     ~studentpreexam();
 

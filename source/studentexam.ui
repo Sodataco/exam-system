@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>687</width>
-    <height>491</height>
+    <height>507</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -338,8 +338,8 @@
   <widget class="QStackedWidget" name="stackedWidget">
    <property name="geometry">
     <rect>
-     <x>18</x>
-     <y>30</y>
+     <x>20</x>
+     <y>50</y>
      <width>401</width>
      <height>411</height>
     </rect>
@@ -347,8 +347,8 @@
    <property name="currentIndex">
     <number>0</number>
    </property>
-   <widget class="QWidget" name="page_2">
-    <widget class="QTextBrowser" name="selectquestion">
+   <widget class="QWidget" name="page_3">
+    <widget class="QTextBrowser" name="selectquestion_2">
      <property name="geometry">
       <rect>
        <x>0</x>
@@ -368,7 +368,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'SimSun'; font-size:16pt;&quot;&gt;题目：&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
-    <widget class="QWidget" name="verticalLayoutWidget_2">
+    <widget class="QWidget" name="verticalLayoutWidget_3">
      <property name="geometry">
       <rect>
        <x>0</x>
@@ -377,30 +377,30 @@ li.checked::marker { content: &quot;\2612&quot;; }
        <height>241</height>
       </rect>
      </property>
-     <layout class="QVBoxLayout" name="verticalLayout_2">
+     <layout class="QVBoxLayout" name="verticalLayout_3">
       <item>
-       <widget class="QCommandLinkButton" name="commandLinkButton_4">
+       <widget class="QCommandLinkButton" name="commandLinkButton_1">
         <property name="text">
          <string>A</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QCommandLinkButton" name="commandLinkButton_3">
+       <widget class="QCommandLinkButton" name="commandLinkButton_5">
         <property name="text">
          <string>B</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QCommandLinkButton" name="commandLinkButton_2">
+       <widget class="QCommandLinkButton" name="commandLinkButton_6">
         <property name="text">
          <string>C</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QCommandLinkButton" name="commandLinkButton">
+       <widget class="QCommandLinkButton" name="commandLinkButton_7">
         <property name="text">
          <string>D</string>
         </property>
@@ -409,8 +409,8 @@ li.checked::marker { content: &quot;\2612&quot;; }
      </layout>
     </widget>
    </widget>
-   <widget class="QWidget" name="page">
-    <widget class="QTextBrowser" name="textquestion">
+   <widget class="QWidget" name="page_4">
+    <widget class="QTextBrowser" name="textquestion_2">
      <property name="geometry">
       <rect>
        <x>0</x>
@@ -430,7 +430,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;题目&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
-    <widget class="QTextEdit" name="textEdit">
+    <widget class="QTextEdit" name="textEdit_2">
      <property name="geometry">
       <rect>
        <x>0</x>
