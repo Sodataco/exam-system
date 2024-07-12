@@ -15,6 +15,7 @@
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QCheckBox>
 #include <QtWidgets/QCommandLinkButton>
+#include <QtWidgets/QGroupBox>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
@@ -37,19 +38,23 @@ public:
     QCommandLinkButton *commandLinkButton;
     QPushButton *eye;
     QPushButton *zuixiaohua;
-    QPushButton *student;
-    QPushButton *teacher;
-    QPushButton *Administrators;
     QLabel *label;
     QLabel *top;
     QPushButton *tuichu;
+    QLabel *label_2;
+    QLabel *label_3;
+    QLabel *label_4;
+    QGroupBox *groupBox;
+    QPushButton *student;
+    QPushButton *teacher;
+    QPushButton *Administrators;
     QStatusBar *statusbar;
 
     void setupUi(QMainWindow *MainWindow)
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
-        MainWindow->resize(380, 431);
+        MainWindow->resize(381, 493);
         QFont font;
         font.setFamily(QString::fromUtf8("\345\256\213\344\275\223"));
         font.setPointSize(20);
@@ -69,9 +74,10 @@ public:
         EditAccount->setStyleSheet(QLatin1String("QLineEdit\n"
 "{\n"
 "border:none;\n"
+"border-radius:5px;\n"
 "border-bottom:1px solid rgb(51, 102, 153);\n"
 "}\n"
-"QLineEdit:hover\n"
+"QLineEdit:pressed\n"
 "{\n"
 "background-color:rgb(232, 232, 232);\n"
 "}\n"
@@ -82,15 +88,16 @@ public:
         EditPassword->setStyleSheet(QLatin1String("QLineEdit\n"
 "{\n"
 "border:none;\n"
+"border-radius:5px;\n"
 "border-bottom:1px solid rgb(51, 102, 153);\n"
 "}\n"
-"QLineEdit:hover\n"
+"QLineEdit:pressed\n"
 "{\n"
 "background-color:rgb(232, 232, 232);\n"
 "}"));
         loginButton = new QPushButton(centralwidget);
         loginButton->setObjectName(QStringLiteral("loginButton"));
-        loginButton->setGeometry(QRect(90, 370, 201, 31));
+        loginButton->setGeometry(QRect(90, 380, 201, 31));
         QFont font2;
         font2.setFamily(QString::fromUtf8("\345\215\216\346\226\207\344\270\255\345\256\213"));
         font2.setPointSize(20);
@@ -103,23 +110,23 @@ public:
 "}\n"
 "QPushButton#loginButton:hover\n"
 "{\n"
-"background-color:rgb(255, 255, 255);\n"
-"color:rgb(51, 102, 153);\n"
+"background-color:rgb(177, 204, 228);\n"
+"color:rgb(0, 0, 0);\n"
 "}"));
         checkBox = new QCheckBox(centralwidget);
         checkBox->setObjectName(QStringLiteral("checkBox"));
-        checkBox->setGeometry(QRect(70, 330, 91, 21));
+        checkBox->setGeometry(QRect(60, 340, 91, 21));
         QFont font3;
         font3.setFamily(QString::fromUtf8("\345\215\216\346\226\207\344\270\255\345\256\213"));
         font3.setPointSize(10);
         checkBox->setFont(font3);
         checkBox_2 = new QCheckBox(centralwidget);
         checkBox_2->setObjectName(QStringLiteral("checkBox_2"));
-        checkBox_2->setGeometry(QRect(160, 330, 101, 21));
+        checkBox_2->setGeometry(QRect(160, 340, 81, 21));
         checkBox_2->setFont(font3);
         commandLinkButton = new QCommandLinkButton(centralwidget);
         commandLinkButton->setObjectName(QStringLiteral("commandLinkButton"));
-        commandLinkButton->setGeometry(QRect(250, 320, 91, 41));
+        commandLinkButton->setGeometry(QRect(250, 330, 91, 41));
         QFont font4;
         font4.setFamily(QString::fromUtf8("\345\256\213\344\275\223"));
         font4.setPointSize(10);
@@ -133,11 +140,11 @@ public:
         commandLinkButton->setIcon(icon);
         eye = new QPushButton(centralwidget);
         eye->setObjectName(QStringLiteral("eye"));
-        eye->setGeometry(QRect(320, 300, 16, 16));
+        eye->setGeometry(QRect(310, 300, 16, 16));
         eye->setCheckable(true);
         zuixiaohua = new QPushButton(centralwidget);
         zuixiaohua->setObjectName(QStringLiteral("zuixiaohua"));
-        zuixiaohua->setGeometry(QRect(320, 0, 31, 31));
+        zuixiaohua->setGeometry(QRect(340, 0, 21, 21));
         zuixiaohua->setStyleSheet(QLatin1String("QPushButton#zuixiaohua\n"
 "{\n"
 "border:one;\n"
@@ -156,54 +163,13 @@ public:
 "}\n"
 "\n"
 ""));
-        student = new QPushButton(centralwidget);
-        student->setObjectName(QStringLiteral("student"));
-        student->setGeometry(QRect(90, 210, 61, 31));
-        QFont font5;
-        font5.setFamily(QString::fromUtf8("\345\215\216\346\226\207\344\270\255\345\256\213"));
-        font5.setPointSize(14);
-        student->setFont(font5);
-        student->setStyleSheet(QLatin1String("QPushButton{\n"
-"border:none;\n"
-"}\n"
-"QPushButton:hover\n"
-"{\n"
-"background-color:rgb(51, 102, 153);\n"
-"color:rgb(255, 255, 255);\n"
-"}"));
-        student->setCheckable(true);
-        student->setAutoExclusive(true);
-        teacher = new QPushButton(centralwidget);
-        teacher->setObjectName(QStringLiteral("teacher"));
-        teacher->setGeometry(QRect(160, 210, 61, 31));
-        teacher->setFont(font5);
-        teacher->setStyleSheet(QLatin1String("QPushButton{\n"
-"border:none;\n"
-"}\n"
-"QPushButton:hover\n"
-"{\n"
-"background-color:rgb(51, 102, 153);\n"
-"color:rgb(255, 255, 255);\n"
-"}"));
-        teacher->setCheckable(true);
-        teacher->setAutoExclusive(true);
-        Administrators = new QPushButton(centralwidget);
-        Administrators->setObjectName(QStringLiteral("Administrators"));
-        Administrators->setGeometry(QRect(230, 210, 71, 31));
-        Administrators->setFont(font5);
-        Administrators->setStyleSheet(QLatin1String("QPushButton{\n"
-"border:none;\n"
-"}\n"
-"QPushButton:hover\n"
-"{\n"
-"background-color:rgb(51, 102, 153);\n"
-"color:rgb(255, 255, 255);\n"
-"}"));
-        Administrators->setCheckable(true);
-        Administrators->setAutoExclusive(true);
         label = new QLabel(centralwidget);
         label->setObjectName(QStringLiteral("label"));
         label->setGeometry(QRect(150, 120, 81, 81));
+        label->setStyleSheet(QLatin1String("QLabel#label\n"
+"{\n"
+"border-radius:5px;\n"
+"}"));
         label->setPixmap(QPixmap(QString::fromUtf8(":/image/photo.png")));
         label->setScaledContents(true);
         top = new QLabel(centralwidget);
@@ -212,7 +178,7 @@ public:
         top->setPixmap(QPixmap(QString::fromUtf8(":/image/background.gif")));
         tuichu = new QPushButton(centralwidget);
         tuichu->setObjectName(QStringLiteral("tuichu"));
-        tuichu->setGeometry(QRect(350, 0, 31, 31));
+        tuichu->setGeometry(QRect(360, 0, 21, 21));
         tuichu->setStyleSheet(QLatin1String("QPushButton#tuichu\n"
 "{\n"
 "border:one;\n"
@@ -229,22 +195,109 @@ public:
 "{\n"
 "background-color:transparent;\n"
 "}"));
+        label_2 = new QLabel(centralwidget);
+        label_2->setObjectName(QStringLiteral("label_2"));
+        label_2->setGeometry(QRect(120, 440, 31, 31));
+        label_2->setPixmap(QPixmap(QString::fromUtf8(":/image/logo.png")));
+        label_2->setScaledContents(true);
+        label_3 = new QLabel(centralwidget);
+        label_3->setObjectName(QStringLiteral("label_3"));
+        label_3->setGeometry(QRect(160, 450, 111, 16));
+        label_3->setFont(font3);
+        label_3->setStyleSheet(QLatin1String("QLabel#label_3\n"
+"{\n"
+"color:rgb(25, 64, 56);\n"
+"}"));
+        label_4 = new QLabel(centralwidget);
+        label_4->setObjectName(QStringLiteral("label_4"));
+        label_4->setGeometry(QRect(0, 0, 201, 21));
+        QFont font5;
+        font5.setFamily(QString::fromUtf8("\345\215\216\346\226\207\344\270\255\345\256\213"));
+        font5.setPointSize(16);
+        label_4->setFont(font5);
+        label_4->setStyleSheet(QLatin1String("QLabel#label_4\n"
+"{\n"
+"background-color:transparent;\n"
+"color:white;\n"
+"}"));
+        groupBox = new QGroupBox(centralwidget);
+        groupBox->setObjectName(QStringLiteral("groupBox"));
+        groupBox->setGeometry(QRect(90, 200, 211, 41));
+        groupBox->setStyleSheet(QLatin1String("QGroupBox\n"
+"{\n"
+"border:none;\n"
+"}"));
+        groupBox->setCheckable(false);
+        student = new QPushButton(groupBox);
+        student->setObjectName(QStringLiteral("student"));
+        student->setGeometry(QRect(0, 10, 71, 31));
+        QFont font6;
+        font6.setFamily(QString::fromUtf8("\345\215\216\346\226\207\344\270\255\345\256\213"));
+        font6.setPointSize(14);
+        student->setFont(font6);
+        student->setStyleSheet(QLatin1String("QPushButton\n"
+"{\n"
+"background-color:rgb(51, 102, 153);\n"
+"color:rgb(255, 255, 255);\n"
+"}\n"
+"QPushButton:hover\n"
+"{\n"
+"background-color:rgb(177, 204, 228);\n"
+"color:rgb(0, 0, 0);\n"
+"}\n"
+""));
+        student->setCheckable(true);
+        student->setAutoExclusive(true);
+        teacher = new QPushButton(groupBox);
+        teacher->setObjectName(QStringLiteral("teacher"));
+        teacher->setGeometry(QRect(70, 10, 71, 31));
+        teacher->setFont(font6);
+        teacher->setStyleSheet(QLatin1String("QPushButton\n"
+"{\n"
+"background-color:rgb(51, 102, 153);\n"
+"color:rgb(255, 255, 255);\n"
+"}\n"
+"QPushButton:hover\n"
+"{\n"
+"background-color:rgb(177, 204, 228);\n"
+"color:rgb(0, 0, 0);\n"
+"}\n"
+""));
+        teacher->setCheckable(true);
+        teacher->setAutoExclusive(true);
+        Administrators = new QPushButton(groupBox);
+        Administrators->setObjectName(QStringLiteral("Administrators"));
+        Administrators->setGeometry(QRect(140, 10, 71, 31));
+        Administrators->setFont(font6);
+        Administrators->setStyleSheet(QLatin1String("QPushButton\n"
+"{\n"
+"background-color:rgb(51, 102, 153);\n"
+"color:rgb(255, 255, 255);\n"
+"}\n"
+"QPushButton:hover\n"
+"{\n"
+"background-color:rgb(177, 204, 228);\n"
+"color:rgb(0, 0, 0);\n"
+"}\n"
+""));
+        Administrators->setCheckable(true);
+        Administrators->setAutoExclusive(true);
         MainWindow->setCentralWidget(centralwidget);
         top->raise();
-        tuichu->raise();
         zuixiaohua->raise();
         checkBox->raise();
         checkBox_2->raise();
         EditPassword->raise();
         commandLinkButton->raise();
-        Administrators->raise();
         loginButton->raise();
         eye->raise();
-        student->raise();
         EditAccount->raise();
         label->raise();
-        teacher->raise();
         tuichu->raise();
+        label_2->raise();
+        label_3->raise();
+        label_4->raise();
+        groupBox->raise();
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName(QStringLiteral("statusbar"));
         MainWindow->setStatusBar(statusbar);
@@ -263,15 +316,19 @@ public:
         commandLinkButton->setText(QApplication::translate("MainWindow", "\345\277\230\350\256\260\345\257\206\347\240\201\357\274\237", Q_NULLPTR));
         eye->setText(QString());
         zuixiaohua->setText(QString());
-        student->setText(QApplication::translate("MainWindow", "\345\255\246\347\224\237", Q_NULLPTR));
-        teacher->setText(QApplication::translate("MainWindow", "\346\225\231\345\270\210", Q_NULLPTR));
-        Administrators->setText(QApplication::translate("MainWindow", "\347\256\241\347\220\206\345\221\230", Q_NULLPTR));
         label->setText(QString());
         top->setText(QString());
 #ifndef QT_NO_TOOLTIP
         tuichu->setToolTip(QApplication::translate("MainWindow", "<html><head/><body><p><img src=\":/image/tuichu.png\"/></p></body></html>", Q_NULLPTR));
 #endif // QT_NO_TOOLTIP
         tuichu->setText(QString());
+        label_2->setText(QString());
+        label_3->setText(QApplication::translate("MainWindow", "\351\207\215\347\224\237\344\271\213\346\210\221\345\234\250\346\255\246\345\244\247996\345\233\242\351\230\237", Q_NULLPTR));
+        label_4->setText(QApplication::translate("MainWindow", " \347\272\277\344\270\212\350\200\203\350\257\225\347\263\273\347\273\237", Q_NULLPTR));
+        groupBox->setTitle(QString());
+        student->setText(QApplication::translate("MainWindow", "\345\255\246\347\224\237", Q_NULLPTR));
+        teacher->setText(QApplication::translate("MainWindow", "\346\225\231\345\270\210", Q_NULLPTR));
+        Administrators->setText(QApplication::translate("MainWindow", "\347\256\241\347\220\206\345\221\230", Q_NULLPTR));
     } // retranslateUi
 
 };

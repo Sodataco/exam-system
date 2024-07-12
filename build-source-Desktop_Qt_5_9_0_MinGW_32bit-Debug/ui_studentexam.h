@@ -14,7 +14,6 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QCommandLinkButton>
-#include <QtWidgets/QGraphicsView>
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
@@ -31,8 +30,6 @@ class Ui_studentexam
 {
 public:
     QProgressBar *progressBar;
-    QWidget *verticalLayoutWidget;
-    QVBoxLayout *verticalLayout;
     QWidget *gridLayoutWidget;
     QGridLayout *gridLayout;
     QRadioButton *radioButton_17;
@@ -60,7 +57,6 @@ public:
     QRadioButton *radioButton_23;
     QRadioButton *radioButton_24;
     QRadioButton *radioButton_25;
-    QGraphicsView *graphicsView;
     QLabel *label_2;
     QLabel *label;
     QWidget *verticalLayoutWidget_2;
@@ -73,22 +69,21 @@ public:
     QPushButton *pushButton;
     QPushButton *pushButton_2;
     QPushButton *pushButton_3;
+    QLabel *label_3;
 
     void setupUi(QWidget *studentexam)
     {
         if (studentexam->objectName().isEmpty())
             studentexam->setObjectName(QStringLiteral("studentexam"));
         studentexam->resize(687, 491);
+        studentexam->setStyleSheet(QLatin1String("QWidget\n"
+"{\n"
+"background-color:white;\n"
+"}"));
         progressBar = new QProgressBar(studentexam);
         progressBar->setObjectName(QStringLiteral("progressBar"));
         progressBar->setGeometry(QRect(440, 350, 241, 17));
         progressBar->setValue(24);
-        verticalLayoutWidget = new QWidget(studentexam);
-        verticalLayoutWidget->setObjectName(QStringLiteral("verticalLayoutWidget"));
-        verticalLayoutWidget->setGeometry(QRect(460, 50, 181, 91));
-        verticalLayout = new QVBoxLayout(verticalLayoutWidget);
-        verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
-        verticalLayout->setContentsMargins(0, 0, 0, 0);
         gridLayoutWidget = new QWidget(studentexam);
         gridLayoutWidget->setObjectName(QStringLiteral("gridLayoutWidget"));
         gridLayoutWidget->setGeometry(QRect(480, 170, 151, 141));
@@ -220,24 +215,15 @@ public:
 
         gridLayout->addWidget(radioButton_25, 4, 4, 1, 1);
 
-        graphicsView = new QGraphicsView(studentexam);
-        graphicsView->setObjectName(QStringLiteral("graphicsView"));
-        graphicsView->setGeometry(QRect(460, 50, 181, 91));
-        QBrush brush(QColor(178, 178, 178, 0));
-        brush.setStyle(Qt::SolidPattern);
-        graphicsView->setBackgroundBrush(brush);
-        QBrush brush1(QColor(182, 182, 182, 255));
-        brush1.setStyle(Qt::SolidPattern);
-        graphicsView->setForegroundBrush(brush1);
         label_2 = new QLabel(studentexam);
         label_2->setObjectName(QStringLiteral("label_2"));
-        label_2->setGeometry(QRect(470, 90, 158, 51));
+        label_2->setGeometry(QRect(530, 90, 158, 51));
         label_2->setScaledContents(false);
         label_2->setIndent(10);
         label_2->setOpenExternalLinks(false);
         label = new QLabel(studentexam);
         label->setObjectName(QStringLiteral("label"));
-        label->setGeometry(QRect(470, 50, 158, 81));
+        label->setGeometry(QRect(530, 40, 158, 81));
         label->setScaledContents(false);
         label->setIndent(10);
         label->setOpenExternalLinks(false);
@@ -281,6 +267,20 @@ public:
         pushButton_3 = new QPushButton(studentexam);
         pushButton_3->setObjectName(QStringLiteral("pushButton_3"));
         pushButton_3->setGeometry(QRect(460, 440, 181, 21));
+        label_3 = new QLabel(studentexam);
+        label_3->setObjectName(QStringLiteral("label_3"));
+        label_3->setGeometry(QRect(470, 70, 51, 51));
+        label_3->setPixmap(QPixmap(QString::fromUtf8(":/image/photo.png")));
+        label_3->setScaledContents(true);
+        progressBar->raise();
+        gridLayoutWidget->raise();
+        label->raise();
+        verticalLayoutWidget_2->raise();
+        pushButton->raise();
+        pushButton_2->raise();
+        pushButton_3->raise();
+        label_2->raise();
+        label_3->raise();
 
         retranslateUi(studentexam);
 
@@ -329,6 +329,7 @@ public:
         pushButton->setText(QApplication::translate("studentexam", "\344\270\212\344\270\200\351\242\230", Q_NULLPTR));
         pushButton_2->setText(QApplication::translate("studentexam", "\344\270\213\344\270\200\351\242\230", Q_NULLPTR));
         pushButton_3->setText(QApplication::translate("studentexam", "\344\272\244\345\215\267", Q_NULLPTR));
+        label_3->setText(QString());
     } // retranslateUi
 
 };
