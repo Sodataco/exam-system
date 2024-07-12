@@ -360,12 +360,13 @@ void studentexam::displayQuestions(const int Type,const int questionid,QSqlDatab
         qDebug()<<"添加题目";
         QString text;
         while (query.next()) {
+            qDebug()<<"题目是"<<text;
 
             QString questionText = query.value(0).toString();
 
             //text.append("题目: " + "\n" + questionText);
             text.append("题目: " + query.value(0).toString());
-            qDebug()<<"题目是"<<text;
+
 
         }
 

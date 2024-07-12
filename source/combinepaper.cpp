@@ -38,6 +38,8 @@ void combinePaper::on_finish_clicked()
 {
     QString paperName=ui->title->toPlainText();
 
+    int classNum=ui->EditClass->text().toInt();
+
     QMessageBox::StandardButton reply;
     reply = QMessageBox::question(this, "Confirmation", "确定要上传本卷吗?",QMessageBox::Yes | QMessageBox::No);
     if (reply == QMessageBox::No) {
