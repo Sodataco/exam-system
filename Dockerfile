@@ -1,5 +1,7 @@
 FROM ubuntu:latest
 
+USER root
+
 # 使用阿里云的镜像源
 RUN sed -i 's/archive.ubuntu.com/mirrors.aliyun.com/g' /etc/apt/sources.list && \
     sed -i 's/security.ubuntu.com/mirrors.aliyun.com/g' /etc/apt/sources.list
@@ -9,7 +11,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 # 更新包列表并安装必要的工具和Qt开发环境
 RUN apt-get update && \
-    apt-get install -y build-essential gdb cmake qtbase5-dev qt5-qmake qtbase5-dev-tools libqt5xmlpatterns5-dev && \
+    apt-get install -y build-essential gdb git cmake qtbase5-dev qt5-qmake qtbase5-dev-tools libqt5xmlpatterns5-dev qtbase5-private-dev && \
     rm -rf /var/lib/apt/lists/*
 
 RUN git clone https://github.com/dbzhang800/QtXlsxWriter
