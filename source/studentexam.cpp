@@ -12,13 +12,17 @@ studentexam::studentexam(QWidget *parent)
 
         ui->radioButton_1->setChecked(true);
         // 设置题目文本初始内容
+
+        ui->selectquestion_2->setText("这里显示第一题内容");
+
         ui->textBrowser_2->setText("这里显示第一题内容");
 
+
         // 设置选项按钮初始状态和信号连接
-        connect(ui->commandLinkButton, &QCommandLinkButton::clicked, this, &studentexam::onOptionClicked);
-        connect(ui->commandLinkButton_2, &QCommandLinkButton::clicked, this, &studentexam::onOptionClicked);
-        connect(ui->commandLinkButton_3, &QCommandLinkButton::clicked, this, &studentexam::onOptionClicked);
-        connect(ui->commandLinkButton_4, &QCommandLinkButton::clicked, this, &studentexam::onOptionClicked);
+        connect(ui->commandLinkButton_1, &QCommandLinkButton::clicked, this, &studentexam::onOptionClicked);
+        connect(ui->commandLinkButton_5, &QCommandLinkButton::clicked, this, &studentexam::onOptionClicked);
+        connect(ui->commandLinkButton_6, &QCommandLinkButton::clicked, this, &studentexam::onOptionClicked);
+        connect(ui->commandLinkButton_7, &QCommandLinkButton::clicked, this, &studentexam::onOptionClicked);
 
         // 初始化题目完成状态和信号连接
         for (int i = 0; i < totalQuestions; ++i) {
@@ -64,7 +68,11 @@ void studentexam::onRadioButtonClicked()
         if (radioButton && radioButton->isChecked()) {
             int index = i - 1;  // 题目索引从0开始，所以需要减1
             currentQuestion = index;  // 更新当前选中的题目索引
+
+            ui->selectquestion_2->setText(QString("这里显示第 %1 题内容").arg(index + 1));
+
             ui->textBrowser_2->setText(QString("这里显示第 %1 题内容").arg(index + 1));
+
             break;  // 如果找到被选中的单选按钮，跳出循环
         }
     }
@@ -75,7 +83,11 @@ void studentexam::onPreviousClicked()
 {
     if (currentQuestion > 0 && currentQuestion < totalQuestions) {
     currentQuestion=currentQuestion-1;
+
+    ui->selectquestion_2->setText(QString("这里显示第 %1 题内容").arg(currentQuestion + 1));  // 在文本浏览器中显示上一题的内容
+
     ui->textBrowser_2->setText(QString("这里显示第 %1 题内容").arg(currentQuestion + 1));  // 在文本浏览器中显示上一题的内容
+
     QRadioButton *buttonToClick = nullptr;
     switch (currentQuestion) {
         case 0:
@@ -169,7 +181,11 @@ void studentexam::onNextClicked()
 {
     if (currentQuestion >= 0 && currentQuestion < totalQuestions-1) {
     currentQuestion=currentQuestion+1;
+
+    ui->selectquestion_2->setText(QString("这里显示第 %1 题内容").arg(currentQuestion + 1));  // 在文本浏览器中显示下一题的内容
+
     ui->textBrowser_2->setText(QString("这里显示第 %1 题内容").arg(currentQuestion + 1));  // 在文本浏览器中显示下一题的内容
+
     QRadioButton *buttonToClick = nullptr;
     switch (currentQuestion) {
         case 0:
@@ -277,4 +293,93 @@ void studentexam::updateProgressBar()
 
 void studentexam::receivelogin(){
     this->show();
+}
+
+
+int studentexam::getquestiontype(const int paperid,QSqlDatabase &db){
+
+    QSqlQuery query(db);
+    query.prepare("SELECT question_type FROM kaoshi WHERE paper_id = :paper_id");
+    query.bindValue(":paper_id", paperid);
+
+
+    if (!query.exec()) {
+        qDebug() << "Failed to execute query:" << query.lastError();
+        return -1;
+    }
+
+
+    int type;
+    while (query.next()) {
+        type= query.value(0).toInt();
+    }
+    qDebug()<<"type是"<<type;
+    return type;
+}
+
+int studentexam::getquestionid(const int paperid,QSqlDatabase &db){
+    QSqlQuery query(db);
+    query.prepare("SELECT question_id FROM kaoshi WHERE paper_id = :paper_id");
+    query.bindValue(":paper_id", paperid);
+
+
+    if (!query.exec()) {
+        qDebug() << "Failed to execute query:" << query.lastError();
+        return -1;
+    }
+
+
+    int questionid;
+    while (query.next()) {
+        questionid= query.value(0).toInt();
+    }
+    return questionid;
+}
+
+
+
+//根据题目的paper_id来选取对应的题目并呈现
+void studentexam::displayQuestions(const int Type,const int questionid,QSqlDatabase &db) {
+    qDebug()<<"999   "<<Type;
+    switch(Type){
+    case 1://选择题case
+        qDebug()<<"进入case";
+        ui->stackedWidget->setCurrentIndex(0);
+
+        QSqlQuery query(db);
+        query.prepare("SELECT question_text FROM kaoshi WHERE question_id = :question_id");
+        query.bindValue(":question_id", questionid);
+
+
+        if (!query.exec()) {
+            qDebug() << "Failed to execute query:" << query.lastError();
+            return;
+        }
+
+        qDebug()<<"添加题目";
+        QString text;
+        while (query.next()) {
+
+            QString questionText = query.value(0).toString();
+
+            //text.append("题目: " + "\n" + questionText);
+            text.append("题目: " + query.value(0).toString());
+            qDebug()<<"题目是"<<text;
+
+        }
+
+        ui->selectquestion_2->setText(text);
+
+
+        break;
+
+    // case 2://填空题case
+
+    //     break;
+    // case 3://问答题case
+
+    //     break;
+    }
+
+
 }

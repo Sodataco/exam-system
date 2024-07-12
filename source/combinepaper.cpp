@@ -55,6 +55,7 @@ void combinePaper::on_finish_clicked()
     for (QCheckBox* checkBox : checkBoxes) {
 
         if (checkBox->isChecked()) {
+
             QString questionName = checkBox->text();
             // 创建SQL查询对象
             QSqlQuery query(user_db);
@@ -204,9 +205,9 @@ int combinePaper::getNextPaperId(QSqlDatabase &db) {
 //插入试卷编号
 void combinePaper::insertPaperToDatabase(const QString &paperName, QSqlDatabase &db) {
     // 获取下一个试卷编号
-    qDebug()<<"1111112";
+
     int paperId = getNextPaperId(db);
-    qDebug()<<"1111131";
+
 
     QSqlQuery query(db);
 
