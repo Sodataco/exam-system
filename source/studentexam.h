@@ -5,6 +5,7 @@
 #include <QMainWindow>
 #include <QRadioButton>
 #include <QCommandLinkButton>
+
 #include "user.h"
 
 namespace Ui {
@@ -15,12 +16,15 @@ class studentexam : public QWidget
 {
     Q_OBJECT
 
+
 public:
 
     void displayQuestions(const int Type,const int questionid,QSqlDatabase &db);
     int getquestiontype(const int paperid,QSqlDatabase &db);
     int getquestionid(const int paperid,QSqlDatabase &db);
 
+
+public:
     explicit studentexam(QWidget *parent = nullptr);
     ~studentexam();
 

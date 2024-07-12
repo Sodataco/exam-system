@@ -44,7 +44,7 @@ void studentpreexam::on_refresh_clicked()
         while (query.next()) {
             QString examName = query.value(0).toString();
             // 将考试场次添加到QListWidget中
-             ui->examList->addItem(examName);
+            ui->examList->addItem(examName);
         }
     } else {
         qDebug() << "Query failed:" << query.lastError();
@@ -89,6 +89,7 @@ void studentpreexam::on_examList_itemClicked(QListWidgetItem *item)
     s1->displayQuestions(1,questionid,user_db);
 
     s1->show();
+
 
 
 }

@@ -12,7 +12,11 @@ studentexam::studentexam(QWidget *parent)
 
         ui->radioButton_1->setChecked(true);
         // 设置题目文本初始内容
+
         ui->selectquestion_2->setText("这里显示第一题内容");
+
+        ui->textBrowser_2->setText("这里显示第一题内容");
+
 
         // 设置选项按钮初始状态和信号连接
         connect(ui->commandLinkButton_1, &QCommandLinkButton::clicked, this, &studentexam::onOptionClicked);
@@ -64,7 +68,11 @@ void studentexam::onRadioButtonClicked()
         if (radioButton && radioButton->isChecked()) {
             int index = i - 1;  // 题目索引从0开始，所以需要减1
             currentQuestion = index;  // 更新当前选中的题目索引
+
             ui->selectquestion_2->setText(QString("这里显示第 %1 题内容").arg(index + 1));
+
+            ui->textBrowser_2->setText(QString("这里显示第 %1 题内容").arg(index + 1));
+
             break;  // 如果找到被选中的单选按钮，跳出循环
         }
     }
@@ -75,7 +83,11 @@ void studentexam::onPreviousClicked()
 {
     if (currentQuestion > 0 && currentQuestion < totalQuestions) {
     currentQuestion=currentQuestion-1;
+
     ui->selectquestion_2->setText(QString("这里显示第 %1 题内容").arg(currentQuestion + 1));  // 在文本浏览器中显示上一题的内容
+
+    ui->textBrowser_2->setText(QString("这里显示第 %1 题内容").arg(currentQuestion + 1));  // 在文本浏览器中显示上一题的内容
+
     QRadioButton *buttonToClick = nullptr;
     switch (currentQuestion) {
         case 0:
@@ -169,7 +181,11 @@ void studentexam::onNextClicked()
 {
     if (currentQuestion >= 0 && currentQuestion < totalQuestions-1) {
     currentQuestion=currentQuestion+1;
+
     ui->selectquestion_2->setText(QString("这里显示第 %1 题内容").arg(currentQuestion + 1));  // 在文本浏览器中显示下一题的内容
+
+    ui->textBrowser_2->setText(QString("这里显示第 %1 题内容").arg(currentQuestion + 1));  // 在文本浏览器中显示下一题的内容
+
     QRadioButton *buttonToClick = nullptr;
     switch (currentQuestion) {
         case 0:
@@ -264,7 +280,6 @@ void studentexam::onExitClicked()
     emit showpreexam();
 }
 
-
 void studentexam::updateProgressBar()
 {
     int completedCount = 0;
@@ -279,6 +294,7 @@ void studentexam::updateProgressBar()
 void studentexam::receivelogin(){
     this->show();
 }
+
 
 int studentexam::getquestiontype(const int paperid,QSqlDatabase &db){
 
