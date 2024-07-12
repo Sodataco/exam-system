@@ -12,6 +12,10 @@ RUN apt-get update && \
     apt-get install -y build-essential gdb cmake qtbase5-dev qt5-qmake qtbase5-dev-tools libqt5xmlpatterns5-dev && \
     rm -rf /var/lib/apt/lists/*
 
+RUN git clone https://github.com/dbzhang800/QtXlsxWriter
+
+RUN cd QtXlsxWriter && qmake && make && make install
+    
 # 设置工作目录
 WORKDIR /app
 
