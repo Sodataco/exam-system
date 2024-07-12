@@ -276,7 +276,7 @@ void studentexam::onNextClicked()
 
 void studentexam::onExitClicked()
 {
-    this->close();  // 关闭考试界面
+    this->hide();  // 关闭考试界面
     emit showpreexam();
 }
 
@@ -333,6 +333,7 @@ int studentexam::getquestionid(const int paperid,QSqlDatabase &db){
     while (query.next()) {
         questionid= query.value(0).toInt();
     }
+    qDebug()<<"本张卷子的questionid是"<<questionid;
     return questionid;
 }
 

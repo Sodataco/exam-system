@@ -88,6 +88,7 @@ void studentpreexam::on_examList_itemClicked(QListWidgetItem *item)
 
     s1->displayQuestions(1,questionid,user_db);
 
+    //this->hide();
     s1->show();
 
 
