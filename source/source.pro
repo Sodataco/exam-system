@@ -3,7 +3,8 @@ QT       += sql
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-QT += axcontainer
+win32: QT += axcontainer
+unix: QT += xlsx
 
 CONFIG += c++17
 

@@ -29,7 +29,11 @@
 #include <QFile>
 #include <QFileDialog>
 
+#ifdef _WIN32
 #include <QAxObject>
+#else
+#include <QtXlsx>
+#endif
 
 #include <user.h>
 

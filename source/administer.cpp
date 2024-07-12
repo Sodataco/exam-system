@@ -140,6 +140,7 @@ void Administer::on_resetPassword_clicked()
 
 //Excel导入
 void Administer::readAndStoreExcelData(const QString &filePath, QSqlDatabase &db) {
+#ifdef _WIN32
     // 打开Excel应用程序
     QAxObject excel("Excel.Application");
     excel.setProperty("Visible", false);
@@ -201,8 +202,30 @@ void Administer::readAndStoreExcelData(const QString &filePath, QSqlDatabase &db
     delete workbook;
     delete workbooks;
 
+#else
+    // 使用 QtXlsx 库读取 Excel 文件
+    QXlsx::Document xlsx(filePath);
+    QXlsx::CellRange range = xlsx.dimension();
+    int rowCount = range.rowCount();
+    QSqlQuery query(db);
 
+    for (int row = 1; row <= rowCount; ++row) {
+        QString username = xlsx.read(row, 1).toString();
+        QString user_id = xlsx.read(row, 2).toString();
+        QString class_num = xlsx.read(row, 3).toString();
+        QString password = "12345";
+
+        query.exec(QString("select * from user where zhanghao = '%1'").arg(user_id));
+        if (!query.next()) {
+            query.exec(QString("insert into user(zhanghao,mima,name) values('%1','%2','%3')")
+                           .arg(user_id).arg(password).arg(username));
+            query.exec(QString("insert into class(class_id,user_id) values('%1','%2')")
+                           .arg(class_num).arg(user_id));
+        }
+    }
+#endif
 }
+
 
 
 
@@ -222,8 +245,6 @@ void Administer::on_importExcel_clicked()
     }
 
 }
-
-
 
 
 
