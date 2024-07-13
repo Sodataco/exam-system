@@ -23,6 +23,8 @@ public:
     int getquestiontype(const int paperid,QSqlDatabase &db);
     int getquestionid(const int paperid,QSqlDatabase &db);
 
+    QString question_text[10001];
+
 
 public:
     explicit studentexam(QWidget *parent = nullptr);
