@@ -13,7 +13,11 @@ studentexam::studentexam(QWidget *parent)
         ui->radioButton_1->setChecked(true);
         // 设置题目文本初始内容
 
-        //ui->selectquestion_2->setText("这里显示第一题内容");
+        //最大化界面并且无法调整大小和位置，防止作弊
+        this->showFullScreen();
+        setWindowFlags(Qt::WindowType::FramelessWindowHint);
+
+        ui->selectquestion_2->setText(question_text[0]);
 
         //ui->textBrowser_2->setText("这里显示第一题内容");
 
@@ -69,9 +73,9 @@ void studentexam::onRadioButtonClicked()
             int index = i - 1;  // 题目索引从0开始，所以需要减1
             currentQuestion = index;  // 更新当前选中的题目索引
 
-            //ui->selectquestion_2->setText(QString("这里显示第 %1 题内容").arg(index + 1));
+            ui->selectquestion_2->setText(QString(question_text[i]).arg(index + 1));
 
-            //ui->textBrowser_2->setText(QString("这里显示第 %1 题内容").arg(index + 1));
+            ui->textBrowser_2->setText(QString("这里显示第 %1 题内容").arg(index + 1));
 
             break;  // 如果找到被选中的单选按钮，跳出循环
         }
@@ -84,7 +88,7 @@ void studentexam::onPreviousClicked()
     if (currentQuestion > 0 && currentQuestion < totalQuestions) {
     currentQuestion=currentQuestion-1;
 
-    //ui->selectquestion_2->setText(QString("这里显示第 %1 题内容").arg(currentQuestion + 1));  // 在文本浏览器中显示上一题的内容
+    ui->selectquestion_2->setText(QString(question_text[currentQuestion + 1]).arg(currentQuestion + 1));  // 在文本浏览器中显示上一题的内容
 
     //ui->textBrowser_2->setText(QString("这里显示第 %1 题内容").arg(currentQuestion + 1));  // 在文本浏览器中显示上一题的内容
 
@@ -182,7 +186,7 @@ void studentexam::onNextClicked()
     if (currentQuestion >= 0 && currentQuestion < totalQuestions-1) {
     currentQuestion=currentQuestion+1;
 
-    //ui->selectquestion_2->setText(QString("这里显示第 %1 题内容").arg(currentQuestion + 1));  // 在文本浏览器中显示下一题的内容
+    ui->selectquestion_2->setText(QString(question_text[currentQuestion + 1]).arg(currentQuestion + 1));  // 在文本浏览器中显示下一题的内容
 
     //ui->textBrowser_2->setText(QString("这里显示第 %1 题内容").arg(currentQuestion + 1));  // 在文本浏览器中显示下一题的内容
 
@@ -276,6 +280,13 @@ void studentexam::onNextClicked()
 
 void studentexam::onExitClicked()
 {
+
+    QMessageBox::StandardButton reply;
+    reply = QMessageBox::question(this, "确认", "确定要提前交卷吗？",QMessageBox::Yes | QMessageBox::No);
+    if (reply == QMessageBox::No) {
+        qDebug() << "User chose to cancel.";
+        return;
+    }
     this->hide();  // 关闭考试界面
     emit showpreexam();
 }
@@ -340,7 +351,7 @@ int studentexam::getquestionid(const int paperid,QSqlDatabase &db){
 
 
 //根据题目的question_id和type来选取对应的题目并呈现
-void studentexam::displayQuestions(const int Type,const int questionid,QSqlDatabase &db) {
+void studentexam::displayQuestions(const int Type,const int paperid,QSqlDatabase &db) {
 
     switch(Type){
     case 1://选择题case
@@ -348,8 +359,8 @@ void studentexam::displayQuestions(const int Type,const int questionid,QSqlDatab
         ui->stackedWidget->setCurrentIndex(0);
 
         QSqlQuery query(db);
-        query.prepare("SELECT question_text FROM choice_questions WHERE question_id = :question_id");
-        query.bindValue(":question_id", questionid);
+        query.prepare("SELECT question_text FROM choice_questions WHERE paper_id = :paper_id");
+        query.bindValue(":paper_id", paperid);
 
 
         if (!query.exec()) {
@@ -359,22 +370,25 @@ void studentexam::displayQuestions(const int Type,const int questionid,QSqlDatab
 
         qDebug()<<"添加题目";
         QString text;
+        int i=0;
         while (query.next()) {
+
 
             QString questionText = query.value(0).toString();
             //qDebug()<<"questionText是"<<questionText;
-
+            qDebug()<<"进入循环";
             text=query.value(0).toString();
 
 
             //text.append("题目: " + questionText);
             //text.append("题目: " + query.value(0).toString())
             qDebug()<<"题目是"<<text;
-
+            question_text[i]=text;
+            i++;
 
         }
 
-        ui->selectquestion_2->setText(text);
+        //ui->selectquestion_2->setText(text);
 
 
         break;

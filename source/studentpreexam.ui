@@ -18,58 +18,19 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QPushButton" name="exam">
-   <property name="geometry">
-    <rect>
-     <x>280</x>
-     <y>10</y>
-     <width>371</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>12</pointsize>
-    </font>
-   </property>
-   <property name="text">
-    <string>数据结构 距离开始还有x天x小时x分钟</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="pushButton_2">
+  <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
      <x>280</x>
      <y>40</y>
-     <width>371</width>
-     <height>31</height>
+     <width>131</width>
+     <height>41</height>
     </rect>
    </property>
-   <property name="text">
-    <string>大学物理  考试中</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="pushButton_3">
-   <property name="geometry">
-    <rect>
-     <x>280</x>
-     <y>70</y>
-     <width>371</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>线性代数  已结束</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label">
-   <property name="geometry">
-    <rect>
-     <x>110</x>
-     <y>50</y>
-     <width>101</width>
-     <height>31</height>
-    </rect>
+   <property name="font">
+    <font>
+     <pointsize>18</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>点击参与考试</string>
@@ -96,6 +57,12 @@
      <width>641</width>
      <height>221</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>宋体</family>
+     <pointsize>12</pointsize>
+    </font>
    </property>
   </widget>
   <widget class="QPushButton" name="refresh">
