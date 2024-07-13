@@ -262,7 +262,6 @@ void combinePaper::getclass(int num,const int &paper_id){
     query.finish();
 
 
-    //编号
     clean_is_use(paper_id);
 
 }

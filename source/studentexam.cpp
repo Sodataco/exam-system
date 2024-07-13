@@ -72,10 +72,20 @@ void studentexam::onRadioButtonClicked()
         if (radioButton && radioButton->isChecked()) {
             int index = i - 1;  // 题目索引从0开始，所以需要减1
             currentQuestion = index;  // 更新当前选中的题目索引
+            if(question_type[i]==1){
+                ui->stackedWidget->setCurrentIndex(0);
+                ui->selectquestion_2->setText(QString(question_text[i]).arg(index + 1));
+            }
+            else if(question_type[i]==2){
+                ui->stackedWidget->setCurrentIndex(1);
+                ui->textBrowser_2->setText(QString("这里显示第 %1 题内容").arg(index + 1));
+            }
 
-            ui->selectquestion_2->setText(QString(question_text[i]).arg(index + 1));
+            else if(question_type[i]==3){
+                ui->stackedWidget->setCurrentIndex(1);
+                ui->textBrowser_2->setText(QString("这里显示第 %1 题内容").arg(index + 1));
+            }
 
-            ui->textBrowser_2->setText(QString("这里显示第 %1 题内容").arg(index + 1));
 
             break;  // 如果找到被选中的单选按钮，跳出循环
         }
@@ -350,48 +360,42 @@ int studentexam::getquestionid(const int paperid,QSqlDatabase &db){
 
 
 
-//根据题目的question_id和type来选取对应的题目并呈现
-void studentexam::displayQuestions(const int Type,const int paperid,QSqlDatabase &db) {
-    qDebug()<<"进入函数";
-    switch(Type){
-    case 1://选择题case
-        qDebug()<<"选择题case";
-        ui->stackedWidget->setCurrentIndex(0);
+//根据题目的paper_id和type来选取对应的题目并呈现
+void studentexam::displayQuestions(const int paperid,QSqlDatabase &db) {
+    qDebug()<<"进入哈哈哈哈哈函数";
+    //switch(Type){
+    //case 1://选择题case
 
-        QSqlQuery query(db);
-        query.prepare("SELECT question_text FROM choice_questions WHERE paper_id = :paper_id");
-        query.bindValue(":paper_id", paperid);
+    ui->stackedWidget->setCurrentIndex(0);
 
-
-        if (!query.exec()) {
-            qDebug() << "Failed to execute query:" << query.lastError();
-            return;
-        }
-
-        qDebug()<<"添加题目";
-        QString text;
-        int i=0;
-        while (query.next()) {
+    QSqlQuery query(db);
+    query.prepare("SELECT question_text FROM choice_questions WHERE paper_id = :paper_id");
+    query.bindValue(":paper_id", paperid);
 
 
-            QString questionText = query.value(0).toString();
-            //qDebug()<<"questionText是"<<questionText;
-            qDebug()<<"进入循环";
-            text=query.value(0).toString();
+    if (!query.exec()) {
+        qDebug() << "Failed to execute query:" << query.lastError();
+        return;
+    }
 
 
-            //text.append("题目: " + questionText);
-            //text.append("题目: " + query.value(0).toString())
-            qDebug()<<"题目是"<<text;
-            question_text[i]=text;
-            i++;
+    QString text;
 
-        }
+    int i=0;
+    while (query.next()) {
 
-        //ui->selectquestion_2->setText(text);
+        qDebug()<<"进入循环";
+        text=query.value(0).toString();
+        question_text[i]=text;
+        question_type[i]=1;
+        i++;
+
+    }
+
+    //ui->selectquestion_2->setText(text);
 
 
-        break;
+    //break;
 
     // case 2://填空题case
 
@@ -399,7 +403,7 @@ void studentexam::displayQuestions(const int Type,const int paperid,QSqlDatabase
     // case 3://问答题case
 
     //     break;
-    }
-
-
 }
+
+
+

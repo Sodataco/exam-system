@@ -29,5 +29,7 @@
         <file>image/guanliyuan.jpeg</file>
         <file>image/jiaoshi.jpeg</file>
         <file>image/paper.png</file>
+        <file>image/dd.png</file>
+        <file>image/dd0.png</file>
     </qresource>
 </RCC>
