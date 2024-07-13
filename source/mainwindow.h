@@ -35,6 +35,7 @@ public:
     void keyPressEvent(QKeyEvent *event);
     //void paintEvent(QPaintEvent*);
     MainWindow(QWidget *parent = nullptr);
+    bool is_pass(int type,QString account);
     ~MainWindow();
 
     //信号

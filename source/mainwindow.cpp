@@ -85,8 +85,22 @@ void MainWindow::on_loginButton_clicked()
 
     QSqlQuery query(user_db);
     qDebug()<<"登录账号 = "<<s1<<"  登录密码 = "<<s2;
-    account=s1;
+
     qDebug()<<account<<"1145";
+
+    if(openstudent==true){
+
+        s1="S"+s1;
+    }
+    else if(openteacher==true){
+        s1="T"+s1;
+    }
+    else if(openadminister==true){
+
+        s1="A"+s1;
+    }
+
+    account=s1;
 
     query.exec(QString("select* from user where zhanghao = '%1' and mima = '%2'").arg(s1).arg(s2));
     if(query.next() == false){
@@ -98,9 +112,9 @@ void MainWindow::on_loginButton_clicked()
 
     query.finish();
 
-    if(openteacher)emit showteacher();
-    else if(openadminister)emit showadminister();
-    else if(openstudent)emit showstu();
+    if(openteacher&&is_pass(2,account))emit showteacher();
+    else if(openadminister&&is_pass(3,account))emit showadminister();
+    else if(openstudent&&is_pass(1,account))emit showstu();
     else{
         QMessageBox::warning(this, "nonono", "Please choose a identity.");//选角色
         return;
@@ -108,6 +122,32 @@ void MainWindow::on_loginButton_clicked()
     this->hide();
 
 }//实现登录的页面跳转，释放下一个页面展示的信号
+
+
+bool MainWindow::is_pass(int type,QString account){
+    if(type==1){
+
+        if(account[0]=='S'){
+            return 1;
+        }
+
+    }
+    else if(type==2){
+        if(account[0]=='T'){
+            return 1;
+        }
+    }
+    else if(type==3){
+        if(account[0]=='A'){
+            return 1;
+        }
+
+    }
+    return 0;
+}
+
+
+
 
 
 

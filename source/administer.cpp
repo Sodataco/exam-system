@@ -64,7 +64,7 @@ void Administer::paintEvent(QPaintEvent *){
 //自动导入一个账号
 bool Administer::derive_data_to_sql(QSqlDatabase& db){
     QSqlQuery query(db);
-    QString s1="121";
+    QString s1="A121";
     QString s2="233";
     QString s3="无名";
 
