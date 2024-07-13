@@ -76,14 +76,15 @@ void studentpreexam::on_examList_itemClicked(QListWidgetItem *item)
     int paperId = query.value(0).toInt();
 
     qDebug()<<"本张卷子的paperId是"<<paperId;
-    studentexam *tool=new studentexam();
-    int type=tool->getquestiontype(paperId,user_db);
-    int questionid=tool->getquestionid(paperId,user_db);
+
+    //studentexam *tool=new studentexam();
+    //int type=tool->getquestiontype(paperId,user_db);
+    //int questionid=tool->getquestionid(paperId,user_db);
 
     //每有一张卷子就new一张卷子
     studentexam *s1=new studentexam();
 
-    s1->displayQuestions(type,paperId,user_db);
+    s1->displayQuestions(paperId,user_db);
 
     //this->hide();
     s1->show();
