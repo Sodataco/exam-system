@@ -50,9 +50,6 @@ void studentpreexam::on_refresh_clicked()
         qDebug() << "Query failed:" << query.lastError();
     }
 
-    ui->examList->addItem("12QW3EQ");
-    ui->examList->addItem("12QQWE3");
-
 }
 
 

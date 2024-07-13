@@ -62,8 +62,8 @@ void teacherquestion::on_importSelectquestion_clicked()
 
     QSqlQuery query(user_db);
     // 使用 INSERT INTO 语句插入选择题数据
-    query.prepare("INSERT INTO choice_questions (paper_id, question_text, option_a, option_b, option_c, option_d, answer) "
-                  "VALUES (:paper_id, :question_text, :option_a, :option_b, :option_c, :option_d, :answer)");
+    query.prepare("INSERT INTO choice_questions (paper_id, question_text, option_a, option_b, option_c, option_d, answer,is_use) "
+                  "VALUES (:paper_id, :question_text, :option_a, :option_b, :option_c, :option_d, :answer, :use)");
     query.bindValue(":paper_id", 1);
     query.bindValue(":question_text", sQ);
     query.bindValue(":option_a", sA);
@@ -71,6 +71,7 @@ void teacherquestion::on_importSelectquestion_clicked()
     query.bindValue(":option_c", sC);
     query.bindValue(":option_d", sD);
     query.bindValue(":answer", bA*1+bB*2+bC*4+bD*8);
+    query.bindValue(":use", false);
 
     if (!query.exec()) {
         qDebug() << "Error inserting choice question:" << query.lastError().text();
@@ -103,11 +104,12 @@ void teacherquestion::on_importBlankquestion_clicked()
     QSqlQuery query(user_db);
 
     // 使用 INSERT INTO 语句插入填空题数据
-    query.prepare("INSERT INTO tk_questions (paper_id, question_text, answer_text) "
-                  "VALUES (:paper_id, :question_text, :answer_text)");
+    query.prepare("INSERT INTO tk_questions (paper_id, question_text, answer_text,is_use) "
+                  "VALUES (:paper_id, :question_text, :answer_text,:use)");
     query.bindValue(":paper_id", 1);
     query.bindValue(":question_text", sQ);
     query.bindValue(":answer_text", answer);
+    query.bindValue(":use", false);
 
     if (!query.exec()) {
         qDebug() << "Error inserting fill-in-the-blank question:" << query.lastError().text();

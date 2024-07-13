@@ -133,7 +133,7 @@ void combinePaper::on_Refresh_clicked()
 
     QSqlQuery   query(user_db);
     //选择
-    if (query.exec("select question_text FROM choice_questions")) {
+    if (query.exec(QString("select question_text FROM choice_questions where is_use = '%1'").arg(false))) {
         while (query.next()) {
             QString examName = query.value(0).toString();
             QListWidgetItem *item = new QListWidgetItem();
@@ -263,7 +263,7 @@ void combinePaper::getclass(int num,const int &paper_id){
 
     //去除is_use
 
-    clean_is_use(paper_id);
+    //clean_is_use(paper_id);
 
 }
 
