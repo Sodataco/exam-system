@@ -10,5 +10,24 @@
         <file>image/photo.png</file>
         <file>image/forgetpassword.png</file>
         <file>image/logo.png</file>
+        <file>image/home.png</file>
+        <file>image/xuanzeti0.png</file>
+        <file>image/xuanzeti2.png</file>
+        <file>image/xx0.png</file>
+        <file>image/xx1.png</file>
+        <file>image/jiandati0.png</file>
+        <file>image/jiandati1.png</file>
+        <file>image/tiankongti0.png</file>
+        <file>image/tiankongti1.png</file>
+        <file>image/gg1.png</file>
+        <file>image/gg10.png</file>
+        <file>image/score.png</file>
+        <file>image/lock0.png</file>
+        <file>image/exam.png</file>
+        <file>image/book.png</file>
+        <file>image/chafen.png</file>
+        <file>image/guanliyuan.jpeg</file>
+        <file>image/jiaoshi.jpeg</file>
+        <file>image/paper.png</file>
     </qresource>
 </RCC>
