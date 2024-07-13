@@ -167,7 +167,7 @@ backgroung-color:transparent;
 }</string>
    </property>
    <property name="text">
-    <string>在线考试平台 教师端</string>
+    <string>在线考试平台 学生端</string>
    </property>
   </widget>
   <widget class="QLabel" name="label_2">
@@ -192,9 +192,9 @@ backgroung-color:transparent;
   <widget class="QLabel" name="label_3">
    <property name="geometry">
     <rect>
-     <x>110</x>
+     <x>100</x>
      <y>200</y>
-     <width>71</width>
+     <width>91</width>
      <height>31</height>
     </rect>
    </property>
@@ -212,15 +212,15 @@ backgroung-color:transparent;
 }</string>
    </property>
    <property name="text">
-    <string> 进入考试</string>
+    <string>进入考试</string>
    </property>
   </widget>
   <widget class="QLabel" name="label_4">
    <property name="geometry">
     <rect>
-     <x>240</x>
+     <x>230</x>
      <y>200</y>
-     <width>71</width>
+     <width>91</width>
      <height>31</height>
     </rect>
    </property>
@@ -238,15 +238,15 @@ backgroung-color:transparent;
 }</string>
    </property>
    <property name="text">
-    <string> 查询分数</string>
+    <string>查询分数</string>
    </property>
   </widget>
   <widget class="QLabel" name="label_5">
    <property name="geometry">
     <rect>
-     <x>110</x>
+     <x>100</x>
      <y>330</y>
-     <width>71</width>
+     <width>91</width>
      <height>31</height>
     </rect>
    </property>
@@ -264,7 +264,7 @@ backgroung-color:transparent;
 }</string>
    </property>
    <property name="text">
-    <string> 修改密码</string>
+    <string>修改密码</string>
    </property>
   </widget>
   <widget class="QLabel" name="label_6">
@@ -272,7 +272,7 @@ backgroung-color:transparent;
     <rect>
      <x>70</x>
      <y>400</y>
-     <width>71</width>
+     <width>91</width>
      <height>31</height>
     </rect>
    </property>
