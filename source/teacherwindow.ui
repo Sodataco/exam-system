@@ -6,20 +6,26 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>605</width>
-    <height>439</height>
+    <width>800</width>
+    <height>450</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget
+{
+background-color:white;
+}</string>
+  </property>
   <widget class="QPushButton" name="judge">
    <property name="geometry">
     <rect>
-     <x>40</x>
-     <y>260</y>
-     <width>111</width>
-     <height>111</height>
+     <x>110</x>
+     <y>250</y>
+     <width>71</width>
+     <height>71</height>
     </rect>
    </property>
    <property name="font">
@@ -27,8 +33,21 @@
      <pointsize>20</pointsize>
     </font>
    </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton
+{
+border:none;
+image:url(:/image/score.png);
+border-radius:10px;
+background-color:rgb(51, 102, 153);
+}
+QPushButton:hover
+{
+background-color:rgb(177, 204, 228);
+}</string>
+   </property>
    <property name="text">
-    <string>批改</string>
+    <string/>
    </property>
   </widget>
   <widget class="QPushButton" name="paper">
@@ -37,10 +56,10 @@
    </property>
    <property name="geometry">
     <rect>
-     <x>190</x>
-     <y>100</y>
-     <width>111</width>
-     <height>111</height>
+     <x>250</x>
+     <y>120</y>
+     <width>71</width>
+     <height>71</height>
     </rect>
    </property>
    <property name="font">
@@ -48,8 +67,21 @@
      <pointsize>20</pointsize>
     </font>
    </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton
+{
+border:none;
+image:url(:/image/paper.png);
+border-radius:10px;
+background-color:rgb(51, 102, 153);
+}
+QPushButton:hover
+{
+background-color:rgb(177, 204, 228);
+}</string>
+   </property>
    <property name="text">
-    <string>组卷</string>
+    <string/>
    </property>
    <property name="checkable">
     <bool>false</bool>
@@ -61,10 +93,10 @@
    </property>
    <property name="geometry">
     <rect>
-     <x>520</x>
+     <x>20</x>
      <y>400</y>
-     <width>80</width>
-     <height>31</height>
+     <width>41</width>
+     <height>41</height>
     </rect>
    </property>
    <property name="font">
@@ -72,8 +104,21 @@
      <pointsize>14</pointsize>
     </font>
    </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton
+{
+border:none;
+image:url(:/image/home.png);
+border-radius:10px;
+background-color:rgb(51, 102, 153);
+}
+QPushButton:hover
+{
+background-color:rgb(177, 204, 228);
+}</string>
+   </property>
    <property name="text">
-    <string>退出登录</string>
+    <string/>
    </property>
    <property name="checkable">
     <bool>false</bool>
@@ -82,28 +127,37 @@
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>30</x>
-     <y>10</y>
+     <x>60</x>
+     <y>0</y>
      <width>291</width>
      <height>61</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <pointsize>20</pointsize>
+     <family>华文中宋</family>
+     <pointsize>16</pointsize>
     </font>
    </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel
+{
+color:rgb(25, 64, 56);
+backgroung-color:transparent;
+
+}</string>
+   </property>
    <property name="text">
-    <string>在线考试平台（教师端）</string>
+    <string>在线考试平台 教师端</string>
    </property>
   </widget>
   <widget class="QPushButton" name="createquestion">
    <property name="geometry">
     <rect>
-     <x>40</x>
-     <y>100</y>
-     <width>111</width>
-     <height>111</height>
+     <x>110</x>
+     <y>120</y>
+     <width>71</width>
+     <height>71</height>
     </rect>
    </property>
    <property name="font">
@@ -111,17 +165,30 @@
      <pointsize>20</pointsize>
     </font>
    </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton
+{
+border:none;
+image:url(:/image/book.png);
+border-radius:10px;
+background-color:rgb(51, 102, 153);
+}
+QPushButton:hover
+{
+background-color:rgb(177, 204, 228);
+}</string>
+   </property>
    <property name="text">
-    <string>题库</string>
+    <string/>
    </property>
   </widget>
   <widget class="QPushButton" name="manage">
    <property name="geometry">
     <rect>
-     <x>190</x>
-     <y>260</y>
-     <width>111</width>
-     <height>111</height>
+     <x>250</x>
+     <y>250</y>
+     <width>71</width>
+     <height>71</height>
     </rect>
    </property>
    <property name="font">
@@ -129,14 +196,210 @@
      <pointsize>20</pointsize>
     </font>
    </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton
+{
+border:none;
+image:url(:/image/chafen.png);
+border-radius:10px;
+background-color:rgb(51, 102, 153);
+}
+QPushButton:hover
+{
+background-color:rgb(177, 204, 228);
+}</string>
+   </property>
    <property name="text">
-    <string>成绩管理</string>
+    <string/>
    </property>
    <property name="checkable">
     <bool>false</bool>
    </property>
   </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>41</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="res.qrc">:/image/logo.png</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="Line" name="line">
+   <property name="geometry">
+    <rect>
+     <x>400</x>
+     <y>-10</y>
+     <width>20</width>
+     <height>471</height>
+    </rect>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Vertical</enum>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_3">
+   <property name="geometry">
+    <rect>
+     <x>110</x>
+     <y>200</y>
+     <width>71</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>华文中宋</family>
+     <pointsize>16</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel
+{
+backgroung-color:transparent;
+
+}</string>
+   </property>
+   <property name="text">
+    <string> 打开题库</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_4">
+   <property name="geometry">
+    <rect>
+     <x>250</x>
+     <y>200</y>
+     <width>71</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>华文中宋</family>
+     <pointsize>16</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel
+{
+backgroung-color:transparent;
+
+}</string>
+   </property>
+   <property name="text">
+    <string> 组合试卷</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_5">
+   <property name="geometry">
+    <rect>
+     <x>110</x>
+     <y>330</y>
+     <width>71</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>华文中宋</family>
+     <pointsize>16</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel
+{
+backgroung-color:transparent;
+
+}</string>
+   </property>
+   <property name="text">
+    <string> 批改试卷</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_6">
+   <property name="geometry">
+    <rect>
+     <x>250</x>
+     <y>330</y>
+     <width>71</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>华文中宋</family>
+     <pointsize>16</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel
+{
+backgroung-color:transparent;
+
+}</string>
+   </property>
+   <property name="text">
+    <string> 管理成绩</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_7">
+   <property name="geometry">
+    <rect>
+     <x>70</x>
+     <y>400</y>
+     <width>71</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>华文中宋</family>
+     <pointsize>16</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel
+{
+backgroung-color:transparent;
+
+}</string>
+   </property>
+   <property name="text">
+    <string>退出登录</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_8">
+   <property name="geometry">
+    <rect>
+     <x>580</x>
+     <y>40</y>
+     <width>51</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="res.qrc">:/image/jiaoshi.jpeg</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="res.qrc"/>
+ </resources>
  <connections/>
 </ui>
