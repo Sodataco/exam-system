@@ -19,11 +19,12 @@ class studentexam : public QWidget
 
 public:
 
-    void displayQuestions(const int Type,const int questionid,QSqlDatabase &db);
+    void displayQuestions(const int paperid,QSqlDatabase &db);
     int getquestiontype(const int paperid,QSqlDatabase &db);
     int getquestionid(const int paperid,QSqlDatabase &db);
 
     QString question_text[10001];
+    int question_type[10001];
 
 
 public:

@@ -263,7 +263,7 @@ void combinePaper::getclass(int num,const int &paper_id){
 
     //去除is_use
 
-    //clean_is_use(paper_id);
+    clean_is_use(paper_id);
 
 }
 
