@@ -37,7 +37,6 @@ void insertPaperToDatabase(const QString &paperName, QSqlDatabase &db);
 void combinePaper::on_finish_clicked()
 {
     QString paperName=ui->title->toPlainText();
-
     int classNum=ui->EditClass->text().toInt();
 
     QMessageBox::StandardButton reply;
@@ -73,7 +72,7 @@ void combinePaper::on_finish_clicked()
     }
 
 
-    insertPaperToDatabase(paperName,user_db);//导入试卷编号
+    insertPaperToDatabase(classNum,paperName,user_db);//导入试卷编号
 
     QDateTime Time=ui->dateTimeEdit->dateTime();// 日期时间
     QTime timelong=ui->timeEdit->time();//考试时长
@@ -206,11 +205,11 @@ int combinePaper::getNextPaperId(QSqlDatabase &db) {
 
 
 //插入试卷编号
-void combinePaper::insertPaperToDatabase(const QString &paperName, QSqlDatabase &db) {
+void combinePaper::insertPaperToDatabase(int class_num,const QString &paperName, QSqlDatabase &db) {
     // 获取下一个试卷编号
 
     int paperId = getNextPaperId(db);
-
+    qDebug()<<"10086"<<paperId;
 
     QSqlQuery query(db);
 
@@ -227,7 +226,8 @@ void combinePaper::insertPaperToDatabase(const QString &paperName, QSqlDatabase 
         // 在这里处理插入成功的情况
     }
 
-    getclass(1,paperId);
+    getclass(class_num,paperId);
+
 
 
     query.finish();
@@ -261,13 +261,11 @@ void combinePaper::getclass(int num,const int &paper_id){
 
     query.finish();
 
-    //去除is_use
 
-    //clean_is_use(paper_id);
+    //编号
+    clean_is_use(paper_id);
 
 }
-
-
 
 
 void combinePaper::readandDerivequestion(const QString &user_id,const int &paper_id){
@@ -279,29 +277,39 @@ void combinePaper::readandDerivequestion(const QString &user_id,const int &paper
 
     QSqlQuery query(user_db);
 
-    // 根据is_use字段遍历choice_questions表
-    query.prepare("SELECT * FROM choice_questions WHERE is_use = :isUse");
+
+
+    query.prepare("SELECT question_id FROM choice_questions WHERE is_use = :isUse");
     query.bindValue(":isUse", true);
 
     if (!query.exec()) {
-        qDebug() << "Failed to fetch choice_questions:" << query.lastError();
+        qDebug() << "Error: Failed to execute query -" << query.lastError();
         return;
     }
 
+
     while (query.next()) {
         qDebug()<<"进入了";
-        int questionId = query.value("question_id").toInt();
+        int questionId = query.value(0).toInt();
+
+        qDebug() << questionId;
 
         //向考试table中插入
         query.prepare("INSERT INTO kaoshi (question_id,paper_id,question_type,user_id) VALUES (:question_Id, :paperId, :type, :userId)");
+
         query.bindValue(":question_Id", questionId);
         query.bindValue(":paperId", paper_id);
         query.bindValue(":type", 1);
         query.bindValue(":userId", user_id);
 
+
+
         if (!query.exec()) {
             qDebug() << "Failed to insert kaoshi:" << query.lastError();
         }
+
+
+
 
     }
 
@@ -375,13 +383,30 @@ void combinePaper::clean_is_use(const int &paper_id){
 
     qDebug() <<"进来删了";
 
-    query.prepare("UPDATE choice_questions SET paper_id = :newPaperId, is_use = :newIsUse WHERE is_use = :use");
+    query.prepare("UPDATE choice_questions SET paper_id = :newPaperId WHERE is_use = :use");
     query.bindValue(":newPaperId", paper_id);
-    query.bindValue(":newIsUse", false);
-
     query.bindValue(":use", true);
 
-    query.exec();
+    if (!query.exec()) {
+        qDebug() << "Failed to insert kaoshi:" << query.lastError();
+    }
+
+    query.prepare("UPDATE questions SET paper_id = :newPaperId WHERE is_use = :use");
+    query.bindValue(":newPaperId", paper_id);
+    query.bindValue(":use", true);
+
+    if (!query.exec()) {
+        qDebug() << "Failed to insert kaoshi:" << query.lastError();
+    }
+
+    query.prepare("UPDATE tk_questions SET paper_id = :newPaperId WHERE is_use = :use");
+    query.bindValue(":newPaperId", paper_id);
+    query.bindValue(":use", true);
+
+    if (!query.exec()) {
+        qDebug() << "Failed to insert kaoshi:" << query.lastError();
+    }
+
 
      query.finish();
 }
