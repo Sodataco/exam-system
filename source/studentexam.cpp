@@ -352,10 +352,10 @@ int studentexam::getquestionid(const int paperid,QSqlDatabase &db){
 
 //根据题目的question_id和type来选取对应的题目并呈现
 void studentexam::displayQuestions(const int Type,const int paperid,QSqlDatabase &db) {
-
+    qDebug()<<"进入函数";
     switch(Type){
     case 1://选择题case
-
+        qDebug()<<"选择题case";
         ui->stackedWidget->setCurrentIndex(0);
 
         QSqlQuery query(db);
