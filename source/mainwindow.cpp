@@ -1,7 +1,29 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include"user.h"
+
 #include<QMovie>
+
+
+
+//
+void storeUserInfo(const QString &account) {
+    QFile file("user_data.txt");
+    if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
+        qDebug() << "Error opening file for writing";
+        return;
+    }
+
+    QTextStream out(&file);
+    out << account << "\n";
+    file.close();
+
+    qDebug() << "User account stored successfully!";
+}
+
+
+
+
+
 
 
 MainWindow::MainWindow(QWidget *parent)
@@ -86,7 +108,8 @@ void MainWindow::on_loginButton_clicked()
     QSqlQuery query(user_db);
     qDebug()<<"登录账号 = "<<s1<<"  登录密码 = "<<s2;
 
-    qDebug()<<account<<"1145";
+    storeUserInfo(s1);
+
 
     if(openstudent==true){
 
@@ -100,7 +123,7 @@ void MainWindow::on_loginButton_clicked()
         s1="A"+s1;
     }
 
-    account=s1;
+
 
     query.exec(QString("select* from user where zhanghao = '%1' and mima = '%2'").arg(s1).arg(s2));
     if(query.next() == false){
@@ -112,9 +135,9 @@ void MainWindow::on_loginButton_clicked()
 
     query.finish();
 
-    if(openteacher&&is_pass(2,account))emit showteacher();
-    else if(openadminister&&is_pass(3,account))emit showadminister();
-    else if(openstudent&&is_pass(1,account))emit showstu();
+    if(openteacher&&is_pass(2,s1))emit showteacher();
+    else if(openadminister&&is_pass(3,s1))emit showadminister();
+    else if(openstudent&&is_pass(1,s1))emit showstu();
     else{
         QMessageBox::warning(this, "nonono", "Please choose a identity.");//选角色
         return;
@@ -226,4 +249,5 @@ void MainWindow::on_tuichu_clicked()
 {
     this->close();//退出
 }
+
 

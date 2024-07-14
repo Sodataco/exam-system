@@ -27,7 +27,7 @@ public:
     void getclass(int num,const int &paper_id);
 
     void readandDerivequestion(const QString &user_id,const int &paper_id);
-    void insertPaperToDatabase(const QString &paperName, QSqlDatabase &db);
+    void insertPaperToDatabase(int class_num,const QString &paperName, QSqlDatabase &db);
     int getNextPaperId(QSqlDatabase &db);
     void clean_is_use(const int &paper_id);
 
