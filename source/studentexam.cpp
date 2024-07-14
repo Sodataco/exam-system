@@ -16,10 +16,16 @@ studentexam::studentexam(QWidget *parent)
         //最大化界面并且无法调整大小和位置，防止作弊
         this->showFullScreen();
         setWindowFlags(Qt::WindowType::FramelessWindowHint);
+        if(question_type[0]==1){
+            ui->stackedWidget->setCurrentIndex(0);
+            ui->selectquestion_2->setText(question_text[0]);
+        }
+        if(question_type[0]==2){
+            ui->stackedWidget->setCurrentIndex(0);
+            ui->textquestion_2->setText(question_text[0]);
+        }
 
-        ui->selectquestion_2->setText(question_text[0]);
 
-        //ui->textBrowser_2->setText("这里显示第一题内容");
 
 
         // 设置选项按钮初始状态和信号连接
@@ -70,7 +76,7 @@ void studentexam::onRadioButtonClicked()
         QRadioButton *radioButton = findChild<QRadioButton *>(buttonName);
 
         if (radioButton && radioButton->isChecked()) {
-            int index = i - 1;  // 题目索引从0开始，所以需要减1
+            int index = i-1;  // 题目索引从0开始，所以需要减1
             currentQuestion = index;  // 更新当前选中的题目索引
             if(question_type[i]==1){
                 ui->stackedWidget->setCurrentIndex(0);
@@ -78,12 +84,12 @@ void studentexam::onRadioButtonClicked()
             }
             else if(question_type[i]==2){
                 ui->stackedWidget->setCurrentIndex(1);
-                ui->textBrowser_2->setText(QString("这里显示第 %1 题内容").arg(index + 1));
+                ui->textquestion_2->setText(QString(question_text[i]).arg(index + 1));
             }
 
             else if(question_type[i]==3){
                 ui->stackedWidget->setCurrentIndex(1);
-                ui->textBrowser_2->setText(QString("这里显示第 %1 题内容").arg(index + 1));
+                ui->textquestion_2->setText(QString(question_text[i]).arg(index + 1));
             }
 
 
@@ -100,7 +106,7 @@ void studentexam::onPreviousClicked()
 
     ui->selectquestion_2->setText(QString(question_text[currentQuestion + 1]).arg(currentQuestion + 1));  // 在文本浏览器中显示上一题的内容
 
-    //ui->textBrowser_2->setText(QString("这里显示第 %1 题内容").arg(currentQuestion + 1));  // 在文本浏览器中显示上一题的内容
+    ui->textquestion_2->setText(QString(question_text[currentQuestion + 1]).arg(currentQuestion + 1));  // 在文本浏览器中显示上一题的内容
 
     QRadioButton *buttonToClick = nullptr;
     switch (currentQuestion) {
@@ -198,7 +204,7 @@ void studentexam::onNextClicked()
 
     ui->selectquestion_2->setText(QString(question_text[currentQuestion + 1]).arg(currentQuestion + 1));  // 在文本浏览器中显示下一题的内容
 
-    //ui->textBrowser_2->setText(QString("这里显示第 %1 题内容").arg(currentQuestion + 1));  // 在文本浏览器中显示下一题的内容
+    ui->textquestion_2->setText(QString(question_text[currentQuestion + 1]).arg(currentQuestion + 1));  // 在文本浏览器中显示下一题的内容
 
     QRadioButton *buttonToClick = nullptr;
     switch (currentQuestion) {
@@ -360,9 +366,10 @@ int studentexam::getquestionid(const int paperid,QSqlDatabase &db){
 
 
 
-//根据题目的paper_id和type来选取对应的题目并呈现
+//根据题目的paper_id来选取对应的题目和type并呈现
 void studentexam::displayQuestions(const int paperid,QSqlDatabase &db) {
     qDebug()<<"进入哈哈哈哈哈函数";
+    int i=0;
     //switch(Type){
     //case 1://选择题case
 
@@ -381,28 +388,55 @@ void studentexam::displayQuestions(const int paperid,QSqlDatabase &db) {
 
     QString text;
 
-    int i=0;
+
     while (query.next()) {
 
-        qDebug()<<"进入循环";
+        qDebug()<<"进入循环1";
         text=query.value(0).toString();
         question_text[i]=text;
         question_type[i]=1;
+        qDebug()<<"type是"<<question_type[i];
         i++;
-
     }
 
-    //ui->selectquestion_2->setText(text);
+
+    query.prepare("SELECT question_text FROM tk_questions WHERE paper_id = :paper_id");
+    query.bindValue(":paper_id", paperid);
 
 
-    //break;
+    if (!query.exec()) {
+        qDebug() << "Failed to execute query:" << query.lastError();
+        return;
+    }
 
-    // case 2://填空题case
+    while (query.next()) {
 
-    //     break;
-    // case 3://问答题case
+        qDebug()<<"进入循环2";
+        text=query.value(0).toString();
+        question_text[i]=text;
+        question_type[i]=2;
+        qDebug()<<"type是"<<question_type[i];
+        i++;
+    }
 
-    //     break;
+    query.prepare("SELECT question_text FROM questions WHERE paper_id = :paper_id");
+    query.bindValue(":paper_id", paperid);
+
+
+    if (!query.exec()) {
+        qDebug() << "Failed to execute query:" << query.lastError();
+        return;
+    }
+
+    while (query.next()) {
+
+        qDebug()<<"进入循环2";
+        text=query.value(0).toString();
+        question_text[i]=text;
+        question_type[i]=3;
+        qDebug()<<"type是"<<question_type[i];
+        i++;
+    }
 }
 
 
