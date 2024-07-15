@@ -4,8 +4,16 @@
 studentexam::studentexam(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::studentexam)
+    , timer(new QTimer(this))
 {
     ui->setupUi(this);
+
+    connect(timer, &QTimer::timeout, this, &studentexam::updateCountdown);
+    timer->start(1000);  // 每秒更新一次倒计时
+
+    // 设置默认倒计时时间为1分钟（可以根据需要修改）
+    setCountdownTime(QTime::currentTime().addSecs(7200));
+
     // 初始化界面
         currentQuestion = 0;  // 当前题目编号从0开始
         totalQuestions = 25;  // 总题目数量为25
@@ -140,9 +148,11 @@ void studentexam::onRadioButtonClicked()
 
                 // 清除文本框并显示新题目的答案
                 ui->answer->clear();
+
                 if (!question_answer[index].isEmpty()) {
                     ui->answer->setText(question_answer[index]);
                 }
+
             }
 
             break;  // 如果找到被选中的单选按钮，跳出循环
@@ -156,6 +166,10 @@ void studentexam::onPreviousClicked()
     currentQuestion=currentQuestion-1;
 
     ui->selectquestion_2->setText(QString(question_text[currentQuestion + 1]).arg(currentQuestion + 1));  // 在文本浏览器中显示上一题的内容
+    ui->chooseA->setText(QString(optionA[currentQuestion + 1]).arg(currentQuestion + 1));  // 在文本浏览器中显示上一题的内容
+    ui->chooseB->setText(QString(optionB[currentQuestion + 1]).arg(currentQuestion + 1));  // 在文本浏览器中显示上一题的内容
+    ui->chooseC->setText(QString(optionC[currentQuestion + 1]).arg(currentQuestion + 1));  // 在文本浏览器中显示上一题的内容
+    ui->chooseD->setText(QString(optionD[currentQuestion + 1]).arg(currentQuestion + 1));  // 在文本浏览器中显示上一题的内容
 
     ui->textquestion_2->setText(QString(question_text[currentQuestion + 1]).arg(currentQuestion + 1));  // 在文本浏览器中显示上一题的内容
 
@@ -254,7 +268,10 @@ void studentexam::onNextClicked()
     currentQuestion=currentQuestion+1;
 
     ui->selectquestion_2->setText(QString(question_text[currentQuestion + 1]).arg(currentQuestion + 1));  // 在文本浏览器中显示下一题的内容
-
+    ui->chooseA->setText(QString(optionA[currentQuestion + 1]).arg(currentQuestion + 1));  // 在文本浏览器中显示上一题的内容
+    ui->chooseB->setText(QString(optionB[currentQuestion + 1]).arg(currentQuestion + 1));  // 在文本浏览器中显示上一题的内容
+    ui->chooseC->setText(QString(optionC[currentQuestion + 1]).arg(currentQuestion + 1));  // 在文本浏览器中显示上一题的内容
+    ui->chooseD->setText(QString(optionD[currentQuestion + 1]).arg(currentQuestion + 1));  // 在文本浏览器中显示上一题的内容
     ui->textquestion_2->setText(QString(question_text[currentQuestion + 1]).arg(currentQuestion + 1));  // 在文本浏览器中显示下一题的内容
 
     QRadioButton *buttonToClick = nullptr;
@@ -480,7 +497,7 @@ void studentexam::displayQuestions(const int paperid,QSqlDatabase &db) {
         text=query.value(0).toString();
         question_text[i]=text;
         question_type[i]=2;
-        qDebug()<<"type是"<<question_type[i];
+
         i++;
     }
 
@@ -499,12 +516,33 @@ void studentexam::displayQuestions(const int paperid,QSqlDatabase &db) {
         text=query.value(0).toString();
         question_text[i]=text;
         question_type[i]=3;
-        qDebug()<<"type是"<<question_type[i];
+
         i++;
     }
     i=0;
     qDebug()<<"i="<<i;
 }
 
+void studentexam::setCountdownTime(const QTime &time)
+{
+    endTime = time;
+    updateCountdown(); // 立即更新显示
+}
+
+void studentexam::updateCountdown()
+{
+    int remainingTime = QTime::currentTime().secsTo(endTime);
+    if (remainingTime <= 0)
+    {
+        ui->countdownLabel->setText("Time's up!");
+        timer->stop();
+    }
+    else
+    {
+        QTime timeLeft(0, 0);
+        timeLeft = timeLeft.addSecs(remainingTime);
+        ui->countdownLabel->setText(timeLeft.toString("hh:mm:ss"));
+    }
+}
 
 
