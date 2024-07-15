@@ -41,7 +41,7 @@ background-color:white;
    <property name="geometry">
     <rect>
      <x>100</x>
-     <y>220</y>
+     <y>190</y>
      <width>141</width>
      <height>41</height>
     </rect>
@@ -51,15 +51,15 @@ background-color:white;
    <property name="geometry">
     <rect>
      <x>20</x>
-     <y>230</y>
-     <width>81</width>
+     <y>200</y>
+     <width>91</width>
      <height>21</height>
     </rect>
    </property>
    <property name="font">
     <font>
      <family>华文中宋</family>
-     <pointsize>16</pointsize>
+     <pointsize>14</pointsize>
     </font>
    </property>
    <property name="styleSheet">
@@ -77,15 +77,15 @@ color:white;
    <property name="geometry">
     <rect>
      <x>20</x>
-     <y>290</y>
-     <width>71</width>
+     <y>260</y>
+     <width>81</width>
      <height>21</height>
     </rect>
    </property>
    <property name="font">
     <font>
      <family>华文中宋</family>
-     <pointsize>16</pointsize>
+     <pointsize>14</pointsize>
     </font>
    </property>
    <property name="styleSheet">
@@ -103,7 +103,7 @@ color:white;
    <property name="geometry">
     <rect>
      <x>20</x>
-     <y>350</y>
+     <y>320</y>
      <width>131</width>
      <height>21</height>
     </rect>
@@ -111,7 +111,7 @@ color:white;
    <property name="font">
     <font>
      <family>华文中宋</family>
-     <pointsize>16</pointsize>
+     <pointsize>14</pointsize>
     </font>
    </property>
    <property name="styleSheet">
@@ -129,30 +129,17 @@ color:white;
    <property name="geometry">
     <rect>
      <x>100</x>
-     <y>280</y>
+     <y>250</y>
      <width>141</width>
      <height>41</height>
     </rect>
-   </property>
-  </widget>
-  <widget class="QCheckBox" name="stickanswer">
-   <property name="geometry">
-    <rect>
-     <x>210</x>
-     <y>360</y>
-     <width>10</width>
-     <height>10</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string/>
    </property>
   </widget>
   <widget class="QLabel" name="label_8">
    <property name="geometry">
     <rect>
      <x>20</x>
-     <y>410</y>
+     <y>380</y>
      <width>81</width>
      <height>21</height>
     </rect>
@@ -160,7 +147,7 @@ color:white;
    <property name="font">
     <font>
      <family>华文中宋</family>
-     <pointsize>16</pointsize>
+     <pointsize>14</pointsize>
     </font>
    </property>
    <property name="styleSheet">
@@ -174,32 +161,19 @@ color:white;
     <string>题目乱序：</string>
    </property>
   </widget>
-  <widget class="QCheckBox" name="disorder">
-   <property name="geometry">
-    <rect>
-     <x>210</x>
-     <y>420</y>
-     <width>10</width>
-     <height>10</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
   <widget class="QLabel" name="label_7">
    <property name="geometry">
     <rect>
      <x>20</x>
-     <y>470</y>
-     <width>101</width>
+     <y>440</y>
+     <width>121</width>
      <height>21</height>
     </rect>
    </property>
    <property name="font">
     <font>
      <family>华文中宋</family>
-     <pointsize>16</pointsize>
+     <pointsize>14</pointsize>
     </font>
    </property>
    <property name="styleSheet">
@@ -213,32 +187,13 @@ color:white;
     <string>允许上传附件：</string>
    </property>
   </widget>
-  <widget class="QCheckBox" name="updateimage">
-   <property name="geometry">
-    <rect>
-     <x>210</x>
-     <y>480</y>
-     <width>10</width>
-     <height>10</height>
-    </rect>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">QCheckBox
-{
-
-}</string>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
   <widget class="QPushButton" name="finish">
    <property name="geometry">
     <rect>
-     <x>490</x>
-     <y>530</y>
-     <width>111</width>
-     <height>31</height>
+     <x>600</x>
+     <y>520</y>
+     <width>161</width>
+     <height>41</height>
     </rect>
    </property>
    <property name="font">
@@ -267,10 +222,10 @@ color:rgb(0, 0, 0);
   <widget class="QPushButton" name="Return">
    <property name="geometry">
     <rect>
-     <x>720</x>
-     <y>530</y>
-     <width>111</width>
-     <height>31</height>
+     <x>10</x>
+     <y>520</y>
+     <width>41</width>
+     <height>41</height>
     </rect>
    </property>
    <property name="font">
@@ -282,27 +237,27 @@ color:rgb(0, 0, 0);
    <property name="styleSheet">
     <string notr="true">QPushButton
 {
+border:none;
+image:url(:/image/home.png);
+border-radius:10px;
 background-color:rgb(51, 102, 153);
-border-radius:5px;
-color:white;
 }
 QPushButton:hover
 {
 background-color:rgb(177, 204, 228);
-color:rgb(0, 0, 0);
 }</string>
    </property>
    <property name="text">
-    <string>取消</string>
+    <string/>
    </property>
   </widget>
   <widget class="QPushButton" name="Refresh">
    <property name="geometry">
     <rect>
-     <x>260</x>
-     <y>530</y>
-     <width>111</width>
-     <height>31</height>
+     <x>360</x>
+     <y>520</y>
+     <width>161</width>
+     <height>41</height>
     </rect>
    </property>
    <property name="font">
@@ -332,7 +287,7 @@ color:rgb(0, 0, 0);
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>100</y>
+     <y>70</y>
      <width>231</width>
      <height>41</height>
     </rect>
@@ -346,8 +301,8 @@ color:rgb(0, 0, 0);
   <widget class="QLineEdit" name="EditClass">
    <property name="geometry">
     <rect>
-     <x>100</x>
-     <y>160</y>
+     <x>90</x>
+     <y>130</y>
      <width>151</width>
      <height>41</height>
     </rect>
@@ -442,7 +397,7 @@ backgroung-color:transparent;
    <property name="geometry">
     <rect>
      <x>0</x>
-     <y>460</y>
+     <y>430</y>
      <width>241</width>
      <height>41</height>
     </rect>
@@ -461,7 +416,7 @@ backgroung-color:transparent;
    <property name="geometry">
     <rect>
      <x>0</x>
-     <y>400</y>
+     <y>370</y>
      <width>241</width>
      <height>41</height>
     </rect>
@@ -480,7 +435,7 @@ backgroung-color:transparent;
    <property name="geometry">
     <rect>
      <x>0</x>
-     <y>340</y>
+     <y>310</y>
      <width>241</width>
      <height>41</height>
     </rect>
@@ -499,7 +454,7 @@ backgroung-color:transparent;
    <property name="geometry">
     <rect>
      <x>0</x>
-     <y>280</y>
+     <y>250</y>
      <width>241</width>
      <height>41</height>
     </rect>
@@ -518,7 +473,7 @@ backgroung-color:transparent;
    <property name="geometry">
     <rect>
      <x>0</x>
-     <y>220</y>
+     <y>190</y>
      <width>241</width>
      <height>41</height>
     </rect>
@@ -537,7 +492,7 @@ backgroung-color:transparent;
    <property name="geometry">
     <rect>
      <x>0</x>
-     <y>160</y>
+     <y>130</y>
      <width>241</width>
      <height>41</height>
     </rect>
@@ -556,7 +511,7 @@ backgroung-color:transparent;
    <property name="geometry">
     <rect>
      <x>0</x>
-     <y>100</y>
+     <y>70</y>
      <width>241</width>
      <height>41</height>
     </rect>
@@ -575,15 +530,15 @@ backgroung-color:transparent;
    <property name="geometry">
     <rect>
      <x>20</x>
-     <y>170</y>
-     <width>81</width>
+     <y>140</y>
+     <width>91</width>
      <height>21</height>
     </rect>
    </property>
    <property name="font">
     <font>
      <family>华文中宋</family>
-     <pointsize>16</pointsize>
+     <pointsize>14</pointsize>
     </font>
    </property>
    <property name="styleSheet">
@@ -595,6 +550,63 @@ color:white;
    </property>
    <property name="text">
     <string>发布班级：</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton">
+   <property name="geometry">
+    <rect>
+     <x>210</x>
+     <y>445</y>
+     <width>12</width>
+     <height>12</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton
+{
+border:none;
+}</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_2">
+   <property name="geometry">
+    <rect>
+     <x>210</x>
+     <y>385</y>
+     <width>12</width>
+     <height>12</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton
+{
+border:none;
+}</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_3">
+   <property name="geometry">
+    <rect>
+     <x>210</x>
+     <y>325</y>
+     <width>12</width>
+     <height>12</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton
+{
+border:none;
+}</string>
+   </property>
+   <property name="text">
+    <string/>
    </property>
   </widget>
   <zorder>label_15</zorder>
@@ -610,11 +622,8 @@ color:white;
   <zorder>label_5</zorder>
   <zorder>label_6</zorder>
   <zorder>timeEdit</zorder>
-  <zorder>stickanswer</zorder>
   <zorder>label_8</zorder>
-  <zorder>disorder</zorder>
   <zorder>label_7</zorder>
-  <zorder>updateimage</zorder>
   <zorder>finish</zorder>
   <zorder>Return</zorder>
   <zorder>Refresh</zorder>
@@ -625,6 +634,9 @@ color:white;
   <zorder>line</zorder>
   <zorder>label_2</zorder>
   <zorder>label_16</zorder>
+  <zorder>pushButton</zorder>
+  <zorder>pushButton_2</zorder>
+  <zorder>pushButton_3</zorder>
  </widget>
  <resources>
   <include location="res.qrc"/>

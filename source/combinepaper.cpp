@@ -104,9 +104,7 @@ void combinePaper::on_Return_clicked()
     if (saveOrNot == QMessageBox::No) {
 
         ui->questionList->clear();
-        ui->disorder->setChecked(false);
-        ui->stickanswer->setChecked(false);
-        ui->updateimage->setChecked(false);
+
         ui->dateTimeEdit->clear();
         ui->timeEdit->clear();
         ui->title->clear();

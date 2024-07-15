@@ -18,44 +18,64 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget
+{
+background-color:white;
+}</string>
+  </property>
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>280</x>
-     <y>40</y>
-     <width>131</width>
+     <x>130</x>
+     <y>0</y>
+     <width>301</width>
      <height>41</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <pointsize>18</pointsize>
+     <family>华文中宋</family>
+     <pointsize>16</pointsize>
     </font>
    </property>
    <property name="text">
-    <string>点击参与考试</string>
+    <string>请选择您要参加的考试</string>
    </property>
   </widget>
   <widget class="QPushButton" name="Return">
    <property name="geometry">
     <rect>
-     <x>570</x>
-     <y>347</y>
-     <width>80</width>
-     <height>31</height>
+     <x>40</x>
+     <y>340</y>
+     <width>41</width>
+     <height>41</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton
+{
+border:none;
+image:url(:/image/home.png);
+border-radius:10px;
+background-color:rgb(51, 102, 153);
+}
+QPushButton:hover
+{
+background-color:rgb(177, 204, 228);
+}</string>
+   </property>
    <property name="text">
-    <string>返回</string>
+    <string/>
    </property>
   </widget>
   <widget class="QListWidget" name="examList">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>100</y>
-     <width>641</width>
-     <height>221</height>
+     <x>120</x>
+     <y>50</y>
+     <width>541</width>
+     <height>331</height>
     </rect>
    </property>
    <property name="font">
@@ -68,17 +88,84 @@
   <widget class="QPushButton" name="refresh">
    <property name="geometry">
     <rect>
-     <x>30</x>
-     <y>330</y>
+     <x>530</x>
+     <y>10</y>
      <width>80</width>
      <height>31</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>华文中宋</family>
+     <pointsize>14</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton
+{
+border:none;
+border-radius:10px;
+background-color:rgb(51, 102, 153);
+color:white;
+}
+QPushButton:hover
+{
+background-color:rgb(177, 204, 228);
+color:black;
+}</string>
    </property>
    <property name="text">
     <string>刷新</string>
    </property>
   </widget>
+  <widget class="QLabel" name="label_7">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>20</y>
+     <width>51</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="res.qrc">:/image/photo.png</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QTextBrowser" name="textBrowser">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>90</y>
+     <width>101</width>
+     <height>111</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLabel
+{
+border:none;
+background-color:white;
+}</string>
+   </property>
+   <property name="html">
+    <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'SimSun'; font-size:6pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;班级：&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;姓名：&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt;&quot;&gt;学号：&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+  </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="res.qrc"/>
+ </resources>
  <connections/>
 </ui>
