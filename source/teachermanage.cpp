@@ -1,6 +1,12 @@
 #include "teachermanage.h"
 #include "ui_teachermanage.h"
 
+
+
+
+
+
+
 teachermanage::teachermanage(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::teachermanage)

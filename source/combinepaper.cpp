@@ -148,7 +148,7 @@ void combinePaper::on_Refresh_clicked()
         qDebug() << "Query failed:" << query.lastError();
     }
     //
-    if (query.exec("select question_text FROM questions")) {
+    if (query.exec(QString("select question_text FROM questions where is_use = '%1'").arg(false))) {
         while (query.next()) {
             QString examName = query.value(0).toString();
             QListWidgetItem *item = new QListWidgetItem();
@@ -163,7 +163,7 @@ void combinePaper::on_Refresh_clicked()
         qDebug() << "Query failed:" << query.lastError();
     }
 
-    if (query.exec("select question_text FROM tk_questions")) {
+    if (query.exec(QString("select question_text FROM tk_questions where is_use = '%1'").arg(false))) {
         while (query.next()) {
             QString examName = query.value(0).toString();
             QListWidgetItem *item = new QListWidgetItem();
@@ -302,13 +302,23 @@ void combinePaper::readandDerivequestion(const QString &user_id,const int &paper
         query.bindValue(":userId", user_id);
 
 
-
         if (!query.exec()) {
             qDebug() << "Failed to insert kaoshi:" << query.lastError();
         }
 
 
 
+        //向result中插入
+        query.prepare("INSERT INTO result (score,paper_id,user_id) VALUES (:Score, :paperId , :userId)");
+
+        query.bindValue(":Score",0);
+        query.bindValue(":paperId", paper_id);
+        query.bindValue(":userId", user_id);
+
+
+        if (!query.exec()) {
+            qDebug() << "Failed to insert kaoshi:" << query.lastError();
+        }
 
     }
 
@@ -339,6 +349,19 @@ void combinePaper::readandDerivequestion(const QString &user_id,const int &paper
             qDebug() << "Failed to insert kaoshi:" << query.lastError();
         }
 
+
+        //向result中插入
+        query.prepare("INSERT INTO result (score,paper_id,user_id) VALUES (:Score, :paperId , :userId)");
+
+        query.bindValue(":Score",0);
+        query.bindValue(":paperId", paper_id);
+        query.bindValue(":userId", user_id);
+
+
+        if (!query.exec()) {
+            qDebug() << "Failed to insert kaoshi:" << query.lastError();
+        }
+
     }
 
 
@@ -364,6 +387,19 @@ void combinePaper::readandDerivequestion(const QString &user_id,const int &paper
         query.bindValue(":paperId", paper_id);
         query.bindValue(":type", 3);
         query.bindValue(":userId", user_id);
+
+        if (!query.exec()) {
+            qDebug() << "Failed to insert kaoshi:" << query.lastError();
+        }
+
+
+        //向result中插入
+        query.prepare("INSERT INTO result (score,paper_id,user_id) VALUES (:Score, :paperId , :userId)");
+
+        query.bindValue(":Score",0);
+        query.bindValue(":paperId", paper_id);
+        query.bindValue(":userId", user_id);
+
 
         if (!query.exec()) {
             qDebug() << "Failed to insert kaoshi:" << query.lastError();

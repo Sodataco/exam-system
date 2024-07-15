@@ -134,9 +134,10 @@ void teacherquestion::on_importAnswerquestion_clicked()
     QSqlQuery query(user_db);
 
     // 使用 INSERT INTO 语句插入数据到 questions 表
-    query.prepare("INSERT INTO questions (paper_id, question_text, answer_text) "
-                  "VALUES (:paper_id, :question_text, :answer_text)");
+    query.prepare("INSERT INTO questions (paper_id, question_text, answer_text,is_use) "
+                  "VALUES (:paper_id, :question_text, :answer_text, :Use)");
     query.bindValue(":paper_id", 1);
+    query.bindValue(":Use", false);
     query.bindValue(":question_text", sQ);
     query.bindValue(":answer_text", answer);
 

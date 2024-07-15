@@ -81,39 +81,74 @@ void studentexam::onRadioButtonClicked()
         QRadioButton *radioButton = findChild<QRadioButton *>(buttonName);
 
         if (radioButton && radioButton->isChecked()) {
-            int index = i-1;  // 题目索引从0开始，所以需要减1
+            int index = i - 1;  // 题目索引从0开始，所以需要减1
+
+            // 保存当前题目的答案
+            if (question_type[currentQuestion] == 1) {
+                // 保存选择题的答案
+                QList<QCheckBox*> checkBoxes;
+                checkBoxes.append(ui->chooseA);
+                checkBoxes.append(ui->chooseB);
+                checkBoxes.append(ui->chooseC);
+                checkBoxes.append(ui->chooseD);
+
+                for (int j = 0; j < checkBoxes.size(); ++j) {
+                    if (checkBoxes[j]->isChecked()) {
+                        question_answer[currentQuestion] = QString(QChar('A' + j));  // 保存选中的选项 (A, B, C, D)
+                        break;
+                    }
+                }
+            } else if (question_type[currentQuestion] == 2 || question_type[currentQuestion] == 3) {
+                question_answer[currentQuestion] = ui->answer->toPlainText();
+            }
+
             currentQuestion = index;  // 更新当前选中的题目索引
-            if(question_type[index]==1){
+
+            if (question_type[index] == 1) {
+                // 选择题
                 ui->stackedWidget->setCurrentIndex(0);
-                ui->selectquestion_2->setText(QString(question_text[index]));
-                ui->chooseA->setText(optionA[i]);
-                ui->chooseB->setText(optionB[i]);
-                ui->chooseC->setText(optionC[i]);
-                ui->chooseD->setText(optionD[i]);
+                ui->selectquestion_2->setText(question_text[index]);
+                ui->chooseA->setText(optionA[index]);
+                ui->chooseB->setText(optionB[index]);
+                ui->chooseC->setText(optionC[index]);
+                ui->chooseD->setText(optionD[index]);
 
-            }
-            else if(question_type[index]==2){
+                // 清空选择题的选项
+                QList<QCheckBox*> checkBoxes;
+                checkBoxes.append(ui->chooseA);
+                checkBoxes.append(ui->chooseB);
+                checkBoxes.append(ui->chooseC);
+                checkBoxes.append(ui->chooseD);
+
+                for (auto &checkBox : checkBoxes) {
+                    checkBox->setAutoExclusive(false);
+                    checkBox->setChecked(false);
+                    checkBox->setAutoExclusive(true);
+                }
+
+                // 设置之前选中的答案
+                if (!question_answer[index].isEmpty()) {
+                    char answer = question_answer[index].at(0).toLatin1();
+                    if (answer >= 'A' && answer <= 'D') {
+                        checkBoxes[answer - 'A']->setChecked(true);
+                    }
+                }
+            } else if (question_type[index] == 2 || question_type[index] == 3) {
+                // 填空题
                 ui->stackedWidget->setCurrentIndex(1);
-                ui->textquestion_2->setText(QString(question_text[index]));
-                question_answer[i]=ui->answer->toPlainText();
+                ui->textquestion_2->setText(question_text[index]);
+
+                // 清除文本框并显示新题目的答案
                 ui->answer->clear();
-
+                if (!question_answer[index].isEmpty()) {
+                    ui->answer->setText(question_answer[index]);
+                }
             }
-
-            else if(question_type[index]==3){
-                ui->stackedWidget->setCurrentIndex(1);
-                ui->textquestion_2->setText(QString(question_text[index]));
-                question_answer[i]=ui->answer->toPlainText();
-                ui->answer->clear();
-                ui->answer->setText(question_answer[i]);
-            }
-
 
             break;  // 如果找到被选中的单选按钮，跳出循环
         }
     }
 }
-
 
 void studentexam::onPreviousClicked()
 {
