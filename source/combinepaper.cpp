@@ -376,6 +376,7 @@ void combinePaper::readandDerivequestion(const QString &user_id,const int &paper
 }
 
 
+
 void combinePaper::clean_is_use(const int &paper_id){
 
     QSqlQuery query(user_db);

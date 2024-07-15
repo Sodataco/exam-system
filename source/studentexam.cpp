@@ -78,18 +78,18 @@ void studentexam::onRadioButtonClicked()
         if (radioButton && radioButton->isChecked()) {
             int index = i-1;  // 题目索引从0开始，所以需要减1
             currentQuestion = index;  // 更新当前选中的题目索引
-            if(question_type[i]==1){
+            if(question_type[index]==1){
                 ui->stackedWidget->setCurrentIndex(0);
-                ui->selectquestion_2->setText(QString(question_text[i]).arg(index + 1));
+                ui->selectquestion_2->setText(QString(question_text[index]));
             }
-            else if(question_type[i]==2){
+            else if(question_type[index]==2){
                 ui->stackedWidget->setCurrentIndex(1);
-                ui->textquestion_2->setText(QString(question_text[i]).arg(index + 1));
+                ui->textquestion_2->setText(QString(question_text[index]));
             }
 
-            else if(question_type[i]==3){
+            else if(question_type[index]==3){
                 ui->stackedWidget->setCurrentIndex(1);
-                ui->textquestion_2->setText(QString(question_text[i]).arg(index + 1));
+                ui->textquestion_2->setText(QString(question_text[index]));
             }
 
 
