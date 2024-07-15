@@ -25,6 +25,12 @@ public:
 
     QString question_text[10001];
     int question_type[10001];
+    QString optionA[10001];
+    QString optionB[10001];
+    QString optionC[10001];
+    QString optionD[10001];
+    QString question_answer[10001];
+
 
 
 public:
@@ -32,6 +38,7 @@ public:
     ~studentexam();
 
 signals:
+
     void showpreexam();
 
 private slots:

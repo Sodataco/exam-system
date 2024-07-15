@@ -39,10 +39,16 @@ int main(int argc, char *argv[])
     //tea1.show();
 
     w.setWindowTitle("登录");
-    w.setWindowIcon(QIcon(":/image/ren.png"));
+    w.setWindowIcon(QIcon(":/image/pencil"));
 
-    sw1.setWindowTitle("爱考试");
+    sw1.setWindowTitle("爱做题");
     sw1.setWindowIcon(QIcon(":/image/pencil"));
+
+    tea1.setWindowTitle("爱考试");
+    tea1.setWindowIcon(QIcon(":/image/pencil"));
+
+    ad1.setWindowTitle("爱管理");
+    ad1.setWindowIcon(QIcon(":/image/pencil"));
 
     cP1.setWindowTitle("修改密码");
 
