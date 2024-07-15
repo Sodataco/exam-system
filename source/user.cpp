@@ -22,7 +22,7 @@ void users::build(){
 
     query.exec("CREATE TABLE papers(paper_id INTEGER,paper_name TEXT NOT NULL)");
 
-    query.exec("CREATE TABLE result(paper_id INTEGER NOT NULL,user_id text NOT NULL,question_type INTEGER)");
+    query.exec("CREATE TABLE result(paper_id INTEGER NOT NULL,user_id text NOT NULL,score INTEGER)");
 
     query.exec("CREATE TABLE IF NOT EXISTS questions ("
                "question_id INTEGER PRIMARY KEY AUTOINCREMENT,"

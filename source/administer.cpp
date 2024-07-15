@@ -138,6 +138,16 @@ void Administer::on_Return_clicked()
 
 void Administer::on_resetPassword_clicked()
 {
+    QString student=ui->search2->toPlainText();
+
+    student='S'+student;
+    // 创建SQL查询对象
+    QSqlQuery query(user_db);
+
+    query.exec(QString("update user set mima = '%1' where zhanghao = '%2'").arg("12345").arg(student));
+
+    query.finish();
+    ui->search2->clear();
 
 }
 
