@@ -67,6 +67,7 @@ void users::build(){
                "score INTEGER,"
                "question_num INTEGER,"
                "question_text TEXT,"
+               "tk_answer TEXT"
                "FOREIGN KEY (paper_id) REFERENCES papers(paper_id));");
 
 

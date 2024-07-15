@@ -379,10 +379,9 @@ void studentexam::onExitClicked()
     for (int i=0;i<25;i++) {
         if(question_answer[i]=="A"||question_answer[i]=="B"||question_answer[i]=="C"||question_answer[i]=="D"){
 
-            query.exec(QString("select* from choice_questions where paper_id = '%1' AND question_text = '%2'").arg(4).arg(question_answer[i]));
+            query.exec(QString("select* from kaoshi where paper_id = '%1' AND question_text = '%2'").arg(1).arg(question_answer[i]));
             if(query.next() == false){
-                query.prepare(QString("INSERT INTO choice_questions (answer) values ('%2')").arg(question_answer[i]));
-
+                query.prepare(QString("INSERT INTO kaoshi (choice_answer) values ('%2')").arg(question_answer[i]));
                 qDebug()<<"插入完成2333";
                 query.finish();
             }
@@ -395,11 +394,12 @@ void studentexam::onExitClicked()
             break;
         }
     }
+
     for (int i=select_num;i<25;i++) {
 
-        query.exec(QString("select* from tk_questions where paper_id = '%1' AND question_text = '%2'").arg(4).arg(question_answer[i]));
+        query.exec(QString("select* from kaoshi where paper_id = '%1' AND question_text = '%2'").arg(1).arg(question_answer[i]));
         if(query.next() == false){
-            query.prepare(QString("INSERT INTO tk_questions (answer_text) values ('%2')").arg(question_answer[i]));
+            query.prepare(QString("INSERT INTO kaoshi (tk_answer) values ('%2')").arg(question_answer[i]));
 
             qDebug()<<"插入完成2333";
             query.finish();

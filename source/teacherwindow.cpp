@@ -19,8 +19,6 @@ teacherwindow::teacherwindow(QWidget *parent)
         connect(ui->manage,&QPushButton::clicked,this,&teacherwindow::on_manage_clicked);
 
 
-
-
     }
 }
 
