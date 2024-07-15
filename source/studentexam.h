@@ -5,6 +5,8 @@
 #include <QMainWindow>
 #include <QRadioButton>
 #include <QCommandLinkButton>
+#include <QTimer>
+#include <QTime>
 
 #include "user.h"
 
@@ -34,6 +36,7 @@ public:
 
 
 public:
+    void setCountdownTime(const QTime &time);
     explicit studentexam(QWidget *parent = nullptr);
     ~studentexam();
 
@@ -51,6 +54,7 @@ private slots:
 
     void receivelogin();
 
+    void updateCountdown();
 
 private:
     Ui::studentexam *ui;
@@ -58,6 +62,9 @@ private:
     int totalQuestions;
     QList<bool> questionCompleted;
     QList<QRadioButton *> radioButtons;  // 存储所有单选按钮的列表
+
+    QTimer *timer;
+    QTime endTime;
 };
 
 #endif // STUDENTEXAM_H

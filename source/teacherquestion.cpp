@@ -151,3 +151,134 @@ void teacherquestion::on_importAnswerquestion_clicked()
     ui->answerAnswer->clear();
 }
 
+void teacherquestion::importChoiceQuestions(const QString &filePath, QSqlDatabase &db) {
+    QAxObject excel("Excel.Application");
+    QAxObject *workbooks = excel.querySubObject("Workbooks");
+    QAxObject *workbook = workbooks->querySubObject("Open(const QString&)", filePath);
+    QAxObject *worksheet = workbook->querySubObject("Worksheets(int)", 1); // 假设选择题在第一个工作表
+
+    QAxObject *usedRange = worksheet->querySubObject("UsedRange");
+    QAxObject *rows = usedRange->querySubObject("Rows");
+    int rowCount = rows->property("Count").toInt();
+
+    QSqlQuery query(db);
+    query.exec("CREATE TABLE IF NOT EXISTS choice_questions ("
+               "id INTEGER PRIMARY KEY AUTOINCREMENT, "
+               "question TEXT, "
+               "option1 TEXT, "
+               "option2 TEXT, "
+               "option3 TEXT, "
+               "option4 TEXT, "
+               "correct_answer TEXT)");
+
+    for (int i = 2; i <= rowCount; ++i) { // 从第二行开始，假设第一行为标题
+        QString question = worksheet->querySubObject("Cells(int,int)", i, 1)->dynamicCall("Value()").toString();
+        QString option1 = worksheet->querySubObject("Cells(int,int)", i, 2)->dynamicCall("Value()").toString();
+        QString option2 = worksheet->querySubObject("Cells(int,int)", i, 3)->dynamicCall("Value()").toString();
+        QString option3 = worksheet->querySubObject("Cells(int,int)", i, 4)->dynamicCall("Value()").toString();
+        QString option4 = worksheet->querySubObject("Cells(int,int)", i, 5)->dynamicCall("Value()").toString();
+        QString correctAnswer = worksheet->querySubObject("Cells(int,int)", i, 6)->dynamicCall("Value()").toString();
+
+        query.prepare("INSERT INTO choice_questions (question, option1, option2, option3, option4, correct_answer) "
+                      "VALUES (:question, :option1, :option2, :option3, :option4, :correct_answer)");
+        query.bindValue(":question", question);
+        query.bindValue(":option1", option1);
+        query.bindValue(":option2", option2);
+        query.bindValue(":option3", option3);
+        query.bindValue(":option4", option4);
+        query.bindValue(":correct_answer", correctAnswer);
+
+        if (!query.exec()) {
+            qDebug() << "Error inserting choice question:" << query.lastError();
+        }
+    }
+
+    workbook->dynamicCall("Close()");
+    excel.dynamicCall("Quit()");
+}
+
+
+void teacherquestion::importFillBlankQuestions(const QString &filePath, QSqlDatabase &db) {
+    QAxObject excel("Excel.Application");
+    QAxObject *workbooks = excel.querySubObject("Workbooks");
+    QAxObject *workbook = workbooks->querySubObject("Open(const QString&)", filePath);
+    QAxObject *worksheet = workbook->querySubObject("Worksheets(int)", 2); // 假设填空题在第二个工作表
+
+    QAxObject *usedRange = worksheet->querySubObject("UsedRange");
+    QAxObject *rows = usedRange->querySubObject("Rows");
+    int rowCount = rows->property("Count").toInt();
+
+    QSqlQuery query(db);
+    query.exec("CREATE TABLE IF NOT EXISTS fill_blank_questions ("
+               "id INTEGER PRIMARY KEY AUTOINCREMENT, "
+               "question TEXT, "
+               "correct_answer TEXT)");
+
+    for (int i = 2; i <= rowCount; ++i) { // 从第二行开始，假设第一行为标题
+        QString question = worksheet->querySubObject("Cells(int,int)", i, 1)->dynamicCall("Value()").toString();
+        QString correctAnswer = worksheet->querySubObject("Cells(int,int)", i, 2)->dynamicCall("Value()").toString();
+
+        query.prepare("INSERT INTO fill_blank_questions (question, correct_answer) "
+                      "VALUES (:question, :correct_answer)");
+        query.bindValue(":question", question);
+        query.bindValue(":correct_answer", correctAnswer);
+
+        if (!query.exec()) {
+            qDebug() << "Error inserting fill blank question:" << query.lastError();
+        }
+    }
+
+    workbook->dynamicCall("Close()");
+    excel.dynamicCall("Quit()");
+}
+
+
+
+void teacherquestion::on_importSelectquestion_2_clicked()
+{
+    //实现获取文件路径的功能
+    QString filePath = QFileDialog::getOpenFileName(nullptr, "选择文件", QDir::homePath(), "Excel 文件 (*.xlsx *.xls)");
+
+    if(!filePath.isEmpty()){
+        this->importChoiceQuestions(filePath,user_db);
+
+        QMessageBox::about(this, "棒", "Successfully import Excel.");
+    }
+    else{
+        QMessageBox::critical(this, "Damn", "Failed to import Excel.");
+    }
+
+}
+
+
+void teacherquestion::on_importBlankquestion_2_clicked()
+{
+    //实现获取文件路径的功能
+    QString filePath = QFileDialog::getOpenFileName(nullptr, "选择文件", QDir::homePath(), "Excel 文件 (*.xlsx *.xls)");
+
+    if(!filePath.isEmpty()){
+        this->importFillBlankQuestions(filePath,user_db);
+
+        QMessageBox::about(this, "棒", "Successfully import Excel.");
+    }
+    else{
+        QMessageBox::critical(this, "Damn", "Failed to import Excel.");
+    }
+}
+
+
+void teacherquestion::on_importAnswerquestion_2_clicked()
+{
+    //实现获取文件路径的功能
+    QString filePath = QFileDialog::getOpenFileName(nullptr, "选择文件", QDir::homePath(), "Excel 文件 (*.xlsx *.xls)");
+
+    if(!filePath.isEmpty()){
+        this->importFillBlankQuestions(filePath,user_db);
+
+        QMessageBox::about(this, "棒", "Successfully import Excel.");
+    }
+    else{
+        QMessageBox::critical(this, "Damn", "Failed to import Excel.");
+    }
+}
+
