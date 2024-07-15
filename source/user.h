@@ -9,7 +9,6 @@
 #include <QCheckBox>
 #include <QDebug>
 #include <QFont>
-#include <QFile>
 #include <QFileInfo>
 #include <QIcon>
 #include <QLabel>
@@ -25,6 +24,13 @@
 #include <QToolButton>
 #include <QTime>
 
+//
+#include <QString>
+#include <QFile>
+#include <QTextStream>
+
+
+
 //数据库
 #include <QSqlDatabase>
 #include <QSqlQuery>
@@ -34,13 +40,26 @@
 //实例化测试
 static QSqlDatabase user_db;
 
-static  QString account="111";
+static  QString account="11";
+
+
+
 
 class users{
 public:
     users();
     void build();
     QString getUsername(const QString &username);
+
+
 };
+
+
+
+
+
+
+
+
 
 #endif // USER_H
