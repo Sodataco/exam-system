@@ -2,6 +2,8 @@
 #define STUDENTCHAFEN_H
 
 #include <QWidget>
+#include <QListWidgetItem>
+#include"user.h"
 
 namespace Ui {
 class studentchafen;
@@ -24,6 +26,8 @@ private slots:
     void on_Return_clicked();
 
     void on_refresh_clicked();
+
+    void on_examList_itemClicked(QListWidgetItem *item);
 
 private:
     Ui::studentchafen *ui;

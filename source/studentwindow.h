@@ -4,6 +4,7 @@
 #include <QWidget>
 #include <QPainter>
 #include <QFont>
+#include <QDate>
 #include "user.h"
 
 

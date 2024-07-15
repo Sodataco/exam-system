@@ -77,9 +77,7 @@ void studentpreexam::on_examList_itemClicked(QListWidgetItem *item)
 
     qDebug()<<"本张卷子的paperId是"<<paperId;
 
-    //studentexam *tool=new studentexam();
-    //int type=tool->getquestiontype(paperId,user_db);
-    //int questionid=tool->getquestionid(paperId,user_db);
+
 
     //每有一张卷子就new一张卷子
     studentexam *s1=new studentexam();

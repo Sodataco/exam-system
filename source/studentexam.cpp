@@ -106,7 +106,8 @@ void studentexam::onRadioButtonClicked()
                         break;
                     }
                 }
-            } else if (question_type[currentQuestion] == 2 || question_type[currentQuestion] == 3) {
+            }
+            else if (question_type[currentQuestion] == 2 || question_type[currentQuestion] == 3) {
                 question_answer[currentQuestion] = ui->answer->toPlainText();
             }
 
@@ -362,6 +363,7 @@ void studentexam::onNextClicked()
     }
 }
 
+//交卷函数
 void studentexam::onExitClicked()
 {
 
@@ -371,6 +373,48 @@ void studentexam::onExitClicked()
         qDebug() << "User chose to cancel.";
         return;
     }
+
+    QSqlQuery query(user_db);
+    int select_num=0;
+    for (int i=0;i<25;i++) {
+        if(question_answer[i]=="A"||question_answer[i]=="B"||question_answer[i]=="C"||question_answer[i]=="D"){
+
+            query.exec(QString("select* from choice_questions where paper_id = '%1' AND question_text = '%2'").arg(4).arg(question_answer[i]));
+            if(query.next() == false){
+                query.prepare(QString("INSERT INTO choice_questions (answer) values ('%2')").arg(question_answer[i]));
+
+                qDebug()<<"插入完成2333";
+                query.finish();
+            }
+            if (!query.exec()) {
+                qDebug() << "Failed to insert answer:" << query.lastError();
+            }
+        }
+        else {
+            select_num=i;
+            break;
+        }
+    }
+    for (int i=select_num;i<25;i++) {
+
+        query.exec(QString("select* from tk_questions where paper_id = '%1' AND question_text = '%2'").arg(4).arg(question_answer[i]));
+        if(query.next() == false){
+            query.prepare(QString("INSERT INTO tk_questions (answer_text) values ('%2')").arg(question_answer[i]));
+
+            qDebug()<<"插入完成2333";
+            query.finish();
+        }
+
+        if (!query.exec()) {
+            qDebug() << "Failed to insert answer:" << query.lastError();
+        }
+    }
+
+    for(int i=0;i<25;i++){
+        qDebug()<<question_answer[i];
+    }
+
+    qDebug()<<"select_num="<<select_num;
     this->hide();  // 关闭考试界面
     emit showpreexam();
 }
@@ -436,7 +480,7 @@ int studentexam::getquestionid(const int paperid,QSqlDatabase &db){
 
 //根据题目的paper_id来选取对应的题目和type并呈现
 void studentexam::displayQuestions(const int paperid,QSqlDatabase &db) {
-    qDebug()<<"进入哈哈哈哈哈函数";
+
     int i=0;
     //switch(Type){
     //case 1://选择题case
@@ -477,7 +521,7 @@ void studentexam::displayQuestions(const int paperid,QSqlDatabase &db) {
         optionC[i]=optC;
         optionD[i]=optD;
 
-        qDebug()<<"type是"<<question_type[i];
+
         i++;
     }
 
@@ -520,7 +564,7 @@ void studentexam::displayQuestions(const int paperid,QSqlDatabase &db) {
         i++;
     }
     i=0;
-    qDebug()<<"i="<<i;
+
 }
 
 void studentexam::setCountdownTime(const QTime &time)
@@ -529,6 +573,7 @@ void studentexam::setCountdownTime(const QTime &time)
     updateCountdown(); // 立即更新显示
 }
 
+//更新倒计时
 void studentexam::updateCountdown()
 {
     int remainingTime = QTime::currentTime().secsTo(endTime);

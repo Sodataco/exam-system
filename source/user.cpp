@@ -52,7 +52,7 @@ void users::build(){
                "option_b TEXT,"
                "option_c TEXT,"
                "option_d TEXT,"
-               "answer INTEGER NOT NULL,"
+               "answer TEXT NOT NULL,"
                "user_id text,"
                "is_use bool,"
                "FOREIGN KEY (paper_id) REFERENCES papers(paper_id));");

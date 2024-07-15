@@ -225,7 +225,7 @@
     </item>
    </layout>
   </widget>
-  <widget class="QTextBrowser" name="textBrowser">
+  <widget class="QTextBrowser" name="testname">
    <property name="geometry">
     <rect>
      <x>330</x>

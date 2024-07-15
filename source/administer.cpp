@@ -12,7 +12,7 @@ Administer::Administer(QWidget *parent)
     ui->EditName->setPlaceholderText("姓名");
     ui->EditAccount->setPlaceholderText("学号/工号");
     ui->EditPassword->setPlaceholderText("密码");
-    ui->EditClass->setPlaceholderText("密码");
+    ui->EditClass->setPlaceholderText("班级");
 
 
     ui->find->setIcon(QIcon(":/image/find.png"));

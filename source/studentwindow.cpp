@@ -9,6 +9,12 @@ studentwindow::studentwindow(QWidget *parent)
 {
     ui->setupUi(this);
 
+    QDate currentDate = QDate::currentDate();
+    QString dateString = currentDate.toString("MM-dd");
+    QString dayOfWeekString = currentDate.toString("dddd");
+
+    ui->dateLabel->setText("今天是: " + dateString + "\n      " + dayOfWeekString);
+
 
 }
 
