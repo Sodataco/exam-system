@@ -19,6 +19,11 @@ studentexam::studentexam(QWidget *parent)
         if(question_type[0]==1){
             ui->stackedWidget->setCurrentIndex(0);
             ui->selectquestion_2->setText(question_text[0]);
+            ui->chooseA->setText(optionA[0]);
+            ui->chooseB->setText(optionA[0]);
+            ui->chooseC->setText(optionA[0]);
+            ui->chooseD->setText(optionA[0]);
+
         }
         if(question_type[0]==2){
             ui->stackedWidget->setCurrentIndex(0);
@@ -29,10 +34,10 @@ studentexam::studentexam(QWidget *parent)
 
 
         // 设置选项按钮初始状态和信号连接
-        connect(ui->commandLinkButton_1, &QCommandLinkButton::clicked, this, &studentexam::onOptionClicked);
-        connect(ui->commandLinkButton_5, &QCommandLinkButton::clicked, this, &studentexam::onOptionClicked);
-        connect(ui->commandLinkButton_6, &QCommandLinkButton::clicked, this, &studentexam::onOptionClicked);
-        connect(ui->commandLinkButton_7, &QCommandLinkButton::clicked, this, &studentexam::onOptionClicked);
+        connect(ui->chooseA, &QCommandLinkButton::clicked, this, &studentexam::onOptionClicked);
+        connect(ui->chooseB, &QCommandLinkButton::clicked, this, &studentexam::onOptionClicked);
+        connect(ui->chooseC, &QCommandLinkButton::clicked, this, &studentexam::onOptionClicked);
+        connect(ui->chooseD, &QCommandLinkButton::clicked, this, &studentexam::onOptionClicked);
 
         // 初始化题目完成状态和信号连接
         for (int i = 0; i < totalQuestions; ++i) {
@@ -81,15 +86,26 @@ void studentexam::onRadioButtonClicked()
             if(question_type[index]==1){
                 ui->stackedWidget->setCurrentIndex(0);
                 ui->selectquestion_2->setText(QString(question_text[index]));
+                ui->chooseA->setText(optionA[i]);
+                ui->chooseB->setText(optionB[i]);
+                ui->chooseC->setText(optionC[i]);
+                ui->chooseD->setText(optionD[i]);
+
             }
             else if(question_type[index]==2){
                 ui->stackedWidget->setCurrentIndex(1);
                 ui->textquestion_2->setText(QString(question_text[index]));
+                question_answer[i]=ui->answer->toPlainText();
+                ui->answer->clear();
+
             }
 
             else if(question_type[index]==3){
                 ui->stackedWidget->setCurrentIndex(1);
                 ui->textquestion_2->setText(QString(question_text[index]));
+                question_answer[i]=ui->answer->toPlainText();
+                ui->answer->clear();
+                ui->answer->setText(question_answer[i]);
             }
 
 
@@ -376,7 +392,7 @@ void studentexam::displayQuestions(const int paperid,QSqlDatabase &db) {
     ui->stackedWidget->setCurrentIndex(0);
 
     QSqlQuery query(db);
-    query.prepare("SELECT question_text FROM choice_questions WHERE paper_id = :paper_id");
+    query.prepare("SELECT question_text,option_a,option_b,option_c,option_d FROM choice_questions WHERE paper_id = :paper_id");
     query.bindValue(":paper_id", paperid);
 
 
@@ -387,14 +403,28 @@ void studentexam::displayQuestions(const int paperid,QSqlDatabase &db) {
 
 
     QString text;
+    QString optA;
+    QString optB;
+    QString optC;
+    QString optD;
 
 
     while (query.next()) {
 
         qDebug()<<"进入循环1";
         text=query.value(0).toString();
+        optA=query.value(1).toString();
+        optB=query.value(2).toString();
+        optC=query.value(3).toString();
+        optD=query.value(4).toString();
+
         question_text[i]=text;
         question_type[i]=1;
+        optionA[i]=optA;
+        optionB[i]=optB;
+        optionC[i]=optC;
+        optionD[i]=optD;
+
         qDebug()<<"type是"<<question_type[i];
         i++;
     }
@@ -437,6 +467,8 @@ void studentexam::displayQuestions(const int paperid,QSqlDatabase &db) {
         qDebug()<<"type是"<<question_type[i];
         i++;
     }
+    i=0;
+    qDebug()<<"i="<<i;
 }
 
 
