@@ -11,6 +11,9 @@
 #include"teachermanage.h"
 
 
+#include"teacherscore.h"
+
+
 #include <QApplication>
 
 int main(int argc, char *argv[])
@@ -28,6 +31,7 @@ int main(int argc, char *argv[])
     studentpreexam spe1;
     studentexam se1;
     teacherquestion tq;
+    teacherscore ts;
 
     combinePaper cbp;
     teachermanage tm;
@@ -84,6 +88,9 @@ int main(int argc, char *argv[])
     ad1.derive_data_to_sql(user_db);//测试函数
 
     cP1.changePw("111","11",user_db);//测试函数
+
+
+
 
     qDebug()<<account<<"11451";
 
