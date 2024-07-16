@@ -196,6 +196,7 @@ void teacherquestion::on_importAnswerquestion_clicked()
 }
 
 void teacherquestion::importChoiceQuestions(const QString &filePath, QSqlDatabase &db) {
+#ifdef _WIN32
     QAxObject excel("Excel.Application");
     QAxObject *workbooks = excel.querySubObject("Workbooks");
     QAxObject *workbook = workbooks->querySubObject("Open(const QString&)", filePath);
@@ -239,10 +240,59 @@ void teacherquestion::importChoiceQuestions(const QString &filePath, QSqlDatabas
 
     workbook->dynamicCall("Close()");
     excel.dynamicCall("Quit()");
+#else
+    QXlsx::Document xlsx(filePath);
+    if (!xlsx.load()) {
+        qDebug() << "Failed to load the file.";
+        return;
+    }
+
+    QXlsx::Worksheet *worksheet = dynamic_cast<QXlsx::Worksheet*>(xlsx.sheet(0)); // 假设选择题在第一个工作表
+    if (!worksheet) {
+        qDebug() << "Failed to get the worksheet.";
+        return;
+    }
+
+    int rowCount = worksheet->dimension().rowCount();
+
+    QSqlQuery query(db);
+    query.exec("CREATE TABLE IF NOT EXISTS choice_questions ("
+               "id INTEGER PRIMARY KEY AUTOINCREMENT, "
+               "question TEXT, "
+               "option1 TEXT, "
+               "option2 TEXT, "
+               "option3 TEXT, "
+               "option4 TEXT, "
+               "correct_answer TEXT)");
+
+    for (int i = 2; i <= rowCount; ++i) { // 从第二行开始，假设第一行为标题
+        QString question = worksheet->cellAt(i, 1)->value().toString();
+        QString option1 = worksheet->cellAt(i, 2)->value().toString();
+        QString option2 = worksheet->cellAt(i, 3)->value().toString();
+        QString option3 = worksheet->cellAt(i, 4)->value().toString();
+        QString option4 = worksheet->cellAt(i, 5)->value().toString();
+        QString correctAnswer = worksheet->cellAt(i, 6)->value().toString();
+
+        query.prepare("INSERT INTO choice_questions (question, option1, option2, option3, option4, correct_answer) "
+                      "VALUES (:question, :option1, :option2, :option3, :option4, :correct_answer)");
+        query.bindValue(":question", question);
+        query.bindValue(":option1", option1);
+        query.bindValue(":option2", option2);
+        query.bindValue(":option3", option3);
+        query.bindValue(":option4", option4);
+        query.bindValue(":correct_answer", correctAnswer);
+
+        if (!query.exec()) {
+            qDebug() << "Error inserting choice question:" << query.lastError();
+        }
+    }
+#endif
+
 }
 
 
 void teacherquestion::importFillBlankQuestions(const QString &filePath, QSqlDatabase &db) {
+#ifdef _WIN32
     QAxObject excel("Excel.Application");
     QAxObject *workbooks = excel.querySubObject("Workbooks");
     QAxObject *workbook = workbooks->querySubObject("Open(const QString&)", filePath);
@@ -274,6 +324,41 @@ void teacherquestion::importFillBlankQuestions(const QString &filePath, QSqlData
 
     workbook->dynamicCall("Close()");
     excel.dynamicCall("Quit()");
+#else
+    QXlsx::Document xlsx(filePath);
+    if (!xlsx.load()) {
+        qDebug() << "Failed to load the file.";
+        return;
+    }
+
+    QXlsx::Worksheet *worksheet = dynamic_cast<QXlsx::Worksheet*>(xlsx.sheet(1)); // 假设填空题在第二个工作表
+    if (!worksheet) {
+        qDebug() << "Failed to get the worksheet.";
+        return;
+    }
+
+    int rowCount = worksheet->dimension().rowCount();
+
+    QSqlQuery query(db);
+    query.exec("CREATE TABLE IF NOT EXISTS fill_blank_questions ("
+               "id INTEGER PRIMARY KEY AUTOINCREMENT, "
+               "question TEXT, "
+               "correct_answer TEXT)");
+
+    for (int i = 2; i <= rowCount; ++i) { // 从第二行开始，假设第一行为标题
+        QString question = worksheet->cellAt(i, 1)->value().toString();
+        QString correctAnswer = worksheet->cellAt(i, 2)->value().toString();
+
+        query.prepare("INSERT INTO fill_blank_questions (question, correct_answer) "
+                      "VALUES (:question, :correct_answer)");
+        query.bindValue(":question", question);
+        query.bindValue(":correct_answer", correctAnswer);
+
+        if (!query.exec()) {
+            qDebug() << "Error inserting fill blank question:" << query.lastError();
+        }
+    }
+#endif
 }
 
 
