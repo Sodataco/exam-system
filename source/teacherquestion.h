@@ -1,7 +1,11 @@
 #ifndef TEACHERQUESTION_H
 #define TEACHERQUESTION_H
 
+#ifdef _WIN32
 #include <QAxObject>
+#else
+#include <QtXlsx>
+#endif
 #include <QSqlDatabase>
 #include <QSqlQuery>
 #include <QSqlError>
