@@ -6,8 +6,51 @@ teacherquestion::teacherquestion(QWidget *parent) :
     ui(new Ui::teacherquestion)
 {
     ui->setupUi(this);
-}
+    ui->example->hide();
+    ui->fbutton->hide();
+    ui->example_2->hide();
+    ui->fbutton_2->hide();
+    ui->example_3->hide();
+    ui->fbutton_3->hide();
+       // 连接 ebutton 的 clicked 信号到槽函数 on_ebutton_clicked()
+       connect(ui->ebutton, &QPushButton::clicked, this, &teacherquestion::on_ebutton_clicked);
+       connect(ui->fbutton, &QPushButton::clicked, this, &teacherquestion::on_fbutton_clicked);
+       connect(ui->ebutton_2, &QPushButton::clicked, this, &teacherquestion::on_ebutton_2_clicked);
+       connect(ui->fbutton_2, &QPushButton::clicked, this, &teacherquestion::on_fbutton_2_clicked);
+       connect(ui->ebutton_3, &QPushButton::clicked, this, &teacherquestion::on_ebutton_3_clicked);
+       connect(ui->fbutton_3, &QPushButton::clicked, this, &teacherquestion::on_fbutton_3_clicked);
 
+}
+void teacherquestion::on_ebutton_clicked()
+{
+        ui->example->show();
+        ui->fbutton->show();
+}
+void teacherquestion::on_fbutton_clicked()
+{
+        ui->example->close();
+        ui->fbutton->hide();
+}
+void teacherquestion::on_ebutton_2_clicked()
+{
+        ui->example_2->show();
+        ui->fbutton_2->show();
+}
+void teacherquestion::on_fbutton_2_clicked()
+{
+        ui->example_2->close();
+        ui->fbutton_2->hide();
+}
+void teacherquestion::on_ebutton_3_clicked()
+{
+        ui->example_3->show();
+        ui->fbutton_3->show();
+}
+void teacherquestion::on_fbutton_3_clicked()
+{
+        ui->example_3->close();
+        ui->fbutton_3->hide();
+}
 teacherquestion::~teacherquestion()
 {
     delete ui;

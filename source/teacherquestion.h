@@ -13,8 +13,10 @@
 #include <QStringList>
 #include <QFile>
 #include <QFileDialog>
-
+#include<QPushButton>
+#include<QLabel>
 #include <QWidget>
+#include <QObject>
 #include "user.h"
 
 namespace Ui {
@@ -56,9 +58,16 @@ private slots:
     void on_importBlankquestion_2_clicked();
 
     void on_importAnswerquestion_2_clicked();
-
-private:
+    void on_ebutton_clicked();
+    void on_fbutton_clicked();
+    void on_ebutton_2_clicked();
+    void on_fbutton_2_clicked();
+    void on_ebutton_3_clicked();
+    void on_fbutton_3_clicked();
+    private:
     Ui::teacherquestion *ui;
+
+
 };
 
 #endif // TEACHERQUESTION_H
