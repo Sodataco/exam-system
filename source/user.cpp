@@ -38,14 +38,10 @@ void users::build(){
                "class_id INT NOT NULL,"
                "user_id VARCHAR(255) NOT NULL)");
 
-<<<<<<< Updated upstream
-    query.exec("CREATE TABLE result(paper_id INTEGER NOT NULL,user_id text NOT NULL,score INTEGER)");
-=======
     query.exec("CREATE TABLE IF NOT EXISTS result ("
                "paper_id INT NOT NULL,"
                "user_id VARCHAR(255) NOT NULL,"
                "question_type INT)");
->>>>>>> Stashed changes
 
     query.exec("CREATE TABLE IF NOT EXISTS questions ("
                "question_id INT AUTO_INCREMENT,"
@@ -54,8 +50,7 @@ void users::build(){
                "answer_text TEXT NOT NULL,"
                "user_id VARCHAR(255),"
                "is_use BOOLEAN,"
-               "PRIMARY KEY (question_id),"
-               "FOREIGN KEY (paper_id) REFERENCES papers(paper_id))");
+               "PRIMARY KEY (question_id))");
 
     query.exec("CREATE TABLE IF NOT EXISTS tk_questions ("
                "question_id INT AUTO_INCREMENT,"
@@ -64,8 +59,7 @@ void users::build(){
                "answer_text TEXT NOT NULL,"
                "user_id VARCHAR(255),"
                "is_use BOOLEAN,"
-               "PRIMARY KEY (question_id),"
-               "FOREIGN KEY (paper_id) REFERENCES papers(paper_id))");
+               "PRIMARY KEY (question_id))");
 
     query.exec("CREATE TABLE IF NOT EXISTS choice_questions ("
                "question_id INT AUTO_INCREMENT,"
@@ -75,19 +69,10 @@ void users::build(){
                "option_b TEXT,"
                "option_c TEXT,"
                "option_d TEXT,"
-<<<<<<< Updated upstream
-               "answer TEXT NOT NULL,"
-               "user_id text,"
-               "is_use bool,"
-               "FOREIGN KEY (paper_id) REFERENCES papers(paper_id));");
-
-=======
                "answer INT NOT NULL,"
                "user_id VARCHAR(255),"
                "is_use BOOLEAN,"
-               "PRIMARY KEY (question_id),"
-               "FOREIGN KEY (paper_id) REFERENCES papers(paper_id))");
->>>>>>> Stashed changes
+               "PRIMARY KEY (question_id))");
 
     query.exec("CREATE TABLE IF NOT EXISTS kaoshi ("
                "paper_id INT NOT NULL,"
@@ -97,13 +82,7 @@ void users::build(){
                "question_id INT,"
                "score INT,"
                "question_num INT,"
-               "question_text TEXT,"
-<<<<<<< Updated upstream
-               "tk_answer TEXT"
-               "FOREIGN KEY (paper_id) REFERENCES papers(paper_id));");
-=======
-               "FOREIGN KEY (paper_id) REFERENCES papers(paper_id))");
->>>>>>> Stashed changes
+               "question_text TEXT)");
 
     qDebug() << "user_db数据库表已创建";
 
