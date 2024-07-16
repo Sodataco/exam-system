@@ -15,59 +15,59 @@ studentexam::studentexam(QWidget *parent)
     setCountdownTime(QTime::currentTime().addSecs(7200));
 
     // 初始化界面
-        currentQuestion = 0;  // 当前题目编号从0开始
-        totalQuestions = 25;  // 总题目数量为25
+    currentQuestion = 0;  // 当前题目编号从0开始
+    totalQuestions = 25;  // 总题目数量为25
 
-        ui->radioButton_1->setChecked(true);
-        // 设置题目文本初始内容
+    ui->radioButton_1->setChecked(true);
+    // 设置题目文本初始内容
 
-        //最大化界面并且无法调整大小和位置，防止作弊
-        this->showFullScreen();
-        setWindowFlags(Qt::WindowType::FramelessWindowHint);
-        if(question_type[0]==1){
-            ui->stackedWidget->setCurrentIndex(0);
-            ui->selectquestion_2->setText(question_text[0]);
-            ui->chooseA->setText(optionA[0]);
-            ui->chooseB->setText(optionA[0]);
-            ui->chooseC->setText(optionA[0]);
-            ui->chooseD->setText(optionA[0]);
+    //最大化界面并且无法调整大小和位置，防止作弊
+    this->showFullScreen();
+    setWindowFlags(Qt::WindowType::FramelessWindowHint);
+    if(question_type[0]==1){
+        ui->stackedWidget->setCurrentIndex(0);
+        ui->selectquestion_2->setText(question_text[0]);
+        ui->chooseA->setText(optionA[0]);
+        ui->chooseB->setText(optionA[0]);
+        ui->chooseC->setText(optionA[0]);
+        ui->chooseD->setText(optionA[0]);
 
-        }
-        if(question_type[0]==2){
-            ui->stackedWidget->setCurrentIndex(0);
-            ui->textquestion_2->setText(question_text[0]);
-        }
-
-
+    }
+    if(question_type[0]==2){
+        ui->stackedWidget->setCurrentIndex(0);
+        ui->textquestion_2->setText(question_text[0]);
+    }
 
 
-        // 设置选项按钮初始状态和信号连接
-        connect(ui->chooseA, &QCommandLinkButton::clicked, this, &studentexam::onOptionClicked);
-        connect(ui->chooseB, &QCommandLinkButton::clicked, this, &studentexam::onOptionClicked);
-        connect(ui->chooseC, &QCommandLinkButton::clicked, this, &studentexam::onOptionClicked);
-        connect(ui->chooseD, &QCommandLinkButton::clicked, this, &studentexam::onOptionClicked);
 
-        // 初始化题目完成状态和信号连接
-        for (int i = 0; i < totalQuestions; ++i) {
-            QRadioButton *radioButton = findChild<QRadioButton *>(QString("radioButton_%1").arg(i + 1));
-                   if (radioButton) {
-                       connect(radioButton, &QRadioButton::clicked, this, &studentexam::onRadioButtonClicked);
-                       radioButtons.append(radioButton);  // 将单选按钮添加到列表中
-                       questionCompleted.append(false);  // 所有题目初始状态为未完成
-                   }
-        }
 
-        // 设置进度条的最大值和初始值
-        ui->progressBar->setMinimum(0);
-        ui->progressBar->setMaximum(totalQuestions);
-        updateProgressBar();
+    // 设置选项按钮初始状态和信号连接
+    connect(ui->chooseA, &QCommandLinkButton::clicked, this, &studentexam::onOptionClicked);
+    connect(ui->chooseB, &QCommandLinkButton::clicked, this, &studentexam::onOptionClicked);
+    connect(ui->chooseC, &QCommandLinkButton::clicked, this, &studentexam::onOptionClicked);
+    connect(ui->chooseD, &QCommandLinkButton::clicked, this, &studentexam::onOptionClicked);
 
-        // 连接切换题目按钮的信号与槽
-        connect(ui->pushButton, &QPushButton::clicked, this, &studentexam::onPreviousClicked);
-        connect(ui->pushButton_2, &QPushButton::clicked, this, &studentexam::onNextClicked);
+    // 初始化题目完成状态和信号连接
+    for (int i = 0; i < totalQuestions; ++i) {
+        QRadioButton *radioButton = findChild<QRadioButton *>(QString("radioButton_%1").arg(i + 1));
+               if (radioButton) {
+                   connect(radioButton, &QRadioButton::clicked, this, &studentexam::onRadioButtonClicked);
+                   radioButtons.append(radioButton);  // 将单选按钮添加到列表中
+                   questionCompleted.append(false);  // 所有题目初始状态为未完成
+               }
+    }
 
-        // 连接退出按钮的信号与槽
-        connect(ui->pushButton_3, &QPushButton::clicked, this, &studentexam::onExitClicked);
+    // 设置进度条的最大值和初始值
+    ui->progressBar->setMinimum(0);
+    ui->progressBar->setMaximum(totalQuestions);
+    updateProgressBar();
+
+    // 连接切换题目按钮的信号与槽
+    connect(ui->pushButton, &QPushButton::clicked, this, &studentexam::onPreviousClicked);
+    connect(ui->pushButton_2, &QPushButton::clicked, this, &studentexam::onNextClicked);
+
+    // 连接退出按钮的信号与槽
+    connect(ui->pushButton_3, &QPushButton::clicked, this, &studentexam::onExitClicked);
 }
 
 studentexam::~studentexam()
@@ -87,6 +87,7 @@ void studentexam::onRadioButtonClicked()
     for (int i = 1; i <= 25; ++i) {
         QString buttonName = QString("radioButton_%1").arg(i);
         QRadioButton *radioButton = findChild<QRadioButton *>(buttonName);
+        qDebug()<<"点击了"<<i;
 
         if (radioButton && radioButton->isChecked()) {
             int index = i - 1;  // 题目索引从0开始，所以需要减1
@@ -379,14 +380,15 @@ void studentexam::onExitClicked()
     for (int i=0;i<25;i++) {
         if(question_answer[i]=="A"||question_answer[i]=="B"||question_answer[i]=="C"||question_answer[i]=="D"){
 
-            query.exec(QString("select* from kaoshi where paper_id = '%1' AND question_text = '%2'").arg(1).arg(question_answer[i]));
-            if(query.next() == false){
-                query.prepare(QString("INSERT INTO kaoshi (choice_answer) values ('%2')").arg(question_answer[i]));
-                qDebug()<<"插入完成2333";
-                query.finish();
-            }
+            query.prepare("INSERT INTO kaoshi (paper_id, user_id, question_text, choice_answer) VALUES (?, ?, ?, ?)");
+            query.addBindValue(paperId);
+            query.addBindValue("121");
+            query.addBindValue(question_text[i]);
+            query.addBindValue(question_answer[i]);
             if (!query.exec()) {
                 qDebug() << "Failed to insert answer:" << query.lastError();
+            } else {
+                qDebug() << "插入完成2333";
             }
         }
         else {
@@ -397,16 +399,17 @@ void studentexam::onExitClicked()
 
     for (int i=select_num;i<25;i++) {
 
-        query.exec(QString("select* from kaoshi where paper_id = '%1' AND question_text = '%2'").arg(1).arg(question_answer[i]));
-        if(query.next() == false){
-            query.prepare(QString("INSERT INTO kaoshi (tk_answer) values ('%2')").arg(question_answer[i]));
-
-            qDebug()<<"插入完成2333";
-            query.finish();
-        }
+        QSqlQuery query(user_db);
+        query.prepare("INSERT INTO kaoshi (paper_id, user_id, question_text, tk_answer) VALUES (?, ?, ?, ?)");
+        query.addBindValue(paperId);
+        query.addBindValue("121");
+        query.addBindValue(question_text[i]);
+        query.addBindValue(question_answer[i]);
 
         if (!query.exec()) {
-            qDebug() << "Failed to insert answer:" << query.lastError();
+            qDebug() << "Error inserting or replacing data:" << query.lastError();
+        } else {
+            qDebug() << "Data inserted or replaced successfully.";
         }
     }
 
@@ -481,6 +484,7 @@ int studentexam::getquestionid(const int paperid,QSqlDatabase &db){
 //根据题目的paper_id来选取对应的题目和type并呈现
 void studentexam::displayQuestions(const int paperid,QSqlDatabase &db) {
 
+    paperId=paperid;
     int i=0;
     //switch(Type){
     //case 1://选择题case
