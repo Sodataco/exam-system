@@ -100,6 +100,19 @@ void teacherquestion::on_importSelectquestion_clicked()
     bool bB=ui->selectB->isChecked();
     bool bC=ui->selectC->isChecked();
     bool bD=ui->selectD->isChecked();
+    QString an;
+    if(bA){
+        an+="A";
+    }
+    if(bB){
+        an+="B";
+    }
+    if(bC){
+        an+="C";
+    }
+    if(bD){
+        an+="D";
+    }
 
     //导入题目到数据库功能
 
@@ -113,7 +126,7 @@ void teacherquestion::on_importSelectquestion_clicked()
     query.bindValue(":option_b", sB);
     query.bindValue(":option_c", sC);
     query.bindValue(":option_d", sD);
-    query.bindValue(":answer", bA*1+bB*2+bC*4+bD*8);
+    query.bindValue(":answer", an);
     query.bindValue(":use", false);
 
     if (!query.exec()) {

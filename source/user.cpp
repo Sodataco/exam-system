@@ -38,6 +38,9 @@ void users::build(){
                "class_id INT NOT NULL,"
                "user_id VARCHAR(255) NOT NULL)");
 
+
+    query.exec("CREATE TABLE result(paper_id INTEGER NOT NULL,user_id text ,score INTEGER)");
+
     query.exec("CREATE TABLE IF NOT EXISTS result ("
                "paper_id INT NOT NULL,"
                "user_id VARCHAR(255) NOT NULL,"
@@ -75,14 +78,16 @@ void users::build(){
                "PRIMARY KEY (question_id))");
 
     query.exec("CREATE TABLE IF NOT EXISTS kaoshi ("
-               "paper_id INT NOT NULL,"
-               "user_id VARCHAR(255) NOT NULL,"
-               "question_type INT,"
-               "choice_answer INT,"
-               "question_id INT,"
-               "score INT,"
-               "question_num INT,"
-               "question_text TEXT)");
+               "paper_id INTEGER NOT NULL,"
+               "user_id text NOT NULL,"
+               "question_type INTEGER,"
+               "choice_answer INTEGER,"
+               "question_id INTEGER,"
+               "score INTEGER,"
+               "question_num INTEGER,"
+               "question_text TEXT,"
+               "tk_answer TEXT,"
+               "FOREIGN KEY (paper_id) REFERENCES papers(paper_id));");
 
     qDebug() << "user_db数据库表已创建";
 
