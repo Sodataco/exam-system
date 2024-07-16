@@ -6,6 +6,8 @@
 #include <QRadioButton>
 #include"studentexam.h"
 #include"user.h"
+#include <QProcess>
+#include <QDebug>
 
 namespace Ui {
 class teacherscore;
