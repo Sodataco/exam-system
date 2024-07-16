@@ -40,11 +40,4 @@ def generate_feedback(Question,fullScore,Answer,student_answer):
     return score, feedback
 
 if __name__ == "__main__":
-    Question = sys.argv[1]
-    fullScore = int(sys.argv[2])
-    Answer = sys.argv[3]
-    student_answer = sys.argv[4]
-
-    score, feedback = generate_feedback(Question, fullScore, Answer, student_answer)
-    print(score)
-    print(feedback)
+    main()
