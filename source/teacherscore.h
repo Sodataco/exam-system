@@ -2,6 +2,8 @@
 #define TEACHERSCORE_H
 
 #include <QWidget>
+#include <QProcess>
+#include <QDebug>
 
 namespace Ui {
 class teacherscore;
