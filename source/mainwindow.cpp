@@ -40,8 +40,6 @@ MainWindow::MainWindow(QWidget *parent)
 
     //去掉边框
     setWindowFlags(Qt::WindowType::FramelessWindowHint);
-    //背景透明
-    setAttribute(Qt::WA_TranslucentBackground);
 
 
     //ui界面的各种调整

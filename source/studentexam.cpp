@@ -58,9 +58,7 @@ studentexam::studentexam(QWidget *parent)
         }
 
         // 设置进度条的最大值和初始值
-        ui->progressBar->setMinimum(0);
-        ui->progressBar->setMaximum(totalQuestions);
-        updateProgressBar();
+
 
         // 连接切换题目按钮的信号与槽
         connect(ui->pushButton, &QPushButton::clicked, this, &studentexam::onPreviousClicked);
@@ -427,7 +425,7 @@ void studentexam::updateProgressBar()
             completedCount++;
         }
     }
-    ui->progressBar->setValue(completedCount);  // 更新进度条的进度
+
 }
 
 void studentexam::receivelogin(){
