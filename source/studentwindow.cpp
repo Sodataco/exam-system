@@ -71,7 +71,24 @@ void studentwindow::on_examBtn_clicked()
 
 
 
+//读取信息
+QString readUserInfo() {
+    QFile file("user_data.txt");
+    if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        qDebug() << "Error opening file for reading";
+        return QString();
+    }
 
+    QTextStream in(&file);
+    QString account;
+    if (!in.atEnd()) {
+        account = in.readLine();
+        qDebug() << "Account:" << account;
+    }
+
+    file.close();
+    return account;
+}
 
 
 QString studentwindow::getUsername(const  QString &username) {

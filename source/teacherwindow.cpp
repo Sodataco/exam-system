@@ -19,8 +19,6 @@ teacherwindow::teacherwindow(QWidget *parent)
         connect(ui->manage,&QPushButton::clicked,this,&teacherwindow::on_manage_clicked);
 
 
-
-
     }
 }
 
@@ -102,7 +100,8 @@ void teacherwindow::on_manage_clicked()
 }
 void teacherwindow::on_judge_clicked()
 {
-    qDebug() << "12312";
+    this->hide();
+    emit showjudge();
 }
 
 void teacherwindow::on_Return1_clicked()

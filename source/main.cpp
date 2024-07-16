@@ -9,6 +9,7 @@
 #include"teacherquestion.h"
 #include"combinepaper.h"
 #include"teachermanage.h"
+#include"teacherscore.h"
 
 
 #include <QApplication>
@@ -29,6 +30,7 @@ int main(int argc, char *argv[])
     studentexam se1;
     teacherquestion tq;
 
+    teacherscore ts1;
     combinePaper cbp;
     teachermanage tm;
     users u1;
@@ -65,7 +67,10 @@ int main(int argc, char *argv[])
     QObject::connect(&tea1,SIGNAL(showcreatequestion()),&tq,SLOT(receivelogin()));
     QObject::connect(&tea1,SIGNAL(showpaper()),&cbp,SLOT(receivelogin()));
     QObject::connect(&tea1,SIGNAL(showmanage()),&tm,SLOT(receivelogin()));
+    QObject::connect(&tea1,SIGNAL(showjudge()),&ts1,SLOT(receivelogin()));
 
+
+    QObject::connect(&ts1,SIGNAL(showteacher()),&tea1,SLOT(receivelogin()));
     QObject::connect(&cbp,SIGNAL(showteacher()),&tea1,SLOT(receivelogin()));
     QObject::connect(&cbp,SIGNAL(showteacher()),&tea1,SLOT(receivelogin()));
     QObject::connect(&tm,SIGNAL(showteacher()),&tea1,SLOT(receivelogin()));
@@ -76,7 +81,6 @@ int main(int argc, char *argv[])
     QObject::connect(&ad1,SIGNAL(showmain()),&w,SLOT(receiveloginagain()));
     QObject::connect(&sw1,SIGNAL(showmain()),&w,SLOT(receiveloginagain()));
     QObject::connect(&tq,SIGNAL(showteacher()),&tea1,SLOT(receivelogin()));
-
     QObject::connect(&tea1,SIGNAL(showmain()),&w,SLOT(receiveloginagain()));
 
     qDebug()<<account<<"11452";

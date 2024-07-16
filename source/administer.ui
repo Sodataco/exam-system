@@ -34,7 +34,7 @@ background-color:white;
     </rect>
    </property>
    <property name="currentIndex">
-    <number>2</number>
+    <number>0</number>
    </property>
    <widget class="QWidget" name="page">
     <widget class="QLineEdit" name="EditName">
@@ -610,6 +610,8 @@ backgroung-color:transparent;
   <zorder>manage</zorder>
   <zorder>importAccount</zorder>
   <zorder>Return</zorder>
+  <zorder>label_3</zorder>
+  <zorder>label</zorder>
   <zorder>label_3</zorder>
   <zorder>line</zorder>
   <zorder>label</zorder>
