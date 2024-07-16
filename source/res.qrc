@@ -33,5 +33,7 @@
         <file>image/dd0.png</file>
         <file>image/00.png</file>
         <file>image/1.png</file>
+        <file>image/example1.png</file>
+        <file>image/example2.png</file>
     </qresource>
 </RCC>
