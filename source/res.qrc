@@ -1,0 +1,37 @@
+<RCC>
+    <qresource prefix="/">
+        <file>image/ren.png</file>
+        <file>image/closeeye.png</file>
+        <file>image/openeye.png</file>
+        <file>image/pencil.png</file>
+        <file>image/tuichu.png</file>
+        <file>image/zuixioahua.png</file>
+        <file>image/background.gif</file>
+        <file>image/photo.png</file>
+        <file>image/forgetpassword.png</file>
+        <file>image/logo.png</file>
+        <file>image/home.png</file>
+        <file>image/xuanzeti0.png</file>
+        <file>image/xuanzeti2.png</file>
+        <file>image/xx0.png</file>
+        <file>image/xx1.png</file>
+        <file>image/jiandati0.png</file>
+        <file>image/jiandati1.png</file>
+        <file>image/tiankongti0.png</file>
+        <file>image/tiankongti1.png</file>
+        <file>image/gg1.png</file>
+        <file>image/gg10.png</file>
+        <file>image/score.png</file>
+        <file>image/lock0.png</file>
+        <file>image/exam.png</file>
+        <file>image/book.png</file>
+        <file>image/chafen.png</file>
+        <file>image/guanliyuan.jpeg</file>
+        <file>image/jiaoshi.jpeg</file>
+        <file>image/paper.png</file>
+        <file>image/dd.png</file>
+        <file>image/dd0.png</file>
+        <file>image/00.png</file>
+        <file>image/1.png</file>
+    </qresource>
+</RCC>

@@ -31,7 +31,7 @@ public:
 signals:
     void showcreatequestion();
     void showmain();
-    void showjudge();
+
     void showpaper();
 
 

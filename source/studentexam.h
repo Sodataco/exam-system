@@ -32,7 +32,6 @@ public:
     QString optionC[10001];
     QString optionD[10001];
     QString question_answer[10001];
-    int paperId;
 
 
 

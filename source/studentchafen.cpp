@@ -109,7 +109,7 @@ void studentchafen::on_examList_itemClicked(QListWidgetItem *item)
         qDebug() << "No results found for the given paper_id and user_id.";
     }
 
-    qDebug()<<my_score;
+
 
     query.finish();
 

@@ -9,10 +9,6 @@
 #include"teacherquestion.h"
 #include"combinepaper.h"
 #include"teachermanage.h"
-#include"teacherscore.h"
-
-
-#include"teacherscore.h"
 
 
 #include <QApplication>
@@ -32,9 +28,7 @@ int main(int argc, char *argv[])
     studentpreexam spe1;
     studentexam se1;
     teacherquestion tq;
-    teacherscore ts;
 
-    teacherscore ts1;
     combinePaper cbp;
     teachermanage tm;
     users u1;
@@ -71,10 +65,7 @@ int main(int argc, char *argv[])
     QObject::connect(&tea1,SIGNAL(showcreatequestion()),&tq,SLOT(receivelogin()));
     QObject::connect(&tea1,SIGNAL(showpaper()),&cbp,SLOT(receivelogin()));
     QObject::connect(&tea1,SIGNAL(showmanage()),&tm,SLOT(receivelogin()));
-    QObject::connect(&tea1,SIGNAL(showjudge()),&ts1,SLOT(receivelogin()));
 
-
-    QObject::connect(&ts1,SIGNAL(showteacher()),&tea1,SLOT(receivelogin()));
     QObject::connect(&cbp,SIGNAL(showteacher()),&tea1,SLOT(receivelogin()));
     QObject::connect(&cbp,SIGNAL(showteacher()),&tea1,SLOT(receivelogin()));
     QObject::connect(&tm,SIGNAL(showteacher()),&tea1,SLOT(receivelogin()));
@@ -85,6 +76,7 @@ int main(int argc, char *argv[])
     QObject::connect(&ad1,SIGNAL(showmain()),&w,SLOT(receiveloginagain()));
     QObject::connect(&sw1,SIGNAL(showmain()),&w,SLOT(receiveloginagain()));
     QObject::connect(&tq,SIGNAL(showteacher()),&tea1,SLOT(receivelogin()));
+
     QObject::connect(&tea1,SIGNAL(showmain()),&w,SLOT(receiveloginagain()));
 
     qDebug()<<account<<"11452";
@@ -92,9 +84,6 @@ int main(int argc, char *argv[])
     ad1.derive_data_to_sql(user_db);//测试函数
 
     cP1.changePw("111","11",user_db);//测试函数
-
-
-
 
     qDebug()<<account<<"11451";
 

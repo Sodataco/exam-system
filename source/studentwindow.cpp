@@ -73,6 +73,7 @@ void studentwindow::on_examBtn_clicked()
 
 
 
+
 QString studentwindow::getUsername(const  QString &username) {
     QSqlQuery query(user_db);
 

@@ -6,51 +6,8 @@ teacherquestion::teacherquestion(QWidget *parent) :
     ui(new Ui::teacherquestion)
 {
     ui->setupUi(this);
-    ui->example->hide();
-    ui->fbutton->hide();
-    ui->example_2->hide();
-    ui->fbutton_2->hide();
-    ui->example_3->hide();
-    ui->fbutton_3->hide();
-       // 连接 ebutton 的 clicked 信号到槽函数 on_ebutton_clicked()
-       connect(ui->ebutton, &QPushButton::clicked, this, &teacherquestion::on_ebutton_clicked);
-       connect(ui->fbutton, &QPushButton::clicked, this, &teacherquestion::on_fbutton_clicked);
-       connect(ui->ebutton_2, &QPushButton::clicked, this, &teacherquestion::on_ebutton_2_clicked);
-       connect(ui->fbutton_2, &QPushButton::clicked, this, &teacherquestion::on_fbutton_2_clicked);
-       connect(ui->ebutton_3, &QPushButton::clicked, this, &teacherquestion::on_ebutton_3_clicked);
-       connect(ui->fbutton_3, &QPushButton::clicked, this, &teacherquestion::on_fbutton_3_clicked);
+}
 
-}
-void teacherquestion::on_ebutton_clicked()
-{
-        ui->example->show();
-        ui->fbutton->show();
-}
-void teacherquestion::on_fbutton_clicked()
-{
-        ui->example->close();
-        ui->fbutton->hide();
-}
-void teacherquestion::on_ebutton_2_clicked()
-{
-        ui->example_2->show();
-        ui->fbutton_2->show();
-}
-void teacherquestion::on_fbutton_2_clicked()
-{
-        ui->example_2->close();
-        ui->fbutton_2->hide();
-}
-void teacherquestion::on_ebutton_3_clicked()
-{
-        ui->example_3->show();
-        ui->fbutton_3->show();
-}
-void teacherquestion::on_fbutton_3_clicked()
-{
-        ui->example_3->close();
-        ui->fbutton_3->hide();
-}
 teacherquestion::~teacherquestion()
 {
     delete ui;
@@ -100,19 +57,6 @@ void teacherquestion::on_importSelectquestion_clicked()
     bool bB=ui->selectB->isChecked();
     bool bC=ui->selectC->isChecked();
     bool bD=ui->selectD->isChecked();
-    QString an;
-    if(bA){
-        an+="A";
-    }
-    if(bB){
-        an+="B";
-    }
-    if(bC){
-        an+="C";
-    }
-    if(bD){
-        an+="D";
-    }
 
     //导入题目到数据库功能
 
@@ -126,7 +70,7 @@ void teacherquestion::on_importSelectquestion_clicked()
     query.bindValue(":option_b", sB);
     query.bindValue(":option_c", sC);
     query.bindValue(":option_d", sD);
-    query.bindValue(":answer", an);
+    query.bindValue(":answer", bA*1+bB*2+bC*4+bD*8);
     query.bindValue(":use", false);
 
     if (!query.exec()) {
@@ -209,7 +153,6 @@ void teacherquestion::on_importAnswerquestion_clicked()
 }
 
 void teacherquestion::importChoiceQuestions(const QString &filePath, QSqlDatabase &db) {
-#ifdef _WIN32
     QAxObject excel("Excel.Application");
     QAxObject *workbooks = excel.querySubObject("Workbooks");
     QAxObject *workbook = workbooks->querySubObject("Open(const QString&)", filePath);
@@ -253,59 +196,10 @@ void teacherquestion::importChoiceQuestions(const QString &filePath, QSqlDatabas
 
     workbook->dynamicCall("Close()");
     excel.dynamicCall("Quit()");
-#else
-    QXlsx::Document xlsx(filePath);
-    if (!xlsx.load()) {
-        qDebug() << "Failed to load the file.";
-        return;
-    }
-
-    QXlsx::Worksheet *worksheet = dynamic_cast<QXlsx::Worksheet*>(xlsx.sheet(0)); // 假设选择题在第一个工作表
-    if (!worksheet) {
-        qDebug() << "Failed to get the worksheet.";
-        return;
-    }
-
-    int rowCount = worksheet->dimension().rowCount();
-
-    QSqlQuery query(db);
-    query.exec("CREATE TABLE IF NOT EXISTS choice_questions ("
-               "id INTEGER PRIMARY KEY AUTOINCREMENT, "
-               "question TEXT, "
-               "option1 TEXT, "
-               "option2 TEXT, "
-               "option3 TEXT, "
-               "option4 TEXT, "
-               "correct_answer TEXT)");
-
-    for (int i = 2; i <= rowCount; ++i) { // 从第二行开始，假设第一行为标题
-        QString question = worksheet->cellAt(i, 1)->value().toString();
-        QString option1 = worksheet->cellAt(i, 2)->value().toString();
-        QString option2 = worksheet->cellAt(i, 3)->value().toString();
-        QString option3 = worksheet->cellAt(i, 4)->value().toString();
-        QString option4 = worksheet->cellAt(i, 5)->value().toString();
-        QString correctAnswer = worksheet->cellAt(i, 6)->value().toString();
-
-        query.prepare("INSERT INTO choice_questions (question, option1, option2, option3, option4, correct_answer) "
-                      "VALUES (:question, :option1, :option2, :option3, :option4, :correct_answer)");
-        query.bindValue(":question", question);
-        query.bindValue(":option1", option1);
-        query.bindValue(":option2", option2);
-        query.bindValue(":option3", option3);
-        query.bindValue(":option4", option4);
-        query.bindValue(":correct_answer", correctAnswer);
-
-        if (!query.exec()) {
-            qDebug() << "Error inserting choice question:" << query.lastError();
-        }
-    }
-#endif
-
 }
 
 
 void teacherquestion::importFillBlankQuestions(const QString &filePath, QSqlDatabase &db) {
-#ifdef _WIN32
     QAxObject excel("Excel.Application");
     QAxObject *workbooks = excel.querySubObject("Workbooks");
     QAxObject *workbook = workbooks->querySubObject("Open(const QString&)", filePath);
@@ -337,41 +231,6 @@ void teacherquestion::importFillBlankQuestions(const QString &filePath, QSqlData
 
     workbook->dynamicCall("Close()");
     excel.dynamicCall("Quit()");
-#else
-    QXlsx::Document xlsx(filePath);
-    if (!xlsx.load()) {
-        qDebug() << "Failed to load the file.";
-        return;
-    }
-
-    QXlsx::Worksheet *worksheet = dynamic_cast<QXlsx::Worksheet*>(xlsx.sheet(1)); // 假设填空题在第二个工作表
-    if (!worksheet) {
-        qDebug() << "Failed to get the worksheet.";
-        return;
-    }
-
-    int rowCount = worksheet->dimension().rowCount();
-
-    QSqlQuery query(db);
-    query.exec("CREATE TABLE IF NOT EXISTS fill_blank_questions ("
-               "id INTEGER PRIMARY KEY AUTOINCREMENT, "
-               "question TEXT, "
-               "correct_answer TEXT)");
-
-    for (int i = 2; i <= rowCount; ++i) { // 从第二行开始，假设第一行为标题
-        QString question = worksheet->cellAt(i, 1)->value().toString();
-        QString correctAnswer = worksheet->cellAt(i, 2)->value().toString();
-
-        query.prepare("INSERT INTO fill_blank_questions (question, correct_answer) "
-                      "VALUES (:question, :correct_answer)");
-        query.bindValue(":question", question);
-        query.bindValue(":correct_answer", correctAnswer);
-
-        if (!query.exec()) {
-            qDebug() << "Error inserting fill blank question:" << query.lastError();
-        }
-    }
-#endif
 }
 
 
